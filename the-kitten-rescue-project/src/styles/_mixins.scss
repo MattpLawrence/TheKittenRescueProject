@@ -136,7 +136,7 @@
     padding: 0 .5rem;
     min-width: 3rem;
   }
-  @media only screen and (max-width: $breakpointTablet) {
+  @media only screen and (max-width: $breakpointSmall) {
     border-radius: .375rem;
     font-size: .75rem;
     min-width: 2rem;

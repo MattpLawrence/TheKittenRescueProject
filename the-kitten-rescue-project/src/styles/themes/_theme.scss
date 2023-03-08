@@ -1,6 +1,3 @@
-@use "@angular/material" as mat;
-@include mat.core();
-
 //Palette Generator: http://mcg.mbitson.com/#!?mcgpalette0=%233f51b5
 
 
@@ -107,23 +104,5 @@ $tkrp-success-palette: (
   ),
 );
 
-//set custom palette to variable
-$app-primary: mat.define-palette($tkrp-primary-palette);
-$app-warn: mat.define-palette($tkrp-warn-palette);
-$app-success: mat.define-palette($tkrp-success-palette);
 
-//set component theme for application
-$comp-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $app-primary,
-      accent: $app-success,
-      warn: $app-warn,
-      success: $app-success,
-    ),
-  )
-);
 
-//use variable in all component themes in this app
-//no need to @import this file, just @import "~@angular/material/theming";
-@include mat.all-component-themes($comp-theme);
