@@ -11,3 +11,40 @@
 .leftBox{
   margin: 0rem 2rem;
 }
+
+.rightBox{
+  margin: 0rem;
+  height: 100%;
+  width: 70%;
+  @include flexCenterEnd;
+}
+
+.navBtn{
+  height: 100%;
+  padding: 1rem;
+  margin: 0rem 1rem;
+  @include flexColumnCenter;
+  list-style: none;
+  background-color: $colorPrimaryBackground;
+  transition-duration: .2s;
+
+  .buttonTextBox{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125rem;
+    margin-top: 1.25rem;
+    margin-bottom: .625rem;
+  }
+
+  .buttonUnderline{
+    width: 100%;
+    height: .25rem;
+    background-color: $colorPrimary;
+    border-radius: .125rem;
+    opacity: 0;
+    transition-duration: .2s;
+  }
+
+  &:hover .buttonUnderline{
+    opacity: 1;
+  }
+}

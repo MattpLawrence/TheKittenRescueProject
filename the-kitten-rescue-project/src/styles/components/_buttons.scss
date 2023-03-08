@@ -27,6 +27,14 @@
   background-color: $colorSuccess;
   color: $colorSuccessText;
 }
+
+.buttonText {
+  background-color: $colorPrimaryBackground;
+  &:hover {
+    background-color: $colorDefaultButtonHovered;
+  }
+}
+
 .buttonErrorText {
   color: $colorWarn;
 }
