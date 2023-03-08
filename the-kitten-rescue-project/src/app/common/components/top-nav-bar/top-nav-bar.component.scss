@@ -5,7 +5,11 @@
   height: 6rem;
   @include flexCenterSpaceBetween;
 
-  border: 2px red solid;
+  // border: 2px red solid;
+}
+
+#logoImg{
+  height: 8rem;
 }
 
 .leftBox{

@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { BaseComponent } from './common/components/base/base.component';
 import { TopNavBarComponent } from './common/components/top-nav-bar/top-nav-bar.component';
 import { MaterialModule } from './common/modules/material.module';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavBarComponent,
     BaseComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
