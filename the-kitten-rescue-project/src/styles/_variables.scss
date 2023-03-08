@@ -1,0 +1,21 @@
+@import "themes/theme";
+//*************Colors**********
+
+$colorPrimaryBackground: #ffffff;
+$colorPrimary: mat-color($app-primary, 500);
+$colorPrimaryText: #ffffff;
+$colorSuccess: mat-color($app-success, 500);
+$colorSuccessText: #ffffff;
+$colorWarn: mat-color($app-warn, 500);
+$colorWarnText: #ffffff;
+$colorPrimaryActive: mat-color($app-primary, 600);
+$colorPrimaryHover: mat-color($app-primary, 700);
+$colorWarnButtonHover: mat-color($app-warn, 700);
+
+
+
+//************Breakpoints**********
+$breakpointSmall: 600px;
+$breakpointMedium: 960px;
+$breakpointLarge: 1280px;
+$breakpointXLarge: 1920px;

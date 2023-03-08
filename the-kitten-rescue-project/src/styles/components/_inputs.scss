@@ -1,0 +1,116 @@
+.inputWrapperColumn {
+  .mat-form-field{
+    .mat-icon{
+      color: $colorIcon
+    }
+  }
+}
+.inputWrapperNone {
+  @include iconLeftDisplayNone();
+  @include iconRightDisplayNone();
+}
+
+.inputWrapperRight {
+  @include iconLeftDisplayNone();
+}
+
+.inputWrapperLeft {
+  @include iconRightDisplayNone();
+}
+
+.mat-form-field{
+  .mat-icon{
+    color: $colorIcon
+  }
+}
+
+.mat-form-field{
+  .mat-icon{
+    color: $colorIcon
+  }
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 1rem;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  font-size: 1rem;
+  border-top: .25rem solid transparent;
+  padding: 1rem 0;
+}
+
+.inputDefault {
+  @include inputFlexCenter();
+  .mat-form-field-wrapper {
+    .mat-form-field-flex {
+      .mat-form-field-outline {
+        background-color: $colorBackground;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.inputInput {
+  @include inputFlexCenter();
+}
+.inputSuccess {
+  @include inputFlexCenter();
+  .mat-form-field-wrapper {
+    .mat-form-field-flex {
+      .mat-form-field-outline {
+        color: $colorSuccess;
+      }
+    }
+  }
+}
+
+.inputFocus {
+  @include inputFlexCenter();
+  .mat-form-field-wrapper {
+    .mat-form-field-flex {
+      .mat-form-field-outline {
+        color: $colorPrimary;
+      }
+    }
+  }
+}
+.inputError {
+  @include inputFlexCenter();
+  .mat-form-field-wrapper {
+    .mat-form-field-flex {
+      .mat-form-field-outline {
+        color: $colorWarn;
+      }
+    }
+  }
+}
+
+
+//disabled input style
+.inputDisabled{
+  @include inputFlexCenter();
+  .mat-form-field-wrapper {
+    .mat-form-field-flex {
+      .mat-form-field-outline {
+        background-color: $colorBackground;
+        border-radius: 5px;
+      }
+    }
+  }
+  .mat-form-field-flex:hover .mat-form-field-outline {
+    transition: opacity 99999999999s cubic-bezier(.25,.8,.25, 1) !important;
+  }
+  .mat-form-field-wrapper{
+    pointer-events: none;
+  }
+  .mat-input-element, .mat-select-trigger{
+    color: $colorText;
+    cursor: not-allowed;
+
+  }
+  .mat-select-value-text{
+    color:rgba(0, 0, 0, 0.5);
+  }
+}

@@ -1,0 +1,13 @@
+@import "../../../../styles.scss";
+
+.topNavContainer{
+  background-color: $colorPrimaryBackground;
+  height: 6rem;
+  @include flexCenterSpaceBetween;
+
+  border: 2px red solid;
+}
+
+.leftBox{
+  margin: 0rem 2rem;
+}

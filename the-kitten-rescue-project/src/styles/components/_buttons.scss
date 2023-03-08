@@ -1,0 +1,88 @@
+.buttonDefault {
+  background-color: $colorDefaultButton;
+  &:hover {
+    background-color: $colorDefaultButtonHovered;
+  }
+}
+
+.mat-button-disabled {
+  background: $colorDefaultButtonDisabled;
+  color: $colorDefaultTextDisabled;
+}
+
+.buttonDisabled {
+  background: $colorDefaultButtonDisabled !important;
+  color: $colorDefaultTextDisabled !important;
+}
+.buttonTinted {
+  background-color: $colorPrimary;
+  color: $colorPrimaryText;
+}
+
+.buttonError {
+  background-color: $colorWarn;
+  color: $colorWarnText;
+}
+.buttonSuccess {
+  background-color: $colorSuccess;
+  color: $colorSuccessText;
+}
+.buttonErrorText {
+  color: $colorWarn;
+}
+.buttonSuccessText {
+  color: $colorSuccess;
+}
+
+.buttonLarge {
+  @include buttonBase(1rem, 0.75rem, 1rem);
+}
+.buttonMedium {
+  @include buttonBase(0.875rem, 0.5rem, 1rem);
+}
+.buttonSmall {
+  @include buttonBase(0.75rem, 0.5rem, 0.875rem);
+}
+.buttonXSmall {
+  @include buttonBase(0.625rem, 0.375rem, 0.75rem);
+}
+
+.buttonIconLeft {
+  padding-left: 4px;
+}
+
+.buttonIconRight {
+  padding-right: 4px;
+}
+
+.buttonIconBoth {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+//remove autofill color
+.inputDefault {
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $colorBackground inset !important;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px $colorCardBackground inset !important;
+}
+
+//disabled input style
+.inputDisabled {
+  .mat-form-field-flex:hover .mat-form-field-outline {
+    transition: opacity 99999999999s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  }
+  .mat-input-element {
+    color: $colorText;
+    cursor: not-allowed;
+  }
+}
+//override green disabled color
+.mat-button.mat-button-disabled.mat-button-disabled {
+  background-color: $colorBackground;
+}
+

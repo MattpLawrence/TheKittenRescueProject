@@ -1,0 +1,129 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+//Palette Generator: http://mcg.mbitson.com/#!?mcgpalette0=%233f51b5
+
+
+//custom themes for tkrp
+$tkrp-primary-palette: (
+    50 : #f3f0fc,
+    100 : #e0d9f7,
+    200 : #cbbff1,
+    300 : #b6a5eb,
+    400 : #a792e7,
+    500 : #977fe3,
+    600 : #8f77e0,
+    700 : #846cdc,
+    800 : #7a62d8,
+    900 : #694fd0,
+    A100 : #ffffff,
+    A200 : #fcfbff,
+    A400 : #d2c8ff,
+    A700 : #bdaeff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+$tkrp-warn-palette: (
+  50: #f4e5e5,
+  100: #e4bebe,
+  200: #d29393,
+  300: #bf6868,
+  400: #b24747,
+  500: #a42727,
+  600: #9c2323,
+  700: #921d1d,
+  800: #891717,
+  900: #780e0e,
+  A100: #ffaaaa,
+  A200: #ff7777,
+  A400: #ff4444,
+  A700: #ff2a2a,
+  contrast: (
+    50: #000000de,
+    100: #000000de,
+    200: #000000de,
+    300: #000000de,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000de,
+    A200: #000000de,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+
+$tkrp-success-palette: (
+  50: #e3ede5,
+  100: #b9d1bd,
+  200: #8bb391,
+  300: #5d9565,
+  400: #3a7e44,
+  500: #176723,
+  600: #145f1f,
+  700: #11541a,
+  800: #0d4a15,
+  900: #07390c,
+  A100: #71ff78,
+  A200: #3eff48,
+  A400: #0bff18,
+  A700: #00f10c,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+//set custom palette to variable
+$app-primary: mat.define-palette($tkrp-primary-palette);
+$app-warn: mat.define-palette($tkrp-warn-palette);
+$app-success: mat.define-palette($tkrp-success-palette);
+
+//set component theme for application
+$comp-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-success,
+      warn: $app-warn,
+      success: $app-success,
+    ),
+  )
+);
+
+//use variable in all component themes in this app
+//no need to @import this file, just @import "~@angular/material/theming";
+@include mat.all-component-themes($comp-theme);

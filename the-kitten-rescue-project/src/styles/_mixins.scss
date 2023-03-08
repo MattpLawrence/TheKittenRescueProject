@@ -1,0 +1,205 @@
+@import "../styles/variables";
+
+//*************Sizing************
+
+@mixin fullSize{
+  width: 100%;
+  height: 100%;
+}
+
+//*************Alignment*******************
+
+@mixin flexCenterCenter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexCenterStart{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flexCenterEnd{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@mixin flexCenterSpaceBetween{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flexCenterSpaceAround{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@mixin flexCenterSpaceEvenly{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@mixin flexColumnStart{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin flexColumnCenter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexColumnEnd{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+@mixin box-shadow-table-row {
+  -webkit-box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.15),
+    0px 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.15),
+    0px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+@mixin font-family {
+  font-family: "Roboto", monospace;
+}
+
+//************************Badges************************
+@mixin badgeSmall {
+  padding: 0 .25rem;
+  width: auto;
+  min-width: .875rem; // 22-8px padding = 14px
+  height: 1rem;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: .625rem;
+  line-height: 1rem;
+}
+@mixin badgeMedium {
+  padding: 0 .25rem;
+  width: auto;
+  min-width: 1.5rem; // 34-8px padding = 26px
+  height: 1.5rem;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.875rem;
+  line-height: 1.5rem;
+}
+
+@mixin badgeLarge {
+  padding: 0 .25rem;
+  width: auto;
+  min-width: 2rem; // 40-8px padding = 32px
+  height: 2rem;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 2rem;
+}
+
+//***************************Buttons*******************
+@mixin buttonBase($fontSize, $paddingX, $paddingY) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: break-word;
+  border-radius: .5rem;
+  font-size: $fontSize;
+  min-width: 4.75rem;
+  padding: $paddingX $paddingY;
+  line-height: calc($fontSize + 0.2rem);
+
+  .mat-icon {
+    font-size: calc($fontSize + 0.2rem);
+    height: calc($fontSize + 0.3rem);
+  }
+
+  @media only screen and (max-width: $breakpointMedium) {
+    padding: 0 .5rem;
+    min-width: 3rem;
+  }
+  @media only screen and (max-width: $breakpointTablet) {
+    border-radius: .375rem;
+    font-size: .75rem;
+    min-width: 2rem;
+  }
+}
+
+//********************Cards****************************
+@mixin topActionBase {
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin appBar {
+  height: 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+//*****************Inputs*********************
+@mixin iconRightDisplayNone {
+  .mat-form-field:not(.mat-form-field-appearance-legacy)
+    .mat-form-field-suffix
+    .mat-icon {
+    display: none;
+  }
+}
+
+@mixin iconLeftDisplayNone {
+  .mat-form-field:not(.mat-form-field-appearance-legacy)
+    .mat-form-field-prefix
+    .mat-icon {
+    display: none;
+  }
+}
+
+
+@mixin inputFlexCenter {
+  display: inline-flex;
+  width: 100%;
+  .mat-form-field {
+    width: 100%;
+  }
+  .mat-form-field-wrapper {
+    width: 100%;
+  }
+  .mat-form-field-flex {
+    display: inline-flex;
+  }
+}
+
+@media only screen and (max-width: $breakpointMedium) {
+  @mixin buttonBase($height) {
+    border-radius: 4px;
+    font-size: 10px;
+    min-width: 48px;
+  }
+}
+

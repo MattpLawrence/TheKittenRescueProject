@@ -1,0 +1,81 @@
+.topActionBar {
+  @include topActionBase();
+}
+.topActionBarButton {
+  @include topActionBase();
+}
+.topActionBarDoubleButton {
+  @include topActionBase();
+}
+
+.buttonContainer {
+  display: flex;
+  .mat-button {
+    margin-left: .75rem;
+  }
+}
+
+.appBarRight {
+  @include appBar();
+  justify-content: center;
+  .mat-button {
+    position: absolute;
+    right: 1rem;
+    order: 2;
+  }
+}
+
+.appBarLeft {
+  @include appBar();
+  justify-content: center;
+  .mat-button {
+    position: absolute;
+    left: 1rem;
+    order: 2;
+  }
+}
+
+.appBarBoth {
+  @include appBar();
+  justify-content: space-between;
+}
+
+.stickyHeaderCard {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  margin: auto;
+  z-index: 1;
+  border-bottom: .5rem solid $colorBackground;
+  border-radius: 0px;
+}
+
+.flexBetween {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  //override default button color
+  .buttonDefault {
+    color: $colorWarn;
+  }
+  .invalidGrey {
+    color: $colorText;
+  }
+}
+
+.text-center {
+  .mainTitle {
+    color: $colorText;
+    font-size: 1.125rem;
+  }
+  .mat-card-title {
+    margin-bottom: 0;
+  }
+}
+
+//override green disabled color
+.mat-button.mat-button-disabled.mat-button-disabled {
+  background-color: $colorBackground;
+}

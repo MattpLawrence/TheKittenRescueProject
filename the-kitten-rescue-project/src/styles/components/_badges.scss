@@ -1,0 +1,76 @@
+//number
+.badgeNumberSmall {
+  .mat-badge-content {
+    @include badgeSmall();
+    border-radius: .5rem;
+  }
+}
+.badgeNumberMedium {
+  .mat-badge-content {
+    @include badgeMedium;
+    border-radius: .75rem;
+  }
+}
+.badgeNumberLarge {
+  .mat-badge-content {
+    @include badgeLarge();
+    border-radius: 1rem;
+  }
+}
+//text
+.badgeTextSmall {
+  .mat-badge-content {
+    @include badgeSmall();
+    border-radius: .5rem;
+  }
+}
+.badgeTextMedium {
+  .mat-badge-content {
+    @include badgeMedium;
+    border-radius: .5rem;
+  }
+}
+.badgeTextLarge {
+  .mat-badge-content {
+    @include badgeLarge();
+    border-radius: .5rem;
+  }
+}
+//icon
+.badgeIconSmall {
+  .mat-badge-content {
+    @include badgeSmall();
+    font-family: "Material Icons";
+    border-radius: .5rem;
+  }
+}
+.badgeIconMedium {
+  .mat-badge-content {
+    @include badgeMedium;
+    font-family: "Material Icons";
+    font-size: 1.25rem;
+    border-radius: .5rem;
+  }
+}
+.badgeIconLarge {
+  .mat-badge-content {
+    @include badgeLarge();
+    font-family: "Material Icons";
+    font-size: 1.5rem;
+    border-radius: .5rem;
+  }
+}
+
+//color
+.badgeWarn {
+  .mat-badge-content {
+    background-color: $colorWarn;
+  }
+}
+
+.badgeAccent {
+  .mat-badge-content {
+    background-color: $colorAccentBadgeBackground;
+    color: $colorPrimary;
+  }
+}
