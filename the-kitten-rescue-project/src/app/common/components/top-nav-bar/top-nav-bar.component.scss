@@ -1,5 +1,6 @@
 @import "../../../../styles.scss";
 
+
 .topNavContainer{
   width: 100vw;
   background-color: $colorPrimaryBackground;
@@ -37,8 +38,8 @@
   .buttonTextBox{
     font-family: 'Roboto', sans-serif;
     font-size: 1.125rem;
-    margin-top: 1.25rem;
-    margin-bottom: .625rem;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .buttonUnderline{
@@ -50,14 +51,37 @@
     transition-duration: .2s;
   }
 
-  &:hover .buttonUnderline{
-    opacity: 1;
-  }
+  &:hover{
+    cursor: pointer;
+    .buttonUnderline{
+      opacity: 1;
+    }
+  } 
 }
+
+
 
 .active  .buttonUnderline{
   opacity: 1;
 }
+
+.buttonIconRight{
+  padding: .75rem 1rem;
+}
+
+#donateBtn:hover{
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1.01); opacity: 1;}
+  30% { transform: scale(1.1); opacity: 1;}
+  100% { transform: scale(1.01); opacity: 1;}
+}
+
+
+
+
 
 @media only screen and (max-width: $breakpointMedium){
   .topNavContainer{
