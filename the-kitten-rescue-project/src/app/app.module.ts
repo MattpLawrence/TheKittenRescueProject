@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BaseComponent } from './common/components/base/base.component';
 import { TopNavBarComponent } from './common/components/top-nav-bar/top-nav-bar.component';
-import { MaterialModule } from './common/modules/material.module';
+import { MaterialModule } from './modules/material.module';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 @NgModule({
