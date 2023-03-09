@@ -1,22 +1,22 @@
 <!-- desktop navbar -->
 <nav *ngIf="currentBreakpoint === 0" class="topNavContainer stickyHeaderCard">
   <div class="leftBox">
-    <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo">
+    <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo" routerLink="landing-page">
   </div>
   <ul class="rightBox">
-    <li id="aboutBtn" class="navBtn">
+    <li id="aboutBtn" class="navBtn" routerLink="about-page" routerLinkActive="active">
       <span class="buttonTextBox">About</span>
       <span class="buttonUnderline"></span>
     </li>
-    <li id="volunteerBtn" class="navBtn">
+    <li id="volunteerBtn" class="navBtn" routerLink="volunteer-page" routerLinkActive="active">
       <span class="buttonTextBox">Volunteer</span>
       <span class="buttonUnderline"></span>
     </li>
-    <li id="adoptBtn" class="navBtn">
+    <li id="adoptBtn" class="navBtn" routerLink="adopt-page" routerLinkActive="active">
       <span class="buttonTextBox">Adopt</span>
       <span class="buttonUnderline"></span>
     </li>
-    <li id="donateBtn" class="navBtn">
+    <li id="donateBtn" class="navBtn" routerLink="donate-page" routerLinkActive="active">
       <span class="buttonTextBox">Donate</span>
       <span class="buttonUnderline"></span>
     </li>
@@ -26,26 +26,26 @@
 <!-- Mobile nav bar -->
 <nav *ngIf="currentBreakpoint !== 0" class="topNavContainer stickyHeaderCard">
   <div class="rightJustify">
-    <div class="menuTrigger" (click)="toggleExpanded()">
+    <div class="menuTrigger" (click)="toggleExpanded(false)">
       <span [ngClass]="{isSpun:isExpanded}" class="material-icons">
         menu
       </span>
     </div>
 
     <ul [ngClass]="{isExpanded: isExpanded}"  class="menuList">
-      <li id="aboutBtn" class="navBtn">
+      <li id="aboutBtn" class="navBtn" routerLink="about-page" routerLinkActive="active" (click)="toggleExpanded(false)">
         <span class="buttonTextBox">About</span>
         <span class="buttonUnderline"></span>
       </li>
-      <li id="volunteerBtn" class="navBtn">
+      <li id="volunteerBtn" class="navBtn" routerLink="volunteer-page" routerLinkActive="active" (click)="toggleExpanded(false)">
         <span class="buttonTextBox">Volunteer</span>
         <span class="buttonUnderline"></span>
       </li>
-      <li id="adoptBtn" class="navBtn">
+      <li id="adoptBtn" class="navBtn" routerLink="adopt-page" routerLinkActive="active" (click)="toggleExpanded(false)">
         <span class="buttonTextBox">Adopt</span>
         <span class="buttonUnderline"></span>
       </li>
-      <li id="donateBtn" class="navBtn">
+      <li id="donateBtn" class="navBtn" routerLink="donate-page" routerLinkActive="active" (click)="toggleExpanded(false)">
         <span class="buttonTextBox">Donate</span>
         <span class="buttonUnderline"></span>
       </li>
@@ -54,7 +54,7 @@
 
   
 
-  <div class="CenterBox">
-    <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo">
+  <div class="centerBox">
+    <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo" routerLink="landing-page" (click)="toggleExpanded(true)">
   </div>
 </nav>

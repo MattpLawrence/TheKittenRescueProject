@@ -1,6 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AboutPageComponent } from "../pages/about-page/about-page.component";
+import { AdoptPageComponent } from "../pages/adopt-page/adopt-page.component";
+import { DonatePageComponent } from "../pages/donate-page/donate-page.component";
 import { LandingPageComponent } from "../pages/landing-page/landing-page.component";
+import { VolunteerPageComponent } from "../pages/volunteer-page/volunteer-page.component";
 
 
 const routes: Routes = [
@@ -14,22 +18,22 @@ const routes: Routes = [
  },
  {
    path: "about-page",
-   component: LandingPageComponent,
+   component: AboutPageComponent,
  },
  {
    path: "volunteer-page",
-   component: LandingPageComponent,
+   component: VolunteerPageComponent,
  },
  {
    path: "adopt-page",
-   component: LandingPageComponent,
+   component: AdoptPageComponent,
  },
  {
    path: "donate-page",
-   component: LandingPageComponent,
+   component: DonatePageComponent,
  },
  { path: "**",
-   redirectTo: "error"
+   redirectTo: "landing-page"
  },
 ];
 

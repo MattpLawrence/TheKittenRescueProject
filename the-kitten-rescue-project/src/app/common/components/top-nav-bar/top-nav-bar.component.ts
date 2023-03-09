@@ -54,8 +54,10 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
     this.currentBreakpoint = currentBreakpoint;
   }
 
-  toggleExpanded = () => {
-    this.isExpanded = !this.isExpanded;
+  toggleExpanded = (isLogo: boolean) => {
+    if(!isLogo)this.isExpanded = !this.isExpanded;
+    else this.isExpanded = false;
+
   }
 
 }

@@ -55,6 +55,10 @@
   }
 }
 
+.active  .buttonUnderline{
+  opacity: 1;
+}
+
 @media only screen and (max-width: $breakpointMedium){
   .topNavContainer{
     @include flexCenterCenter;
@@ -99,5 +103,9 @@
   .isExpanded{
     
     transform:translateX(0rem);
+  }
+
+  .centerBox{
+    z-index: 1;
   }
 }
