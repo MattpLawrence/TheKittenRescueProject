@@ -1,3 +1,6 @@
 .justifyRight{
   @include flexCenterEnd;
 }
+body{
+  font-family: 'Roboto', sans-serif;
+}

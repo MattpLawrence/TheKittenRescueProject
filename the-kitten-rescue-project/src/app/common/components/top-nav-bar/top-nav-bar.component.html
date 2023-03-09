@@ -1,4 +1,5 @@
-<nav class="topNavContainer">
+<!-- desktop navbar -->
+<nav *ngIf="currentBreakpoint === 0" class="topNavContainer stickyHeaderCard">
   <div class="leftBox">
     <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo">
   </div>
@@ -20,4 +21,40 @@
       <span class="buttonUnderline"></span>
     </li>
   </ul>
+</nav>
+
+<!-- Mobile nav bar -->
+<nav *ngIf="currentBreakpoint !== 0" class="topNavContainer stickyHeaderCard">
+  <div class="rightJustify">
+    <div class="menuTrigger" (click)="toggleExpanded()">
+      <span [ngClass]="{isSpun:isExpanded}" class="material-icons">
+        menu
+      </span>
+    </div>
+
+    <ul [ngClass]="{isExpanded: isExpanded}"  class="menuList">
+      <li id="aboutBtn" class="navBtn">
+        <span class="buttonTextBox">About</span>
+        <span class="buttonUnderline"></span>
+      </li>
+      <li id="volunteerBtn" class="navBtn">
+        <span class="buttonTextBox">Volunteer</span>
+        <span class="buttonUnderline"></span>
+      </li>
+      <li id="adoptBtn" class="navBtn">
+        <span class="buttonTextBox">Adopt</span>
+        <span class="buttonUnderline"></span>
+      </li>
+      <li id="donateBtn" class="navBtn">
+        <span class="buttonTextBox">Donate</span>
+        <span class="buttonUnderline"></span>
+      </li>
+    </ul>
+  </div>
+
+  
+
+  <div class="CenterBox">
+    <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo">
+  </div>
 </nav>

@@ -12,6 +12,9 @@ import { CommonService } from '../../services/common.service';
 })
 export class TopNavBarComponent extends BaseComponent implements OnInit {
 
+  currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
+  isExpanded: boolean = false;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private commonService: CommonService
@@ -48,6 +51,11 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
       currentBreakpoint = BreakPointsEnum.isMobile;
     }
     this.commonService.setBreakpointSubject(currentBreakpoint);
+    this.currentBreakpoint = currentBreakpoint;
+  }
+
+  toggleExpanded = () => {
+    this.isExpanded = !this.isExpanded;
   }
 
 }
