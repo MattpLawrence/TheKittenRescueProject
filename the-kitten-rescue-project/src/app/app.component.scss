@@ -1,4 +1,12 @@
+@import '../styles.scss';
+
 app-landing-page{
   display: block;
   width: 100vw;
+}
+
+.mainContainer{
+  app-adopt-page{
+height: 100%;
+  }
 }

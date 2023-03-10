@@ -1,0 +1,11 @@
+<div class="mainContainer">
+  <div class="mainBanner">
+  <img class="mainBannerImg" src="https://www.seacoast.org/wp-content/uploads/2019/09/1440x550_WelcomeHome_SeriesArt.png" alt="main banner">
+  </div>
+
+  <div class="petContainer" *ngFor="let pet of petList">
+    <img src="{{pet.mainImg}}" alt="Pet Image">
+    <span class="petName">{{pet.petName}}</span>
+  </div>
+  <h2>yes</h2>
+</div>

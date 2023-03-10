@@ -26,7 +26,6 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   }
 
   findPets = () => {
-    console.log('search')
     //init loader
     const dialogRef = this.dialog.open(CatLoaderComponent, {
       disableClose: true,
@@ -34,7 +33,6 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
       width: "50vw"
     })
     setTimeout(() => {
-      console.log(this.petList)
       if(!this.isLoading)dialogRef.close();
       else this.isLoading = false;
     },2000)
@@ -42,7 +40,6 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
       if(this.isLoading)this.isLoading = false;
       else dialogRef.close();
       //close loader
-      console.log(response)
       //set animal list
       if(response.animals != undefined) this.petList = response.animals;
 

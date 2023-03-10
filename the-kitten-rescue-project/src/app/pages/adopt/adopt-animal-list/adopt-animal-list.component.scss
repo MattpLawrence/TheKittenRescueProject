@@ -1,0 +1,14 @@
+@import '../../../../styles.scss';
+
+.mainBanner{
+  width: 100vw;
+  height: 10rem;
+  overflow: hidden;
+  @include flexCenterCenter;
+  background-color: #495a6c;
+  .mainBannerImg{
+    height:14rem;
+    margin-top: 0rem;
+  }
+
+}
