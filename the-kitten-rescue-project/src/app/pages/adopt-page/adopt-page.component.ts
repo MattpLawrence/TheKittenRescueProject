@@ -36,12 +36,12 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
 
   initLoader = () => {
     console.log('hit')
-    const dialogRef = this.dialog.open(CatLoaderComponent, {
+      const dialogRef = this.dialog.open(CatLoaderComponent, {
 
-    })
+      })
 
-    dialogRef.afterClosed().subscribe(res => {
-      console.log('close')
-    })
+      dialogRef.afterClosed().subscribe(res => {
+        console.log('close')
+      })
   }
 }
