@@ -1,3 +1,31 @@
+@import "../../../../styles.scss";
+
+
+.titleContainer{
+  font-size: 1.5rem;
+  font-weight: 500;
+  @include flexColumnCenter;
+  text-align: center;
+  margin: 1rem;
+
+  .mainTitle{
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  div{
+    color: $colorLightText;
+  }
+}
+
+
+
+
+
+
+//*************Animation*************
+
+
 @mixin fill-full($dir: 'full', $type: absolute) {
   position: $type;
   @if $dir != 'bottom' {top: 0; }
@@ -19,7 +47,7 @@
     padding-bottom: 100%;
   }
 
-  &:hover > * { animation-play-state: paused; }
+  // &:hover > * { animation-play-state: paused; }
   &:active > * { animation-play-state: running; }
 }
 

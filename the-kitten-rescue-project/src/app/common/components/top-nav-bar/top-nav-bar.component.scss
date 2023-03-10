@@ -27,7 +27,6 @@
 }
 
 .navBtn{
-  height: 100%;
   padding: 1rem;
   margin: 0rem 1rem;
   @include flexColumnCenter;
@@ -121,6 +120,7 @@
 
 
   .menuList{
+    margin-top: 0;
     width: 8rem;
     padding: 0rem;
     position: absolute;

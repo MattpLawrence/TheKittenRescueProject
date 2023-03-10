@@ -29,6 +29,8 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     console.log('search')
     //init loader
     const dialogRef = this.dialog.open(CatLoaderComponent, {
+      disableClose: true,
+      panelClass: "noPadding",
       width: "50vw"
     })
     setTimeout(() => {
