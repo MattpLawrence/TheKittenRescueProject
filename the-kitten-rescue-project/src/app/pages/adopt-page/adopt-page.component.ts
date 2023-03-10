@@ -13,6 +13,7 @@ import { CatLoaderComponent } from 'src/app/common/components/cat-loader/cat-loa
 export class AdoptPageComponent extends BaseComponent implements OnInit {
 
   petList: any | undefined;
+  isLoading: boolean = true;
 
   constructor(
     private apiService: APIService,
@@ -21,12 +22,24 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.findPets();
-    this.initLoader();
+
   }
 
   findPets = () => {
     console.log('search')
+    //init loader
+    const dialogRef = this.dialog.open(CatLoaderComponent, {
+      width: "50vw"
+    })
+    setTimeout(() => {
+      console.log(this.petList)
+      if(!this.isLoading)dialogRef.close();
+      else this.isLoading = false;
+    },2000)
     this.apiService.searchAnimals().subscribe(response => {
+      if(this.isLoading)this.isLoading = false;
+      else dialogRef.close();
+      //close loader
       console.log(response)
       //set animal list
       if(response.animals != undefined) this.petList = response.animals;
@@ -34,14 +47,4 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     });
   }
 
-  initLoader = () => {
-    console.log('hit')
-      const dialogRef = this.dialog.open(CatLoaderComponent, {
-
-      })
-
-      dialogRef.afterClosed().subscribe(res => {
-        console.log('close')
-      })
-  }
 }

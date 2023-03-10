@@ -15,7 +15,6 @@ import { AppRoutingModule } from './modules/routes.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CatLoaderComponent } from './common/components/cat-loader/cat-loader.component';
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GenericActionModalComponent } from './common/components/generic-action-modal/generic-action-modal.component';
 
@@ -43,10 +42,9 @@ import { GenericActionModalComponent } from './common/components/generic-action-
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule,
 
   ],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
