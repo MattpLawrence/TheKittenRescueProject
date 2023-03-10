@@ -3,4 +3,18 @@
 }
 body{
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+
+//remove padding form the dialogs
+
+.noPadding .mat-dialog-container{
+  padding: 0;
+}
+
+//change overlay color for dialog
+
+.cdk-overlay-container .cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0);
 }

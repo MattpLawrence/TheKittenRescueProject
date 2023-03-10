@@ -12,6 +12,12 @@ import { VolunteerPageComponent } from './pages/volunteer-page/volunteer-page.co
 import { AdoptPageComponent } from './pages/adopt-page/adopt-page.component';
 import { DonatePageComponent } from './pages/donate-page/donate-page.component';
 import { AppRoutingModule } from './modules/routes.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CatLoaderComponent } from './common/components/cat-loader/cat-loader.component';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GenericActionModalComponent } from './common/components/generic-action-modal/generic-action-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -23,11 +29,20 @@ import { AppRoutingModule } from './modules/routes.module';
     VolunteerPageComponent,
     AdoptPageComponent,
     DonatePageComponent,
+    CatLoaderComponent,
+    GenericActionModalComponent
+    
   ],
   imports: [
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
