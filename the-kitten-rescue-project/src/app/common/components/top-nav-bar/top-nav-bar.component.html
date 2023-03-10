@@ -16,10 +16,10 @@
       <span class="buttonTextBox">Adopt</span>
       <span class="buttonUnderline"></span>
     </li>
-    <li id="donateLI" class="navBtn" routerLink="donate-page" routerLinkActive="active">
-      <button mat-button id="donateBtn"  class="buttonTinted buttonLarge buttonIconRight">
+    <li id="donateBtn" class="navBtn" routerLink="donate-page" routerLinkActive="active">
+      <button mat-button id="donateInnerBtn"  class="buttonTinted buttonLarge buttonIconRight">
         Donate
-      <mat-icon class="iconRight"> volunteer_activism </mat-icon>
+      <mat-icon class="iconRight" id="donateIcon"> volunteer_activism </mat-icon>
     </button>
 
     </li>
@@ -30,7 +30,7 @@
 <nav *ngIf="currentBreakpoint !== 0" class="topNavContainer stickyHeaderCard">
   <div class="rightJustify">
     <div class="menuTrigger" (click)="toggleExpanded(false)">
-      <span [ngClass]="{isSpun:isExpanded}" class="material-icons">
+      <span id="menuTriggerBtn" [ngClass]="{isSpun:isExpanded}" class="material-icons">
         menu
       </span>
     </div>

@@ -48,7 +48,7 @@
     background-color: $colorPrimary;
     border-radius: .125rem;
     opacity: 0;
-    transition-duration: .2s;
+    transition-duration: .3s;
   }
 
   &:hover{
@@ -69,8 +69,8 @@
   padding: .75rem 1rem;
 }
 
-#donateBtn:hover{
-  animation: pulse 1.4s ease-in-out infinite;
+#donateInnerBtn:hover{
+  animation: pulse 1.2s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -79,7 +79,10 @@
   100% { transform: scale(1.01); opacity: 1;}
 }
 
-
+#donateIcon{
+  font-size: 1.3rem;
+  margin-top: -.125rem;
+}
 
 
 
@@ -108,7 +111,14 @@
  
       transform: rotateZ(90deg) scale(1.5);
     }
+
+    
   }
+
+  #menuTriggerBtn:hover{
+    cursor: pointer;
+  }
+
 
   .menuList{
     width: 8rem;
