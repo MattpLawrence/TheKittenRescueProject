@@ -14,6 +14,10 @@ import { DonatePageComponent } from './pages/donate-page/donate-page.component';
 import { AppRoutingModule } from './modules/routes.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CatLoaderComponent } from './common/components/cat-loader/cat-loader.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -25,14 +29,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VolunteerPageComponent,
     AdoptPageComponent,
     DonatePageComponent,
+    CatLoaderComponent,
+    
   ],
   imports: [
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
