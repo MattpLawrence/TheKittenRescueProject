@@ -18,6 +18,7 @@ import { CatLoaderComponent } from './common/components/cat-loader/cat-loader.co
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GenericActionModalComponent } from './common/components/generic-action-modal/generic-action-modal.component';
 import { AdoptAnimalListComponent } from './pages/adopt/adopt-animal-list/adopt-animal-list.component';
+import { PetModalComponent } from './pages/adopt/pet-modal/pet-modal.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AdoptAnimalListComponent } from './pages/adopt/adopt-animal-list/adopt-
     DonatePageComponent,
     CatLoaderComponent,
     GenericActionModalComponent,
-    AdoptAnimalListComponent
+    AdoptAnimalListComponent,
+    PetModalComponent
     
   ],
   imports: [

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { PetDisplay } from 'src/app/common/models/common.model';
 import { APIService } from 'src/app/common/services/api.service';
+import { PetModalComponent } from '../pet-modal/pet-modal.component';
 
 @Component({
   selector: 'app-adopt-animal-list',
@@ -14,7 +16,8 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
   petList: PetDisplay[] | undefined;
 
   constructor(
-    private apiService: APIService
+    private apiService: APIService,
+    public dialog: MatDialog
   ) {super() }
 
   ngOnInit(): void {
@@ -37,5 +40,25 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
         this.petList = petListMap;
       }
     })
+  }
+
+
+  openModal = (pet:PetDisplay) => {
+
+    let dialogRef = this.dialog.open(PetModalComponent, {
+      disableClose: false,
+      // panelClass: "noPadding",
+      width: "90vw",
+      data: {
+        petId: pet.petId,
+        petName: pet.petName,
+        mainImg: pet.mainImg,
+      }
+    })
+
+    dialogRef.afterClosed().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      console.log('closed')
+    })
+
   }
 }

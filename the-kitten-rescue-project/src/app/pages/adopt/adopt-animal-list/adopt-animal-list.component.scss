@@ -2,7 +2,7 @@
 
 .mainBanner{
   width: 100vw;
-  height: 10rem;
+  height: 15rem;
   overflow: hidden;
   @include flexCenterCenter;
   background-color: #495a6c;
@@ -33,8 +33,9 @@
     overflow: hidden;
       .petImg{
         object-fit: contain;
-        transition: .7s ease-in-out;
-        
+        transition: .6s ease-in-out;
+        //because of crap photos
+        transform: scale(1.4);
       }
 
       .petName{
@@ -52,13 +53,15 @@
 
     &:hover{
       .petImg{
-        transform: scale(1.1);
+        transform: scale(1.5);
+        cursor: pointer;
       }
       
       .petName {
+        cursor: pointer;
         transform: scale(1);
-          opacity: 1;
-        }
+        opacity: 1;
+      }
 
     } 
     
@@ -70,6 +73,9 @@
 
 @media only screen and (max-width: $breakpointMedium){
 
+  .mainBanner{
+    height: 10rem;
+  }
   #petGirdContainer .petContainer{
     width: 45vw;
     height: 45vw;

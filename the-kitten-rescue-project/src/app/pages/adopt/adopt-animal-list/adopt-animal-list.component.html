@@ -4,7 +4,7 @@
   </div>
 
   <div id="petGirdContainer">
-    <div class="petContainer" *ngFor="let pet of petList">
+    <div class="petContainer" *ngFor="let pet of petList" (click)="openModal(pet)">
       <img class="petImg" src="{{pet.mainImg}}" alt="Pet Image">
       <div class="petName">{{pet.petName}}</div>
     </div>

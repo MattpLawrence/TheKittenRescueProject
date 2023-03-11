@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -21,25 +21,35 @@ export class APIService {
     private authService: AuthService) { }
 
   //subjects
-  private animalsSubject = new ReplaySubject<any>(1)
+  private animalsSubject = new BehaviorSubject<any>(undefined)
 
   searchAnimals():Observable<any>{
     return new Observable<any>(observer => {
-      //get oAuth token
-      this.authService.getTokenSubject().subscribe(res => {
-        if(res){
-          let token:string = res;
-          this.http.get(`${this.apiUrl}/animals?organization=GA335&limit=20`, {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          }).subscribe(response => {
-            this.setAnimalsSubject(response);
-            observer.next(response);
-            observer.complete();
-          })
-        }else observer.next('error');
-      })
+
+      //with no search or filter function, simply return subject if already set.
+      if(this.animalsSubject.value != undefined){
+        console.log(this.animalsSubject)
+        observer.next(this.animalsSubject);
+        observer.complete();
+      }else{
+        //get oAuth token
+        this.authService.getTokenSubject().subscribe(res => {
+          if(res){
+            let token:string = res;
+            this.http.get(`${this.apiUrl}/animals?organization=GA335&limit=20`, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }).subscribe(response => {
+              console.log(response)
+              this.setAnimalsSubject(response);
+              observer.next(response);
+              observer.complete();
+            })
+          }else observer.next('error');
+        })
+      }
+
     })
   }
 
