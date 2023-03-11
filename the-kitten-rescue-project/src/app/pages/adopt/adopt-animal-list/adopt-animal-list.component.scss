@@ -1,0 +1,92 @@
+@import '../../../../styles.scss';
+
+.mainBanner{
+  width: 100vw;
+  height: 15rem;
+  overflow: hidden;
+  @include flexCenterCenter;
+  background-color: #495a6c;
+  .mainBannerImg{
+    height:14rem;
+    margin-top: 0rem;
+  }
+}
+
+
+//***********pet grid************
+
+#petGirdContainer{
+  @include flexCenterSpaceAround;
+  flex-wrap: wrap;
+
+
+  .petContainer{
+    @include flexCenterCenter;
+    width: 30vw;
+    height: 30vw;
+    max-width: 35rem ;
+    max-height: 35rem ;
+    margin: 2vw 0;
+    border-radius: .25rem;
+    position: relative;
+
+    overflow: hidden;
+      .petImg{
+        object-fit: contain;
+        transition: .6s ease-in-out;
+        //because of crap photos
+        transform: scale(1.4);
+      }
+
+      .petName{
+        opacity: 0;
+        transition: .4s ease-in-out;
+        transform: scale(0);
+        z-index: 10;
+        position: absolute;
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding: 1rem;
+        border-radius: .75rem;
+        background-color: $colorBackground;
+      }
+
+    &:hover{
+      .petImg{
+        transform: scale(1.5);
+        cursor: pointer;
+      }
+      
+      .petName {
+        cursor: pointer;
+        transform: scale(1);
+        opacity: 1;
+      }
+
+    } 
+    
+  
+  }
+}
+
+
+
+@media only screen and (max-width: $breakpointMedium){
+
+  .mainBanner{
+    height: 10rem;
+  }
+  #petGirdContainer .petContainer{
+    width: 45vw;
+    height: 45vw;
+  }
+
+}
+
+@media only screen and (max-width: $breakpointSmall){
+  #petGirdContainer .petContainer{
+    width: 98vw;
+    height: 98vw;
+  }
+
+}

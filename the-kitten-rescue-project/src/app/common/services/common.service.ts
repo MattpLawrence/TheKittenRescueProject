@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ReplaySubject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { BreakPointsEnum } from "../models/common.enum";
 
 @Injectable({
@@ -11,7 +11,7 @@ export class CommonService{
   constructor() { }
 
   //subjects
-  private breakpointSubject = new ReplaySubject<BreakPointsEnum>(1)
+  private breakpointSubject = new BehaviorSubject<BreakPointsEnum>(0)
 
 
   //getters and setters

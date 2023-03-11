@@ -9,7 +9,7 @@ import { MaterialModule } from './modules/material.module';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { VolunteerPageComponent } from './pages/volunteer-page/volunteer-page.component';
-import { AdoptPageComponent } from './pages/adopt-page/adopt-page.component';
+import { AdoptPageComponent } from './pages/adopt/adopt-page/adopt-page.component';
 import { DonatePageComponent } from './pages/donate-page/donate-page.component';
 import { AppRoutingModule } from './modules/routes.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CatLoaderComponent } from './common/components/cat-loader/cat-loader.component';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GenericActionModalComponent } from './common/components/generic-action-modal/generic-action-modal.component';
+import { AdoptAnimalListComponent } from './pages/adopt/adopt-animal-list/adopt-animal-list.component';
+import { PetModalComponent } from './pages/adopt/pet-modal/pet-modal.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { GenericActionModalComponent } from './common/components/generic-action-
     AdoptPageComponent,
     DonatePageComponent,
     CatLoaderComponent,
-    GenericActionModalComponent
+    GenericActionModalComponent,
+    AdoptAnimalListComponent,
+    PetModalComponent
     
   ],
   imports: [

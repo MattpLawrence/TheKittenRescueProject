@@ -4,6 +4,7 @@
 body{
   font-family: 'Roboto', sans-serif;
   margin: 0;
+  overflow-x: hidden;
 }
 
 
@@ -16,5 +17,24 @@ body{
 //change overlay color for dialog
 
 .cdk-overlay-container .cdk-overlay-dark-backdrop {
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, .2);
+}
+
+
+app-adopt-page{
+  width: 100vw;
+  height: calc(100vh - 6rem);
+}
+
+//scroll bar
+*::-webkit-scrollbar {
+  height: 12px;
+  width: 8px;
+  left: -4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
 }
