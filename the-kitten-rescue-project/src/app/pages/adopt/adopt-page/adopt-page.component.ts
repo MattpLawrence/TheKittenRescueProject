@@ -67,6 +67,7 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
       else this.isLoading = false;
     },2000)
     this.apiService.searchAnimals().subscribe(response => {
+      
       if(this.isLoading)this.isLoading = false;
       else dialogRef.close();
       //close loader

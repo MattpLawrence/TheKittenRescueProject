@@ -34,8 +34,7 @@
       .petImg{
         object-fit: contain;
         transition: .6s ease-in-out;
-        //because of crap photos
-        transform: scale(1.4);
+        transform: scale(1);
       }
 
       .petName{
@@ -53,7 +52,7 @@
 
     &:hover{
       .petImg{
-        transform: scale(1.5);
+        transform: scale(1.1);
         cursor: pointer;
       }
       

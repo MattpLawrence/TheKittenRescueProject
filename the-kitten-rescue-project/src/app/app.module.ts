@@ -19,6 +19,8 @@ import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform
 import { GenericActionModalComponent } from './common/components/generic-action-modal/generic-action-modal.component';
 import { AdoptAnimalListComponent } from './pages/adopt/adopt-animal-list/adopt-animal-list.component';
 import { PetModalComponent } from './pages/adopt/pet-modal/pet-modal.component';
+import { CarouselComponent, SafePipe } from './common/components/carousel/carousel.component';
+import { FullImageModalComponent } from './common/components/full-image-modal/full-image-modal.component';
 
 
 @NgModule({
@@ -34,8 +36,10 @@ import { PetModalComponent } from './pages/adopt/pet-modal/pet-modal.component';
     CatLoaderComponent,
     GenericActionModalComponent,
     AdoptAnimalListComponent,
-    PetModalComponent
-    
+    PetModalComponent,
+    CarouselComponent,
+    SafePipe,
+    FullImageModalComponent
   ],
   imports: [
     BrowserAnimationsModule,
