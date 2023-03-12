@@ -23,15 +23,8 @@ export class SafePipe implements PipeTransform {
 export class CarouselComponent extends BaseComponent implements OnInit {
 
   currentPet: any = undefined;
-  carouselImages: string[] = [
-    "https://i2-prod.mirror.co.uk/incoming/article25609246.ece/ALTERNATES/s1200/0_PUSS-IN-BOOTS.jpg",
-    "https://play-lh.googleusercontent.com/AmKSpZt_rynhOO0ID1eS0gqeW3DFzoH6KNZkAAgepQ0t9MDRQTmil-nlY5GqkZ_7El0",
-    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-photos-of-cats-cuddling-1593203046.jpg"
-  ];
-
-  videoString:string = `"<iframe title="Video" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen name="vidly-frame" src="https://s.vid.ly/embeded.html?link=k9b0b1&autoplay=false"><a target="_blank" href="https://vid.ly/k9b0b1"><img src="https://cf.cdn.vid.ly/k9b0b1/poster.jpg" /></a></iframe>"`
-
   carouselList: CarouselItem[] | undefined;
+  currentId: number = 0;
 
   constructor(
     private apiService:APIService
@@ -50,18 +43,14 @@ export class CarouselComponent extends BaseComponent implements OnInit {
   }
 
   initCarousel = (petObject: any) => {
-    //eventually grab an observable;
-
-    console.log(petObject)
     //set outer variables
     let counter:number = 0;
     let carouselList: CarouselItem[] = [];
-
     //extract image data
     petObject.photos.forEach( (img:any) => {
 
       let carouselItem: CarouselItem = {
-        imgSource: img.large,
+        imgSource: img.medium,
         isIframe: false,
         id: counter
       }
@@ -72,7 +61,6 @@ export class CarouselComponent extends BaseComponent implements OnInit {
     console.log(carouselList)
 
     //add videos to photo string
-
     this.extractVideoData(counter, carouselList, petObject);
 
   }
@@ -120,6 +108,26 @@ export class CarouselComponent extends BaseComponent implements OnInit {
     return originalString.substring(startIndex, endIndex);
   }
   
+
+  navigate = (isNext: boolean) => {
+    let length: number | undefined = this.carouselList?.length;
+    if(length !== undefined){
+
+      if(isNext){
+        console.log(this.currentId)
+        let nextId = this.currentId + 1;
+        console.log(nextId)
+        if(nextId <= length -1) this.currentId = nextId;
+      }else{
+        console.log(this.currentId)
+        let lastId = this.currentId - 1;
+        console.log(lastId)
+        if(lastId >= 0)this.currentId = lastId;
+
+      }
+
+    }
+  }
   
 
 }
