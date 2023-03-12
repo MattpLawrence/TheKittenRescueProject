@@ -10,4 +10,5 @@ export interface CarouselItem{
   id: number
   iframeSrc?: string,
   aHref?: string,
+  fullImgSource?: string,
 }

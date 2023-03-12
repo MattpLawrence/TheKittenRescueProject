@@ -25,6 +25,7 @@ export class CarouselComponent extends BaseComponent implements OnInit {
   currentPet: any = undefined;
   carouselList: CarouselItem[] | undefined;
   currentId: number = 0;
+  isClickable: boolean = true;
 
   constructor(
     private apiService:APIService
@@ -52,7 +53,8 @@ export class CarouselComponent extends BaseComponent implements OnInit {
       let carouselItem: CarouselItem = {
         imgSource: img.medium,
         isIframe: false,
-        id: counter
+        id: counter,
+        fullImgSource: img.full
       }
       carouselList.push(carouselItem)
       counter += 1;
@@ -110,23 +112,35 @@ export class CarouselComponent extends BaseComponent implements OnInit {
   
 
   navigate = (isNext: boolean) => {
-    let length: number | undefined = this.carouselList?.length;
-    if(length !== undefined){
+    //handle multiple fast clicks for css smoothness
+    if(this.isClickable){
 
-      if(isNext){
-        console.log(this.currentId)
-        let nextId = this.currentId + 1;
-        console.log(nextId)
-        if(nextId <= length -1) this.currentId = nextId;
-      }else{
-        console.log(this.currentId)
-        let lastId = this.currentId - 1;
-        console.log(lastId)
-        if(lastId >= 0)this.currentId = lastId;
-
+      //set is clickable to false
+      this.isClickable = false;
+      //run timer to re-enable after half second
+      setTimeout(() => {
+        this.isClickable = true;
+      }, 500);
+  
+      let length: number | undefined = this.carouselList?.length;
+      if(length !== undefined){
+  
+        if(isNext){
+          console.log(this.currentId)
+          let nextId = this.currentId + 1;
+          console.log(nextId)
+          if(nextId <= length -1) this.currentId = nextId;
+        }else{
+          console.log(this.currentId)
+          let lastId = this.currentId - 1;
+          console.log(lastId)
+          if(lastId >= 0)this.currentId = lastId;
+  
+        }
+  
       }
-
     }
+
   }
   
 

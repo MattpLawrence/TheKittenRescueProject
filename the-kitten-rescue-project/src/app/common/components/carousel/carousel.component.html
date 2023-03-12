@@ -11,11 +11,18 @@
       </span>
     </div>
     <div class="carouselContainer">
-      <div class="carouselItem" *ngFor="let item of carouselList" [ngClass]="{isCurrent: item.id === currentId, isNext: item.id === currentId + 1, isLast: item.id === currentId -1}">
-        <!-- for image -->
+      <div class="carouselItem" *ngFor="let item of carouselList" 
+      [ngClass]="{
+        isCurrent: item.id === currentId,
+        isNext: item.id === currentId + 1,
+        isLast: item.id === currentId -1,
+        isLesser: item.id < currentId,
+        isGreater: item.id > currentId
+      }">
+        <!-- If an image -->
         <img *ngIf="!item.isIframe" class="carouselImg" src="{{item.imgSource}}" alt="pet image {{item.id}}">
-        <!-- or for iframe -->
-        <iframe *ngIf="item.isIframe" class="petIframe" title="Video" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen name="vidly-frame" [src]="item.iframeSrc | safe">
+        <!-- If an iframe -->
+        <iframe *ngIf="item.isIframe" class="petIframe"  title="Video"  allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen [src]="item.iframeSrc | safe">
           <a *ngIf="item.isIframe" target="_blank" href="{{item.aHref}}">
             <img src="{{item.imgSource}}" />
           </a>
@@ -24,3 +31,4 @@
     </div>
   </div>
 </div>
+

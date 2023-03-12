@@ -36,7 +36,6 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
           petName: animal.name,
           mainImg: animal.primary_photo_cropped?.full
         })
-        console.log(petListMap)
         this.petList = petListMap;
       }
     })
