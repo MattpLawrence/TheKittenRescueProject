@@ -1,9 +1,12 @@
 <div class="mainContainer">
-  <div class="carouselContainer">
-    <img class="carouselImg" src="" alt="">
+  <div class="carouselContainer" *ngFor="let item of carouselList">
+    <!-- for image -->
+    <img *ngIf="!item.isIframe" class="carouselImg" src="{{item.imgSource}}" alt="pet image {{item.id}}">
+    <!-- or for iframe -->
+    <iframe *ngIf="item.isIframe" title="Video" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen name="vidly-frame" [src]="item.iframeSrc | safe">
+      <a *ngIf="item.isIframe" target="_blank" href="{{item.aHref}}">
+        <img src="{{item.imgSource}}" />
+      </a>
+    </iframe>
   </div>
 </div>
-
-<!-- "<iframe title="Video" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen name="vidly-frame" src="https://s.vid.ly/embeded.html?link=k9b0b1&autoplay=false"><a target="_blank" href="https://vid.ly/k9b0b1"><img src="https://cf.cdn.vid.ly/k9b0b1/poster.jpg" /></a></iframe>"
-
-"<iframe title="Video" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen name="vidly-frame" src="https://s.vid.ly/embeded.html?link=g2s0u5&autoplay=false"><a target="_blank" href="https://vid.ly/g2s0u5"><img src="https://cf.cdn.vid.ly/g2s0u5/poster.jpg" /></a></iframe>" -->

@@ -7,5 +7,7 @@ export interface PetDisplay{
 export interface CarouselItem{
   imgSource: string,
   isIframe: boolean,
-  id:number
+  id: number
+  iframeSrc?: string,
+  aHref?: string,
 }
