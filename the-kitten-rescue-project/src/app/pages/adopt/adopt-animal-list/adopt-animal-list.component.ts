@@ -45,6 +45,9 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
 
   openModal = (pet:PetDisplay) => {
 
+
+    this.apiService.setCurrentAnimalsSubject(pet)
+
     let dialogRef = this.dialog.open(PetModalComponent, {
       disableClose: false,
       // panelClass: "noPadding",

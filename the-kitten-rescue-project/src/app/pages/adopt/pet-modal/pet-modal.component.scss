@@ -1,0 +1,6 @@
+@import "../../../../styles.scss";
+
+app-carousel{
+  height: 90vh;
+  @include flexColumnCenter;
+}

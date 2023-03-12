@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { PetDisplay } from '../models/common.model';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -25,6 +26,7 @@ export class APIService {
 
   //subjects
   private animalsSubject = new BehaviorSubject<any>(undefined)
+  private currentAnimalsSubject = new BehaviorSubject<any>(undefined)
 
   searchAnimals():Observable<any>{
     return new Observable<any>(observer => {
@@ -45,9 +47,9 @@ export class APIService {
               }
             }).subscribe(response => {
               console.log(response)
-              this.findData(response);
-              this.setAnimalsSubject(response);
-              observer.next(response);
+      
+              this.animalsSubject.next(this.filterData(response))
+              observer.next(this.filterData(response));
               observer.complete();
             })
           }else observer.next('error');
@@ -59,22 +61,33 @@ export class APIService {
 
 
 
-  findData = (response: any) => {
-    console.log(response)
-    let filteredList = response.animals.filter((object: any) => object.videos.length >= 1);
-    console.log(filteredList);
+  filterData = (response: any):any => {
+    //set with animals KVP to match original object
+    let filteredList = {animals: response.animals.filter((object: any) => object.videos.length >= 1)};
 
+    return filteredList;
   }
 
 
-    //getters and setters
-    getAnimalsSubject = () => {
-      return this.animalsSubject.asObservable();
-    }
-  
-    setAnimalsSubject = (animals:any) => {
-      this.animalsSubject.next(animals)
-    }
+  //***************getters and setters******************
+  getAnimalsSubject = () => {
+    return this.animalsSubject.asObservable();
+  }
+
+  setAnimalsSubject = (animals:any) => {
+    this.animalsSubject.next(animals)
+  }
+
+  getCurrentAnimalsSubject = () => {
+    return this.currentAnimalsSubject.asObservable();
+  }
+
+  setCurrentAnimalsSubject = (animals:PetDisplay) => {
+    //take id and set full animal object
+    let currentAnimal = this.animalsSubject.value.animals.find((pet:any) => pet.id === animals.petId)
+    console.log(currentAnimal)
+    this.currentAnimalsSubject.next(currentAnimal)
+  }
 
 
 }

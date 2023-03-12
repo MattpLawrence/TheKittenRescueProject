@@ -1,7 +1,8 @@
 import { Component, OnInit, Pipe , PipeTransform} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { takeUntil } from 'rxjs';
 import { CarouselItem } from '../../models/common.model';
-import { petObject } from '../../models/dummyData';
+import { APIService } from '../../services/api.service';
 import { BaseComponent } from '../base/base.component';
 
 
@@ -21,7 +22,7 @@ export class SafePipe implements PipeTransform {
 })
 export class CarouselComponent extends BaseComponent implements OnInit {
 
-
+  currentPet: any = undefined;
   carouselImages: string[] = [
     "https://i2-prod.mirror.co.uk/incoming/article25609246.ece/ALTERNATES/s1200/0_PUSS-IN-BOOTS.jpg",
     "https://play-lh.googleusercontent.com/AmKSpZt_rynhOO0ID1eS0gqeW3DFzoH6KNZkAAgepQ0t9MDRQTmil-nlY5GqkZ_7El0",
@@ -32,21 +33,32 @@ export class CarouselComponent extends BaseComponent implements OnInit {
 
   carouselList: CarouselItem[] | undefined;
 
-  constructor() {super() }
+  constructor(
+    private apiService:APIService
+  ) {super() }
 
   ngOnInit(): void {
-    this.initCarousel()
+    this.initPetList();
   }
 
-  initCarousel = () => {
+  initPetList = () => {
+    this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.currentPet = res
+
+      this.initCarousel(res)
+    })
+  }
+
+  initCarousel = (petObject: any) => {
     //eventually grab an observable;
 
+    console.log(petObject)
     //set outer variables
     let counter:number = 0;
     let carouselList: CarouselItem[] = [];
 
     //extract image data
-    petObject.photos.forEach( (img) => {
+    petObject.photos.forEach( (img:any) => {
 
       let carouselItem: CarouselItem = {
         imgSource: img.large,

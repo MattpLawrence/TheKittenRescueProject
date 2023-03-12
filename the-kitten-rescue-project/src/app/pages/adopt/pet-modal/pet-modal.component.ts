@@ -11,7 +11,6 @@ import { APIService } from 'src/app/common/services/api.service';
 })
 export class PetModalComponent extends BaseComponent implements OnInit {
 
-  petList: any ;
   currentPet:any;
 
   constructor(
@@ -25,18 +24,11 @@ export class PetModalComponent extends BaseComponent implements OnInit {
   }
 
   initPetList = () => {
-    this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      this.petList = res.animals
-      this.findPet(res.animals)
+    this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.currentPet = res
     })
   }
 
-  findPet = (pets: any) => {
-    //find the paet
-    let myPet = pets.find( (pet:any) => pet.id === this.data.petId);
-    console.log(myPet)
-    this.currentPet = myPet;
-  }
 
 
 
