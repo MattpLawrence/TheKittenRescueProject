@@ -15,6 +15,9 @@ export class APIService {
 
   //variables
   private apiUrl: string = 'https://api.petfinder.com/v2';
+  // queryString: string = '/animals?organization=GA335&limit=20';
+  queryString: string = '/animals?organization=GA477&limit=20';
+  // queryString: string = '/organizations?query=circle'
 
   constructor(
     private http: HttpClient,
@@ -36,7 +39,7 @@ export class APIService {
         this.authService.getTokenSubject().subscribe(res => {
           if(res){
             let token:string = res;
-            this.http.get(`${this.apiUrl}/animals?organization=GA335&limit=20`, {
+            this.http.get(`${this.apiUrl}${this.queryString}`, {
               headers: {
                 Authorization: `Bearer ${token}`
               }

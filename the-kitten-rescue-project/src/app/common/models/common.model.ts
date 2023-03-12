@@ -3,3 +3,9 @@ export interface PetDisplay{
   mainImg: string,
   petId: number
 }
+
+export interface CarouselItem{
+  imgSource: string,
+  isIframe: boolean,
+  id:number
+}
