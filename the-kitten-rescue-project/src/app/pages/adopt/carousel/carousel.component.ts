@@ -2,10 +2,12 @@ import { Component, OnInit, Pipe , PipeTransform} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs';
-import { CarouselItem } from '../../models/common.model';
-import { APIService } from '../../services/api.service';
-import { BaseComponent } from '../base/base.component';
-import { FullImageModalComponent } from '../full-image-modal/full-image-modal.component';
+import { CarouselItem } from '../../../common/models/common.model';
+import { APIService } from '../../../common/services/api.service';
+import { BaseComponent } from '../../../common/components/base/base.component';
+import { FullImageModalComponent } from '../../../common/components/full-image-modal/full-image-modal.component';
+import { CommonService } from 'src/app/common/services/common.service';
+import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 
 
 
@@ -28,14 +30,17 @@ export class CarouselComponent extends BaseComponent implements OnInit {
   carouselList: CarouselItem[] | undefined;
   currentId: number = 0;
   isClickable: boolean = true;
+  currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
 
   constructor(
     private apiService:APIService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private commonService: CommonService
   ) {super() }
 
   ngOnInit(): void {
     this.initPetList();
+    this.initBreakpoints();
   }
 
   initPetList = () => {
@@ -70,13 +75,18 @@ export class CarouselComponent extends BaseComponent implements OnInit {
 
   }
 
+  initBreakpoints = () => {
+    this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.currentBreakpoint = res;
+    })
+  }
+
   extractVideoData = (counter: number, carouselList: CarouselItem[], petObject: any ) => {
 
     //if there are videos
     if(petObject.videos.length > 0){
       
       petObject.videos.forEach( (video:any) => {
-
         let carouselItem: CarouselItem = {
           imgSource: this.getStringAfterSpecificString( video.embed, `<img src="`),
           isIframe: true,
@@ -86,9 +96,7 @@ export class CarouselComponent extends BaseComponent implements OnInit {
         }
         carouselList.push(carouselItem);
         counter += 1;
-
       })
-      console.log(carouselList);
       this.carouselList = carouselList;
     }else{ 
       this.carouselList = carouselList;
@@ -102,14 +110,11 @@ export class CarouselComponent extends BaseComponent implements OnInit {
     if (startIndex === -1) {
       return '';
     }
-  
     startIndex = startIndex + specificString.length;
-  
     var endIndex = originalString.indexOf('"', startIndex);
     if (endIndex === -1) {
       return '';
     }
-  
     return originalString.substring(startIndex, endIndex);
   }
   
@@ -129,14 +134,10 @@ export class CarouselComponent extends BaseComponent implements OnInit {
       if(length !== undefined){
   
         if(isNext){
-          console.log(this.currentId)
           let nextId = this.currentId + 1;
-          console.log(nextId)
           if(nextId <= length -1) this.currentId = nextId;
         }else{
-          console.log(this.currentId)
           let lastId = this.currentId - 1;
-          console.log(lastId)
           if(lastId >= 0)this.currentId = lastId;
   
         }

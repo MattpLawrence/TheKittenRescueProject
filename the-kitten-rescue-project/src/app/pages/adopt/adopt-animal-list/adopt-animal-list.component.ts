@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { PetDisplay } from 'src/app/common/models/common.model';
 import { APIService } from 'src/app/common/services/api.service';
+import { CommonService } from 'src/app/common/services/common.service';
 import { PetModalComponent } from '../pet-modal/pet-modal.component';
 
 @Component({
@@ -14,10 +16,12 @@ import { PetModalComponent } from '../pet-modal/pet-modal.component';
 export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
 
   petList: PetDisplay[] | undefined;
+  currentBreakpoint:BreakPointsEnum = BreakPointsEnum.isDesktop;
 
   constructor(
     private apiService: APIService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private commonService:CommonService
   ) {super() }
 
   ngOnInit(): void {
@@ -41,16 +45,37 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
     })
   }
 
+  initBreakpoints = () => {
+    this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.currentBreakpoint = res;
+    })
+  }
+
 
   openModal = (pet:PetDisplay) => {
-
-
+    //set subject
     this.apiService.setCurrentAnimalsSubject(pet)
+
+    let modalWidth: string = '';
+
+    switch(this.currentBreakpoint){
+      case BreakPointsEnum.isDesktop:
+        modalWidth = "90vw";
+        break;
+
+      case BreakPointsEnum.isTablet:
+        modalWidth = "90vw";
+        break;
+
+      case BreakPointsEnum.isMobile:
+        modalWidth = "100vw";
+        break;
+    }
 
     let dialogRef = this.dialog.open(PetModalComponent, {
       disableClose: false,
       // panelClass: "noPadding",
-      width: "90vw",
+      width: modalWidth,
       data: {
         petId: pet.petId,
         petName: pet.petName,
