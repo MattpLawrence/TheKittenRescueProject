@@ -36,7 +36,6 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
           petName: animal.name,
           mainImg: animal.primary_photo_cropped?.full
         })
-        console.log(petListMap)
         this.petList = petListMap;
       }
     })
@@ -44,6 +43,9 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
 
 
   openModal = (pet:PetDisplay) => {
+
+
+    this.apiService.setCurrentAnimalsSubject(pet)
 
     let dialogRef = this.dialog.open(PetModalComponent, {
       disableClose: false,
