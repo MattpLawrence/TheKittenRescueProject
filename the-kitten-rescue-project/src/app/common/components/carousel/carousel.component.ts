@@ -1,9 +1,11 @@
 import { Component, OnInit, Pipe , PipeTransform} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs';
 import { CarouselItem } from '../../models/common.model';
 import { APIService } from '../../services/api.service';
 import { BaseComponent } from '../base/base.component';
+import { FullImageModalComponent } from '../full-image-modal/full-image-modal.component';
 
 
 
@@ -28,7 +30,8 @@ export class CarouselComponent extends BaseComponent implements OnInit {
   isClickable: boolean = true;
 
   constructor(
-    private apiService:APIService
+    private apiService:APIService,
+    public dialog: MatDialog
   ) {super() }
 
   ngOnInit(): void {
@@ -54,7 +57,7 @@ export class CarouselComponent extends BaseComponent implements OnInit {
         imgSource: img.medium,
         isIframe: false,
         id: counter,
-        fullImgSource: img.full
+        fullImgSource: img.large
       }
       carouselList.push(carouselItem)
       counter += 1;
@@ -120,7 +123,7 @@ export class CarouselComponent extends BaseComponent implements OnInit {
       //run timer to re-enable after half second
       setTimeout(() => {
         this.isClickable = true;
-      }, 500);
+      }, 300);
   
       let length: number | undefined = this.carouselList?.length;
       if(length !== undefined){
@@ -141,6 +144,25 @@ export class CarouselComponent extends BaseComponent implements OnInit {
       }
     }
 
+  }
+
+  imageClick = (image: string | undefined) => {
+    console.log(image)
+    if(image != undefined){
+      let dialogRef = this.dialog.open(FullImageModalComponent, {
+        disableClose: false,
+        panelClass: "fitImage",
+        maxHeight: '95vh',
+        data: {
+          image: image
+        }
+      })
+  
+      dialogRef.afterClosed().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+        console.log('closed')
+      })
+    }
+    
   }
   
 

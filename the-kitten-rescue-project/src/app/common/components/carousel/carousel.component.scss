@@ -40,7 +40,7 @@
         width: 18.75rem;
         position: absolute;
         overflow: hidden;
-        transition: .5s ease-in-out;
+        transition: .3s ease-in-out;
         @include flexCenterCenter;
       }
   
@@ -92,6 +92,5 @@
   width: 100%;
   height: 100%;
   border-style: none;
-
 }
 

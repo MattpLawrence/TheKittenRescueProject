@@ -20,7 +20,7 @@
         isGreater: item.id > currentId
       }">
         <!-- If an image -->
-        <img *ngIf="!item.isIframe" class="carouselImg" src="{{item.imgSource}}" alt="pet image {{item.id}}">
+        <img *ngIf="!item.isIframe" class="carouselImg" src="{{item.imgSource}}" alt="pet image {{item.id}}" (dblclick)="imageClick(item.fullImgSource)">
         <!-- If an iframe -->
         <iframe *ngIf="item.isIframe" class="petIframe"  title="Video"  allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen [src]="item.iframeSrc | safe">
           <a *ngIf="item.isIframe" target="_blank" href="{{item.aHref}}">
