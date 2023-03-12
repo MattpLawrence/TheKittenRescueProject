@@ -16,7 +16,7 @@ export class APIService {
   //variables
   private apiUrl: string = 'https://api.petfinder.com/v2';
   // queryString: string = '/animals?organization=GA335&limit=20';
-  queryString: string = '/animals?organization=GA477&limit=20';
+  queryString: string = '/animals?organization=GA477&limit=100';
   // queryString: string = '/organizations?query=circle'
 
   constructor(
@@ -45,6 +45,7 @@ export class APIService {
               }
             }).subscribe(response => {
               console.log(response)
+              this.findData(response);
               this.setAnimalsSubject(response);
               observer.next(response);
               observer.complete();
@@ -54,6 +55,15 @@ export class APIService {
       }
 
     })
+  }
+
+
+
+  findData = (response: any) => {
+    console.log(response)
+    let filteredList = response.animals.filter((object: any) => object.videos.length >= 1);
+    console.log(filteredList);
+
   }
 
 
