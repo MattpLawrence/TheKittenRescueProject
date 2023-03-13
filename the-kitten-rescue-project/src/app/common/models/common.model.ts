@@ -12,3 +12,8 @@ export interface CarouselItem{
   aHref?: string,
   fullImgSource?: string,
 }
+
+export interface ModalClose{
+  isOpen: boolean,
+  hasTriggered: boolean,
+}

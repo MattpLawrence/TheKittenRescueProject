@@ -85,7 +85,6 @@ export class APIService {
   setCurrentAnimalsSubject = (animals:PetDisplay) => {
     //take id and set full animal object
     let currentAnimal = this.animalsSubject.value.animals.find((pet:any) => pet.id === animals.petId)
-    console.log(currentAnimal)
     this.currentAnimalsSubject.next(currentAnimal)
   }
 

@@ -148,19 +148,24 @@ export class CarouselComponent extends BaseComponent implements OnInit {
   }
 
   imageClick = (image: string | undefined) => {
-    console.log(image)
+
     if(image != undefined){
+
+      //let top bottom modal know not to close on esc
+      this.commonService.setTopModalSubject({isOpen:true, hasTriggered: false});
+
       let dialogRef = this.dialog.open(FullImageModalComponent, {
         disableClose: false,
         panelClass: "fitImage",
         maxHeight: '95vh',
+        maxWidth: '100vw',
         data: {
           image: image
         }
       })
   
       dialogRef.afterClosed().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-        console.log('closed')
+        this.commonService.setTopModalSubject({isOpen:false, hasTriggered: true});
       })
     }
     

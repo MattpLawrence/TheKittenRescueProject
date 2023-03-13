@@ -26,7 +26,7 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.initPetList()
-    
+    this.initBreakpoints()
   }
 
   initPetList = () => {
@@ -76,6 +76,7 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
       disableClose: false,
       // panelClass: "noPadding",
       width: modalWidth,
+      maxWidth: '100vw',
       data: {
         petId: pet.petId,
         petName: pet.petName,
@@ -84,7 +85,7 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
     })
 
     dialogRef.afterClosed().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      console.log('closed')
+
     })
 
   }

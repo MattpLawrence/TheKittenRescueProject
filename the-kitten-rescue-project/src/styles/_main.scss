@@ -11,14 +11,24 @@ body{
 //remove padding form the dialogs
 
 .noPadding .mat-dialog-container{
+  max-width: 100vw;
   padding: 0;
 }
 
 //change overlay color for dialog
 
-.cdk-overlay-container .cdk-overlay-dark-backdrop {
-  background: rgba(0, 0, 0, .2);
+.cdk-overlay-container{
+
+
+  .cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, .2);
+  }
+
 }
+  
+
+
+
 
 
 app-adopt-page{
