@@ -68,8 +68,6 @@ export class CarouselComponent extends BaseComponent implements OnInit {
       counter += 1;
     })
 
-    console.log(carouselList)
-
     //add videos to photo string
     this.extractVideoData(counter, carouselList, petObject);
 

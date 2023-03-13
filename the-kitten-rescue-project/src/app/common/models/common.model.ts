@@ -17,3 +17,16 @@ export interface ModalClose{
   isOpen: boolean,
   hasTriggered: boolean,
 }
+
+export interface PetBio{
+  id:number,
+  name:string,
+  age: string,
+  gender: string,
+  status: string,
+  size: string,
+  tags: string[],
+  description: string,
+  coat: string | undefined,
+
+}

@@ -29,12 +29,13 @@ export class PetModalComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initPetList();
+    this.initPet();
     this.initTopModalListener();
   }
 
-  initPetList = () => {
+  initPet = () => {
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      console.log(res)
       this.currentPet = res
     })
   }

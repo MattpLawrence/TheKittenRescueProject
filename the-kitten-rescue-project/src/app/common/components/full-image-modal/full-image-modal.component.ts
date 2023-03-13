@@ -25,9 +25,6 @@ export class FullImageModalComponent extends BaseComponent implements OnInit {
   }
 
   initImage = () => {
-    console.log(this.data)
-    console.log(this.data.image)
-
     this.currentImage = this.data.image;
   }
 
