@@ -23,10 +23,18 @@ export interface PetBio{
   name:string,
   age: string,
   gender: string,
-  status: string,
+  status: string, //adoptable?
   size: string,
-  tags: string[],
+  tags: string[], // ex: friendly, gentle
   description: string,
-  coat: string | undefined,
-
+  coat: string, //ex medium
+  isHouseTrained: boolean,
+  hasCurrentShots: boolean,
+  isSpayedNeutered: boolean,
+  hasSpecialNeeds: boolean,
+  colors: string,
+  isCatFriendly: boolean | null,
+  isDogFriendly: boolean | null,
+  isChildFriendly: boolean | null,
+  url: string
 }

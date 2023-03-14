@@ -74,7 +74,7 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
 
     let dialogRef = this.dialog.open(PetModalComponent, {
       disableClose: false,
-      // panelClass: "noPadding",
+      panelClass: "overflowAuto",
       width: modalWidth,
       maxWidth: '100vw',
       data: {

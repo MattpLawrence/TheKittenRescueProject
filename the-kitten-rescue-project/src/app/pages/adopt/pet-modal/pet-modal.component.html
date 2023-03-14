@@ -1,14 +1,122 @@
 <div class="mainContainer">
-  <div class="material-icons closeButton" (click)="close()">
+  <div class="material-icons closeButton" tabindex="0" (click)="close()">
     cancel
   </div>
   <app-carousel></app-carousel>
   <div class="mainBody">
-    <div class="rightColumn">
-      <h2>{{currentPet.name}}</h2>
+    <h1 id="petName">{{currentPet.name}}</h1>
+    <div class="columnContainer">
+      <div class="rightContainer">
+
+        <div class="attributeItem">
+          <span class="material-icons attributeIcon">
+            date_range
+          </span>
+          <div class="bottomContainer">
+            <div class="attributeTitle">My Age</div>
+            <div class="attributeDetail">{{currentPet.age}}</div>
+          </div>
+        </div>
+
+        <div class="attributeItem">
+          <span class="material-icons attributeIcon">
+            transgender
+          </span>
+          <div class="bottomContainer">
+            <div class="attributeTitle">Gender</div>
+            <div class="attributeDetail">{{currentPet.gender}}</div>
+          </div>
+        </div>
+
+        <div class="attributeItem">
+          <span class="material-icons attributeIcon">
+            square_foot
+          </span>
+          <div class="bottomContainer">
+            <div class="attributeTitle">Coat Length</div>
+            <div class="attributeDetail">{{currentPet.coat}}</div>
+          </div>
+        </div>
+
+        <div class="attributeItem">
+          <span class="material-icons attributeIcon">
+            vaccines
+          </span>
+          <div class="bottomContainer">
+            <div class="attributeTitle">Vaccinations</div>
+            <div *ngIf="currentPet.hasCurrentShots" class="attributeDetail">Up to date</div>
+            <div *ngIf="!currentPet.hasCurrentShots" class="attributeDetail">Not up to date</div>
+          </div>
+        </div>
+
+        <div class="attributeItem">
+          <span class="material-icons attributeIcon">
+            health_and_safety
+          </span>
+          <div class="bottomContainer">
+            <div class="attributeTitle">Medical</div>
+            <div class="attributeLine">
+              <div class="attributeDetail">Spayed/Neutered</div>
+              <div *ngIf="currentPet.isSpayedNeutered" class="material-icons">done</div>
+              <div *ngIf="!currentPet.isSpayedNeutered" class="material-icons">close</div>
+            </div>
+            <div class="attributeLine">
+              <div class="attributeDetail">Special Needs</div>
+              <div *ngIf="currentPet.hasSpecialNeeds" class="material-icons">done</div>
+              <div *ngIf="!currentPet.hasSpecialNeeds" class="material-icons">close</div>
+            </div>
+            <div class="attributeLine">
+              <div class="attributeDetail">House Trained</div>
+              <div *ngIf="currentPet.isHouseTrained" class="material-icons">done</div>
+              <div *ngIf="!currentPet.isHouseTrained" class="material-icons">close</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="attributeItem">
+          <span class="material-icons attributeIcon">
+            diversity_1
+          </span>
+          <div class="bottomContainer">
+            <div class="attributeTitle">Compatibility</div>
+            <div class="attributeLine">
+              <div class="attributeDetail">Cat Friendly</div>
+              <div *ngIf="currentPet.isCatFriendly" class="material-icons">done</div>
+              <div *ngIf="!currentPet.isCatFriendly" class="material-icons">close</div>
+              <div *ngIf="currentPet.isCatFriendly == null && currentPet.isDogFriendly != null" class="material-icons">question_mark</div>
+            </div>
+            <div class="attributeLine">
+              <div class="attributeDetail">Dog Friendly</div>
+              <div *ngIf="currentPet.isDogFriendly" class="material-icons">done</div>
+              <div *ngIf="!currentPet.isDogFriendly && currentPet.isDogFriendly != null" class="material-icons">close</div>
+              <div *ngIf="currentPet.isDogFriendly == null" class="material-icons">question_mark</div>
+            </div>
+            <div class="attributeLine">
+              <div class="attributeDetail">Kid Friendly</div>
+              <div *ngIf="currentPet.isChildFriendly" class="material-icons">done</div>
+              <div *ngIf="!currentPet.isChildFriendly" class="material-icons">close</div>
+              <div *ngIf="currentPet.isChildFriendly == null && currentPet.isDogFriendly != null" class="material-icons">question_mark</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="attributeItem"  id="myAttributes">
+          <div class="attributeTitle">My Attributes</div>
+          <ul id="attributeList">
+            <li class="cleanFormat" *ngFor="let attribute of currentPet.tags">{{attribute}}</li>
+            <li class="cleanFormat" >cute</li>
+            <li class="cleanFormat" >cute</li>
+            <li class="cleanFormat" >cute</li>
+            <li class="cleanFormat" >cute</li>
+          </ul> 
+        </div>
+      </div>
+      <div class="leftContainer">
+        <div class="columnTitle">Want To Adopt Me?</div>
+        <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
+        <button mat-button  class="buttonText .buttonLarge">Go To Adoption Application</button>
+      </div>
     </div>
-    <div class="leftColumn">
-  
-    </div>
+
   </div>
 </div>

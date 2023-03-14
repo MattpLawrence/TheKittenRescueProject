@@ -48,3 +48,14 @@ app-adopt-page{
   -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
 }
+
+
+//remove focus indicator on page load
+:focus-visible {
+  outline: none;
+}
+
+//for modal overflow
+.overflowAuto{
+  overflow-y: auto;
+}

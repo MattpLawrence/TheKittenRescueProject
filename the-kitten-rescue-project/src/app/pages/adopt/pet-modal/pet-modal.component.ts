@@ -2,7 +2,7 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
-import { ModalClose } from 'src/app/common/models/common.model';
+import { ModalClose, PetBio } from 'src/app/common/models/common.model';
 import { APIService } from 'src/app/common/services/api.service';
 import { CommonService } from 'src/app/common/services/common.service';
 
@@ -35,8 +35,31 @@ export class PetModalComponent extends BaseComponent implements OnInit {
 
   initPet = () => {
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      console.log(res)
-      this.currentPet = res
+
+
+      //build typed object:
+      let typedPet: PetBio = {
+        id: res.id,
+        name: res.name,
+        age: res.age,
+        gender: res.gender,
+        status: res.status,
+        size: res.size,
+        tags: res.tags, 
+        description: res.description,
+        coat: res.coat, 
+        isHouseTrained: res.attributes.house_trained,
+        hasCurrentShots: res.attributes.shots_current,
+        isSpayedNeutered: res.attributes.spayed_neutered,
+        hasSpecialNeeds: res.attributes.special_needs,
+        colors: res.colors.primary,
+        isCatFriendly: res.environment.cats != null? res.environment.cats : null,
+        isDogFriendly: res.environment.dogs != null? res.environment.cats : null,
+        isChildFriendly: res.environment.children != null? res.environment.cats : null,
+        url: res.url
+      }
+      console.log(typedPet)
+      this.currentPet = typedPet
     })
   }
 
