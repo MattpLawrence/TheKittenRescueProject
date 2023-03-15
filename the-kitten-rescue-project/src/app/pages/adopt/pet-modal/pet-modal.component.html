@@ -6,8 +6,14 @@
   <div class="mainBody">
     <h1 id="petName">{{currentPet.name}}</h1>
     <div class="columnContainer">
+      
+      <div *ngIf="currentBreakpoint != 0" class="leftContainer">
+        <div class="columnTitle">Want To Adopt Me?</div>
+        <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
+        <button mat-button  class="buttonText .buttonLarge">Go To Adoption Application</button>
+      </div>
+      
       <div class="rightContainer">
-
         <div class="attributeItem">
           <span class="material-icons attributeIcon">
             date_range
@@ -107,7 +113,8 @@
           </ul> 
         </div>
       </div>
-      <div class="leftContainer">
+
+      <div *ngIf="currentBreakpoint == 0" class="leftContainer">
         <div class="columnTitle">Want To Adopt Me?</div>
         <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
         <button mat-button  class="buttonText .buttonLarge">Go To Adoption Application</button>

@@ -167,7 +167,31 @@
     }
   }
 
+
+
 }
+
+@media only screen and (max-width: $breakpointSmall){
+
+  .columnContainer{
+
+    .rightContainer{
+      width: 100%;
+      margin: 0;
+      .attributeItem{
+        margin: .25;
+        width: 8rem;
+      }
+      .attributeDetail{
+        font-size: .75rem;
+      }
+    }
+  }
+  #attributeList{
+    padding-left: 1rem;
+  }
+}
+
 
 @media only screen and (max-width: $breakpointXSmall){
 

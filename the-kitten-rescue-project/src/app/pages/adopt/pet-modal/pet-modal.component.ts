@@ -2,6 +2,7 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { ModalClose, PetBio } from 'src/app/common/models/common.model';
 import { APIService } from 'src/app/common/services/api.service';
 import { CommonService } from 'src/app/common/services/common.service';
@@ -15,6 +16,7 @@ export class PetModalComponent extends BaseComponent implements OnInit {
 
   currentPet:any;
   hasOpenModal: ModalClose = {isOpen:false, hasTriggered: false};
+  currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
 
   constructor(
     public dialogRef: MatDialogRef<PetModalComponent>,
@@ -31,6 +33,7 @@ export class PetModalComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.initPet();
     this.initTopModalListener();
+    this.initBreakpoint();
   }
 
   initPet = () => {
@@ -66,6 +69,12 @@ export class PetModalComponent extends BaseComponent implements OnInit {
   initTopModalListener = () => {
     this.commonService.getTopModalSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.hasOpenModal = res;
+    })
+  }
+
+  initBreakpoint = () => {
+    this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.currentBreakpoint = res;
     })
   }
 
