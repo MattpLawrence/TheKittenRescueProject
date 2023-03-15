@@ -17,7 +17,6 @@ export class AuthService {
   private apiKey: string = petFinderCredentials.apiKey;
   private apiSecret: string = petFinderCredentials.apiSecret;
 
-
   
   //subjects
   private tokenSubject = new ReplaySubject<string>(1)
