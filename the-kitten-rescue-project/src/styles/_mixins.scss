@@ -137,15 +137,15 @@
     height: calc($fontSize + 0.3rem);
   }
 
-  @media only screen and (max-width: $breakpointMedium) {
-    padding: 0 .5rem;
-    min-width: 3rem;
-  }
-  @media only screen and (max-width: $breakpointSmall) {
-    border-radius: .375rem;
-    font-size: .75rem;
-    min-width: 2rem;
-  }
+  // @media only screen and (max-width: $breakpointMedium) {
+  //   padding: 0 .5rem;
+  //   min-width: 3rem;
+  // }
+  // @media only screen and (max-width: $breakpointSmall) {
+  //   border-radius: .375rem;
+  //   font-size: .75rem;
+  //   min-width: 2rem;
+  // }
 }
 
 //********************Cards****************************

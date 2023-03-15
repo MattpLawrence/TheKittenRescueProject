@@ -50,7 +50,9 @@
 }
 
 #matchContainer{
+
   @include flexCenterCenter;
+  padding-bottom: 0;
 }
 
 .centerContainer{
@@ -66,7 +68,7 @@
     }
 
     .rightContainer{
-      width: 30%;
+      width: 35%;
       .picture{
         border-radius: .75rem;
         width: 100%;
@@ -92,6 +94,7 @@
 }
 
 #adoptListTitleContainer{
+  padding-top: 6rem;
   @include flexCenterCenter;
 
   .adoptListLine{
@@ -116,6 +119,16 @@
 @media only screen and (max-width: $breakpointMedium){
   .mainBanner{
     height: 10rem;
+  }
+  .centerContainer .sizeContainer{
+    width: 100%;
+    flex-direction: column;
+    .rightContainer{
+      width: 100%;
+    }
+    .leftContainer{
+      width: 100%;
+    }
   }
 }
 
