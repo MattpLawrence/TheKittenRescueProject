@@ -14,8 +14,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   //variables
-  private apiKey: string = process.env['API_KEY']!
-  private apiSecret: string = process.env['API_SECRET']!
+  private apiKey: string = petFinderCredentials.apiKey;
+  private apiSecret: string = petFinderCredentials.apiSecret;
 
 
   
