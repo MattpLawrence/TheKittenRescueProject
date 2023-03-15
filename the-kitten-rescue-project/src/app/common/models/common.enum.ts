@@ -3,3 +3,11 @@ export enum BreakPointsEnum {
   "isTablet",
   "isMobile",
 }
+
+export enum AdoptStepperViewEnum{
+  "home",
+  "userInfo",
+  "homeInfo",
+  "petInfo"
+
+}

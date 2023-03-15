@@ -24,6 +24,8 @@ import { FullImageModalComponent } from './common/components/full-image-modal/fu
 import { AdoptFormUserInfoComponent } from './pages/adopt/adopt-form/adopt-form-user-info/adopt-form-user-info.component';
 import { AdoptFormHomeInfoComponent } from './pages/adopt/adopt-form/adopt-form-home-info/adopt-form-home-info.component';
 import { AdoptFormPetInfoComponent } from './pages/adopt/adopt-form/adopt-form-pet-info/adopt-form-pet-info.component';
+import { AdoptRouterComponent } from './pages/adopt/adopt-router/adopt-router.component';
+import { AdoptStepperComponent } from './pages/adopt/adopt-form/adopt-stepper/adopt-stepper.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { AdoptFormPetInfoComponent } from './pages/adopt/adopt-form/adopt-form-p
     FullImageModalComponent,
     AdoptFormUserInfoComponent,
     AdoptFormHomeInfoComponent,
-    AdoptFormPetInfoComponent
+    AdoptFormPetInfoComponent,
+    AdoptRouterComponent,
+    AdoptStepperComponent
   ],
   imports: [
     BrowserAnimationsModule,

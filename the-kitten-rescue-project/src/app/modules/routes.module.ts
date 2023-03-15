@@ -5,6 +5,7 @@ import { AdoptFormHomeInfoComponent } from "../pages/adopt/adopt-form/adopt-form
 import { AdoptFormPetInfoComponent } from "../pages/adopt/adopt-form/adopt-form-pet-info/adopt-form-pet-info.component";
 import { AdoptFormUserInfoComponent } from "../pages/adopt/adopt-form/adopt-form-user-info/adopt-form-user-info.component";
 import { AdoptPageComponent } from "../pages/adopt/adopt-home/adopt-page/adopt-page.component";
+import { AdoptRouterComponent } from "../pages/adopt/adopt-router/adopt-router.component";
 import { DonatePageComponent } from "../pages/donate-page/donate-page.component";
 import { LandingPageComponent } from "../pages/landing-page/landing-page.component";
 import { VolunteerPageComponent } from "../pages/volunteer-page/volunteer-page.component";
@@ -29,8 +30,11 @@ const routes: Routes = [
  },
  {
    path: "adopt-page",
-   component: AdoptPageComponent,
+   component: AdoptRouterComponent,
    children:[
+    { path: "home",
+      component: AdoptPageComponent
+    },
     { path: "form-user-info",
       component: AdoptFormUserInfoComponent
     },
@@ -42,6 +46,9 @@ const routes: Routes = [
       path: "form-pet-info",
       component: AdoptFormPetInfoComponent
     },
+    { path: "**",
+    redirectTo: "home"
+  },
   ]
  },
  {

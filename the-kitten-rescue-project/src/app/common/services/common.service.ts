@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { BreakPointsEnum } from "../models/common.enum";
+import { AdoptStepperViewEnum, BreakPointsEnum } from "../models/common.enum";
 import { ModalClose } from "../models/common.model";
 
 @Injectable({
@@ -12,8 +12,9 @@ export class CommonService{
   constructor() { }
 
   //subjects
-  private breakpointSubject = new BehaviorSubject<BreakPointsEnum>(0)
+  private breakpointSubject = new BehaviorSubject<BreakPointsEnum>(0);
   private topModalSubject = new BehaviorSubject<ModalClose>({isOpen:false, hasTriggered: false});
+  private adoptStepSubject = new BehaviorSubject<AdoptStepperViewEnum>(0);
 
 
   //getters and setters
@@ -31,6 +32,14 @@ export class CommonService{
 
   setTopModalSubject = (isOpen: ModalClose) => {
     this.topModalSubject.next(isOpen);
+  }
+
+  getAdoptStepSubject = () => {
+    return this.adoptStepSubject.asObservable();
+  }
+
+  setAdoptStepSubject = (step: AdoptStepperViewEnum) => {
+    this.adoptStepSubject.next(step);
   }
 
 
