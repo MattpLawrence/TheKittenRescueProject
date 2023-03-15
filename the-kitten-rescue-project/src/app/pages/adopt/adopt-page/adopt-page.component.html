@@ -26,13 +26,18 @@
   <!-- find your match -->
     <div id="matchContainer" class="centerContainer">
       <div class="sizeContainer">
+        <!-- if mobile -->
+        <div *ngIf="currentBreakpoint != 0" class="rightContainer"  >
+          <img class="picture" src="https://www.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-4-57b30a939dff5__605.jpg" alt="cute kitten">
+        </div>
         <div class="leftContainer">
           <div class="itemTitle">Find The Right Match</div>
           <div class="itemContents">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas integer eget. Donec ac odio tempor orci dapibus. Sed viverra tellus in hac habitasse platea dictumst. Nec nam aliquam sem et tortor consequat id porta. Placerat vestibulum lectus mauris ultrices eros in cursus turpis. Libero nunc consequat interdum varius sit amet mattis vulputate. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Ac placerat vestibulum lectus mauris. Velit sed ullamcorper morbi tincidunt ornare massa eget. Est placerat in egestas erat. Facilisis sed odio morbi quis commodo odio. A pellentesque sit amet porttitor. Consequat semper viverra nam libero justo laoreet. Quam quisque id diam vel quam. Nullam non nisi est sit amet facilisis magna. Integer quis auctor elit sed vulputate. Faucibus a pellentesque sit amet. Euismod in pellentesque massa placerat duis ultricies lacus sed. Sed ullamcorper morbi tincidunt ornare massa.
           </div>
         </div>
-        <div class="rightContainer"  >
+        <!-- if not mobile -->
+        <div *ngIf="currentBreakpoint == 0" class="rightContainer"  >
           <img class="picture" src="https://www.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-4-57b30a939dff5__605.jpg" alt="cute kitten">
         </div>
       </div>
