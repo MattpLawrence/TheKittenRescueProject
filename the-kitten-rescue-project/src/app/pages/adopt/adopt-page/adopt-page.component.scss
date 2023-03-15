@@ -19,11 +19,12 @@
 
 .primaryBlock{
   background-color: $colorPrimaryBackground;
-  width: 100%;
+  width: calc(100% - 2rem);
   padding: 1rem;
 }
 
 .mainTitle{
+  text-align: center;
   margin: 2rem 0;
   width: 100%;
   font-size: 3rem;
@@ -138,4 +139,22 @@
   .mainBanner{
     margin-bottom: 2vw;
   }
+
+  #adoptListTitleContainer  #adoptListTitle{
+    font-size: 2rem;
+  }
+
+  #adoptListTitleContainer .adoptListLine{
+    margin: .75rem;
+  }
+}
+
+@media only screen and (max-width: $breakpointXSmall){
+  .mainTitle{
+    font-size: 2rem;
+  }
+  .itemTitle{
+    font-size: 2rem;
+  }
+
 }
