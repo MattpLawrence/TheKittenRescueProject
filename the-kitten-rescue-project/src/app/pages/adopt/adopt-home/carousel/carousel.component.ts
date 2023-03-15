@@ -2,10 +2,10 @@ import { Component, OnInit, Pipe , PipeTransform} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs';
-import { CarouselItem } from '../../../common/models/common.model';
-import { APIService } from '../../../common/services/api.service';
-import { BaseComponent } from '../../../common/components/base/base.component';
-import { FullImageModalComponent } from '../../../common/components/full-image-modal/full-image-modal.component';
+import { CarouselItem } from '../../../../common/models/common.model';
+import { APIService } from '../../../../common/services/api.service';
+import { BaseComponent } from '../../../../common/components/base/base.component';
+import { FullImageModalComponent } from '../../../../common/components/full-image-modal/full-image-modal.component';
 import { CommonService } from 'src/app/common/services/common.service';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 

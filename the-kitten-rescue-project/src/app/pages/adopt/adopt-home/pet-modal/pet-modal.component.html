@@ -90,8 +90,8 @@
             <div class="attributeLine">
               <div class="attributeDetail">Cat Friendly</div>
               <div *ngIf="currentPet.isCatFriendly" class="material-icons">done</div>
-              <div *ngIf="!currentPet.isCatFriendly" class="material-icons">close</div>
-              <div *ngIf="currentPet.isCatFriendly == null && currentPet.isDogFriendly != null" class="material-icons">question_mark</div>
+              <div *ngIf="!currentPet.isCatFriendly  && currentPet.isCatFriendly != null" class="material-icons">close</div>
+              <div *ngIf="currentPet.isCatFriendly == null" class="material-icons">question_mark</div>
             </div>
             <div class="attributeLine">
               <div class="attributeDetail">Dog Friendly</div>
@@ -102,8 +102,8 @@
             <div class="attributeLine">
               <div class="attributeDetail">Kid Friendly</div>
               <div *ngIf="currentPet.isChildFriendly" class="material-icons">done</div>
-              <div *ngIf="!currentPet.isChildFriendly" class="material-icons">close</div>
-              <div *ngIf="currentPet.isChildFriendly == null && currentPet.isDogFriendly != null" class="material-icons">question_mark</div>
+              <div *ngIf="!currentPet.isChildFriendly && currentPet.isChildFriendly != null" class="material-icons">close</div>
+              <div *ngIf="currentPet.isChildFriendly == null " class="material-icons">question_mark</div>
             </div>
           </div>
         </div>
