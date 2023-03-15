@@ -18,6 +18,7 @@ export class APIService {
   private apiUrl: string = 'https://api.petfinder.com/v2';
   // queryString: string = '/animals?organization=GA335&limit=20';
   queryString: string = '/animals?organization=GA477&limit=100';
+
   // queryString: string = '/organizations?query=circle'
 
   constructor(
@@ -43,7 +44,9 @@ export class APIService {
             let token:string = res;
             this.http.get(`${this.apiUrl}${this.queryString}`, {
               headers: {
-                Authorization: `Bearer ${token}`
+                
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "multipart/form-data",
               }
             }).subscribe(response => {
               console.log(response)
@@ -85,7 +88,6 @@ export class APIService {
   setCurrentAnimalsSubject = (animals:PetDisplay) => {
     //take id and set full animal object
     let currentAnimal = this.animalsSubject.value.animals.find((pet:any) => pet.id === animals.petId)
-    console.log(currentAnimal)
     this.currentAnimalsSubject.next(currentAnimal)
   }
 

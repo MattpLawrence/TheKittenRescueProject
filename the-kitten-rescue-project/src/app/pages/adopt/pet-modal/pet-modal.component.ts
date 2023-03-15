@@ -1,8 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { ModalClose, PetBio } from 'src/app/common/models/common.model';
 import { APIService } from 'src/app/common/services/api.service';
+import { CommonService } from 'src/app/common/services/common.service';
 
 @Component({
   selector: 'app-pet-modal',
@@ -12,23 +14,64 @@ import { APIService } from 'src/app/common/services/api.service';
 export class PetModalComponent extends BaseComponent implements OnInit {
 
   currentPet:any;
+  hasOpenModal: ModalClose = {isOpen:false, hasTriggered: false};
 
   constructor(
     public dialogRef: MatDialogRef<PetModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private apiService: APIService
+    private apiService: APIService,
+    private commonService: CommonService
   ) {super() }
 
-  ngOnInit(): void {
-    this.initPetList();
+  @HostListener('window:keyup.esc') onKeyUp() {
+    //if no top modal is open
+    if(!this.hasOpenModal.isOpen && !this.hasOpenModal.hasTriggered)this.dialogRef.close('goForward');
   }
 
-  initPetList = () => {
+  ngOnInit(): void {
+    this.initPet();
+    this.initTopModalListener();
+  }
+
+  initPet = () => {
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      this.currentPet = res
+
+
+      //build typed object:
+      let typedPet: PetBio = {
+        id: res.id,
+        name: res.name,
+        age: res.age,
+        gender: res.gender,
+        status: res.status,
+        size: res.size,
+        tags: res.tags, 
+        description: res.description,
+        coat: res.coat, 
+        isHouseTrained: res.attributes.house_trained,
+        hasCurrentShots: res.attributes.shots_current,
+        isSpayedNeutered: res.attributes.spayed_neutered,
+        hasSpecialNeeds: res.attributes.special_needs,
+        colors: res.colors.primary,
+        isCatFriendly: res.environment.cats != null? res.environment.cats : null,
+        isDogFriendly: res.environment.dogs != null? res.environment.cats : null,
+        isChildFriendly: res.environment.children != null? res.environment.cats : null,
+        url: res.url
+      }
+      console.log(typedPet)
+      this.currentPet = typedPet
     })
   }
 
+  initTopModalListener = () => {
+    this.commonService.getTopModalSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.hasOpenModal = res;
+    })
+  }
+
+  close = () => {
+    this.dialogRef.close();
+  }
 
 
 

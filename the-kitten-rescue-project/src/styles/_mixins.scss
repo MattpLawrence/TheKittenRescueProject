@@ -44,6 +44,11 @@
   align-items: center;
   justify-content: space-evenly;
 }
+@mixin flexStartSpaceBetween{
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
 
 @mixin flexColumnStart{
   display: flex;

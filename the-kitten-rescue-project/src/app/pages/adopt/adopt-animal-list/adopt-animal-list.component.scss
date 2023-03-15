@@ -27,11 +27,13 @@
     max-width: 35rem ;
     max-height: 35rem ;
     margin: 2vw 0;
-    border-radius: .25rem;
+    border-radius: .5rem;
     position: relative;
-
     overflow: hidden;
+    background-color: #7f757580;
+
       .petImg{
+        height: 100%;
         object-fit: contain;
         transition: .6s ease-in-out;
         transform: scale(1);
@@ -41,7 +43,7 @@
         opacity: 0;
         transition: .4s ease-in-out;
         transform: scale(0);
-        z-index: 10;
+        z-index: 2;
         position: absolute;
         font-size: 1.5rem;
         font-weight: 500;
@@ -78,14 +80,31 @@
   #petGirdContainer .petContainer{
     width: 45vw;
     height: 45vw;
+    border-bottom-right-radius: 0rem;
+    .petName{
+      transform: scale(1);
+      opacity: 1;
+      bottom: 0;
+      right: 0;
+      border-radius: 0;
+      border-top-left-radius: .5rem;
+      font-size: 1rem;
+      padding: .75rem;
+    }
   }
 
 }
 
 @media only screen and (max-width: $breakpointSmall){
+
+  .mainBanner{
+    margin-bottom: 2vw;
+  }
+
   #petGirdContainer .petContainer{
-    width: 98vw;
-    height: 98vw;
+    width: 94vw;
+    height: 94vw;
+    margin: 2vw;
   }
 
 }

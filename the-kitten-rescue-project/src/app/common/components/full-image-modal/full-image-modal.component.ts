@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseComponent } from '../base/base.component';
 
@@ -20,11 +20,16 @@ export class FullImageModalComponent extends BaseComponent implements OnInit {
     this.initImage()
   }
 
-  initImage = () => {
-    console.log(this.data)
-    console.log(this.data.image)
+  @HostListener('window:keyup.esc') onKeyUp() {
+    this.dialogRef.close('goForward');
+  }
 
+  initImage = () => {
     this.currentImage = this.data.image;
+  }
+
+  close = () => {
+    this.dialogRef.close();
   }
 
 }
