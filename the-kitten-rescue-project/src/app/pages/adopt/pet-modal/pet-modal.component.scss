@@ -1,6 +1,178 @@
 @import "../../../../styles.scss";
 
-app-carousel{
-  height: 90vh;
+.mainContainer{
+  position: relative;
   @include flexColumnStart;
+
+  app-carousel{
+    width: 100%;
+    height: 18.75rem;
+    @include flexColumnStart;
+  }
+
+  .closeButton{
+    position: absolute;
+    top: .25rem;
+    right: .25rem;
+    font-size: 2.5rem;
+    color: black;
+    z-index: 2;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+.mainBody{
+  display: flex;
+  width: 100%;
+  margin: 1.5rem 0rem;
+  @include flexColumnStart;
+
+  #petName{
+    color: $colorPrimary;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  #petDescription{
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+
+}
+
+.columnContainer{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .rightContainer{
+    margin: .75rem;
+    width: calc(70% - 1.5rem);
+    padding: 0 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    
+    .attributeItem{
+      margin: .5rem;
+      height: 10rem;
+      width: 10rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      background-color: $colorBackground;
+      border-radius: .75rem;
+      overflow: hidden;
+      overflow-y: auto;
+      padding: .5rem;
+
+    }
+
+  }
+  
+  .bottomContainer{
+    width: 100%
+  }
+  .attributeLine{
+    @include flexCenterSpaceBetween;
+    width: 100%;
+    align-items: flex-start;
+    & > * {
+      margin-bottom: 0rem;
+    }
+  }
+  
+  .attributeIcon{
+    color: $colorPrimary;
+    transform: scale(1.2);
+    margin-bottom: 1rem;
+  }
+
+  .attributeTitle{
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .attributeDetail{
+    margin-bottom: 1.5rem;
+  }
+  
+  .leftContainer{
+    margin: .75rem;
+    width: calc(30% - 1.5rem);
+    border-radius: .75rem;
+    background-color: $colorPrimary;
+    padding: .5rem;
+    text-align: center;    
+    .columnTitle{
+      margin-top: .5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    button{
+      width: calc(100% - 2rem);
+      margin: 0 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+.columnTitle{
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.cleanFormat{
+  list-style-type: none;
+  margin-bottom: .25rem;
+  font-size: 1rem;
+}
+#attributeList{
+  margin: 0;
+}
+.aNoStyle{
+  text-decoration: none;
+  color: $colorText;
+}
+
+#myAttributes{
+  justify-content: flex-start;
+}
+
+@media only screen and (max-width: $breakpointMedium) {
+
+  .columnContainer{
+    flex-direction: column;
+    justify-content: center;
+
+    .rightContainer{
+      width: calc(100% - 2rem);
+      padding: 0;
+      justify-content: center;
+    }
+    .leftContainer{
+      width: calc(100% - 2rem);
+      button{
+        width: 70%;
+      }
+    }
+  }
+
+}
+
+@media only screen and (max-width: $breakpointXSmall){
+
+  .columnContainer  .rightContainer{
+    justify-content: center;
+  }
+
 }

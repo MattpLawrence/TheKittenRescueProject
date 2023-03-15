@@ -3,7 +3,7 @@
 
 $colorBackground: #f2f2f2;
 $colorPrimaryBackground: #ffffff;
-$colorPrimary: #977fe3;
+$colorPrimary: #8275ff;
 $colorPrimaryText: #ffffff;
 $colorSuccess: #176723;
 $colorSuccessText: #ffffff;
@@ -20,8 +20,8 @@ $colorSnackbar: #323232;
 
 //Components
 $colorDefaultButton: rgba(116, 116, 128, 0.08);
-$colorDefaultButtonHovered: rgba(116, 116, 128, 0.16);
-$colorDefaultButtonPressed: rgba(116, 116, 128, 0.24);
+$colorDefaultButtonHovered: #dddde0;
+$colorDefaultButtonPressed: #c5c5c9;
 $colorDefaultTextDisabled: rgba(0, 0, 0, 0.48);
 $colorDefaultButtonDisabled: #fafafa;
 $colorAccentBadgeBackground: rgba(1, 87, 155, 0.08);
@@ -29,6 +29,7 @@ $colorAccentBadgeBackground: rgba(1, 87, 155, 0.08);
 
 
 //************Breakpoints**********
+$breakpointXSmall: 400px;
 $breakpointSmall: 600px;
 $breakpointMedium: 960px;
 $breakpointLarge: 1280px;
