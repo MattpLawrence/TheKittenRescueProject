@@ -14,6 +14,9 @@
 
 #logoImg{
   height: 6rem;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .leftBox{

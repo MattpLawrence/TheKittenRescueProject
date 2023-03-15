@@ -1,13 +1,8 @@
 <div class="mainContainer">
-  <div class="mainBanner">
-  <img class="mainBannerImg" src="https://www.seacoast.org/wp-content/uploads/2019/09/1440x550_WelcomeHome_SeriesArt.png" alt="main banner">
-  </div>
-
   <div id="petGirdContainer">
     <div class="petContainer" *ngFor="let pet of petList" (click)="openModal(pet)">
       <img class="petImg" src="{{pet.mainImg}}" alt="Pet Image">
       <div class="petName">{{pet.petName}}</div>
     </div>
   </div>
-
 </div>

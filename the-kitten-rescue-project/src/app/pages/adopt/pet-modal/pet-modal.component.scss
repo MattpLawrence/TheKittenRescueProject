@@ -157,8 +157,8 @@
 }
 
 #myAttributes{
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 @media only screen and (max-width: $breakpointMedium) {

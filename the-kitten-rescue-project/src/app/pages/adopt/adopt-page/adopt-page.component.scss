@@ -1,0 +1,128 @@
+@import '../../../../styles.scss';
+
+
+.mainBanner{
+  width: 100vw;
+  height: 15rem;
+  overflow: hidden;
+  @include flexCenterCenter;
+  background-color: #495a6c;
+  .mainBannerImg{
+    height:14rem;
+    margin-top: 0rem;
+  }
+}
+
+#aboutAdoption{
+  @include flexColumnStart;
+}
+
+.primaryBlock{
+  background-color: $colorPrimaryBackground;
+  width: 100%;
+  padding: 1rem;
+}
+
+.mainTitle{
+  margin: 2rem 0;
+  width: 100%;
+  font-size: 3rem;
+  font-weight: 500;
+  color: $colorPrimary;
+  @include flexCenterCenter;
+}
+
+.mainContents{
+  text-align: center;
+  width: 80%;
+  line-height: 1.5rem;
+}
+
+#viewAdoptList{
+  margin: 1.5rem 0;
+}
+
+
+
+#processContainer{
+  background-color: $colorBackground;
+  @include flexCenterCenter;
+}
+
+#matchContainer{
+  @include flexCenterCenter;
+}
+
+.centerContainer{
+  padding: 3rem;
+
+  .sizeContainer{
+    width: 70vw;
+    max-width: 1200px;
+    @include flexCenterSpaceBetween;
+
+    .leftContainer{
+      width: 60%;
+    }
+
+    .rightContainer{
+      width: 30%;
+      .picture{
+        border-radius: .75rem;
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+    }
+  }
+
+}
+
+.itemContents{
+  text-align: center;
+  margin: 1.5rem 0;
+  line-height: 1.5rem;
+}
+
+.itemTitle{
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: $colorPrimary;
+}
+
+#adoptListTitleContainer{
+  @include flexCenterCenter;
+
+  .adoptListLine{
+    border: 2px solid $colorLightText;
+    width: 30vw;
+    margin: 2rem;
+  }
+
+  #adoptListTitle{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    color: $colorPrimary;
+  
+  }
+
+}
+
+
+
+
+@media only screen and (max-width: $breakpointMedium){
+  .mainBanner{
+    height: 10rem;
+  }
+}
+
+
+@media only screen and (max-width: $breakpointSmall){
+
+  .mainBanner{
+    margin-bottom: 2vw;
+  }
+}

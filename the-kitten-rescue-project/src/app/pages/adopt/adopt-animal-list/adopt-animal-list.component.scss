@@ -1,17 +1,5 @@
 @import '../../../../styles.scss';
 
-.mainBanner{
-  width: 100vw;
-  height: 15rem;
-  overflow: hidden;
-  @include flexCenterCenter;
-  background-color: #495a6c;
-  .mainBannerImg{
-    height:14rem;
-    margin-top: 0rem;
-  }
-}
-
 
 //***********pet grid************
 
@@ -74,9 +62,7 @@
 
 @media only screen and (max-width: $breakpointMedium){
 
-  .mainBanner{
-    height: 10rem;
-  }
+
   #petGirdContainer .petContainer{
     width: 45vw;
     height: 45vw;
@@ -96,10 +82,6 @@
 }
 
 @media only screen and (max-width: $breakpointSmall){
-
-  .mainBanner{
-    margin-bottom: 2vw;
-  }
 
   #petGirdContainer .petContainer{
     width: 94vw;

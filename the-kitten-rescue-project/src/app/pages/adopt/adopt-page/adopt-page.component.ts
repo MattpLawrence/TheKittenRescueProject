@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { APIService } from 'src/app/common/services/api.service';
 import { takeUntil} from 'rxjs';
@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CatLoaderComponent } from 'src/app/common/components/cat-loader/cat-loader.component';
 import { CommonService } from 'src/app/common/services/common.service';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
+
 
 @Component({
   selector: 'app-adopt-page',
@@ -18,6 +19,8 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   isLoading: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
   
+
+  @ViewChild('adoptList') adoptList: ElementRef |undefined;
 
   constructor(
     private apiService: APIService,
@@ -75,6 +78,14 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
       if(response.animals != undefined) this.petList = response.animals;
 
     });
+  }
+
+  scroll = (id:string) => {
+
+    console.log('scroll')
+    console.log(this.adoptList)
+    this.adoptList?.nativeElement.scrollIntoView({ behavior: 'smooth', align: false });
+
   }
 
 }

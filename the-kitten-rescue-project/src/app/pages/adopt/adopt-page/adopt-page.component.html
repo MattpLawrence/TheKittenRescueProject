@@ -1,1 +1,49 @@
-<app-adopt-animal-list></app-adopt-animal-list>
+<div class="mainContainer">
+  <div class="mainBanner">
+    <img class="mainBannerImg" src="https://www.seacoast.org/wp-content/uploads/2019/09/1440x550_WelcomeHome_SeriesArt.png" alt="main banner">
+  </div>
+  <div class="primaryBlock" id="aboutAdoption">
+    <div class="mainTitle">Why Adopt From Us?</div>
+    <div class="mainContents">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl rhoncus mattis rhoncus urna neque. Consequat mauris nunc congue nisi. Iaculis nunc sed augue lacus. Vel eros donec ac odio tempor orci dapibus ultrices in. Dui vivamus arcu felis bibendum. Luctus accumsan tortor posuere ac ut. Habitant morbi tristique senectus et netus et malesuada. Ac felis donec et odio. Mi quis hendrerit dolor magna eget est lorem ipsum dolor. Lacus sed turpis tincidunt id aliquet risus feugiat.
+    </div>
+    <button mat-button class="buttonTinted buttonLarge" id="viewAdoptList" (click)="scroll('adoptList')" >View Adoptable Pets</button>
+  </div>
+  <!-- Process -->
+  <div id="processContainer" class="centerContainer">
+    <div class="sizeContainer">
+      <div class="rightContainer">
+        <img class="picture" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F04%2F13%2Fkitten-pounce-158906394-2000.jpg&q=60" alt="cute kitten">
+      </div>
+      <div class="leftContainer">
+        <div class="itemTitle">Our Process</div>
+        <div class="itemContents">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas integer eget. Donec ac odio tempor orci dapibus. Sed viverra tellus in hac habitasse platea dictumst. Nec nam aliquam sem et tortor consequat id porta. Placerat vestibulum lectus mauris ultrices eros in cursus turpis. Libero nunc consequat interdum varius sit amet mattis vulputate. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Ac placerat vestibulum lectus mauris. Velit sed ullamcorper morbi tincidunt ornare massa eget. Est placerat in egestas erat. Facilisis sed odio morbi quis commodo odio. A pellentesque sit amet porttitor. Consequat semper viverra nam libero justo laoreet. Quam quisque id diam vel quam. Nullam non nisi est sit amet facilisis magna. Integer quis auctor elit sed vulputate. Faucibus a pellentesque sit amet. Euismod in pellentesque massa placerat duis ultricies lacus sed. Sed ullamcorper morbi tincidunt ornare massa.
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- find your match -->
+    <div id="matchContainer" class="centerContainer">
+      <div class="sizeContainer">
+        <div class="leftContainer">
+          <div class="itemTitle">Find The Right Match</div>
+          <div class="itemContents">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada fames ac turpis egestas integer eget. Donec ac odio tempor orci dapibus. Sed viverra tellus in hac habitasse platea dictumst. Nec nam aliquam sem et tortor consequat id porta. Placerat vestibulum lectus mauris ultrices eros in cursus turpis. Libero nunc consequat interdum varius sit amet mattis vulputate. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Ac placerat vestibulum lectus mauris. Velit sed ullamcorper morbi tincidunt ornare massa eget. Est placerat in egestas erat. Facilisis sed odio morbi quis commodo odio. A pellentesque sit amet porttitor. Consequat semper viverra nam libero justo laoreet. Quam quisque id diam vel quam. Nullam non nisi est sit amet facilisis magna. Integer quis auctor elit sed vulputate. Faucibus a pellentesque sit amet. Euismod in pellentesque massa placerat duis ultricies lacus sed. Sed ullamcorper morbi tincidunt ornare massa.
+          </div>
+        </div>
+        <div class="rightContainer">
+          <img class="picture" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F04%2F13%2Fkitten-pounce-158906394-2000.jpg&q=60" alt="cute kitten">
+        </div>
+      </div>
+    </div>
+
+  
+    <div id="adoptListTitleContainer" #adoptList >
+      <div class="adoptListLine"></div>
+      <div id="adoptListTitle">Our Current Foster Pets</div>
+      <div class="adoptListLine"></div>
+    </div>
+     <app-adopt-animal-list id="adoptList" ></app-adopt-animal-list>
+
+</div>
