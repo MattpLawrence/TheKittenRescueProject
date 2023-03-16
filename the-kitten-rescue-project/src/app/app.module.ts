@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgxMaskModule } from 'ngx-mask';
 
 import { AppComponent } from './app.component';
 import { BaseComponent } from './common/components/base/base.component';
@@ -60,6 +60,7 @@ import { AdoptStepperComponent } from './pages/adopt/adopt-form/adopt-stepper/ad
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxMaskModule.forRoot()
 
   ],
   providers: [],

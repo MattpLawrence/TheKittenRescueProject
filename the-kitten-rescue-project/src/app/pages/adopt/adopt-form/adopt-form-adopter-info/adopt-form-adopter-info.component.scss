@@ -1,0 +1,17 @@
+@import '../../../../../styles.scss';
+
+.mainContainer{
+  width: 100vw;
+  @include flexStartCenter;
+}
+.sizeContainer{
+  width: 80%;
+  max-width: 1200px;
+  background-color: $colorBackground;
+  @include flexColumnStart;
+  padding: 2rem;
+}
+
+.navButtonContainer{
+  @include flexCenterSpaceBetween;
+}
