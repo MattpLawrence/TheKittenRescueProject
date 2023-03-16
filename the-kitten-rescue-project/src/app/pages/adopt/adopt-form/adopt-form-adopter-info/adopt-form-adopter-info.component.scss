@@ -34,8 +34,11 @@
   }
 }
 
+#formError{
+  margin: 2rem 0;
+}
+
 .navButtonContainer{
-  margin-top: 2rem;
   width: 60%;
   @include flexCenterSpaceBetween;
   button{

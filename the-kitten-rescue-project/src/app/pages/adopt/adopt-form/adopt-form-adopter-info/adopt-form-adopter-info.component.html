@@ -127,10 +127,10 @@
           </div>
         </div>
 
-      
-    </form>
-
-    <!-- nav buttons -->
+          <!-- nav buttons -->
+    <mat-error *ngIf="hasSubmissionError"  id="formError">
+      Please Correctly Fill Out All Required Fields 
+    </mat-error>
     <div class="navButtonContainer">
       <button mat-button  class="buttonTinted buttonLarge navButton" (click)="back()">
         Back
@@ -139,5 +139,8 @@
         Next
       </button>
     </div>
+    </form>
+
+
   </div>
 </div>

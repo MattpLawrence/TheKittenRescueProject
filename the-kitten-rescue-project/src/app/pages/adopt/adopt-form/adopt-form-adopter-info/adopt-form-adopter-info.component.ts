@@ -15,6 +15,8 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   emailValidation = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}";
   phoneValidation = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$";
 
+  hasSubmissionError: boolean = false;
+
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
@@ -54,7 +56,9 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   };
 
   next = () => {
-    this.router.navigate(['adopt-page/form-home-info']);
+    
+    if(this.form.valid)this.router.navigate(['adopt-page/form-home-info']);
+    else this.hasSubmissionError = true;
   }
 
   back = () => {
