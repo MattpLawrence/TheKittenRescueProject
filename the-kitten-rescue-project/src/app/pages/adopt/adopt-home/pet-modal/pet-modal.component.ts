@@ -1,5 +1,6 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
@@ -22,7 +23,8 @@ export class PetModalComponent extends BaseComponent implements OnInit {
     public dialogRef: MatDialogRef<PetModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private apiService: APIService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private router: Router
   ) {super() }
 
   @HostListener('window:keyup.esc') onKeyUp() {
@@ -82,6 +84,10 @@ export class PetModalComponent extends BaseComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  navigate = () => {
+    this.dialogRef.close();
+    this.router.navigate(['adopt-page/form-adopter-info'])
+  }
 
 
 }

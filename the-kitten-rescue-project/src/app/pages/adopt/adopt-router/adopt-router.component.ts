@@ -1,5 +1,8 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { takeUntil } from 'rxjs';
+import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { AdoptStepperViewEnum } from 'src/app/common/models/common.enum';
 import { CommonService } from 'src/app/common/services/common.service';
 
@@ -8,35 +11,24 @@ import { CommonService } from 'src/app/common/services/common.service';
   templateUrl: './adopt-router.component.html',
   styleUrls: ['./adopt-router.component.scss']
 })
-export class AdoptRouterComponent implements OnInit {
+export class AdoptRouterComponent extends BaseComponent implements OnInit {
+
+  currentStep: AdoptStepperViewEnum = AdoptStepperViewEnum.home;
+
 
   constructor(
-    private commonService: CommonService
-  ) { }
+    private commonService: CommonService,
+    private router:Router
+  ) {super() }
 
   ngOnInit(): void {
     this.initStep();
   }
 
   initStep = () => {
-    let currentStep: AdoptStepperViewEnum = AdoptStepperViewEnum.home;
-
-    switch(true){
-      case this.getParamValueString("form-adopter-info"):
-        currentStep = AdoptStepperViewEnum.userInfo
-        break;
-      case this.getParamValueString("form-home-info"):
-        currentStep = AdoptStepperViewEnum.homeInfo
-        break;
-      case this.getParamValueString("form-pet-info"):
-        currentStep = AdoptStepperViewEnum.petInfo
-        break;
-      default :
-        currentStep = AdoptStepperViewEnum.home;
-        break
-    }
-
-    this.commonService.setAdoptStepSubject(currentStep);
+    this.commonService.getAdoptStepSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.currentStep = res
+    })
   }
 
   //manual query because angular native solution is too slow to catch the params first time.
