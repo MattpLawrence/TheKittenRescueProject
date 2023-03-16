@@ -21,7 +21,7 @@ import { AdoptAnimalListComponent } from './pages/adopt/adopt-home/adopt-animal-
 import { PetModalComponent } from './pages/adopt/adopt-home/pet-modal/pet-modal.component';
 import { CarouselComponent, SafePipe } from './pages/adopt/adopt-home/carousel/carousel.component';
 import { FullImageModalComponent } from './common/components/full-image-modal/full-image-modal.component';
-import { AdoptFormUserInfoComponent } from './pages/adopt/adopt-form/adopt-form-user-info/adopt-form-user-info.component';
+import { AdoptFormAdopterInfoComponent } from './pages/adopt/adopt-form/adopt-form-user-info/adopt-form-adopter-info.component';
 import { AdoptFormHomeInfoComponent } from './pages/adopt/adopt-form/adopt-form-home-info/adopt-form-home-info.component';
 import { AdoptFormPetInfoComponent } from './pages/adopt/adopt-form/adopt-form-pet-info/adopt-form-pet-info.component';
 import { AdoptRouterComponent } from './pages/adopt/adopt-router/adopt-router.component';
@@ -45,7 +45,7 @@ import { AdoptStepperComponent } from './pages/adopt/adopt-form/adopt-stepper/ad
     CarouselComponent,
     SafePipe,
     FullImageModalComponent,
-    AdoptFormUserInfoComponent,
+    AdoptFormAdopterInfoComponent,
     AdoptFormHomeInfoComponent,
     AdoptFormPetInfoComponent,
     AdoptRouterComponent,

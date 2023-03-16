@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { AdoptStepperViewEnum } from 'src/app/common/models/common.enum';
+import { CommonService } from 'src/app/common/services/common.service';
 
 @Component({
   selector: 'app-adopt-stepper',
@@ -15,34 +17,43 @@ export class AdoptStepperComponent extends BaseComponent implements OnInit {
   AdoptStepperViewEnum = AdoptStepperViewEnum;
   //set class strings for stepper header
   stepOneClasses:string = '';
-  stepTwoClasses:string = 'inactive';
+  stepTwoClasses:string = 'disabled';
   stepThreeClasses:string = 'disabled';
   //set visited variable for stepper headers
   stepOneVisited: boolean = false;
   stepTwoVisited: boolean = false;
   stepThreeVisited: boolean = false;
 
-  constructor() {super() }
+  currentStep: AdoptStepperViewEnum = AdoptStepperViewEnum.userInfo
+
+  constructor(
+    private commonService: CommonService
+  ) {super() }
 
   ngOnInit(): void {
-
-
+    this.initStep();
   }
 
+  initStep = () => {
+    this.commonService.getAdoptStepSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      console.log(res)
+      this.currentStep = res;
+      if(res != 0)this.updateClasses(res)
+    })
+  }
 
   changeStep = (step: number) => {
-    console.log(step)
+    this.updateClasses(step)
   }
 
   updateClasses = (step: AdoptStepperViewEnum) => {
+    console.log(step)
 
     switch(step){
       case AdoptStepperViewEnum.userInfo:
         //change route and match query params
         this.stepOneVisited = true;
         this.stepName = "Adopter's Information";
-        this.stepThreeVisited = false;
-        this.stepThreeClasses = 'disabled'
 
         break;
 
@@ -50,15 +61,12 @@ export class AdoptStepperComponent extends BaseComponent implements OnInit {
         this.stepTwoVisited = true;
         this.stepTwoClasses = '';
         this.stepName = 'Household Information';
-        this.stepThreeVisited = false;
-        this.stepThreeClasses = 'disabled'
         break;
 
       case AdoptStepperViewEnum.petInfo:
         this.stepThreeVisited = true;
         this.stepThreeClasses = '';
         this.stepName = 'Pet Information';
-
         break;
 
     };

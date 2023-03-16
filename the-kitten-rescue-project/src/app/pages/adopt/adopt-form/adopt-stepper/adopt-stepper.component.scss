@@ -1,0 +1,185 @@
+@import '../../../../../styles.scss';
+
+.titleContainer{
+  @include flexCenterCenter;
+  h2{
+    font-size: 1.5rem;
+  }
+}
+
+
+.stepperContainer{
+  margin: auto;
+  width: 70%;
+}
+
+.fullWidth{
+  width: 70%;
+}
+
+
+.routerContainer{
+  padding-right: .5rem;
+  height: calc(100vh - 19rem);
+  overflow-y: auto;
+}
+
+.iFrameHeight{
+  height: calc(100vh - 8rem);
+}
+
+.stepTitle{
+  text-align: center;
+}
+
+
+#stepperBar{
+  width: 100%;
+  height: 4.25rem;
+  margin-bottom: .75rem;
+  @include flexCenterCenter;
+
+  //disable inactive steps
+  .disabled{
+    pointer-events: none;
+    
+    .stepIcon{
+      background-color: $colorDisabled ;
+    }
+    .stepTitle{
+      font-weight: 400;
+      color: $colorDisabled;
+    }
+  }
+
+  .inactive{
+    .stepIcon{
+      background-color: $colorDisabled ;
+    }
+    .stepTitle{
+      font-weight: 400;
+      color: $colorDisabled;
+    }
+  }
+  
+}
+
+.step{
+  width: 20%;
+  min-width: 8rem;
+  height: 100%;
+  padding: 0.5rem 1rem;
+}
+
+.step:hover{
+  cursor: pointer;
+  background-color: $colorStepHover;
+  border-radius: .5rem;
+}
+
+#stepperTittle{
+  color: $colorPrimary;
+  font-size: 2.5rem;
+}
+
+#secondStep{
+  min-width: 10rem;
+}
+
+.spacer{
+  margin: -1rem 0rem;
+  width: 20%;
+  height: .0625rem;
+  background-color: $colorStepperLine;
+}
+
+.stepIcon{
+  text-align: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: .75rem;
+  background-color: $colorPrimary;
+  color: $colorPrimaryBackground;
+  line-height: 1.5rem;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-right: .5rem;
+}
+
+.stepTitle{
+  font-weight: 500;
+}
+
+#stepperBar > * {
+@include flexCenterCenter
+}
+
+
+
+
+
+@media only screen and (max-width: $breakpointMedium) {
+  #stepperTittle{
+    font-size: 2rem;
+  }
+
+  .stepperContainer{
+    width: auto;
+    padding: 0 1rem;
+  }
+
+  .routerContainer{
+    height: calc(100vh - 16rem);
+    overflow-y: auto;
+  }
+
+
+}
+
+@media only screen and (max-width: $breakpointSmall) {
+
+  #stepperTittle{
+    font-size: 1.5rem;
+  }
+  .stepIcon{
+    margin: 0rem;
+  }
+
+  #stepperBar{
+    .step{
+      width: 10%;
+      min-width: 0rem;
+    }
+  }
+  .stepTitle{
+    display: none;
+  }
+
+  .stepperContainer{
+    padding: 0rem;
+  }
+
+  .routerContainer{
+    height: calc(100vh - 3.5rem);
+    overflow-y: auto;
+  }
+
+  //for iFrame
+  #iFrameTitleContainer{
+    width: 95%;
+    h2{
+      font-size: 1.25rem;
+    }
+    .cartContainer{
+      color: $colorText;
+      margin-left: .5rem;
+  
+      .cartNumber{
+        font-size: 1rem;
+        color: $colorPrimary;
+        font-weight: 900;
+      }
+    }
+  
+  }
+}

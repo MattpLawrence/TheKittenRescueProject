@@ -22,9 +22,7 @@ export class AdoptRouterComponent implements OnInit {
     let currentStep: AdoptStepperViewEnum = AdoptStepperViewEnum.home;
 
     switch(true){
-      case this.getParamValueString("home"):
-        break;
-      case this.getParamValueString("form-user-info"):
+      case this.getParamValueString("form-adopter-info"):
         currentStep = AdoptStepperViewEnum.userInfo
         break;
       case this.getParamValueString("form-home-info"):
@@ -39,7 +37,6 @@ export class AdoptRouterComponent implements OnInit {
     }
 
     this.commonService.setAdoptStepSubject(currentStep);
-    console.log(currentStep)
   }
 
   //manual query because angular native solution is too slow to catch the params first time.

@@ -1,22 +1,22 @@
 <div class="titleContainer" >
-  <h2>{{stepName}}</h2>
+  <h2 id="stepperTittle">{{stepName}}</h2>
 </div>
 
 <div class="stepperContainer" >
   <div id="stepperBar">
-    <div id="firstStep" class="step" [ngClass]="[stepOneClasses]" (click)="changeStep(0)">
+    <div id="firstStep" class="step" [ngClass]="[stepOneClasses]" (click)="changeStep(1)">
       <span class="stepIcon">1</span>
-      <span class="stepTitle" >1</span>
+      <span class="stepTitle" >Adopter's Info</span>
     </div>
     <div class="spacer"></div>
-    <div id="secondStep" class="step" [ngClass]="[stepTwoClasses]" (click)="changeStep(1)">
+    <div id="secondStep" class="step" [ngClass]="[stepTwoClasses]" (click)="changeStep(2)">
       <span class="stepIcon">2</span>
-      <span class="stepTitle">2</span>
+      <span class="stepTitle">Household Info</span>
     </div>
     <div class="spacer"></div>
-    <div id="thirdStep" class="step" [ngClass]="[stepThreeClasses]" (click)="changeStep(2)">
+    <div id="thirdStep" class="step" [ngClass]="[stepThreeClasses]" (click)="changeStep(3)">
       <span class="stepIcon">3</span>
-      <span class="stepTitle">3</span>
+      <span class="stepTitle">Pet Info</span>
     </div>
   </div>
 </div>
