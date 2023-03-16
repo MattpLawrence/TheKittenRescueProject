@@ -29,7 +29,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Date Of Birth</mat-label>
           <mat-form-field appearance="outline" class="inputDefault inputWhite">
-            <input matInput mask="00-00-0000" placeholder="MM-DD-YYYY" autocomplete="bday" formControlName="adopterDOB" id="adopterDOB"/>
+            <input matInput mask="00-00-0000" placeholder="MM-DD-YYYY" autocomplete="bday" inputmode="numeric" formControlName="adopterDOB" id="adopterDOB"/>
             <mat-error role='alert' *ngIf="error('adopterDOB', 'required')">
                Adopter's Phone Number Is Required
             </mat-error>
