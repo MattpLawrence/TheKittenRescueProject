@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 
 @Component({
@@ -8,7 +9,9 @@ import { BaseComponent } from 'src/app/common/components/base/base.component';
 })
 export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
 
-  constructor() {super() }
+  constructor(
+    private router: Router
+  ) {super() }
 
   ngOnInit(): void {
   }
@@ -18,7 +21,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   }
 
   back = () => {
-    console.log('back')
+    this.router.navigate(['adopt-page/form-home-info']);
   }
 
 }

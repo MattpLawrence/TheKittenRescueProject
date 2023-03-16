@@ -57,7 +57,6 @@ export class AppComponent extends BaseComponent implements OnInit {
 
   //manual query because angular native solution is too slow to catch the params first time.
   getParamValueString( paramName: string ) {
-    console.log(paramName)
     const url = window.location.href;
     let contains: boolean = false;
     if(url.includes(paramName)) contains = true

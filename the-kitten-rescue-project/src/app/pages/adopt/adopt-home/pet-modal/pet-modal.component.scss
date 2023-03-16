@@ -67,7 +67,7 @@
     padding: 0 2rem;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
 
     
@@ -205,8 +205,6 @@
 
 @media only screen and (max-width: $breakpointXSmall){
 
-  .columnContainer  .rightContainer{
-    justify-content: center;
-  }
+
 
 }

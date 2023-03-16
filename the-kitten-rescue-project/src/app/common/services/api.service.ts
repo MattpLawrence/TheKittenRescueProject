@@ -49,7 +49,7 @@ export class APIService {
                 "Content-Type": "multipart/form-data",
               }
             }).subscribe(response => {
-              console.log(response)
+              console.log(this.filterData(response))
       
               this.animalsSubject.next(this.filterData(response))
               observer.next(this.filterData(response));

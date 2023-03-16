@@ -81,11 +81,7 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   }
 
   scroll = (id:string) => {
-
-    console.log('scroll')
-    console.log(this.adoptList)
     this.adoptList?.nativeElement.scrollIntoView({ behavior: 'smooth', block: "start" });
- 
   }
 
 }

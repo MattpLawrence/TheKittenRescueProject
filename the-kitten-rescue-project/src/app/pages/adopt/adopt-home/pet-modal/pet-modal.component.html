@@ -11,8 +11,8 @@
       
       <div *ngIf="currentBreakpoint != 0" class="leftContainer">
         <div class="columnTitle">Want To Adopt Me?</div>
-        <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
         <button mat-button class="buttonText .buttonLarge" (click)="navigate()">Go To Adoption Application</button>
+        <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
       </div>
       
       <div class="rightContainer">
@@ -118,8 +118,8 @@
 
       <div *ngIf="currentBreakpoint == 0" class="leftContainer">
         <div class="columnTitle">Want To Adopt Me?</div>
-        <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
         <button mat-button  class="buttonText .buttonLarge" (click)="navigate()">Go To Adoption Application</button>
+        <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
       </div>
     </div>
 
