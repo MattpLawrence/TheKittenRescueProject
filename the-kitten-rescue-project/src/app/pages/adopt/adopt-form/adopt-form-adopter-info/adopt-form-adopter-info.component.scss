@@ -10,14 +10,90 @@
   background-color: $colorBackground;
   @include flexColumnStart;
   padding: 2rem;
+  border-radius: .75rem;
+  margin-bottom: 2rem;
+  .formContainer{
+    width: 100%;
+    @include flexColumnStart;
+  }
+}
+.formLine{
+  width: 100%;
+  @include flexCenterSpaceBetween;
+
+  .halfWidth{
+    width: calc(50% - 2rem);
+    margin: 1rem;
+    margin-bottom: 0rem;
+  }
+
+  .thirdWidth{
+    width: calc(33% - 2rem);
+    margin: 1rem;
+    margin-bottom: 0rem;
+  }
 }
 
 .navButtonContainer{
+  margin-top: 2rem;
+  width: 60%;
   @include flexCenterSpaceBetween;
+  button{
+    width: calc( 50% - 2rem);
+    margin: 0 1rem;
+  }
 }
 
 .mainTitle{
+  text-align: center;
   font-size: 2.5rem;
   font-weight: 500;
   color: $colorLightText;
+  margin-bottom: 2rem;
+}
+
+.customErrorDiv{
+  position: relative;
+  .customError{
+    color: $colorWarn;
+    font-size: .75rem;
+    margin-top: -1.125rem;
+    margin-left: 0.75rem;
+    position: absolute;
+  }
+}
+
+
+@media only screen and (max-width: $breakpointMedium){
+
+  .mainTitle{
+    font-size: 2rem;
+  }
+  .navButtonContainer{
+    width: 80%;
+  }
+
+  .threeLine{
+    flex-wrap: wrap;
+    justify-content: center;
+    .thirdWidth{
+      width: calc(50% - 2rem);
+    }
+  }
+}
+
+
+@media only screen and (max-width: $breakpointSmall){
+
+  .navButtonContainer{
+    width: 100%;
+  }
+
+  .formLine{
+    flex-wrap: wrap;
+    justify-content: center;
+    .halfWidth, .thirdWidth {
+      width: 100%;
+    }
+  }
 }

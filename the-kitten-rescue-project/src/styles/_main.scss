@@ -25,7 +25,10 @@ body{
   }
 
 }
-  
+
+.inputLabel{
+  font-size: 1.25rem;
+}
 
 
 
@@ -58,4 +61,13 @@ app-adopt-page{
 //for modal overflow
 .overflowAuto{
   overflow-y: auto;
+}
+
+//override invalid input{
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+  color: $colorWarn !important;
+}
+
+.mat-error{
+  color: $colorWarn !important;
 }

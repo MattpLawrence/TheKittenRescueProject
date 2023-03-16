@@ -68,27 +68,6 @@
   padding-left: 4px;
 }
 
-//remove autofill color
-.inputDefault {
-  input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px $colorBackground inset !important;
-  }
-}
-
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px $colorPrimaryBackground inset !important;
-}
-
-//disabled input style
-.inputDisabled {
-  .mat-form-field-flex:hover .mat-form-field-outline {
-    transition: opacity 99999999999s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-  }
-  .mat-input-element {
-    color: $colorText;
-    cursor: not-allowed;
-  }
-}
 //override green disabled color
 .mat-button.mat-button-disabled.mat-button-disabled {
   background-color: $colorBackground;

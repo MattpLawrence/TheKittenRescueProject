@@ -45,7 +45,7 @@
   .mat-form-field-wrapper {
     .mat-form-field-flex {
       .mat-form-field-outline {
-        background-color: $colorBackground;
+        background-color: $colorPrimaryBackground;
         border-radius: 5px;
       }
     }
@@ -112,5 +112,27 @@
   }
   .mat-select-value-text{
     color:rgba(0, 0, 0, 0.5);
+  }
+}
+
+//remove autofill color
+.inputDefault {
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $colorPrimaryBackground inset !important;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px $colorBackground inset !important;
+}
+
+//disabled input style
+.inputDisabled {
+  .mat-form-field-flex:hover .mat-form-field-outline {
+    transition: opacity 99999999999s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  }
+  .mat-input-element {
+    color: $colorText;
+    cursor: not-allowed;
   }
 }

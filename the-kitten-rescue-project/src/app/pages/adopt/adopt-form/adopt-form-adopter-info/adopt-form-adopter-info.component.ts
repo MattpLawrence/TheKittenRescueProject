@@ -18,26 +18,35 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
+    
   ) {
     super()
-    this.form = new FormGroup({
+    this.form = this.formBuilder.group({
       adopterFirstName: new FormControl('', [Validators.required]),
       adopterLastName: new FormControl('', [Validators.required]),
-      adopterOccupation: new FormControl('', [Validators.required]),
-      adopterPhoneNumber: new FormControl('', [Validators.required]),
-      adopterEmail: new FormControl('', [Validators.required]),
-      adopterEmailConfirm: new FormControl('', [Validators.required]),
+      // adopterOccupation: new FormControl('', [Validators.required]),
+      adopterDOB: new FormControl('', [Validators.required]),
+      adopterPhoneNumber: new FormControl('', [Validators.required, Validators.pattern(this.phoneValidation)]),
+      adopterEmail: new FormControl('', [Validators.required, Validators.pattern(this.emailValidation)]),
+      adopterEmailConfirm: new FormControl('', [Validators.required, Validators.pattern(this.emailValidation)]),
       adopterAddressLine1: new FormControl('', [Validators.required]),
       adopterAddressLine2: new FormControl(''),
       adopterCity: new FormControl('', [Validators.required]),
       adopterState: new FormControl('', [Validators.required]),
       adopterZip: new FormControl('', [Validators.required]),
-      adopterDOB: new FormControl('', [Validators.required]),
-    });
+
+    }, { validator: this.checkEmailMatch });
   }
 
   ngOnInit(): void {
 
+  }
+
+  checkEmailMatch(group: FormGroup) {
+    let email = group.controls.adopterEmail.value;
+    let confirmEmail = group.controls.adopterEmailConfirm.value;
+
+    return email.toLowerCase() == confirmEmail.toLowerCase() ? null : { adopterEmailConfirm: true }
   }
 
   public error = (controlName: string, errorName: string) => {
