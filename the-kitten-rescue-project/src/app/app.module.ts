@@ -60,6 +60,7 @@ import { AdoptStepperComponent } from './pages/adopt/adopt-form/adopt-stepper/ad
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxMaskModule.forRoot()
 
   ],

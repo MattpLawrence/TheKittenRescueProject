@@ -10,7 +10,7 @@ import { BaseComponent } from 'src/app/common/components/base/base.component';
 })
 export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnInit {
 
-  form!: FormGroup;
+  public form: FormGroup;
   //regex validation
   emailValidation = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}";
   phoneValidation = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$";
@@ -18,9 +18,8 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
-  ) { super()}
-
-  ngOnInit(): void {
+  ) {
+    super()
     this.form = new FormGroup({
       adopterFirstName: new FormControl('', [Validators.required]),
       adopterLastName: new FormControl('', [Validators.required]),
@@ -34,10 +33,16 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
       adopterState: new FormControl('', [Validators.required]),
       adopterZip: new FormControl('', [Validators.required]),
       adopterDOB: new FormControl('', [Validators.required]),
-      homeType: new FormControl('', [Validators.required]),
-
-    })
+    });
   }
+
+  ngOnInit(): void {
+
+  }
+
+  public error = (controlName: string, errorName: string) => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
 
   next = () => {
     this.router.navigate(['adopt-page/form-home-info']);

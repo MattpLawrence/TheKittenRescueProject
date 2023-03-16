@@ -1,8 +1,22 @@
 <div class="mainContainer">
   <div class="sizeContainer">
-    <div class="formContainer">
+    <!-- form -->
+    <form [formGroup]="form" class="formContainer">
+      <div class="mainTitle">We want to know more about you.</div>
+      <div class="inputWrapperColumn" >
+        <mat-label for="cardHolderName">First Name</mat-label>
+        <mat-form-field appearance="outline" class="inputDefault inputWhite">
+          <input matInput placeholder="Adopter's First Name" autocomplete="given-name" formControlName="adopterFirstName" id="adopterFirstName"/>
+          <mat-error role='alert' *ngIf="error('adopterFirstName', 'required')">
+             Adopter's First Name Is Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
       
-    </div>
+    </form>
+
+    <!-- nav buttons -->
     <div class="navButtonContainer">
       <button mat-button  class="buttonTinted buttonLarge navButton" (click)="back()">
         Back
