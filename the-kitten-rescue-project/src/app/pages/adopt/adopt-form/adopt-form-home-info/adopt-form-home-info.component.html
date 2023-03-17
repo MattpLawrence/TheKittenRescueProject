@@ -1,11 +1,105 @@
 <div class="mainContainer">
-  <div class="navButtonContainer">
-    <button mat-button  class="buttonTinted buttonLarge navButton" (click)="back()">
-      Back
-    </button>
-    <button mat-button  class="buttonTinted buttonLarge navButton" (click)="next()">
-      Next
-    </button>
+  <div class="sizeContainer">
+    <!-- form -->
+    <form [formGroup]="form" class="formContainer">
+      <div class="mainTitle">Please Tell Us About Your Home</div>
+      <!-- home style -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">Type of Residence</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="Type Of Home" iso id="homeType" formControlName="homeType" >
+              <mat-option id="residence{{type}}" *ngFor="let type of homeTypeList" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('homeType', 'required')">
+                Type Of Residence Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Time At Your Current Residence</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput inputmode="numeric" placeholder="Time At Residence" formControlName="timeOfOccupancy" id="timeOfOccupancy"/>
+            <mat-error role='alert' *ngIf="error('timeOfOccupancy', 'required')">
+                Time At Current Residence Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Number of residence  -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Number Of Residence In Your Home</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput mask="999" inputmode="numeric" placeholder="Number Of Residence" formControlName="numberOfOccupants" id="numberOfOccupants"/>
+            <mat-error role='alert' *ngIf="error('numberOfOccupants', 'required')">
+              Number Of Residence Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Number Of Children In Your Home</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput mask="999" inputmode="numeric" placeholder="Number of Children" formControlName="numberOfChildren" id="numberOfChildren"/>
+            <mat-error role='alert' *ngIf="error('numberOfChildren', 'required')">
+                Number of Children Residence Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- type of environment  -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Please Describe Your Home Environment</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput inputmode="numeric" placeholder="Calm, Busy, Hectic, Etc." formControlName="homeEnvironment" id="homeEnvironment"/>
+            <mat-error role='alert' *ngIf="error('homeEnvironment', 'required')">
+              Number Of Residence Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="halfWidthContainer"  >
+          <div class="inputWrapperColumn halfWidth"  >
+            <mat-label class="inputLabel">Does Anyone In Your Home Smoke</mat-label>
+            <mat-form-field appearance="outline" class="selectDefault full-width">
+              <mat-select  placeholder="Does Anyone Smoke" iso id="hasSmokers" formControlName="hasSmokers" >
+                <mat-option id="residence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+              </mat-select>
+              <mat-error role='alert' *ngIf="error('hasSmokers', 'required')">
+                  This Field Is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="inputWrapperColumn halfWidth"  >
+            <mat-label class="inputLabel">Is Anyone Allergic To Cats</mat-label>
+            <mat-form-field appearance="outline" class="selectDefault full-width">
+              <mat-select  placeholder="Is Anyone Allergic To Cats" iso id="hasAllergies" formControlName="hasAllergies" >
+                <mat-option id="residence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+              </mat-select>
+              <mat-error role='alert' *ngIf="error('hasAllergies', 'required')">
+                  This Field Is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      
+
+        <!-- nav buttons -->
+      <mat-error *ngIf="hasSubmissionError"  id="formError">
+        Please Correctly Fill Out All Required Fields 
+      </mat-error>
+      <div class="navButtonContainer">
+        <button mat-button  class="buttonTinted buttonLarge navButton" (click)="back()">
+          Back
+        </button>
+        <button mat-button  class="buttonTinted buttonLarge navButton" (click)="next()">
+          Next
+        </button>
+      </div>
+    </form>
+
+
   </div>
 </div>
-
