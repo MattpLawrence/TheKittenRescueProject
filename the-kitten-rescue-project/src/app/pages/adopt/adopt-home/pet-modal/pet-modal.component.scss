@@ -1,5 +1,6 @@
 @import '../../../../../styles.scss';
 
+
 .mainContainer{
   position: relative;
   @include flexColumnStart;
@@ -77,7 +78,7 @@
       width: 10rem;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: flex-start;
       margin-bottom: 1rem;
       background-color: $colorBackground;
@@ -137,6 +138,11 @@
     }
   }
 }
+
+#maleIcon{
+  margin-left: -.3rem;
+}
+
 .columnTitle{
   font-size: 1.75rem;
   font-weight: 500;
@@ -157,7 +163,7 @@
 }
 
 #myAttributes{
-  justify-content: flex-end;
+  // justify-content: flex-end;
   align-items: flex-start;
 }
 
@@ -177,7 +183,7 @@
       justify-content: center;
     }
     .leftContainer{
-      width: calc(100% - 2rem);
+      width: calc(100% - 3rem);
       button{
         width: 70%;
       }

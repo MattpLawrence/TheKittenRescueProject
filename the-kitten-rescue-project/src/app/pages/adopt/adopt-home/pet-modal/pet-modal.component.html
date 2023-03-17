@@ -9,11 +9,11 @@
     <h1 id="petName">{{currentPet.name}}</h1>
     <div class="columnContainer">
       
-      <div *ngIf="currentBreakpoint != 0" class="leftContainer">
+      <!-- <div *ngIf="currentBreakpoint != 0" class="leftContainer">
         <div class="columnTitle" id="adoptTitle">Want To Adopt Me?</div>
         <button mat-button class="buttonText .buttonLarge" (click)="navigate()">Go To Adoption Application</button>
         <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
-      </div>
+      </div> -->
       
       <div class="rightContainer">
         <div class="attributeItem">
@@ -27,9 +27,14 @@
         </div>
 
         <div class="attributeItem">
-          <span class="material-icons attributeIcon">
-            transgender
-          </span>
+          <div class="genderRow">
+            <span class="material-icons attributeIcon">
+              female
+            </span>
+            <span class="material-icons attributeIcon" id="maleIcon">
+              male
+            </span>
+          </div>
           <div class="bottomContainer">
             <div class="attributeTitle">Gender</div>
             <div class="attributeDetail">{{currentPet.gender}}</div>
@@ -108,7 +113,7 @@
           </div>
         </div>
 
-        <div class="attributeItem"  id="myAttributes">
+        <div  *ngIf="currentPet.tags.length != 0" class="attributeItem"  id="myAttributes">
           <div class="attributeTitle">My Attributes</div>
           <ul id="attributeList">
             <li class="cleanFormat" *ngFor="let attribute of currentPet.tags">{{attribute}}</li>
@@ -116,7 +121,7 @@
         </div>
       </div>
 
-      <div *ngIf="currentBreakpoint == 0" class="leftContainer">
+      <div class="leftContainer">
         <div class="columnTitle" id="adoptTitle">Want To Adopt Me?</div>
         <button mat-button  class="buttonText .buttonLarge" (click)="navigate()">Go To Adoption Application</button>
         <button mat-button class="buttonText .buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>

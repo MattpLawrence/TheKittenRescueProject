@@ -1,0 +1,26 @@
+<div class="mainContainer">
+  <div class="frameContainer">
+    <div id="nextButton" class="navButtonContainer" (click)="navigate(true)">
+      <span class="material-icons navButton">
+        arrow_forward_ios
+      </span>
+    </div>
+    <div id="lastButton" class="navButtonContainer" (click)="navigate(false)">
+      <span class="material-icons navButton">
+        arrow_back_ios
+      </span>
+    </div>
+    <div class="carouselContainer">
+      <div class="carouselItem" *ngFor="let item of carouselList" [ngClass]="{isCurrent: item.id === currentId, isNext: item.id === currentId + 1, isLast: item.id === currentId -1}">
+        <!-- for image -->
+        <img *ngIf="!item.isIframe" class="carouselImg" src="{{item.imgSource}}" alt="pet image {{item.id}}">
+        <!-- or for iframe -->
+        <iframe *ngIf="item.isIframe" class="petIframe" title="Video"  allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen [src]="item.iframeSrc | safe">
+          <a *ngIf="item.isIframe" target="_blank" href="{{item.aHref}}">
+            <img src="{{item.imgSource}}" />
+          </a>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>

@@ -66,6 +66,7 @@ app-adopt-page{
 //for modal overflow
 .overflowAuto{
   overflow-y: auto;
+  max-height: 95vh;
 }
 
 //override invalid input{
@@ -75,4 +76,13 @@ app-adopt-page{
 
 .mat-error{
   color: $colorWarn !important;
+}
+
+@media only screen and (max-width: $breakpointSmall){
+  .overflowAuto{
+    max-height: 100vh;
+    *::-webkit-scrollbar {
+      width: 0px;
+    }
+  }
 }
