@@ -51,8 +51,25 @@
   }
 }
 
+.formContainer{
+  .optionalPanel{
+    overflow: hidden;
+    height: 0rem;
+    transition: .6s ease-in-out;
+    width: 100%;
+    @include flexColumnStart;;
+  }
+  .isExpanded{
+    height: 14rem;
+  }
+}
+
 #formError{
   margin-top: 2rem;
+}
+
+.labelDisabled{
+  color: #969696;
 }
 
 .navButtonContainer{
@@ -111,6 +128,12 @@
     width: 100%;
   }
 
+  .formContainer{
+    .isExpanded{
+      height: 27.25rem;
+    }
+  }
+
   .formLine{
     flex-wrap: wrap;
     justify-content: center;
@@ -130,4 +153,15 @@
       margin-top: 0rem;
     }
   }
+}
+
+
+@media only screen and (max-width: 330px){
+
+  .formContainer{
+    .isExpanded{
+      height: fit-content
+    }
+  }
+
 }

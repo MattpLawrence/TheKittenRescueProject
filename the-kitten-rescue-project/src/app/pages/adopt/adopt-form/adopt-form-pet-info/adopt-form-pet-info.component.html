@@ -3,10 +3,105 @@
     <!-- form -->
     <form [formGroup]="form" class="formContainer">
       <div class="mainTitle">Let's Talk About Your Pet History</div>
-      <!-- name -->
+      <!-- line 1 -->
       <div class="formLine formArray">
-        <!-- [required]="form.controls.acceptsACH.value" -->
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">Have You Adopted From A Rescue Before</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="Yes / No" iso id="hasAdopted" formControlName="hasAdopted" >
+              <mat-option id="hasAdopted{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('hasAdopted', 'required')">
+                This Field Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">In The Last Five Years Have You Owned Any Cats</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="Yes / No" iso id="hasCats" formControlName="hasCats" >
+              <mat-option id="hasCats{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('hasCats', 'required')">
+                This Field Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
       </div>
+      <!-- optional cat history -->
+      <div class="optionalPanel" id="catHistory" [ngClass]="{isExpanded: form.controls.hasCats.value == 'Yes'}">
+        <!-- expansion line 1 -->
+        <div class="formLine">
+          <div class="inputWrapperColumn halfWidth" >
+            <mat-label class="inputLabel" >How Many Cats</mat-label>
+            <mat-form-field appearance="outline" class="inputDefault ">
+              <input matInput mask="999" inputmode="numeric" placeholder="ex: 4" formControlName="numberOfCats" id="numberOfCats" [required]="form.controls.hasCats.value == 'Yes'? true: false"/>
+              <mat-error role='alert' *ngIf="error('numberOfCats', 'required')">
+                Number Of Cats Is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="inputWrapperColumn halfWidth" >
+            <mat-label class="inputLabel" >Where Do You Keep These Cats</mat-label>
+            <mat-form-field appearance="outline" class="inputDefault ">
+              <input matInput placeholder="ex: Inside, Outside " formControlName="whereKept" id="whereKept" [required]="form.controls.hasCats.value == 'Yes'? true: false"/>
+              <mat-error role='alert' *ngIf="error('whereKept', 'required')">
+                Where Cats Are Kept Is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- expansion line 2 -->
+        <div class="formLine">
+          <div class="inputWrapperColumn halfWidth" >
+            <mat-label class="inputLabel" *ngIf="form.controls.numberOfCats.value== null || form.controls.numberOfCats.value <= 1" >Do You Still Have This Cat</mat-label>
+            <mat-label *ngIf="form.controls.numberOfCats.value > 1" class="inputLabel">Do You Still Have These Cats</mat-label>
+            <mat-form-field appearance="outline" class="selectDefault full-width">
+              <mat-select  placeholder="Yes / No" iso id="stillHas" formControlName="stillHas" >
+                <mat-option id="stillHas{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+              </mat-select>
+              <mat-error role='alert' *ngIf="error('stillHas', 'required')">
+                  This Field Is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="inputWrapperColumn halfWidth" >
+            <mat-label class="inputLabel" [ngClass]="{labelDisabled: form.controls.stillHas.value == 'Yes'? true: false}" >Reason You No Longer Have This Cat</mat-label>
+            <mat-form-field appearance="outline" class="inputDefault " [ngClass]="{inputDisabled: form.controls.stillHas.value == 'Yes'? true: false}">
+              <input matInput placeholder="ex: Passed of old age at 17" formControlName="reason" id="reason" [required]="form.controls.hasCats.value == 'Yes'? true: false" />
+              <mat-error role='alert' *ngIf="error('reason', 'required')">
+                Where Cats Are Kept Is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <!-- line 1 -->
+      <div class="formLine formArray">
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">Do Any Animals In Your House Currently Show Aggression</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="Yes / No" iso id="shownAggression" formControlName="shownAggression" >
+              <mat-option id="shownAggression{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('shownAggression', 'required')">
+                This Field Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">In The Last Five Years Have You Owned Any Cats</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="Yes / No" iso id="hasCats" formControlName="hasCats" >
+              <mat-option id="hasCats{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('hasCats', 'required')">
+                This Field Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
 
         <!-- nav buttons -->
       <mat-error *ngIf="hasSubmissionError"  id="formError">

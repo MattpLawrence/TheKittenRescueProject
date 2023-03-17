@@ -13,8 +13,10 @@ import { CommonService } from 'src/app/common/services/common.service';
 export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
 
   public form: FormGroup;
-
   hasSubmissionError: boolean = false;
+  catExperienceList: string[] = ["First Time Cat Adopter", "Have Had A Few Cats", "	Knowledgeable and Experienced"]
+  yesNo: string[] = ["Yes", "No"];
+
 
   constructor(
     private router: Router,
@@ -22,26 +24,37 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     private viewportScroller: ViewportScroller
   ) {super()
     this.form = this.formBuilder.group({
-      hasAdopted: new FormControl(null, [Validators.required]),
+      hasAdopted: new FormControl(null, [Validators.required]), //boolean
       //cat history section
-      hasCats: new FormControl(null, [Validators.required]),
-      numberOfCats: new FormControl(null, [Validators.required]),
-      whereKept: new FormControl(null, [Validators.required]),
-      stillHas: new FormControl(null, [Validators.required]),
-      reason: new FormControl(null),
+      hasCats: new FormControl(null, [Validators.required]), //boolean
+      numberOfCats: new FormControl(null),  //conditional validation in the html
+      whereKept: new FormControl(null,), //conditional validation in the html
+      stillHas: new FormControl(null,), //conditional validation in the html
+      reason: new FormControl(null), //conditional validation in the html
       //all animals
-      shownAggression: new FormControl(null, [Validators.required]),
+      shownAggression: new FormControl(null, [Validators.required]), //boolean
       hasOtherPets: new FormControl(null, [Validators.required]),
       petDescription: new FormControl(null, [Validators.required]),
       vetName: new FormControl(null, [Validators.required]),
       vetPhone: new FormControl(null, [Validators.required]),
       //this cat
-      adoptReason: new FormControl(null),
-      willDeclaw: new FormControl(null, [Validators.required]),
+      adoptReason: new FormControl(null, [Validators.required]), //select
+      willDeclaw: new FormControl(null, [Validators.required]), //boolean
       locationDay: new FormControl(null, [Validators.required]),
       locationNight: new FormControl(null, [Validators.required]),
       locationSleep: new FormControl(null, [Validators.required]),
-      hadDoggyDoor: new FormControl(null, [Validators.required]),
+      movePlans: new FormControl(null, [Validators.required]),
+      returnReason: new FormControl(null, [Validators.required]),
+      hasViolence: new FormControl(null, [Validators.required]), //boolean
+      catExperience: new FormControl(null, [Validators.required]), //select
+      canCommit: new FormControl(null, [Validators.required]),  //boolean
+      undesirableBehavior: new FormControl(null, [Validators.required]),
+      desirableBehavior: new FormControl(null, [Validators.required]),
+      referenceName: new FormControl(null, [Validators.required]),
+      referencePhone: new FormControl(null, [Validators.required]),
+      referenceRelationship: new FormControl(null, [Validators.required]),
+
+      
 
     })
   }
@@ -69,10 +82,11 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
 
 
   next = () => {
+    console.log(this.form.controls.stillHas)
     
     // if(this.form.valid)this.router.navigate(['adopt-page/form-pet-info']);
-    // if(this.form.valid)console.log('what next?');
-    // else this.hasSubmissionError = true;
+    if(this.form.valid)console.log('what next?');
+    else this.hasSubmissionError = true;
   }
 
   back = () => {
