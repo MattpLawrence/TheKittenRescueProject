@@ -98,23 +98,23 @@
 
         <div class="halfWidthContainer"  >
           <div class="inputWrapperColumn halfWidth"  >
-            <mat-label class="inputLabel">Does The Primary Adopter Work From Home</mat-label>
+            <mat-label class="inputLabel">Does Your Home Have A Doggy Door</mat-label>
             <mat-form-field appearance="outline" class="selectDefault full-width">
-              <mat-select  placeholder="Yes / No" iso id="worksFromHome" formControlName="worksFromHome" >
-                <mat-option id="residence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+              <mat-select  placeholder="Yes / No" iso id="hasDoggyDoor" formControlName="hasDoggyDoor" >
+                <mat-option id="hasDoggyDoor{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
               </mat-select>
-              <mat-error role='alert' *ngIf="error('worksFromHome', 'required')">
+              <mat-error role='alert' *ngIf="error('hasDoggyDoor', 'required')">
                   This Field Is Required
               </mat-error>
             </mat-form-field>
           </div>
           <div class="inputWrapperColumn halfWidth"  >
-            <mat-label class="inputLabel">Is There Usually An Adult Home During The Day</mat-label>
+            <mat-label class="inputLabel">Will This Cat Have Outdoor Access</mat-label>
             <mat-form-field appearance="outline" class="selectDefault full-width">
-              <mat-select  placeholder="Yes / No" iso id="hasOccupantHome" formControlName="hasOccupantHome" >
+              <mat-select  placeholder="Yes / No" iso id="hasOutdoorAccess" formControlName="hasOutdoorAccess" >
                 <mat-option id="residence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
               </mat-select>
-              <mat-error role='alert' *ngIf="error('hasOccupantHome', 'required')">
+              <mat-error role='alert' *ngIf="error('hasOutdoorAccess', 'required')">
                   This Field Is Required
               </mat-error>
             </mat-form-field>

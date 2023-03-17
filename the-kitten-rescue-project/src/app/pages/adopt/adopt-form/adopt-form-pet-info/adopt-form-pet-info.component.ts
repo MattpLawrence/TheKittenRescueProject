@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { CommonService } from 'src/app/common/services/common.service';
@@ -22,14 +22,26 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     private viewportScroller: ViewportScroller
   ) {super()
     this.form = this.formBuilder.group({
-      adopterFirstName: new FormControl('', [Validators.required]),
-      adopterLastName: new FormControl('', [Validators.required]),
-      adopterDOB: new FormControl('', [Validators.required]),
-      adopterAddressLine1: new FormControl('', [Validators.required]),
-      adopterAddressLine2: new FormControl(''),
-      adopterCity: new FormControl('', [Validators.required]),
-      adopterState: new FormControl('', [Validators.required]),
-      adopterZip: new FormControl('', [Validators.required]),
+      hasAdopted: new FormControl(null, [Validators.required]),
+      //cat history section
+      hasCats: new FormControl(null, [Validators.required]),
+      numberOfCats: new FormControl(null, [Validators.required]),
+      whereKept: new FormControl(null, [Validators.required]),
+      stillHas: new FormControl(null, [Validators.required]),
+      reason: new FormControl(null),
+      //all animals
+      shownAggression: new FormControl(null, [Validators.required]),
+      hasOtherPets: new FormControl(null, [Validators.required]),
+      petDescription: new FormControl(null, [Validators.required]),
+      vetName: new FormControl(null, [Validators.required]),
+      vetPhone: new FormControl(null, [Validators.required]),
+      //this cat
+      adoptReason: new FormControl(null),
+      willDeclaw: new FormControl(null, [Validators.required]),
+      locationDay: new FormControl(null, [Validators.required]),
+      locationNight: new FormControl(null, [Validators.required]),
+      locationSleep: new FormControl(null, [Validators.required]),
+      hadDoggyDoor: new FormControl(null, [Validators.required]),
 
     })
   }
@@ -50,12 +62,20 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     },1)
   }
 
+  get petHistory(){
+    return this.form.controls.petHistory as FormArray;
+  }
+
+
+
   next = () => {
-    if(this.form.valid)this.router.navigate(['adopt-page/form-pet-info']);
-    else this.hasSubmissionError = true;
+    
+    // if(this.form.valid)this.router.navigate(['adopt-page/form-pet-info']);
+    // if(this.form.valid)console.log('what next?');
+    // else this.hasSubmissionError = true;
   }
 
   back = () => {
-    this.router.navigate(['adopt-page/form-adopter-info']);
+    this.router.navigate(['adopt-page/form-home-info']);
   }
 }

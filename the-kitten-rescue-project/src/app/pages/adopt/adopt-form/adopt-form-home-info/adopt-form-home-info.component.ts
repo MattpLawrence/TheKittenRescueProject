@@ -32,12 +32,10 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
       hasSmokers: new FormControl(null, [Validators.required]), //boolean
       hasAllergies: new FormControl(null, [Validators.required]), //boolean
       primaryOccupant: new FormControl(null, [Validators.required]),
-      // primaryFinancier: new FormControl(null, [Validators.required]),
-      worksFromHome: new FormControl(null, [Validators.required]), //boolean
-      hasOccupantHome: new FormControl(null, [Validators.required]), //boolean
+      hasDoggyDoor: new FormControl(null, [Validators.required]), //boolean
+      hasOutdoorAccess: new FormControl(null, [Validators.required]), //boolean
       estTimeAlone: new FormControl(null, [Validators.required]), //select
-      emergencyCareTaker: new FormControl(null, [Validators.required]),
-      // emergencyContactRelationship: new FormControl(null, [Validators.required]),
+      emergencyCareTaker: new FormControl(null, [Validators.required])
 
     })
   }
