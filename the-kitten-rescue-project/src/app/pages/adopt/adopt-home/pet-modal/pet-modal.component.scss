@@ -161,6 +161,10 @@
   align-items: flex-start;
 }
 
+#adoptTitle{
+  color: $colorPrimaryBackground;
+}
+
 @media only screen and (max-width: $breakpointMedium) {
 
   .columnContainer{
