@@ -11,7 +11,7 @@ import { LandingPageComponent } from "../pages/landing-page/landing-page.compone
 import { VolunteerPageComponent } from "../pages/volunteer-page/volunteer-page.component";
 
 
-const routes: Routes = [
+export const routes: Routes = [
  {
    path: "error",
    component: LandingPageComponent,

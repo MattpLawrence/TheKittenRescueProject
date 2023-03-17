@@ -42,6 +42,7 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
   }
 
   ngOnInit(): void {
+
   }
 
   public error = (controlName: string, errorName: string) => {

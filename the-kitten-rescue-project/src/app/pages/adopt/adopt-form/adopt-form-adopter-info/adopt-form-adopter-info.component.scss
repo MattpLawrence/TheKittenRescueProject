@@ -70,6 +70,10 @@
 
 @media only screen and (max-width: $breakpointMedium){
 
+  .inputLabel{
+    font-size: 1rem;
+  }
+
   .mainTitle{
     font-size: 2rem;
   }
@@ -88,6 +92,15 @@
 
 
 @media only screen and (max-width: $breakpointSmall){
+
+  .sizeContainer{
+    width: calc(100% - 2rem);
+    padding: 1rem 0;
+  }
+
+  .mainTitle{
+    font-size: 1.5rem;
+  }
 
   .navButtonContainer{
     width: 100%;

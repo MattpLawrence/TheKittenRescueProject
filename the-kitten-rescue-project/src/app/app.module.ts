@@ -26,7 +26,8 @@ import { AdoptFormHomeInfoComponent } from './pages/adopt/adopt-form/adopt-form-
 import { AdoptFormPetInfoComponent } from './pages/adopt/adopt-form/adopt-form-pet-info/adopt-form-pet-info.component';
 import { AdoptRouterComponent } from './pages/adopt/adopt-router/adopt-router.component';
 import { AdoptStepperComponent } from './pages/adopt/adopt-form/adopt-stepper/adopt-stepper.component';
-
+import { RouterModule } from '@angular/router';
+import {routes} from './modules/routes.module'
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AdoptStepperComponent } from './pages/adopt/adopt-form/adopt-stepper/ad
     ReactiveFormsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    RouterModule.forRoot(routes,{scrollPositionRestoration: 'top'} )
 
   ],
   providers: [],

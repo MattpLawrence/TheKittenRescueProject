@@ -99,6 +99,14 @@
 
 @media only screen and (max-width: $breakpointSmall){
 
+  .sizeContainer{
+    width: calc(100% - 2rem);
+    padding: 1rem 0;
+  }
+  .mainTitle{
+    font-size: 1.5rem;
+  }
+
   .navButtonContainer{
     width: 100%;
   }

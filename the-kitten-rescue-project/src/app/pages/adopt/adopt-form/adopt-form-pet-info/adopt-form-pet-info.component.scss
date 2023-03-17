@@ -76,8 +76,16 @@
   }
 }
 
-
 @media only screen and (max-width: $breakpointSmall){
+
+  .sizeContainer{
+    width: calc(100% - 2rem);
+    padding: 1rem 0;
+  }
+  
+  .mainTitle{
+    font-size: 1.5rem;
+  }
 
   .navButtonContainer{
     width: 100%;
@@ -88,6 +96,18 @@
     justify-content: center;
     .halfWidth, .thirdWidth {
       width: 100%;
+    }
+
+    .halfWidthContainer{
+      margin: 1rem;
+      width: calc(100% - 2rem);
+      & > * {
+        width: calc(50% - .5rem);
+      }
+    }
+
+    .noTopMargin{
+      margin-top: 0rem;
     }
   }
 }
