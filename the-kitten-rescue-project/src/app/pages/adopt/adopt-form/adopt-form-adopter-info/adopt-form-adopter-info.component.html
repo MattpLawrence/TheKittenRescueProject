@@ -8,7 +8,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >First Name</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Adopter's First Name" autocomplete="given-name" formControlName="adopterFirstName" id="adopterFirstName"/>
+            <input matInput placeholder="ex: Tom , Nancy" autocomplete="given-name" formControlName="adopterFirstName" id="adopterFirstName"/>
             <mat-error role='alert' *ngIf="error('adopterFirstName', 'required')">
                Adopter's First Name Is Required
             </mat-error>
@@ -17,7 +17,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Last Name</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Adopter's Last Name" autocomplete="family-name" formControlName="adopterLastName" id="adopterLastName"/>
+            <input matInput placeholder="ex: Patel, Smith" autocomplete="family-name" formControlName="adopterLastName" id="adopterLastName"/>
             <mat-error role='alert' *ngIf="error('adopterLastName', 'required')">
                Adopter's Last Name Is Required
             </mat-error>
@@ -38,7 +38,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Primary Phone Number</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput mask="(000)-000-0000" placeholder="Adopter's First Name" autocomplete="tel-national" inputmode="numeric" formControlName="adopterPhoneNumber" id="adopterPhoneNumber"/>
+            <input matInput mask="(000)-000-0000" placeholder="(000)-123-1234" autocomplete="tel-national" inputmode="numeric" formControlName="adopterPhoneNumber" id="adopterPhoneNumber"/>
             <mat-error role='alert' *ngIf="error('adopterPhoneNumber', 'required')">
                Adopter's Phone Number Is Required
             </mat-error>
@@ -53,7 +53,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" for="adopterEmail">Email Address</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Adopter's Email Address" autocomplete="email" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" formControlName="adopterEmail" id="adopterEmail"/>
+            <input matInput placeholder="ex: KittenFanatic@tkfr.org" autocomplete="email" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" formControlName="adopterEmail" id="adopterEmail"/>
             <mat-error role='alert' *ngIf="error('adopterEmail', 'required')">
                Adopter's Email Address Is Required
             </mat-error>
@@ -65,7 +65,7 @@
         <div class="inputWrapperColumn halfWidth customErrorDiv" >
           <mat-label class="inputLabel" >Confirm Email Address</mat-label>
           <mat-form-field appearance="outline" class="inputDefault " >
-            <input matInput placeholder="Adopter's Email Address" type="text" autocomplete="email" onselectstart="return false" formControlName="adopterEmailConfirm" id="adopterEmailConfirm"/>
+            <input matInput placeholder="ex: KittenFanatic@tkfr.org" type="text" autocomplete="email" onselectstart="return false" formControlName="adopterEmailConfirm" id="adopterEmailConfirm"/>
             <mat-error role='alert' *ngIf="error('adopterEmailConfirm', 'required')">
                Confirmation Email Address Is Required
             </mat-error>
@@ -81,11 +81,11 @@
       <!-- name -->
       <div class="formLine">
         <div class="inputWrapperColumn halfWidth" >
-          <mat-label class="inputLabel" >Address Line 1</mat-label>
+          <mat-label class="inputLabel" >Occupation</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Adopter's Address" autocomplete="address-line1" formControlName="adopterAddressLine1" id="adopterAddressLine1"/>
-            <mat-error role='alert' *ngIf="error('adopterAddressLine1', 'required')">
-               Address Is Required
+            <input matInput placeholder="ex: Student, Doctor" formControlName="primaryOccupantJob" id="primaryOccupantJob"/>
+            <mat-error role='alert' *ngIf="error('primaryOccupantJob', 'required')">
+              Occupation Is Required
             </mat-error>
           </mat-form-field>
         </div>
@@ -99,12 +99,31 @@
           </mat-form-field>
         </div>
       </div>
+      <!-- address lines -->
+        <div class="formLine">
+          <div class="inputWrapperColumn halfWidth" >
+            <mat-label class="inputLabel" >Address Line 1</mat-label>
+            <mat-form-field appearance="outline" class="inputDefault ">
+              <input matInput placeholder="ex: 1234 Example Lane" autocomplete="address-line1" formControlName="adopterAddressLine1" id="adopterAddressLine1"/>
+              <mat-error role='alert' *ngIf="error('adopterAddressLine1', 'required')">
+                 Address Is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="inputWrapperColumn halfWidth" >
+            <mat-label class="inputLabel" >Address Line 2</mat-label>
+            <mat-form-field appearance="outline" class="inputDefault ">
+              <input matInput placeholder="ex: Apartment 400" autocomplete="address-line2" formControlName="adopterAddressLine2" id="adopterAddressLine2"/>
+            </mat-form-field>
+          </div>
+        </div>
+
         <!-- address city etc -->
         <div class="formLine threeLine">
           <div class="inputWrapperColumn thirdWidth" >
             <mat-label class="inputLabel" >City</mat-label>
             <mat-form-field appearance="outline" class="inputDefault ">
-              <input matInput placeholder="City"  formControlName="adopterCity" id="adopterCity"/>
+              <input matInput placeholder="ex: Atlanta"  formControlName="adopterCity" id="adopterCity"/>
               <mat-error role='alert' *ngIf="error('adopterCity', 'required')">
                  City Is Required
               </mat-error>
@@ -113,7 +132,7 @@
           <div class="inputWrapperColumn thirdWidth" >
             <mat-label class="inputLabel" >State</mat-label>
             <mat-form-field appearance="outline" class="inputDefault ">
-              <input matInput type="text" name="state" placeholder="State"  formControlName="adopterState" id="adopterState"/>
+              <input matInput type="text" name="state" placeholder="ex: Georgia"  formControlName="adopterState" id="adopterState"/>
               <mat-error role='alert' *ngIf="error('adopterState', 'required')">
                 State Is Required
               </mat-error>
@@ -122,7 +141,7 @@
           <div class="inputWrapperColumn thirdWidth" >
             <mat-label class="inputLabel" >Zip Code</mat-label>
             <mat-form-field appearance="outline" class="inputDefault " >
-              <input matInput placeholder="Zip Code" type="text" inputmode="numeric" formControlName="adopterZip" id="adopterZip"/>
+              <input matInput placeholder="ex: 30338" type="text" inputmode="numeric" formControlName="adopterZip" id="adopterZip"/>
               <mat-error role='alert' *ngIf="error('adopterZip', 'required')">
                  Zip Code Is Required
               </mat-error>

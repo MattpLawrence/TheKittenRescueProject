@@ -8,7 +8,7 @@
         <div class="inputWrapperColumn halfWidth"  >
           <mat-label class="inputLabel">Type of Residence</mat-label>
           <mat-form-field appearance="outline" class="selectDefault full-width">
-            <mat-select  placeholder="Type Of Home" iso id="homeType" formControlName="homeType" >
+            <mat-select  placeholder="ex: Apartment" iso id="homeType" formControlName="homeType" >
               <mat-option id="residence{{type}}" *ngFor="let type of homeTypeList" [value]="type">{{type}}</mat-option>
             </mat-select>
             <mat-error role='alert' *ngIf="error('homeType', 'required')">
@@ -20,28 +20,28 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Time At Your Current Residence</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Time At Residence" formControlName="timeOfOccupancy" id="timeOfOccupancy"/>
+            <input matInput placeholder="ex: 2 years" formControlName="timeOfOccupancy" id="timeOfOccupancy"/>
             <mat-error role='alert' *ngIf="error('timeOfOccupancy', 'required')">
                 Time At Current Residence Is Required
             </mat-error>
           </mat-form-field>
         </div>
       </div>
-      <!-- Number of residence  -->
+      <!-- Number of Residents  -->
       <div class="formLine">
         <div class="inputWrapperColumn halfWidth" >
-          <mat-label class="inputLabel" >Number Of Residence In Your Home</mat-label>
+          <mat-label class="inputLabel" >Number Of Residents In Your Home</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput mask="999" inputmode="numeric" placeholder="Number Of Residence" formControlName="numberOfOccupants" id="numberOfOccupants"/>
+            <input matInput mask="999" inputmode="numeric" placeholder="ex: 4" formControlName="numberOfOccupants" id="numberOfOccupants"/>
             <mat-error role='alert' *ngIf="error('numberOfOccupants', 'required')">
-              Number Of Residence Is Required
+              Number Of Residents Is Required
             </mat-error>
           </mat-form-field>
         </div>
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Number Of Children In Your Home</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput mask="999" inputmode="numeric" placeholder="Number of Children" formControlName="numberOfChildren" id="numberOfChildren"/>
+            <input matInput mask="999" inputmode="numeric" placeholder="ex: 2" formControlName="numberOfChildren" id="numberOfChildren"/>
             <mat-error role='alert' *ngIf="error('numberOfChildren', 'required')">
                 Number of Children Residence Is Required
             </mat-error>
@@ -53,7 +53,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Please Describe Your Home Environment</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Calm, Busy, Hectic, Etc." formControlName="homeEnvironment" id="homeEnvironment"/>
+            <input matInput placeholder="ex: Calm, Busy, Hectic, Etc." formControlName="homeEnvironment" id="homeEnvironment"/>
             <mat-error role='alert' *ngIf="error('homeEnvironment', 'required')">
               Number Of Residence Is Required
             </mat-error>
@@ -63,7 +63,7 @@
           <div class="inputWrapperColumn halfWidth"  >
             <mat-label class="inputLabel">Does Anyone In Your Home Smoke</mat-label>
             <mat-form-field appearance="outline" class="selectDefault full-width">
-              <mat-select  placeholder="Does Anyone Smoke" iso id="hasSmokers" formControlName="hasSmokers" >
+              <mat-select  placeholder="Yes / No" iso id="hasSmokers" formControlName="hasSmokers" >
                 <mat-option id="residence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
               </mat-select>
               <mat-error role='alert' *ngIf="error('hasSmokers', 'required')">
@@ -74,7 +74,7 @@
           <div class="inputWrapperColumn halfWidth"  >
             <mat-label class="inputLabel">Is Anyone Allergic To Cats</mat-label>
             <mat-form-field appearance="outline" class="selectDefault full-width">
-              <mat-select  placeholder="Is Anyone Allergic To Cats" iso id="hasAllergies" formControlName="hasAllergies" >
+              <mat-select  placeholder="Yes / No" iso id="hasAllergies" formControlName="hasAllergies" >
                 <mat-option id="residence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
               </mat-select>
               <mat-error role='alert' *ngIf="error('hasAllergies', 'required')">
@@ -89,38 +89,18 @@
         <div class="inputWrapperColumn halfWidth noTopMargin" >
           <mat-label class="inputLabel" >Who Will Be Primarily Responsible For This Animal</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Primary Responsibility" formControlName="primaryOccupant" id="primaryOccupant"/>
+            <input matInput placeholder="ex: Myself, My Wife, My Son" formControlName="primaryOccupant" id="primaryOccupant"/>
             <mat-error role='alert' *ngIf="error('primaryOccupant', 'required')">
               Primary Adopter Is Required
             </mat-error>
           </mat-form-field>
         </div>
-        <div class="inputWrapperColumn halfWidth" >
-          <mat-label class="inputLabel" >Who Will Be Financially Responsible For This Animal</mat-label>
-          <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Primary Financier" formControlName="primaryFinancier" id="primaryFinancier"/>
-            <mat-error role='alert' *ngIf="error('primaryFinancier', 'required')">
-                Primary Financier Is Required
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <!-- job  -->
-      <div class="formLine">
-        <div class="inputWrapperColumn halfWidth" >
-          <mat-label class="inputLabel" >What is the Occupation of The Primary Adopter</mat-label>
-          <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Occupation" formControlName="primaryOccupantJob" id="primaryOccupantJob"/>
-            <mat-error role='alert' *ngIf="error('primaryOccupantJob', 'required')">
-              Occupation Is Required
-            </mat-error>
-          </mat-form-field>
-        </div>
+
         <div class="halfWidthContainer"  >
           <div class="inputWrapperColumn halfWidth"  >
             <mat-label class="inputLabel">Does The Primary Adopter Work From Home</mat-label>
             <mat-form-field appearance="outline" class="selectDefault full-width">
-              <mat-select  placeholder="Work From Home" iso id="worksFromHome" formControlName="worksFromHome" >
+              <mat-select  placeholder="Yes / No" iso id="worksFromHome" formControlName="worksFromHome" >
                 <mat-option id="residence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
               </mat-select>
               <mat-error role='alert' *ngIf="error('worksFromHome', 'required')">
@@ -131,7 +111,7 @@
           <div class="inputWrapperColumn halfWidth"  >
             <mat-label class="inputLabel">Is There Usually An Adult Home During The Day</mat-label>
             <mat-form-field appearance="outline" class="selectDefault full-width">
-              <mat-select  placeholder="Is An Adult Home" iso id="hasOccupantHome" formControlName="hasOccupantHome" >
+              <mat-select  placeholder="Yes / No" iso id="hasOccupantHome" formControlName="hasOccupantHome" >
                 <mat-option id="residence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
               </mat-select>
               <mat-error role='alert' *ngIf="error('hasOccupantHome', 'required')">
@@ -147,7 +127,7 @@
         <div class="inputWrapperColumn halfWidth noTopMargin"  >
           <mat-label class="inputLabel">Time This Animal Will Spend Alone On An Average Day</mat-label>
           <mat-form-field appearance="outline" class="selectDefault full-width">
-            <mat-select  placeholder="Time Alone" iso id="estTimeAlone" formControlName="estTimeAlone" >
+            <mat-select  placeholder="ex: 7-10 Hours" iso id="estTimeAlone" formControlName="estTimeAlone" >
               <mat-option id="residence{{time}}" *ngFor="let time of estTimeList" [value]="time">{{time}}</mat-option>
             </mat-select>
             <mat-error role='alert' *ngIf="error('estTimeAlone', 'required')">
@@ -156,9 +136,9 @@
           </mat-form-field>
         </div>
         <div class="inputWrapperColumn halfWidth" >
-          <mat-label class="inputLabel" >In The Event Of An Emergency Who Will Be Responsible For This Animal</mat-label>
+          <mat-label class="inputLabel" >If something were to happen to you, who would take responsibility of your pet(s)?</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="Primary Financier" formControlName="emergencyCareTaker" id="emergencyCareTaker"/>
+            <input matInput placeholder="ex: My sister Debby" formControlName="emergencyCareTaker" id="emergencyCareTaker"/>
             <mat-error role='alert' *ngIf="error('emergencyCareTaker', 'required')">
                 Emergency Caretaker Is Required
             </mat-error>
