@@ -19,7 +19,7 @@
 }
 .formLine{
   width: 100%;
-  @include flexCenterSpaceBetween;
+  @include flexEndSpaceBetween;
 
   .halfWidth{
     width: calc(50% - 2rem);

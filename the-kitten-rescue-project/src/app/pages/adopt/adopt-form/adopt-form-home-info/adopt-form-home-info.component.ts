@@ -35,8 +35,8 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
       worksFromHome: new FormControl(null, [Validators.required]), //boolean
       hasOccupantHome: new FormControl(null, [Validators.required]), //boolean
       estTimeAlone: new FormControl(null, [Validators.required]), //select
-      emergencyContact: new FormControl(null, [Validators.required]),
-      emergencyContactRelationship: new FormControl(null, [Validators.required]),
+      emergencyCareTaker: new FormControl(null, [Validators.required]),
+      // emergencyContactRelationship: new FormControl(null, [Validators.required]),
 
     })
   }
