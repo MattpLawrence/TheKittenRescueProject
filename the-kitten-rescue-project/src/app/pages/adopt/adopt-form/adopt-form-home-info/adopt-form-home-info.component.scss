@@ -1,0 +1,125 @@
+@import '../../../../../styles.scss';
+
+.mainContainer{
+  width: 100vw;
+  @include flexStartCenter;
+}
+.sizeContainer{
+  width: 80%;
+  max-width: 1280px;
+  background-color: $colorBackground;
+  @include flexColumnStart;
+  padding: 2rem;
+  border-radius: .75rem;
+  margin-bottom: 2rem;
+  .formContainer{
+    width: 100%;
+    @include flexColumnStart;
+  }
+}
+.formLine{
+  width: 100%;
+  @include flexEndSpaceBetween;
+
+
+  .halfWidth{
+    width: calc(50% - 2rem);
+    margin: 1rem;
+    margin-bottom: 0rem;
+  }
+
+  .noTopMargin{
+    margin-top: 0rem;
+  }
+
+  .thirdWidth{
+    width: calc(33% - 2rem);
+    margin: 1rem;
+    margin-bottom: 0rem;
+  }
+
+  .halfWidthContainer{
+    width: calc(50% - 2rem);
+    margin: 0 1rem;
+    margin-bottom: 0rem;
+
+    @include flexEndSpaceBetween;
+    & > * {
+      margin: 0;
+      width: calc(50% - 1rem);
+    }
+  }
+}
+
+#formError{
+  margin-top: 2rem;
+}
+
+.navButtonContainer{
+  margin-top: 2rem;
+  width: 60%;
+  @include flexCenterSpaceBetween;
+  button{
+    width: calc( 50% - 2rem);
+    margin: 0 1rem;
+  }
+}
+
+.mainTitle{
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: $colorLightText;
+  margin-bottom: 2rem;
+}
+
+
+
+@media only screen and (max-width: $breakpointMedium){
+  .inputLabel{
+    font-size: 1rem;
+  }
+
+  .mainTitle{
+    font-size: 2rem;
+  }
+  .navButtonContainer{
+    width: 80%;
+  }
+
+  .threeLine{
+    flex-wrap: wrap;
+    justify-content: center;
+    .thirdWidth{
+      width: calc(50% - 2rem);
+    }
+  }
+}
+
+
+@media only screen and (max-width: $breakpointSmall){
+
+  .navButtonContainer{
+    width: 100%;
+  }
+
+  .formLine{
+    flex-wrap: wrap;
+    justify-content: center;
+    .halfWidth, .thirdWidth {
+      width: 100%;
+    }
+
+    .halfWidthContainer{
+      margin: 1rem;
+      width: calc(100% - 2rem);
+      & > * {
+        width: calc(50% - .5rem);
+      }
+    }
+
+    .noTopMargin{
+      margin-top: 0rem;
+    }
+  }
+}

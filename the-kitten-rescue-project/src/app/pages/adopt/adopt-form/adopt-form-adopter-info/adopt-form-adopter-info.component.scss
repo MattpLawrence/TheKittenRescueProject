@@ -19,7 +19,7 @@
 }
 .formLine{
   width: 100%;
-  @include flexCenterSpaceBetween;
+  @include flexEndSpaceBetween;
 
   .halfWidth{
     width: calc(50% - 2rem);
@@ -35,10 +35,11 @@
 }
 
 #formError{
-  margin: 2rem 0;
+  margin-top: 2rem;
 }
 
 .navButtonContainer{
+  margin-top: 2rem;
   width: 60%;
   @include flexCenterSpaceBetween;
   button{
