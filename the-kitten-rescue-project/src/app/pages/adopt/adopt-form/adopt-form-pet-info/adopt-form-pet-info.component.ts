@@ -1,7 +1,9 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { CommonService } from 'src/app/common/services/common.service';
 
 @Component({
   selector: 'app-adopt-form-pet-info',
@@ -17,6 +19,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
+    private viewportScroller: ViewportScroller
   ) {super()
     this.form = this.formBuilder.group({
       adopterFirstName: new FormControl('', [Validators.required]),
@@ -32,12 +35,20 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.initScrollTop()
   }
 
   public error = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
   };
+
+  
+  initScrollTop =() => {
+    //scroll to top of page
+    setTimeout(() => {
+      this.viewportScroller.scrollToPosition([0, 0]);
+    },1)
+  }
 
   next = () => {
     if(this.form.valid)this.router.navigate(['adopt-page/form-pet-info']);

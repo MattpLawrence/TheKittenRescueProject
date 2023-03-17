@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,7 +21,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
-    
+    private viewportScroller: ViewportScroller
   ) {
     super()
     this.form = this.formBuilder.group({
@@ -40,12 +41,19 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   }
 
   ngOnInit(): void {
-
+    this.initScrollTop()
   }
 
   public error = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
   };
+  
+  initScrollTop =() => {
+    //scroll to top of page
+    setTimeout(() => {
+      this.viewportScroller.scrollToPosition([0, 0]);
+    },1)
+  }
 
   checkEmailMatch(group: FormGroup) {
     let email = group.controls.adopterEmail.value;
