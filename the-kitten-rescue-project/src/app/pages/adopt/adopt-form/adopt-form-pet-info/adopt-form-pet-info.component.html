@@ -57,7 +57,7 @@
             <mat-label class="inputLabel" *ngIf="form.controls.numberOfCats.value== null || form.controls.numberOfCats.value <= 1" >Do You Still Have This Cat</mat-label>
             <mat-label *ngIf="form.controls.numberOfCats.value > 1" class="inputLabel">Do You Still Have These Cats</mat-label>
             <mat-form-field appearance="outline" class="selectDefault full-width">
-              <mat-select  placeholder="Yes / No" iso id="stillHas" formControlName="stillHas" >
+              <mat-select  placeholder="Yes / No" iso id="stillHas" formControlName="stillHas" [required]="form.controls.hasCats.value == 'Yes'? true: false">
                 <mat-option id="stillHas{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
               </mat-select>
               <mat-error role='alert' *ngIf="error('stillHas', 'required')">
@@ -66,9 +66,11 @@
             </mat-form-field>
           </div>
           <div class="inputWrapperColumn halfWidth" >
-            <mat-label class="inputLabel" [ngClass]="{labelDisabled: form.controls.stillHas.value == 'Yes'? true: false}" >Reason You No Longer Have This Cat</mat-label>
+            <mat-label class="inputLabel" *ngIf="form.controls.numberOfCats.value== null || form.controls.numberOfCats.value <= 1" [ngClass]="{labelDisabled: form.controls.stillHas.value == 'Yes'? true: false}" >Reason You No Longer Have This Cat</mat-label>
+            <mat-label class="inputLabel" *ngIf="form.controls.numberOfCats.value > 1" [ngClass]="{labelDisabled: form.controls.stillHas.value == 'Yes'? true: false}" >Reason You No Longer Have These Cats</mat-label>
+            
             <mat-form-field appearance="outline" class="inputDefault " [ngClass]="{inputDisabled: form.controls.stillHas.value == 'Yes'? true: false}">
-              <input matInput placeholder="ex: Passed of old age at 17" formControlName="reason" id="reason" [required]="form.controls.hasCats.value == 'Yes'? true: false" />
+              <input matInput placeholder="ex: Passed of old age at 17" formControlName="reason" id="reason" [required]="form.controls.hasCats.value == 'Yes'? form.controls.stillHas.value == 'Yes'? false: true: false" />
               <mat-error role='alert' *ngIf="error('reason', 'required')">
                 Where Cats Are Kept Is Required
               </mat-error>
@@ -76,10 +78,10 @@
           </div>
         </div>
       </div>
-      <!-- line 1 -->
-      <div class="formLine formArray">
+      <!-- line 2 -->
+      <div class="formLine ">
         <div class="inputWrapperColumn halfWidth"  >
-          <mat-label class="inputLabel">Do Any Animals In Your House Currently Show Aggression</mat-label>
+          <mat-label class="inputLabel">Do Any Animals In Your Home Currently Show Aggression</mat-label>
           <mat-form-field appearance="outline" class="selectDefault full-width">
             <mat-select  placeholder="Yes / No" iso id="shownAggression" formControlName="shownAggression" >
               <mat-option id="shownAggression{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
@@ -90,14 +92,219 @@
           </mat-form-field>
         </div>
         <div class="inputWrapperColumn halfWidth"  >
-          <mat-label class="inputLabel">In The Last Five Years Have You Owned Any Cats</mat-label>
+          <mat-label class="inputLabel">Do You Currently Have Any Other Animals In Your Home</mat-label>
           <mat-form-field appearance="outline" class="selectDefault full-width">
-            <mat-select  placeholder="Yes / No" iso id="hasCats" formControlName="hasCats" >
+            <mat-select  placeholder="Yes / No" iso id="hasOtherPets" formControlName="hasOtherPets" >
               <mat-option id="hasCats{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
             </mat-select>
-            <mat-error role='alert' *ngIf="error('hasCats', 'required')">
+            <mat-error role='alert' *ngIf="error('hasOtherPets', 'required')">
                 This Field Is Required
             </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- list other pets -->
+      <div class="optionalPanel" id="petDescription" [ngClass]="{isExpanded: form.controls.hasOtherPets.value == 'Yes'}">
+        <div class="formLine ">
+          <div class="inputWrapperColumn fullWidth">
+            <mat-label class="inputLabel" ><span class="labelMarginRight">Describe Your Other Pets </span><span class="titleHighlight">Please List Age, Species, And Disposition.</span> </mat-label>
+            <mat-form-field appearance="outline" class="inputDefault">
+    
+              <textarea [required]="form.controls.hasOtherPets.value == 'Yes'? true: false"
+                        matInput
+                        cdkTextareaAutosize
+                        cdkAutosizeMinRows="2"
+                        cdkAutosizeMaxRows="2"
+                        formControlName="petDescription"
+                        placeholder="ex: Two dogs, one is 12 years old, the other 6 months. Both are energetic."></textarea>
+              <mat-error role='alert' *ngIf="error('petDescription', 'required')">
+                Describe Your Other Pets Is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <!-- line 3 -->
+      <div class="formLine ">
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">Name Of Your Veterinarian</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <input matInput placeholder="ex: Dr.Smith with Tucker Family Vet" formControlName="vetName" id="vetName"/>
+            <mat-error role='alert' *ngIf="error('vetName', 'required')">
+              Veterinarian Name Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">Veterinarian's Phone Number</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <input matInput mask="(000)-000-0000" inputmode="numeric" placeholder="ex: (770)-123-4567" formControlName="vetPhone" id="vetPhone"/>
+            <mat-error role='alert' *ngIf="error('vetPhone', 'required')">
+              Veterinarian Phone Number Is Required
+            </mat-error>
+            <mat-error role='alert' *ngIf="error('vetPhone', 'pattern')">
+              Phone Number Is Invalid.
+           </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- line 4 -->
+      <div class="formLine ">
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">Why Do You Want To Adopt This Cat</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="ex: Companionship" iso id="adoptReason" formControlName="adoptReason" >
+              <mat-option id="adoptReason{{reason}}" *ngFor="let reason of adoptReasonList" [value]="reason">{{reason}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('adoptReason', 'required')">
+                Adoption Reason Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth"  >
+          <mat-label class="inputLabel">Will You Declaw This Cat</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="Yes / No" iso id="willDeclaw" formControlName="willDeclaw" >
+              <mat-option id="willDeclaw{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('willDeclaw', 'required')">
+                This Field Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- line 5 -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Where Will You Keep This Cat During The Day</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: Only in my office, Out In The Yard" formControlName="locationDay" id="locationDay" />
+            <mat-error role='alert' *ngIf="error('locationDay', 'required')">
+              Where Cats Are Kept Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Where Will You Keep This Cat At Night</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: Anywhere in the apartment, Only in my room" formControlName="locationNight" id="locationNight" />
+            <mat-error role='alert' *ngIf="error('locationNight', 'required')">
+              Where Cats Are Kept Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- line 6 -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Where Will This Cat Sleep</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: Anywhere they want, In my bed" formControlName="locationSleep" id="locationSleep" />
+            <mat-error role='alert' *ngIf="error('locationSleep', 'required')">
+              Where Cat Will Sleep Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >If You Needed To Move What Would You Do With This Cat</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: Give to a friend, Bring them to our new home" formControlName="movePlans" id="movePlans" />
+            <mat-error role='alert' *ngIf="error('movePlans', 'required')">
+              Moving Plan Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- line 7 -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Under What Conditions Would You Return This Cat</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: They don't get along with our dog" formControlName="returnReason" id="returnReason" />
+            <mat-error role='alert' *ngIf="error('returnReason', 'required')">
+              Reason For Return Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel">Does Anyone In Your Home Have A History Of Violence Or Animal Abuse</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="Yes / No" iso id="hasViolence" formControlName="hasViolence" >
+              <mat-option id="hasViolence{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('hasViolence', 'required')">
+                This Field Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- line 8 -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >What Level Of Cat Experience Do You Have</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <mat-select  placeholder="First Time Cat Adopter" iso id="catExperience" formControlName="catExperience" >
+              <mat-option id="catExperience{{experience}}" *ngFor="let experience of catExperienceList" [value]="experience">{{experience}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('catExperience', 'required')">
+              Cat Experience Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel">A Cat Can Live An Average Of 13-17 Years, Can You Commit To Caring For This Cat For That Amount Of Time</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="Yes / No" iso id="canCommit" formControlName="canCommit" >
+              <mat-option id="canCommit{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('canCommit', 'required')">
+                This Field Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- line 9 -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >What Behaviors Do You Find Undesirable</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: Aggression towards people" formControlName="undesirableBehavior" id="undesirableBehavior" />
+            <mat-error role='alert' *ngIf="error('undesirableBehavior', 'required')">
+              Undesirable Behaviors Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >What Behaviors Do You Find Desirable</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: Cuddly, Independent, Silly" formControlName="desirableBehavior" id="desirableBehavior" />
+            <mat-error role='alert' *ngIf="error('desirableBehavior', 'required')">
+              Desirable Behaviors Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- line 9 -->
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Name of Personal Reference</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: Pam Smith" formControlName="referenceName" id="referenceName" />
+            <mat-error role='alert' *ngIf="error('referenceName', 'required')">
+              Reference Name Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Phone Number of Personal Reference</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput mask="(000)-000-0000" placeholder="ex: (770)-123-4567" formControlName="vetPhone" id="vetPhone"/>
+            <mat-error role='alert' *ngIf="error('referencePhone', 'required')">
+              Reference Phone Number Is Required
+            </mat-error>
+            <mat-error role='alert' *ngIf="error('referencePhone', 'pattern')">
+              Phone Number Is Invalid.
+           </mat-error>
           </mat-form-field>
         </div>
       </div>

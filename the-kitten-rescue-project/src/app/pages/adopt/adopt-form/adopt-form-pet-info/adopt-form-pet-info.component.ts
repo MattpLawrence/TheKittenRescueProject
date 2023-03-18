@@ -14,8 +14,10 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
 
   public form: FormGroup;
   hasSubmissionError: boolean = false;
+  phoneValidation = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$";
   catExperienceList: string[] = ["First Time Cat Adopter", "Have Had A Few Cats", "	Knowledgeable and Experienced"]
   yesNo: string[] = ["Yes", "No"];
+  adoptReasonList: string[] = ["Companionship", "Gift", "Company for another pet", "Mouser","Other"];
 
 
   constructor(
@@ -34,9 +36,9 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       //all animals
       shownAggression: new FormControl(null, [Validators.required]), //boolean
       hasOtherPets: new FormControl(null, [Validators.required]),
-      petDescription: new FormControl(null, [Validators.required]),
+      petDescription: new FormControl(null), //conditional validation in the html
       vetName: new FormControl(null, [Validators.required]),
-      vetPhone: new FormControl(null, [Validators.required]),
+      vetPhone: new FormControl(null, [Validators.pattern(this.phoneValidation)]),
       //this cat
       adoptReason: new FormControl(null, [Validators.required]), //select
       willDeclaw: new FormControl(null, [Validators.required]), //boolean
@@ -51,10 +53,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       undesirableBehavior: new FormControl(null, [Validators.required]),
       desirableBehavior: new FormControl(null, [Validators.required]),
       referenceName: new FormControl(null, [Validators.required]),
-      referencePhone: new FormControl(null, [Validators.required]),
-      referenceRelationship: new FormControl(null, [Validators.required]),
-
-      
+      referencePhone: new FormControl(null, [Validators.required]),   
 
     })
   }

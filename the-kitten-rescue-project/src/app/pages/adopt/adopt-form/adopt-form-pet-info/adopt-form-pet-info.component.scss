@@ -38,6 +38,13 @@
     margin-bottom: 0rem;
   }
 
+  
+  .fullWidth{
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    margin-bottom: 0rem;
+  }
+
   .halfWidthContainer{
     width: calc(50% - 2rem);
     margin: 0 1rem;
@@ -51,6 +58,13 @@
   }
 }
 
+.titleHighlight{
+  color: $colorPrimary;
+}
+.labelMarginRight{
+  margin-right: 1rem;
+}
+
 .formContainer{
   .optionalPanel{
     overflow: hidden;
@@ -59,8 +73,13 @@
     width: 100%;
     @include flexColumnStart;;
   }
+
   .isExpanded{
     height: 14rem;
+  }
+
+  #petDescription.isExpanded{
+    height: 7rem;
   }
 }
 
@@ -133,6 +152,9 @@
     .isExpanded{
       height: 27.25rem;
     }
+    #petDescription.isExpanded{
+      height: 8rem;
+    }
   }
 
   .formLine{
@@ -153,6 +175,7 @@
     .noTopMargin{
       margin-top: 0rem;
     }
+
   }
 }
 

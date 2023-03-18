@@ -68,7 +68,7 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     setTimeout(() => {
       if(!this.isLoading)dialogRef.close();
       else this.isLoading = false;
-    },2200)
+    },1800)
     this.apiService.searchAnimals().subscribe(response => {
       
       if(this.isLoading)this.isLoading = false;
