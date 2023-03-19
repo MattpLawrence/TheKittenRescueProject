@@ -17,8 +17,8 @@
     border-radius: 1rem;
     background-color: white;
     position: absolute;
-    top: .25rem;
-    right: .25rem;
+    top: 1rem;
+    right: 1rem;
     font-size: 2.5rem;
     color: black;
     z-index: 2;
@@ -27,10 +27,9 @@
     }
     .material-icons{
       position: absolute;
-      font-size: 2rem;
-      top: 0rem;
-      top: -0.22rem;
-      right: -0.22rem;
+      font-size: 2.5rem;
+      top: -0.5rem;
+      right: -0.5rem;
     }
   }
 }
@@ -197,6 +196,13 @@
 @media only screen and (max-width: $breakpointSmall){
 
   .columnContainer{
+    .leftContainer{
+      width: calc(100% - 3rem);
+      button{
+        width: 90%;
+      }
+    }
+
 
     .rightContainer{
       width: 100%;
