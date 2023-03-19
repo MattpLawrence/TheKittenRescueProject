@@ -2,7 +2,10 @@ import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { HomeForm } from 'src/app/common/models/form.model';
+import { CommonService } from 'src/app/common/services/common.service';
 
 @Component({
   selector: 'app-adopt-form-home-info',
@@ -21,7 +24,8 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    private commonService: CommonService
   ) {super()
     this.form = this.formBuilder.group({
       homeType: new FormControl('', [Validators.required]), //select
@@ -42,6 +46,7 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
 
   ngOnInit(): void {
     this.initScrollTop()
+    this.initForm()
   }
 
   public error = (controlName: string, errorName: string) => {
@@ -56,9 +61,44 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
     },1)
   }
 
+  initForm = () =>{
+    this.commonService.getHomeFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      if(res != undefined){
+        this.repopulateForm(res)
+      }else{
+        //look for session storage
+        let storedObject = sessionStorage.getItem("homeForm")
+        console.log(storedObject)
+        if(storedObject != null && storedObject != null ){
+          this.repopulateForm(JSON.parse(storedObject))
+        }
+      }
+    })
+  }
+
+
+  repopulateForm = (object: any) => {
+    //cycle through each form field and populate
+    Object.keys(this.form.controls).forEach((key:string) => {
+      //set payment subject result to a map
+      let resultMap = new Map(Object.entries(object))
+      //cycle through both maps and match keys
+      this.form.get(key)?.setValue(resultMap.get(key));
+    })
+  }
 
   next = () => {
-    if(this.form.valid)this.router.navigate(['adopt-page/form-pet-info']);
+    if(this.form.valid){
+      //create form object
+      let formValue: HomeForm = this.form.value;
+      //set as observable
+      this.commonService.setHomeFormSubject(formValue);
+      //convert to string then set storage object
+      sessionStorage.setItem("homeForm", JSON.stringify(formValue))
+      //go to next page
+      this.router.navigate(['adopt-page/form-pet-info']);
+      console.log(formValue);
+    }
     else this.hasSubmissionError = true;
   }
 

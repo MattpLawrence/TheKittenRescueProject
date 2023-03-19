@@ -58,6 +58,8 @@
   }
 }
 
+
+
 .titleHighlight{
   color: $colorPrimary;
 }
@@ -98,6 +100,7 @@
   button{
     width: calc( 50% - 2rem);
     margin: 0 1rem;
+    white-space: pre-wrap;
   }
 }
 

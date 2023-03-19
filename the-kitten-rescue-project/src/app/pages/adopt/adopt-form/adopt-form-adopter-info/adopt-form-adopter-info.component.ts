@@ -2,7 +2,10 @@ import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { AdopterForm } from 'src/app/common/models/form.model';
+import { CommonService } from 'src/app/common/services/common.service';
 
 @Component({
   selector: 'app-adopt-form-adopter-info',
@@ -21,7 +24,8 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    private commonService: CommonService
   ) {
     super()
     this.form = this.formBuilder.group({
@@ -44,6 +48,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
 
   ngOnInit(): void {
     this.initScrollTop()
+    this.initForm();
   }
 
   public error = (controlName: string, errorName: string) => {
@@ -57,18 +62,56 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     },1)
   }
 
+  initForm = () =>{
+    this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      if(res != undefined){
+        this.repopulateForm(res)
+      }else{
+        //look for session storage
+        let storedObject = sessionStorage.getItem("adopterForm")
+
+        if(storedObject != null && storedObject != null ){
+          this.repopulateForm(JSON.parse(storedObject))
+        }
+      }
+    })
+  }
+
   checkEmailMatch(group: FormGroup) {
     let email = group.controls.adopterEmail.value;
     let confirmEmail = group.controls.adopterEmailConfirm.value;
 
-    return email.toLowerCase() == confirmEmail.toLowerCase() ? null : { adopterEmailConfirm: true }
+    if(email != undefined && confirmEmail != undefined){
+    return email!.toLowerCase() == confirmEmail!.toLowerCase() ? null : { adopterEmailConfirm: true }
+    } else{ return null}
+  }
+
+  repopulateForm = (object: any) => {
+    //cycle through each form field and populate
+    Object.keys(this.form.controls).forEach((key:string) => {
+      //set payment subject result to a map
+      let resultMap = new Map(Object.entries(object))
+      //cycle through both maps and match keys
+      this.form.get(key)?.setValue(resultMap.get(key));
+    })
   }
 
 
 
   next = () => {
     
-    if(this.form.valid)this.router.navigate(['adopt-page/form-home-info']);
+    if(this.form.valid){
+      //create form object
+      let formValue: AdopterForm = this.form.value;
+      //set as observable
+      this.commonService.setAdopterFormSubject(formValue);
+      //convert to string then set storage object
+      sessionStorage.setItem("adopterForm", JSON.stringify(formValue))
+      //go to next page
+      this.router.navigate(['adopt-page/form-home-info']);
+      this.hasSubmissionError = false;
+      console.log(formValue);
+    }
     else this.hasSubmissionError = true;
   }
 

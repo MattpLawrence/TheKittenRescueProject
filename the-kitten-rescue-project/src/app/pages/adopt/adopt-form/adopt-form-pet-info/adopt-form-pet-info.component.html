@@ -298,7 +298,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Phone Number of Personal Reference</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput mask="(000)-000-0000" placeholder="ex: (770)-123-4567" formControlName="vetPhone" id="vetPhone"/>
+            <input matInput mask="(000)-000-0000" placeholder="ex: (770)-123-4567" formControlName="referencePhone" id="referencePhone"/>
             <mat-error role='alert' *ngIf="error('referencePhone', 'required')">
               Reference Phone Number Is Required
             </mat-error>
@@ -318,8 +318,11 @@
         <button mat-button  class="buttonTinted buttonLarge navButton" (click)="back()">
           Back
         </button>
-        <button mat-button  class="buttonTinted buttonLarge navButton" (click)="next()">
-          Next
+        <button mat-button *ngIf="currentBreakPoint !== 2"  class="buttonTinted buttonLarge navButton" (click)="next()">
+          Submit Application
+        </button>
+        <button mat-button *ngIf="currentBreakPoint === 2" class="buttonTinted buttonLarge navButton" (click)="next()">
+          Submit
         </button>
       </div>
     </form>
