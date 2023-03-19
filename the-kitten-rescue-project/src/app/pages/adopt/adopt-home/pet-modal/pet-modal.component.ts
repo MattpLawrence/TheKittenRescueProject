@@ -25,7 +25,14 @@ export class PetModalComponent extends BaseComponent implements OnInit {
     private apiService: APIService,
     private commonService: CommonService,
     private router: Router
-  ) {super() }
+  ) {
+    super();
+    // Push a state to the history to enable the popstate event to close modal on back button
+    history.pushState(null, "", window.location.href);
+    window.addEventListener('popstate', () => {
+      this.dialogRef.close();
+    });
+   }
 
   @HostListener('window:keyup.esc') onKeyUp() {
     //if no top modal is open
