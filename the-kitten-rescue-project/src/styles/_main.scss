@@ -80,9 +80,16 @@ app-adopt-page{
 
 @media only screen and (max-width: $breakpointSmall){
   .overflowAuto{
-    max-height: 100vh;
+    
+    
+    max-height: calc(100vh);
+
     *::-webkit-scrollbar {
       width: 0px;
+    }
+
+    .mat-dialog-container{
+      max-height: calc(100% - 3rem) ;
     }
   }
 }

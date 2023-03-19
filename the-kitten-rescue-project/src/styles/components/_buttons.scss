@@ -1,5 +1,6 @@
 .buttonDefault {
   background-color: $colorDefaultButton;
+  white-space: pre-wrap !important;
   &:hover {
     background-color: $colorDefaultButtonHovered;
   }
@@ -17,6 +18,7 @@
 .buttonTinted {
   background-color: $colorPrimary;
   color: $colorPrimaryText;
+  white-space: pre-wrap !important;
 }
 
 .buttonError {
@@ -30,6 +32,7 @@
 
 .buttonText {
   background-color: $colorPrimaryBackground;
+  white-space: pre-wrap !important;
   &:hover {
     background-color: $colorDefaultButtonHovered;
   }
