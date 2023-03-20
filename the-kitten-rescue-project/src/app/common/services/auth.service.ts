@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
-import { petFinderCredentials } from 'src/environments/config';
+import { ReplaySubject } from 'rxjs';
 import { interval } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   //variables
-  private apiKey: string = petFinderCredentials.apiKey;
-  private apiSecret: string = petFinderCredentials.apiSecret;
+  private apiKey: string = environment.API_KEY;
+  private apiSecret: string = environment.API_SECRET;
 
   
   //subjects
