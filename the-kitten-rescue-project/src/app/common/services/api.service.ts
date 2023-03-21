@@ -33,7 +33,8 @@ export class APIService {
   
   postApplication = (body:AdoptionForm) => {
     return new Observable(observer => {
-      let url: string = `${this.apiUrl}/send` ;
+      // let url: string = `${this.apiUrl}/send` ;
+      let url: string = `https://the-kitten-api.netlify.app/.netlify/functions/server/send` ;
       console.log(body)
       console.log(url)
       this.http.post(url, body).subscribe(result => {

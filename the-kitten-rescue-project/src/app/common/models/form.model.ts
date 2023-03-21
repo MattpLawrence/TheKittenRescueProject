@@ -3,6 +3,12 @@ export interface AdoptionForm {
   homeForm: HomeForm,
   petForm: PetForm
 }
+export interface AdoptionFormPost {
+  petName: string
+  adopterForm: AdopterForm,
+  homeForm: HomeForm,
+  petForm: PetForm
+}
 
 export interface AdopterForm {
   adopterFirstName: string,

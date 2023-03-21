@@ -92,7 +92,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Drivers License State</mat-label>
           <mat-form-field appearance="outline" class="inputDefault ">
-            <input matInput placeholder="ex: Georgia" formControlName="driversState" id="driversState"/>
+            <input matInput placeholder="ex: Georgia" autocomplete="dlState" formControlName="driversState" id="driversState"/>
             <mat-error role='alert' *ngIf="error('driversState', 'required')">
               Drivers License State Is Required
            </mat-error>
