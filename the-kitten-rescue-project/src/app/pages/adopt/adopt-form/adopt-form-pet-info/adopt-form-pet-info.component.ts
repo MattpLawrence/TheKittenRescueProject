@@ -2,10 +2,11 @@ import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { takeUntil } from 'rxjs';
+import { take, takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
-import { PetForm } from 'src/app/common/models/form.model';
+import { AdopterForm, AdoptionForm, HomeForm, PetForm } from 'src/app/common/models/form.model';
+import { APIService } from 'src/app/common/services/api.service';
 import { CommonService } from 'src/app/common/services/common.service';
 
 @Component({
@@ -29,7 +30,8 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     private router: Router,
     public formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private apiService: APIService
   ) {super()
     this.form = this.formBuilder.group({
       hasAdopted: new FormControl(null, [Validators.required]), //boolean
@@ -83,14 +85,14 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   }
 
   initForm = () =>{
-    this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+    this.commonService.getPetFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if(res != undefined){
         this.repopulateForm(res)
       }else{
         //look for session storage
         let storedObject = sessionStorage.getItem("petForm")
 
-        if(storedObject != null && storedObject != null ){
+        if(storedObject != null && storedObject != undefined ){
           this.repopulateForm(JSON.parse(storedObject))
         }
       }
@@ -115,7 +117,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   }
 
   next = () => {
-    
+  
     if(this.form.valid){
       //create form object
       let formValue: PetForm = this.form.value;
@@ -123,10 +125,46 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       this.commonService.setPetFormSubject(formValue);
       //convert to string then set storage object
       sessionStorage.setItem("petForm", JSON.stringify(formValue))
+      //make post call
+      this.apiService.postApplication(this.buildBody(formValue)).pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+        console.log(res)
+      })
       //go to next page
       console.log(formValue);
     }
     else this.hasSubmissionError = true;
+  }
+  
+
+  buildBody = (formValue: PetForm): AdoptionForm => {
+     let adopterForm: AdopterForm | undefined;
+     let homeForm: HomeForm | undefined;
+     this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      if(res != undefined) adopterForm = res;
+      else{
+        let storedObject = sessionStorage.getItem("adopterForm")
+        if(storedObject != null && storedObject != undefined ){
+          adopterForm = JSON.parse(storedObject)
+        }
+      };
+     });
+     this.commonService.getHomeFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      if(res != undefined) homeForm = res;
+      else{
+        let storedObject = sessionStorage.getItem("homeForm")
+        if(storedObject != null && storedObject != undefined ){
+          adopterForm = JSON.parse(storedObject)
+        }
+      };
+     })
+     //build final adoptionForm
+     let adoptionForm: AdoptionForm = {
+      adopterForm: adopterForm!,
+      homeForm: homeForm!,
+      petForm: formValue
+     }
+
+     return adoptionForm;
   }
 
   back = () => {

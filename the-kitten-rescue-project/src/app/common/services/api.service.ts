@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { PetDisplay } from '../models/common.model';
+import { AdoptionForm } from '../models/form.model';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -15,11 +17,10 @@ import { AuthService } from './auth.service';
 export class APIService {
 
   //variables
-  private apiUrl: string = 'https://api.petfinder.com/v2';
+  private petFinderUrl: string = 'https://api.petfinder.com/v2';
   // queryString: string = '/animals?organization=GA335&limit=20';
   queryString: string = '/animals?organization=GA477&limit=100';
-
-  // queryString: string = '/organizations?query=circle'
+  apiUrl:string = environment.API_URL;
 
   constructor(
     private http: HttpClient,
@@ -28,6 +29,27 @@ export class APIService {
   //subjects
   private animalsSubject = new BehaviorSubject<any>(undefined)
   private currentAnimalsSubject = new BehaviorSubject<any>(undefined)
+
+  
+  postApplication = (body:AdoptionForm) => {
+    return new Observable(observer => {
+      let url: string = `${this.apiUrl}/send` ;
+      console.log(body)
+      console.log(url)
+      this.http.post(url, body).subscribe(result => {
+        if(result){
+          console.log(result)
+        };
+      }, 
+      (err: any) => {
+        console.log(err)
+        // add error logging here
+        observer.next(err);
+        observer.complete()
+      })
+    })
+  }
+
 
   searchAnimals():Observable<any>{
     return new Observable<any>(observer => {
@@ -42,7 +64,7 @@ export class APIService {
         this.authService.getTokenSubject().subscribe(res => {
           if(res){
             let token:string = res;
-            this.http.get(`${this.apiUrl}${this.queryString}`, {
+            this.http.get(`${this.petFinderUrl}${this.queryString}`, {
               headers: {
                 
                 Authorization: `Bearer ${token}`,
@@ -70,6 +92,8 @@ export class APIService {
 
     return filteredList;
   }
+
+
 
 
   //***************getters and setters******************

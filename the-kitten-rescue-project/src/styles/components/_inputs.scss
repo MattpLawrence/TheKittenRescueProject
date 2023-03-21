@@ -141,6 +141,9 @@ input:-webkit-autofill {
 
 //disabled input style
 .inputDisabled {
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $colorBackground inset !important;
+  }
   .mat-form-field-flex:hover .mat-form-field-outline {
     transition: opacity 99999999999s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   }
