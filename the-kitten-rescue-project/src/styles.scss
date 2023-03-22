@@ -8,3 +8,8 @@
 @import "../src/styles/components/inputs";
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+//define font from downloaded file
+@font-face {
+  font-family: 'Courgette';
+  src: url('./assets/fonts/Courgette/Courgette-Regular.ttf') format('truetype');
+}

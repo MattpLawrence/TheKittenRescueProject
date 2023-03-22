@@ -78,18 +78,19 @@
 
   .mainContainer .card{
     width: 45vw;
-    height: 45vw;
-
   }
 
 }
 
 @media only screen and (max-width: $breakpointSmall){
 
-  .mainContainer .card{
+  .mainContainer{
+    padding-top: 2rem;
+   .card{
     width: 94vw;
     height: 94vw;
     margin: 2vw;
+   }
   }
 
 }

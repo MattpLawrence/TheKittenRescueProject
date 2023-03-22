@@ -30,6 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatRippleModule} from '@angular/material/core';
 
 const MaterialComponents = [
   MatCardModule,
@@ -63,7 +64,8 @@ const MaterialComponents = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatTabsModule,
-  MatSortModule
+  MatSortModule,
+  MatRippleModule
 ]
 
 @NgModule({

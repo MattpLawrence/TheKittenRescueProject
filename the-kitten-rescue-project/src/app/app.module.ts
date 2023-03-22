@@ -65,7 +65,6 @@ import { ContactPageComponent } from './pages/contact/contact-page/contact-page.
   ],
   imports: [
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
