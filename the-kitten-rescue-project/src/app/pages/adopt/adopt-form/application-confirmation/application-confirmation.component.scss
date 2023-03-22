@@ -1,0 +1,51 @@
+@import '../../../../../styles.scss';
+
+.mainContainer{
+  width:100%;
+  height: calc(100vh - 6rem);
+  @include flexCenterCenter;
+  .sizeContainer{
+    height: 60%;
+    width: 50vw;
+    @include flexColumnSpaceAround;
+  }
+}
+
+.titleContainer{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  color: $colorLightText;
+  margin-bottom: 2rem 0;
+}
+
+.iconContainer{
+  span{
+    font-size: 15rem;
+    // color: $colorPrimary;
+    color: $colorSuccess;
+  }
+}
+
+
+#continueButton{
+  width: calc(60% - 4rem);
+  margin: 2rem;
+}
+
+
+@media only screen and (max-width: $breakpointMedium){
+  .mainContainer{
+    .sizeContainer{
+      width: calc(100% - 2rem);
+    }
+  }
+
+}
+
+@media only screen and (max-width: 680px){
+  #continueButton{
+    width: calc(100% - 2rem);
+  }
+
+}
