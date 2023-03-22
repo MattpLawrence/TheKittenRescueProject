@@ -12,6 +12,12 @@
     margin-top: 0rem;
   }
 }
+.subtitle{
+  font-size: 1.375rem;
+  font-weight: 500;
+  margin: 1rem;
+  color: $colorLightText;
+}
 
 #aboutAdoption{
   @include flexColumnStart;
@@ -53,7 +59,7 @@
 #matchContainer{
 
   @include flexCenterCenter;
-  padding-bottom: 0;
+  padding-bottom: 3rem;
 }
 
 .centerContainer{
@@ -95,7 +101,8 @@
 }
 
 #adoptListTitleContainer{
-  padding-top: 6rem;
+  padding-top: 2rem;
+  background-color: $colorBackground;
   @include flexCenterCenter;
 
   .adoptListLine{
@@ -113,6 +120,7 @@
   }
 
 }
+
 
 
 

@@ -2,10 +2,14 @@
 
 
 //***********pet grid************
+.mainContainer{
+  background-color: $colorBackground;
+}
 
 #petGirdContainer{
   @include flexCenterSpaceAround;
   flex-wrap: wrap;
+
 
 
   .petContainer{
