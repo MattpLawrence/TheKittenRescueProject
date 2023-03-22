@@ -128,7 +128,7 @@
       <div class="formLine ">
         <div class="inputWrapperColumn halfWidth"  >
           <mat-label class="inputLabel">Name Of Your Veterinarian</mat-label>
-          <mat-form-field appearance="outline" class="selectDefault full-width">
+          <mat-form-field appearance="outline" class="inputDefault full-width">
             <input matInput placeholder="ex: Dr.Smith with Tucker Family Vet" formControlName="vetName" id="vetName"/>
             <mat-error role='alert' *ngIf="error('vetName', 'required')">
               Veterinarian Name Is Required
@@ -137,7 +137,7 @@
         </div>
         <div class="inputWrapperColumn halfWidth"  >
           <mat-label class="inputLabel">Veterinarian's Phone Number</mat-label>
-          <mat-form-field appearance="outline" class="selectDefault full-width">
+          <mat-form-field appearance="outline" class="inputDefault full-width">
             <input matInput mask="(000)-000-0000" inputmode="numeric" placeholder="ex: (770)-123-4567" formControlName="vetPhone" id="vetPhone"/>
             <mat-error role='alert' *ngIf="error('vetPhone', 'required')">
               Veterinarian Phone Number Is Required
