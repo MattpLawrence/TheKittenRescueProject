@@ -29,7 +29,8 @@ import { AdoptStepperComponent } from './pages/adopt/adopt-form/adopt-stepper/ad
 import { RouterModule } from '@angular/router';
 import {routes} from './modules/routes.module';
 import { ApplicationConfirmationComponent } from './pages/adopt/adopt-form/application-confirmation/application-confirmation.component';
-import { ApplicationErrorComponent } from './pages/adopt/adopt-form/application-error/application-error.component'
+import { ApplicationErrorComponent } from './pages/adopt/adopt-form/application-error/application-error.component';
+import { TeaLoaderComponent } from './common/components/tea-loader/tea-loader.component'
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ApplicationErrorComponent } from './pages/adopt/adopt-form/application-
     AdoptRouterComponent,
     AdoptStepperComponent,
     ApplicationConfirmationComponent,
-    ApplicationErrorComponent
+    ApplicationErrorComponent,
+    TeaLoaderComponent
   ],
   imports: [
     BrowserAnimationsModule,

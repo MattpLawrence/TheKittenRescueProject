@@ -38,7 +38,9 @@ export class APIService {
       console.log(url)
       this.http.post(url, body).subscribe(result => {
         if(result){
-          console.log(result)
+          console.log(result);
+          observer.next(result);
+          observer.complete()
         };
       }, 
       (err: any) => {

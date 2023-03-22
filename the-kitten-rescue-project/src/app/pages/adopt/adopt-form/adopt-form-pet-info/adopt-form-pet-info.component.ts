@@ -1,9 +1,11 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { take, takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { TeaLoaderComponent } from 'src/app/common/components/tea-loader/tea-loader.component';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { AdopterForm, AdoptionForm, HomeForm, PetForm } from 'src/app/common/models/form.model';
 import { APIService } from 'src/app/common/services/api.service';
@@ -19,6 +21,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   public form: FormGroup;
   hasSubmissionError: boolean = false;
   currentBreakPoint: BreakPointsEnum  = 0
+  isLoading: boolean = false;
 
   phoneValidation = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$";
   catExperienceList: string[] = ["First Time Cat Adopter", "Have Had A Few Cats", "	Knowledgeable and Experienced"]
@@ -31,7 +34,8 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     public formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
     private commonService: CommonService,
-    private apiService: APIService
+    private apiService: APIService,
+    public dialog: MatDialog
   ) {super()
     this.form = this.formBuilder.group({
       hasAdopted: new FormControl(null, [Validators.required]), //boolean
@@ -119,6 +123,33 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   next = () => {
   
     if(this.form.valid){
+
+      let modalWidth: string = "50vw";
+
+      switch(this.currentBreakPoint){
+        case BreakPointsEnum.isDesktop:
+          modalWidth = "50vw";
+          break;
+  
+        case BreakPointsEnum.isTablet:
+          modalWidth = "80vw";
+          break;
+  
+        case BreakPointsEnum.isMobile:
+          modalWidth = "100vw";
+          break;
+      }
+      //init loader
+      const dialogRef = this.dialog.open(TeaLoaderComponent, {
+        disableClose: false,
+        // disableClose: true,
+        panelClass: "noPadding",
+        width: modalWidth,
+        minHeight: "50vh"
+      })
+
+
+
       //create form object
       let formValue: PetForm = this.form.value;
       //set as observable
@@ -129,10 +160,12 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       this.apiService.postApplication(this.buildBody(formValue)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((res:any) => {
         console.log(res)
         if(res.status == 200){
-          this.router.navigate(['application-confirmation']);
+          dialogRef.close()
+          this.router.navigate(['adopt-page/application-confirmation']);
         }
         else{
-          this.router.navigate(['application-confirmation']);
+          dialogRef.close()
+          this.router.navigate(['adopt-page/application-error']);
         }
       })
       //go to next page
@@ -140,7 +173,6 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     }
     else this.hasSubmissionError = true;
   }
-  
 
   buildBody = (formValue: PetForm): AdoptionForm => {
      let adopterForm: AdopterForm | undefined;
