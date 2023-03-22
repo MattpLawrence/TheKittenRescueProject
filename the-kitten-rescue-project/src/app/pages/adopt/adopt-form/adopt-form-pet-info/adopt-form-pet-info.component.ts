@@ -126,8 +126,14 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       //convert to string then set storage object
       sessionStorage.setItem("petForm", JSON.stringify(formValue))
       //make post call
-      this.apiService.postApplication(this.buildBody(formValue)).pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.apiService.postApplication(this.buildBody(formValue)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((res:any) => {
         console.log(res)
+        if(res.status == 200){
+          this.router.navigate(['application-confirmation']);
+        }
+        else{
+          this.router.navigate(['application-confirmation']);
+        }
       })
       //go to next page
       console.log(formValue);

@@ -9,6 +9,8 @@ import { AdoptRouterComponent } from "../pages/adopt/adopt-router/adopt-router.c
 import { DonatePageComponent } from "../pages/donate-page/donate-page.component";
 import { LandingPageComponent } from "../pages/landing-page/landing-page.component";
 import { VolunteerPageComponent } from "../pages/volunteer-page/volunteer-page.component";
+import { ApplicationConfirmationComponent } from "../pages/adopt/adopt-form/application-confirmation/application-confirmation.component";
+import { ApplicationErrorComponent } from "../pages/adopt/adopt-form/application-error/application-error.component";
 
 
 export const routes: Routes = [
@@ -45,6 +47,14 @@ export const routes: Routes = [
     {
       path: "form-pet-info",
       component: AdoptFormPetInfoComponent
+    },
+    {
+      path: "application-confirmation",
+      component: ApplicationConfirmationComponent
+    },
+    {
+      path: "application-error",
+      component: ApplicationErrorComponent
     },
     { path: "**",
     redirectTo: "home"

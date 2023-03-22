@@ -27,7 +27,9 @@ import { AdoptFormPetInfoComponent } from './pages/adopt/adopt-form/adopt-form-p
 import { AdoptRouterComponent } from './pages/adopt/adopt-router/adopt-router.component';
 import { AdoptStepperComponent } from './pages/adopt/adopt-form/adopt-stepper/adopt-stepper.component';
 import { RouterModule } from '@angular/router';
-import {routes} from './modules/routes.module'
+import {routes} from './modules/routes.module';
+import { ApplicationConfirmationComponent } from './pages/adopt/adopt-form/application-confirmation/application-confirmation.component';
+import { ApplicationErrorComponent } from './pages/adopt/adopt-form/application-error/application-error.component'
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import {routes} from './modules/routes.module'
     AdoptFormHomeInfoComponent,
     AdoptFormPetInfoComponent,
     AdoptRouterComponent,
-    AdoptStepperComponent
+    AdoptStepperComponent,
+    ApplicationConfirmationComponent,
+    ApplicationErrorComponent
   ],
   imports: [
     BrowserAnimationsModule,
