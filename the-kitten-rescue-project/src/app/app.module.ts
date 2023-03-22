@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BaseComponent } from './common/components/base/base.component';
 import { TopNavBarComponent } from './common/components/top-nav-bar/top-nav-bar.component';
 import { MaterialModule } from './modules/material.module';
-import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { VolunteerPageComponent } from './pages/volunteer-page/volunteer-page.component';
 import { AdoptPageComponent } from './pages/adopt/adopt-home/adopt-page/adopt-page.component';
@@ -30,7 +30,10 @@ import { RouterModule } from '@angular/router';
 import {routes} from './modules/routes.module';
 import { ApplicationConfirmationComponent } from './pages/adopt/adopt-form/application-confirmation/application-confirmation.component';
 import { ApplicationErrorComponent } from './pages/adopt/adopt-form/application-error/application-error.component';
-import { TeaLoaderComponent } from './common/components/tea-loader/tea-loader.component'
+import { TeaLoaderComponent } from './common/components/tea-loader/tea-loader.component';
+import { LandingCardsComponent } from './pages/landing/landing-cards/landing-cards.component';
+import { LandingPageComponent } from './pages/landing/landing-page/landing-page.component';
+import { ContactPageComponent } from './pages/contact/contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,9 @@ import { TeaLoaderComponent } from './common/components/tea-loader/tea-loader.co
     AdoptStepperComponent,
     ApplicationConfirmationComponent,
     ApplicationErrorComponent,
-    TeaLoaderComponent
+    TeaLoaderComponent,
+    LandingCardsComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserAnimationsModule,

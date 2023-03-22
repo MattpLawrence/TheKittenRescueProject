@@ -80,6 +80,12 @@
   justify-content: space-around;
   align-items: center;
 }
+@mixin flexColumnSpaceBetween{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
 @mixin flexColumnEnd{
   display: flex;

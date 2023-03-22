@@ -1,0 +1,94 @@
+@import '../../../../styles.scss';
+
+
+.mainContainer{
+  width: 100vw;
+  padding-top: 5rem;
+  @include flexCenterSpaceAround;
+}
+
+.sizeContainer{
+  max-width: 85rem;
+  @include flexCenterSpaceAround;
+  flex-wrap: wrap;
+}
+
+.card{
+  @include flexColumnSpaceBetween;
+  width: calc(25% - 1.5rem);
+  height: 35rem;
+  margin: .75rem;
+  max-width: 35rem ;
+  max-height: 35rem ;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  background-color: $colorPrimaryBackground;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  &:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+}
+
+.cardTopImg{
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.iconContainer{
+  position: absolute;
+  top: 13rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  background-color: $colorPrimary;
+  .middleIcon{
+    position: absolute;
+    top: 0.825rem;
+    right: 0.825rem;
+    font-size: 2.25rem;
+    color: $colorPrimaryBackground;
+  }
+}
+
+.title{
+  font-size: 2rem;
+  font-weight: 500;
+  color: $colorLightText;
+}
+
+.mainContent{
+  text-align: center;
+  margin: 1rem;
+  font-size: 1.25rem;
+}
+
+.navButton{
+  width: 80%;
+  margin-bottom: 2rem;
+}
+
+
+@media only screen and (max-width: $breakpointMedium){
+
+
+  .mainContainer .card{
+    width: 45vw;
+    height: 45vw;
+
+  }
+
+}
+
+@media only screen and (max-width: $breakpointSmall){
+
+  .mainContainer .card{
+    width: 94vw;
+    height: 94vw;
+    margin: 2vw;
+  }
+
+}
