@@ -56,10 +56,11 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   };
   
   initScrollTop =() => {
+
     //scroll to top of page
     setTimeout(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
-    },1)
+    },150)
   }
 
   initForm = () =>{
