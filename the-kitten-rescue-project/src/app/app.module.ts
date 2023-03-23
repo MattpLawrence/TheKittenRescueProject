@@ -36,6 +36,7 @@ import { LandingPageComponent } from './pages/landing/landing-page/landing-page.
 import { ContactPageComponent } from './pages/contact/contact-page/contact-page.component';
 import { AboutTabsComponent } from './pages/about/about-tabs/about-tabs.component';
 import { DonateTabsComponent } from './pages/donate/donate-tabs/donate-tabs.component';
+import { PaypalModalComponent } from './common/components/paypal-modal/paypal-modal.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { DonateTabsComponent } from './pages/donate/donate-tabs/donate-tabs.comp
     LandingCardsComponent,
     ContactPageComponent,
     AboutTabsComponent,
-    DonateTabsComponent
+    DonateTabsComponent,
+    PaypalModalComponent
   ],
   imports: [
     BrowserAnimationsModule,
