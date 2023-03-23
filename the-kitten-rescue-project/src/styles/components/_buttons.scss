@@ -17,6 +17,9 @@
 .buttonTinted {
   background-color: $colorPrimary;
   color: $colorPrimaryText;
+  &:hover{
+    background-color: $colorPrimaryActive;
+  }
 }
 
 .buttonError {
