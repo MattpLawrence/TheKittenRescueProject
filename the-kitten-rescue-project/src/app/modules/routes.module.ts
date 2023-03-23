@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AboutPageComponent } from "../pages/about-page/about-page.component";
+import { AboutPageComponent } from "../pages/about/about-page/about-page.component";
 import { AdoptFormHomeInfoComponent } from "../pages/adopt/adopt-form/adopt-form-home-info/adopt-form-home-info.component";
 import { AdoptFormPetInfoComponent } from "../pages/adopt/adopt-form/adopt-form-pet-info/adopt-form-pet-info.component";
 import { AdoptFormAdopterInfoComponent } from "../pages/adopt/adopt-form/adopt-form-adopter-info/adopt-form-adopter-info.component";

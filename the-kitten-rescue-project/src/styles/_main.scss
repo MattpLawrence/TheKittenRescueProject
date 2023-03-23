@@ -78,6 +78,26 @@ app-adopt-page{
   color: $colorWarn !important;
 }
 
+//tabs
+
+.mat-tab-labels{
+  justify-content: center;
+  .mat-tab-label {
+    width: calc(33% - 3rem);
+  }
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: $colorPrimary;
+}
+
+.mat-ink-bar {
+  border-radius: 2px;
+  height: 4px !important;
+}
+
+.mat-tab-body-content { @include flexCenterSpaceBetween;}
+
 @media only screen and (max-width: $breakpointSmall){
   .overflowAuto{
     max-height: 100vh;
@@ -85,4 +105,10 @@ app-adopt-page{
       width: 0px;
     }
   }
+  .mat-tab-labels .mat-tab-label {
+    width: calc(33% - 0.5rem);
+  } 
+
+  .mat-tab-body-content { @include flexColumnStart;}
 }
+
