@@ -1,0 +1,36 @@
+@import "../../../../styles.scss";
+
+
+.topBanner{
+  width: 100%;
+  height: 30vh;
+  background-color: $colorBannerBackground;
+  @include flexColumnCenter;
+
+}
+
+.title{
+  margin: 2rem 0;
+  font-size: 4rem;
+  font-weight: 500;
+  color: $colorPrimaryBackground;
+  text-align: center;
+  font-family: 'Courgette', cursive;
+  margin: 0 2rem;
+
+}
+
+
+
+@media only screen and (max-width: $breakpointMedium) {
+  .title{
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: $breakpointSmall) {
+  .title{
+    font-size: 2.5rem;
+  }
+
+}

@@ -6,7 +6,7 @@ import { AdoptFormPetInfoComponent } from "../pages/adopt/adopt-form/adopt-form-
 import { AdoptFormAdopterInfoComponent } from "../pages/adopt/adopt-form/adopt-form-adopter-info/adopt-form-adopter-info.component";
 import { AdoptPageComponent } from "../pages/adopt/adopt-home/adopt-page/adopt-page.component";
 import { AdoptRouterComponent } from "../pages/adopt/adopt-router/adopt-router.component";
-import { DonatePageComponent } from "../pages/donate-page/donate-page.component";
+import { DonatePageComponent } from "../pages/donate/donate-page/donate-page.component";
 import { VolunteerPageComponent } from "../pages/volunteer-page/volunteer-page.component";
 import { ApplicationConfirmationComponent } from "../pages/adopt/adopt-form/application-confirmation/application-confirmation.component";
 import { ApplicationErrorComponent } from "../pages/adopt/adopt-form/application-error/application-error.component";
