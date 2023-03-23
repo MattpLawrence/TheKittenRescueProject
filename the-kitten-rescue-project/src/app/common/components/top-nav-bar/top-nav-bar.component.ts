@@ -33,7 +33,6 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event:any){
-    console.log(window.scrollY)
     //compare current scroll position to previous
     let currentY = window.scrollY;
     if( this.prevY > currentY){
