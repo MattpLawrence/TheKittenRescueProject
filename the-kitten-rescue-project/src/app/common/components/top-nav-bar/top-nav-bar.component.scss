@@ -9,7 +9,12 @@
   @include flexCenterSpaceBetween;
   box-shadow: 0 1px 5px rgb(0 0 0 / 11%);
   z-index: 10;
+  transition: top 0.5s ease-in-out;
   // border: 2px red solid;
+}
+
+.isHidden{
+  top: -6rem;
 }
 
 #logoImg{

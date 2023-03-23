@@ -1,5 +1,5 @@
 <!-- desktop navbar -->
-<nav *ngIf="currentBreakpoint === 0" class="topNavContainer stickyHeaderCard">
+<nav *ngIf="currentBreakpoint === 0" class="topNavContainer stickyHeaderCard" [ngClass]="{isHidden: isHidden}">
   <div class="leftBox">
     <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo" routerLink="landing-page">
   </div>
@@ -29,7 +29,7 @@
 </nav>
 
 <!-- Mobile nav bar -->
-<nav *ngIf="currentBreakpoint !== 0" class="topNavContainer stickyHeaderCard">
+<nav *ngIf="currentBreakpoint !== 0" class="topNavContainer stickyHeaderCard" [ngClass]="{isHidden: isHidden}">
   <div class="rightJustify">
     <div class="menuTrigger" (click)="toggleExpanded(false)">
       <span id="menuTriggerBtn" [ngClass]="{isSpun:isExpanded}" class="material-icons">

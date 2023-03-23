@@ -87,6 +87,10 @@ app-adopt-page{
   }
 }
 
+.mat-tab-label .mat-tab-label-content {
+  font-size: 1.125rem;
+}
+
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: $colorPrimary;
 }
@@ -97,6 +101,7 @@ app-adopt-page{
 }
 
 .mat-tab-body-content { @include flexCenterSpaceBetween;}
+
 
 @media only screen and (max-width: $breakpointSmall){
   .overflowAuto{
@@ -110,5 +115,19 @@ app-adopt-page{
   } 
 
   .mat-tab-body-content { @include flexColumnStart;}
+
+  .mat-tab-label .mat-tab-label-content {
+    font-size: .875rem;
+  }
+}
+
+@media only screen and (max-width: $breakpointXSmall){
+  .mat-tab-label{
+    padding: 0 1rem !important;
+    .mat-tab-label-content {
+      font-size: .75rem;
+    }
+
+  } 
 }
 
