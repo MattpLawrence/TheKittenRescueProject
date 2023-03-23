@@ -2,9 +2,21 @@
   <mat-tab-group class="tabGroup" >
     <mat-tab label="{{donateString}}" class="tab">
       <img class="picture" src="https://media.istockphoto.com/id/1137985887/photo/two-beautiful-young-cats-walk-in-a-sunny-meadow-on-a-clear-spring-day-raising-their-tails-and.jpg?s=612x612&w=0&k=20&c=1uaefu-4_odFMbXC39L0GS9PI528ZzwWKitRwPzoXtA=" alt="cute kitten">
-       <div class="textContainer">
-        <button mat-button  class="buttonTinted buttonLarge wishlistButton" (click)="openPaypal()">Go To Paypal</button>
+
+      <div class="textContainer bigText">
+          As a non-profit we rely on charitable donations from supporters like you to keep our mission going.
+        <br> 
+        <br>
+          Feeding our rescues, taking care of medical needs, spay/neuter, it is all funded by your support.
+        <br> 
+        <br> 
+        To donate the help the kittens, please use the secure checkout through Paypal provided below.
+        <div class="buttonContainer">
+          <button mat-button  class="buttonTinted buttonLarge wishlistButton"  >
+            <a href="https://www.paypal.com/donate/?hosted_button_id=D4KU8TM7F6APW"  class="noDecoration">Paypal</a>
+          </button>
         </div>
+      </div>
     </mat-tab>
     <mat-tab label="{{matchingString}}" class="tab">
       <img *ngIf="currentBreakPoint > 1 " class="picture" src="https://www.thelifeyoucansave.org/wp-content/uploads/2019/11/Screen-Shot-2015-07-13-at-1.53.34-PM.png" alt="cute kitten"> 
@@ -28,7 +40,7 @@
     <mat-tab label="Wish List" class="tab">
       <div class="imgContainer">
         <img  src="../../../../assets/images/amazon.webp" alt="amazon logo">
-        <img  src="../../../../assets/images/chewy-inc-logo-vector.png" alt="amazon logo">
+        <img  src="../../../../assets/images/chewy-inc-logo-vector.png" alt="Chewy logo" id="chewyLogo">
       </div>
       <div class="textContainer bigText">In Addition to monetary donations we are also in need of supplies to support our mission.
       <br>

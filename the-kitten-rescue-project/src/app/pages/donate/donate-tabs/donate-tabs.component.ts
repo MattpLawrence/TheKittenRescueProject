@@ -4,7 +4,7 @@ import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { CommonService } from 'src/app/common/services/common.service';
 import { takeUntil} from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { PaypalModalComponent } from 'src/app/common/components/paypal-modal/paypal-modal.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-donate-tabs',
@@ -16,14 +16,32 @@ export class DonateTabsComponent extends BaseComponent implements OnInit {
   currentBreakPoint: BreakPointsEnum = 0;
   donateString: string = 'Ways To Donate';
   matchingString: string = 'Employer Matching';
+  paypalContent:any =`<div id="donate-button-container">
+  <div id="donate-button"></div>
+  <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+  <script>
+  PayPal.Donation.Button({
+  env:'production',
+  hosted_button_id:'D4KU8TM7F6APW',
+  image: {
+  src:'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif',
+  alt:'Donate with PayPal button',
+  title:'PayPal - The safer, easier way to pay online!',
+  }
+  }).render('#donate-button');
+  </script>
+  </div>
+  `
 
   constructor(
     private commonService: CommonService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer
   ) { super() }
 
   ngOnInit(): void {
     this.initBreakpoint();
+    this.initPaypal()
   }
 
   initBreakpoint = () => {
@@ -41,33 +59,8 @@ export class DonateTabsComponent extends BaseComponent implements OnInit {
     })
   }
 
-  openPaypal = () => {
-    let modalWidth: string = '';
-
-    switch(this.currentBreakPoint){
-      case BreakPointsEnum.isDesktop:
-        modalWidth = "70vw";
-        break;
-
-      case BreakPointsEnum.isTablet:
-        modalWidth = "90vw";
-        break;
-
-      case BreakPointsEnum.isMobile:
-        modalWidth = "100vw";
-        break;
-    }
-
-    let dialogRef = this.dialog.open(PaypalModalComponent, {
-      disableClose: false,
-      panelClass: "overflowAuto",
-      width: modalWidth,
-      maxWidth: '100vw',
-    })
-
-    dialogRef.afterClosed().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-
-    })
+  initPaypal = () => {
+    this.paypalContent = this.sanitizer.bypassSecurityTrustHtml(this.paypalContent);
   }
 
 }
