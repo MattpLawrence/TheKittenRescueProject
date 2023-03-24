@@ -22,10 +22,26 @@
         Donate
     </button>
     </li>
-    <li id="shareBtn" class="navBtn">
+    <li id="shareBtn" class="navBtn" (click)="showMedia()">
       <span class="material-icons">
         share
       </span>
+      <div id="expandableList" [ngClass]="{shareExpanded: shareExpanded}">
+        <fa-icon [icon]="icons.email" class="socialIcon fa-2x" (click)="copyEmail()" matTooltip="Email" matTooltipPosition="left" ></fa-icon>
+
+        <a href="https://www.tiktok.com/@thekittenfoster" target="_blank" class="socialLink" >
+          <fa-icon [icon]="icons.tiktok" class="socialIcon fa-2x" matTooltip="Tiktok" matTooltipPosition="left"  aria-label="tiktok"></fa-icon>
+        </a>
+        <a href="https://www.instagram.com/thekittenfoster/" target="_blank" class="socialLink" >
+          <fa-icon [icon]="icons.instagram" class="socialIcon fa-2x" matTooltip="Instagram" matTooltipPosition="left" aria-label="instagram"></fa-icon>
+        </a>
+        <a href="https://www.youtube.com/c/thekittenfoster" target="_blank" class="socialLink" >
+          <fa-icon [icon]="icons.youtube" class="socialIcon fa-2x" matTooltip="Youtube" matTooltipPosition="left"  aria-label="youtube"></fa-icon>
+        </a>
+        <a href="https://www.facebook.com/thekittenfoster/" target="_blank" class="socialLink lastLink" >
+          <fa-icon [icon]="icons.facebook" class="socialIcon fa-2x" matTooltip="Facebook" matTooltipPosition="left" aria-label="facebook"></fa-icon>
+        </a>
+      </div>
     </li>
   </ul>
 </nav>
@@ -57,10 +73,26 @@
         <span class="buttonTextBox">Donate</span>
         <span class="buttonUnderline"></span>
       </li>
-      <li id="shareBtn" class="navBtn">
+      <li id="shareBtn" class="navBtn" (click)="showMedia()">
         <span class="material-icons">
           share
         </span>
+        <div id="expandableList" [ngClass]="{shareExpanded: shareExpanded}">
+          <fa-icon [icon]="icons.email" class="socialIcon fa-2x" (click)="copyEmail()" matTooltip="Email" matTooltipPosition="left" ></fa-icon>
+  
+          <a href="https://www.tiktok.com/@thekittenfoster" target="_blank" class="socialLink" >
+            <fa-icon [icon]="icons.tiktok" class="socialIcon fa-2x" matTooltip="Tiktok" matTooltipPosition="left"  aria-label="tiktok"></fa-icon>
+          </a>
+          <a href="https://www.instagram.com/thekittenfoster/" target="_blank" class="socialLink" >
+            <fa-icon [icon]="icons.instagram" class="socialIcon fa-2x" matTooltip="Instagram" matTooltipPosition="left" aria-label="instagram"></fa-icon>
+          </a>
+          <a href="https://www.youtube.com/c/thekittenfoster" target="_blank" class="socialLink" >
+            <fa-icon [icon]="icons.youtube" class="socialIcon fa-2x" matTooltip="Youtube" matTooltipPosition="left"  aria-label="youtube"></fa-icon>
+          </a>
+          <a href="https://www.facebook.com/thekittenfoster/" target="_blank" class="socialLink lastLink" >
+            <fa-icon [icon]="icons.facebook" class="socialIcon fa-2x" matTooltip="Facebook" matTooltipPosition="left" aria-label="facebook"></fa-icon>
+          </a>
+        </div>
       </li>
     </ul>
   </div>

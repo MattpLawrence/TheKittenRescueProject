@@ -4,7 +4,10 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, takeUntil, tap } from 'rxjs';
 import { BreakPointsEnum } from '../../models/common.enum';
 import { CommonService } from '../../services/common.service';
-import { faShareNodes} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faShareNodes} from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { Clipboard } from '@angular/cdk/clipboard';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -13,17 +16,27 @@ import { faShareNodes} from '@fortawesome/free-solid-svg-icons';
 })
 export class TopNavBarComponent extends BaseComponent implements OnInit {
 
+  icons = {
+    youtube: faYoutube,
+    tiktok: faTiktok,
+    facebook: faFacebook,
+    instagram: faInstagram,
+    email: faEnvelope,
+    shareIcon: faShareNodes
+  }
+
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
   isExpanded: boolean = false;
   prevY = window.scrollY;
   isHidden: boolean = false;
-
-  shareIcon = faShareNodes;
+  shareExpanded: boolean = false;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private commonService: CommonService,
-    public elementRef: ElementRef
+    public elementRef: ElementRef,
+    public clipboard: Clipboard,
+    private snackBar: MatSnackBar
   ) {
     super();
    }
@@ -47,6 +60,7 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
         this.isHidden = false;
       } else{
         this.isHidden = true;
+        this.shareExpanded = false;
       }
       //set scroll position
       this.prevY = currentY
@@ -60,6 +74,8 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
       this.isExpanded = false;
     }
   }
+
+
 
   ngOnInit(): void {
     this.initBreakpoints();
@@ -88,6 +104,27 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
     if(!isLogo)this.isExpanded = !this.isExpanded;
     else this.isExpanded = false;
 
+  }
+
+  showMedia = () => {
+    
+    this.shareExpanded = !this.shareExpanded;
+  }
+
+  copyEmail = () => {
+    const pending = this.clipboard.beginCopy('Info@thekittenproject.org');
+    let remainingAttempts = 3;
+    const attempt = () => {
+      const result = pending.copy();
+      if (!result && --remainingAttempts) {
+        setTimeout(attempt);
+      } else {
+        // Remember to destroy when you're done!
+        pending.destroy();
+      }
+    };
+    attempt();
+    this.snackBar.open('Email Address Copied To Clipboard', '', { duration: 1500 });
   }
 
 }

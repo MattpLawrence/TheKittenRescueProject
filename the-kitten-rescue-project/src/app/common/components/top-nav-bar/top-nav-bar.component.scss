@@ -37,7 +37,37 @@
 
 #shareBtn{
   margin-left: 0;
+  position: relative;
+
+  .shareExpanded{
+    height: 20rem;
+  }
+
 }
+
+
+
+
+#expandableList{
+  overflow: hidden;
+  position: absolute;
+  top: 5rem;
+  background-color: $colorPrimaryBackground;
+  @include flexColumnStart;
+  padding: 0 2rem;
+  transition: all .5s ease-in-out;
+  height: 0;
+  *{
+    margin-top: 1rem;
+    color: $colorPrimary;
+  }
+  .lastLink{
+    margin-bottom: 1rem;
+  }
+
+
+}
+
 #donateBtn{
   margin-right: 0;
 }
@@ -166,4 +196,11 @@
   .centerBox{
     z-index: 1;
   }
+}
+
+@media only screen and (max-height: 700px){
+  #shareBtn{
+    display: none;
+  }
+
 }
