@@ -125,9 +125,9 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
       }
     };
     attempt();
-    if(this.currentBreakpoint <= 1){
-      this.snackBar.open('Email Address Copied To Clipboard', 'close', { duration: 1500, panelClass: 'simpleSnack' });
-    }
+
+      this.snackBar.open('Email Address Copied To Clipboard', 'close', { duration: 2500, panelClass: 'simpleSnack' });
+
   }
 
 }
