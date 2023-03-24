@@ -4,7 +4,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, takeUntil, tap } from 'rxjs';
 import { BreakPointsEnum } from '../../models/common.enum';
 import { CommonService } from '../../services/common.service';
-import { faEnvelope, faShareNodes} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faHashtag} from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,7 +22,7 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
     facebook: faFacebook,
     instagram: faInstagram,
     email: faEnvelope,
-    shareIcon: faShareNodes
+    socialMedia: faHashtag
   }
 
   currentBreakpoint: BreakPointsEnum = 0;

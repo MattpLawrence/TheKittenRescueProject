@@ -23,9 +23,7 @@
     </button>
     </li>
     <li id="shareBtn" class="navBtn" (click)="showMedia()">
-      <span class="material-icons">
-        share
-      </span>
+      <fa-icon [icon]="icons.socialMedia" class="expandSocial fa-2x" ></fa-icon>
       <div id="expandableList" [ngClass]="{shareExpanded: shareExpanded}">
         <fa-icon [icon]="icons.email" class="socialIcon fa-2x" (click)="copyEmail()" matTooltip="Email" matTooltipPosition="left" ></fa-icon>
 
@@ -82,9 +80,8 @@
   </div>
   
   <div id="shareBtn" class="navBtn" (click)="showMedia()">
-    <span class="material-icons">
-      share
-    </span>
+    <fa-icon [icon]="icons.socialMedia" class="expandSocial fa-2x" ></fa-icon>
+
     <div id="expandableList" [ngClass]="{shareExpanded: shareExpanded}">
       <fa-icon [icon]="icons.email" class="socialIcon fa-2x" (click)="copyEmail()" matTooltip="Email" matTooltipPosition="left" ></fa-icon>
 
