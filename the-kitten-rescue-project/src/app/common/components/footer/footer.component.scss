@@ -2,29 +2,60 @@
 
 
 .mainContainer{
+  margin-top: 3rem;
   width: 100vw;
   height:3rem;
-  background-color: $colorBannerBackground;
+  background-color: $colorPrimary;
   @include flexCenterCenter;
+  margin: auto;
+  z-index: 10;
+  border-radius: 0px;
 
-  .sizeContainer{
-    width: 60vw;
-    max-width: 1200px;
-    @include flexCenterSpaceBetween;
-  }
+
 }
 
+.sizeContainer{
+  width: 80vw;
+  max-width: 1200px;
+  @include flexCenterSpaceBetween;
+}
+
+.title{
+  color: $colorPrimaryBackground;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
 
 .socialIcon{
   color: $colorPrimaryBackground;
-  *{
-    display: block;
-    transform: scale(1.5);
-  }
+  margin-right: 1rem;
+  transition: .4s;
 
+  &:hover{
+    cursor: pointer;
+    color: #acacac;
+  }
 }
 
 .svg-inline--fa{
   display: block;
   transform: scale(1.5);
 }
+
+@media only screen and (max-width: $breakpointMedium){
+
+  .sizeContainer{
+    width: 100vw;
+    margin: 0 1rem;
+  }
+
+}
+
+@media only screen and (max-width: $breakpointSmall){
+
+  .sizeContainer{
+    @include flexCenterCenter;
+  }
+
+}
+

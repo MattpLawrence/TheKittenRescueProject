@@ -10,3 +10,11 @@ app-landing-page{
 height: 100%;
   }
 }
+
+app-contact-page{
+  min-height: calc(100vh - 8rem);
+}
+
+.routerContainer{
+  min-height: calc(100vh - 9rem);
+}

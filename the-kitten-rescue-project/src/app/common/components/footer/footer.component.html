@@ -1,10 +1,30 @@
 <div class="mainContainer">
   <div class="sizeContainer">
-    <div class="email">
-      Info@thekittenrescue.org
+    <div *ngIf="currentBreakpoint <= 1" class="title">
+      The Kitten Rescue Project
     </div>
     <div class="socialMedia">
-      <fa-icon [icon]="icons.youtube" class="socialIcon fa-2x"></fa-icon>
+      <a
+      href="https://mail.google.com/mail/u/0/?fs=1&to=Info@thekittenproject.org&tf=cm"
+      target="_blank"
+      rel="noreferrer"
+      className="icoDesktop"
+      matTooltip="Email"
+      aria-label="Email link">
+        <fa-icon [icon]="icons.email" class="socialIcon fa-2x"></fa-icon>
+      </a>
+      <a href="https://www.tiktok.com/@thekittenfoster" target="_blank" class="socialLink" matTooltip="Tiktok" aria-label="tiktok">
+        <fa-icon [icon]="icons.tiktok" class="socialIcon fa-2x"></fa-icon>
+      </a>
+      <a href="https://www.instagram.com/thekittenfoster/" target="_blank" class="socialLink" matTooltip="Instagram" aria-label="instagram">
+        <fa-icon [icon]="icons.instagram" class="socialIcon fa-2x"></fa-icon>
+      </a>
+      <a href="https://www.youtube.com/c/thekittenfoster" target="_blank" class="socialLink" matTooltip="Youtube" aria-label="youtube">
+        <fa-icon [icon]="icons.youtube" class="socialIcon fa-2x"></fa-icon>
+      </a>
+      <a href="https://www.facebook.com/thekittenfoster/" target="_blank" class="socialLink" matTooltip="Facebook" aria-label="facebook">
+        <fa-icon [icon]="icons.facebook" class="socialIcon fa-2x"></fa-icon>
+      </a>
     </div> 
   </div>
 </div>
