@@ -37,6 +37,7 @@ import { ContactPageComponent } from './pages/contact/contact-page/contact-page.
 import { AboutTabsComponent } from './pages/about/about-tabs/about-tabs.component';
 import { DonateTabsComponent } from './pages/donate/donate-tabs/donate-tabs.component';
 import { PaypalModalComponent } from './common/components/paypal-modal/paypal-modal.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { PaypalModalComponent } from './common/components/paypal-modal/paypal-mo
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
-    RouterModule.forRoot(routes,{scrollPositionRestoration: 'top'} )
+    RouterModule.forRoot(routes,{scrollPositionRestoration: 'top'} ),
+    FontAwesomeModule
 
   ],
   providers: [],
