@@ -4,6 +4,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, takeUntil, tap } from 'rxjs';
 import { BreakPointsEnum } from '../../models/common.enum';
 import { CommonService } from '../../services/common.service';
+import { faShareNodes} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -16,6 +17,8 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
   isExpanded: boolean = false;
   prevY = window.scrollY;
   isHidden: boolean = false;
+
+  shareIcon = faShareNodes;
 
   constructor(
     private breakpointObserver: BreakpointObserver,

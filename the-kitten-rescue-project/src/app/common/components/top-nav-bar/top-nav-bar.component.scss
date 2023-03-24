@@ -35,6 +35,13 @@
   @include flexCenterEnd;
 }
 
+#shareBtn{
+  margin-left: 0;
+}
+#donateBtn{
+  margin-right: 0;
+}
+
 .navBtn{
   padding: 1rem;
   margin: 0rem 1rem;
@@ -42,6 +49,11 @@
   list-style: none;
   background-color: $colorPrimaryBackground;
   transition-duration: .2s;
+
+  .material-icons{
+    font-size: 2.5rem;
+    color: $colorPrimary;
+  }
 
   .buttonTextBox{
     font-family: 'Roboto', sans-serif;

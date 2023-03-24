@@ -33,7 +33,6 @@ import { ApplicationErrorComponent } from './pages/adopt/adopt-form/application-
 import { TeaLoaderComponent } from './common/components/tea-loader/tea-loader.component';
 import { LandingCardsComponent } from './pages/landing/landing-cards/landing-cards.component';
 import { LandingPageComponent } from './pages/landing/landing-page/landing-page.component';
-import { ContactPageComponent } from './pages/contact/contact-page/contact-page.component';
 import { AboutTabsComponent } from './pages/about/about-tabs/about-tabs.component';
 import { DonateTabsComponent } from './pages/donate/donate-tabs/donate-tabs.component';
 import { PaypalModalComponent } from './common/components/paypal-modal/paypal-modal.component';
@@ -66,7 +65,6 @@ import { FooterComponent } from './common/components/footer/footer.component';
     ApplicationErrorComponent,
     TeaLoaderComponent,
     LandingCardsComponent,
-    ContactPageComponent,
     AboutTabsComponent,
     DonateTabsComponent,
     PaypalModalComponent,

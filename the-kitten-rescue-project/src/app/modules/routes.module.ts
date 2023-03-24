@@ -11,7 +11,6 @@ import { VolunteerPageComponent } from "../pages/volunteer-page/volunteer-page.c
 import { ApplicationConfirmationComponent } from "../pages/adopt/adopt-form/application-confirmation/application-confirmation.component";
 import { ApplicationErrorComponent } from "../pages/adopt/adopt-form/application-error/application-error.component";
 import { LandingPageComponent } from "../pages/landing/landing-page/landing-page.component";
-import { ContactPageComponent } from "../pages/contact/contact-page/contact-page.component";
 
 
 export const routes: Routes = [
@@ -61,10 +60,6 @@ export const routes: Routes = [
     redirectTo: "home"
   },
   ]
- },
- {
-   path: "contact-page",
-   component: ContactPageComponent,
  },
  {
    path: "donate-page",
