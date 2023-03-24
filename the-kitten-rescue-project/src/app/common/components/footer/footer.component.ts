@@ -56,7 +56,7 @@ export class FooterComponent extends BaseComponent implements OnInit {
       }
     };
     attempt();
-    this.snackBar.open('Email Address Copied To Clipboard', '', { duration: 1500 });
+    this.snackBar.open('Email Address Copied To Clipboard', 'close', { duration: 1500, panelClass: 'simpleSnack' });
   }
 
 }

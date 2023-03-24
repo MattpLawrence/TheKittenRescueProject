@@ -4,7 +4,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, takeUntil, tap } from 'rxjs';
 import { BreakPointsEnum } from '../../models/common.enum';
 import { CommonService } from '../../services/common.service';
-import { faEnvelope, faHashtag} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import { faHeart} from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,7 +23,7 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
     facebook: faFacebook,
     instagram: faInstagram,
     email: faEnvelope,
-    socialMedia: faHashtag
+    socialMedia: faHeart
   }
 
   currentBreakpoint: BreakPointsEnum = 0;
@@ -124,7 +125,9 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
       }
     };
     attempt();
-    this.snackBar.open('Email Address Copied To Clipboard', '', { duration: 1500 });
+    if(this.currentBreakpoint <= 1){
+      this.snackBar.open('Email Address Copied To Clipboard', 'close', { duration: 1500, panelClass: 'simpleSnack' });
+    }
   }
 
 }

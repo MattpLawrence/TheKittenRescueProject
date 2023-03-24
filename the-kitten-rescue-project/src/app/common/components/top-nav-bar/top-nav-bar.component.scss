@@ -49,7 +49,7 @@
 
 
 .expandSocial{
-  color: $colorLightText;
+  color: $colorPrimary;
 }
 
 
@@ -158,7 +158,7 @@
 
   .menuTrigger{
     height: 100%;
-    width: 8rem;
+    width: 5rem;
     @include flexCenterCenter;
 
     span{
