@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
-import { faShieldCat} from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -11,7 +11,7 @@ import { faShieldCat} from '@fortawesome/free-solid-svg-icons';
 })
 export class LandingCardsComponent extends BaseComponent implements OnInit {
 
-  catIcon = faShieldCat;
+
 
   constructor(
     private router: Router

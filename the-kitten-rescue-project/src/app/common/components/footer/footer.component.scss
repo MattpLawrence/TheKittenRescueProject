@@ -1,0 +1,30 @@
+@import '../../../../styles.scss';
+
+
+.mainContainer{
+  width: 100vw;
+  height:3rem;
+  background-color: $colorBannerBackground;
+  @include flexCenterCenter;
+
+  .sizeContainer{
+    width: 60vw;
+    max-width: 1200px;
+    @include flexCenterSpaceBetween;
+  }
+}
+
+
+.socialIcon{
+  color: $colorPrimaryBackground;
+  *{
+    display: block;
+    transform: scale(1.5);
+  }
+
+}
+
+.svg-inline--fa{
+  display: block;
+  transform: scale(1.5);
+}

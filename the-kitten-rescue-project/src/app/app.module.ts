@@ -38,6 +38,7 @@ import { AboutTabsComponent } from './pages/about/about-tabs/about-tabs.componen
 import { DonateTabsComponent } from './pages/donate/donate-tabs/donate-tabs.component';
 import { PaypalModalComponent } from './common/components/paypal-modal/paypal-modal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FooterComponent } from './common/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ContactPageComponent,
     AboutTabsComponent,
     DonateTabsComponent,
-    PaypalModalComponent
+    PaypalModalComponent,
+    FooterComponent
   ],
   imports: [
     BrowserAnimationsModule,
