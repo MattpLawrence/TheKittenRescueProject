@@ -10,9 +10,13 @@
       rel="noreferrer"
       className="icoDesktop"
       matTooltip="Email"
-      aria-label="Email link">
+      aria-label="Email link"
+      *ngIf="currentBreakpoint <= 1">
         <fa-icon [icon]="icons.email" class="socialIcon fa-2x"></fa-icon>
       </a>
+
+      <fa-icon [icon]="icons.email" class="socialIcon fa-2x" *ngIf="currentBreakpoint > 1" (click)="copyEmail()"></fa-icon>
+
       <a href="https://www.tiktok.com/@thekittenfoster" target="_blank" class="socialLink" matTooltip="Tiktok" aria-label="tiktok">
         <fa-icon [icon]="icons.tiktok" class="socialIcon fa-2x"></fa-icon>
       </a>

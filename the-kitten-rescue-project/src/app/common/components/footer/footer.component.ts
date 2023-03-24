@@ -5,6 +5,8 @@ import { BaseComponent } from '../base/base.component';
 import { CommonService } from '../../services/common.service';
 import { takeUntil } from 'rxjs';
 import { BreakPointsEnum } from '../../models/common.enum';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-footer',
@@ -24,7 +26,9 @@ export class FooterComponent extends BaseComponent implements OnInit {
   currentBreakpoint: BreakPointsEnum = 0;
 
   constructor(
-    private commonService: CommonService
+    private commonService: CommonService,
+    private snackBar: MatSnackBar,
+    public clipboard: Clipboard
   ) {super() }
 
   ngOnInit(): void {
@@ -37,6 +41,22 @@ export class FooterComponent extends BaseComponent implements OnInit {
       this.currentBreakpoint = res;
       console.log(res)
     })
+  }
+
+  copyEmail = () => {
+    const pending = this.clipboard.beginCopy('Info@thekittenproject.org');
+    let remainingAttempts = 3;
+    const attempt = () => {
+      const result = pending.copy();
+      if (!result && --remainingAttempts) {
+        setTimeout(attempt);
+      } else {
+        // Remember to destroy when you're done!
+        pending.destroy();
+      }
+    };
+    attempt();
+    this.snackBar.open('Email Address Copied To Clipboard', '', { duration: 1500 });
   }
 
 }
