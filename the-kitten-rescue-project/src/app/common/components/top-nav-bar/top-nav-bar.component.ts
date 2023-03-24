@@ -25,7 +25,7 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
     shareIcon: faShareNodes
   }
 
-  currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
+  currentBreakpoint: BreakPointsEnum = 0;
   isExpanded: boolean = false;
   prevY = window.scrollY;
   isHidden: boolean = false;

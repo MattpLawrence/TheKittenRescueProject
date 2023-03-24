@@ -196,9 +196,18 @@
   .centerBox{
     z-index: 1;
   }
+
+  #expandableList > *{
+    margin-top: .5rem;
+    font-size: 1.5rem;
+    & *{
+
+      font-size: 1.5rem;
+    }
+  }
 }
 
-@media only screen and (max-height: 700px){
+@media only screen and (max-height: 600px){
   #shareBtn{
     display: none;
   }
