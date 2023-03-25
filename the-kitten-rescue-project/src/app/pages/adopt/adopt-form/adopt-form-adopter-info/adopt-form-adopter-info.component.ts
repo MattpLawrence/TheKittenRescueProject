@@ -34,9 +34,9 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   ) {
     super()
     this.form = this.formBuilder.group({
-      petName: new FormControl(null, [Validators.required]),
-      hasOtherInformation: new FormControl(null, [Validators.required]),
-      otherNameInformation: new FormControl(null, [Validators.required]),
+      petName: new FormControl('', [Validators.required]),
+      hasOtherRequest: new FormControl(null, [Validators.required]),
+      otherNameRequest: new FormControl(null),
       adopterFirstName: new FormControl('', [Validators.required]),
       adopterLastName: new FormControl('', [Validators.required]),
       adopterDOB: new FormControl('', [Validators.required]),
@@ -91,23 +91,23 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   initCurrentPet = () => {
     //get current animal if any
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      console.log(res);
+      if(res != undefined){
+        if(res.name != undefined){
+          this.form.controls.petName.setValue(res.name);
+        }
+      }
     })
-
   }
 
   initPetList = () => {
-
     // get list of animals
     this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if(res !== undefined){
-        console.log(res)
         //create an array of names ans sort alphabetically
         this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
       }else{
         //if no subject then do the query
         this.apiService.searchAnimals().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-          console.log(res)
           //create an array of names ans sort alphabetically
           this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
         })
@@ -132,6 +132,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
       //cycle through both maps and match keys
       this.form.get(key)?.setValue(resultMap.get(key));
     })
+    this.initCurrentPet()
   }
 
 

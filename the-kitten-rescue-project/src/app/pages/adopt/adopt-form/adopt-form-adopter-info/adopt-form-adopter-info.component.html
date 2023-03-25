@@ -4,7 +4,7 @@
     <form [formGroup]="form" class="formContainer">
 
       <!-- {{selectedNameType}} -->
-      <div class="mainTitle">Tell Us Who You Want To Apply For</div>
+      <div class="mainTitle">Who Do You Want To Apply For</div>
       <div class="formLine firstLine">
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Select The Cat You Want To Apply For</mat-label>
@@ -20,30 +20,30 @@
         <div class="inputWrapperColumn halfWidth"  >
           <mat-label class="inputLabel">Do You Have Any Additional Requests</mat-label>
           <mat-form-field appearance="outline" class="selectDefault full-width">
-            <mat-select  placeholder="Yes / No" iso id="hasOtherInformation" formControlName="hasOtherInformation" >
-              <mat-option id="hasCats{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
+            <mat-select  placeholder="Yes / No" iso id="hasOtherRequest" formControlName="hasOtherRequest" >
+              <mat-option id="hasRequest{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
             </mat-select>
-            <mat-error role='alert' *ngIf="error('hasOtherInformation', 'required')">
+            <mat-error role='alert' *ngIf="error('hasOtherRequest', 'required')">
                 This Field Is Required
             </mat-error>
           </mat-form-field>
         </div>
       </div>
       <!-- other Words-->
-      <div class="optionalPanel" id="otherNameInformation" [ngClass]="{isExpanded: form.controls.hasOtherInformation.value == 'Yes'}">
+      <div class="optionalPanel" id="otherNameRequest" [ngClass]="{isExpanded: form.controls.hasOtherRequest.value == 'Yes'}">
         <div class="formLine ">
           <div class="inputWrapperColumn fullWidth">
             <mat-label class="inputLabel" ><span class="labelMarginRight">Additional Information </span><span class="titleHighlight">Additional Pets, Special Requests, Etc.</span> </mat-label>
             <mat-form-field appearance="outline" class="inputDefault">
     
-              <textarea [required]="form.controls.hasOtherInformation.value == 'Yes'? true: false"
+              <textarea [required]="form.controls.hasOtherRequest.value == 'Yes'? true: false"
                         matInput
                         cdkTextareaAutosize
                         cdkAutosizeMinRows="2"
                         cdkAutosizeMaxRows="2"
-                        formControlName="otherNameInformation"
-                        placeholder="ex: I would also like to adopt Fuzzy Lumpkins."></textarea>
-              <mat-error role='alert' *ngIf="error('otherNameInformation', 'required')">
+                        formControlName="otherNameRequest"
+                        placeholder="ex: I also want to adopt Fuzzy Lumpkins."></textarea>
+              <mat-error role='alert' *ngIf="error('otherNameRequest', 'required')">
                 Describe Your Other Pets Is Required
               </mat-error>
             </mat-form-field>
