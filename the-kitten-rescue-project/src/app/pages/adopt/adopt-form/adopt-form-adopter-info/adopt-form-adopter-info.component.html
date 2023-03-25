@@ -2,6 +2,28 @@
   <div class="sizeContainer">
     <!-- form -->
     <form [formGroup]="form" class="formContainer">
+      <div class="formLine">
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >First Name</mat-label>
+          <mat-form-field appearance="outline" class="selectDefault full-width">
+            <mat-select  placeholder="ex: Fuzzy Lumpkins" iso id="petName" formControlName="petName" >
+              <mat-option id="pet{{name}}" *ngFor="let name of petNameList" [value]="name">{{name}}</mat-option>
+            </mat-select>
+            <mat-error role='alert' *ngIf="error('petName', 'required')">
+                Pet Name Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputWrapperColumn halfWidth" >
+          <mat-label class="inputLabel" >Last Name</mat-label>
+          <mat-form-field appearance="outline" class="inputDefault ">
+            <input matInput placeholder="ex: Patel, Smith" autocomplete="family-name" formControlName="petName" id="adopterLastName"/>
+            <mat-error role='alert' *ngIf="error('petName', 'required')">
+               Adopter's Last Name Is Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
       <div class="mainTitle">We Want To Know More About You</div>
       <!-- name -->
       <div class="formLine">

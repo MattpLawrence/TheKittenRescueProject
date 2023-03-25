@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { AdopterForm } from 'src/app/common/models/form.model';
+import { APIService } from 'src/app/common/services/api.service';
 import { CommonService } from 'src/app/common/services/common.service';
 
 @Component({
@@ -18,17 +19,19 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   //regex validation
   emailValidation = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}";
   phoneValidation = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$";
-
   hasSubmissionError: boolean = false;
+  petNameList: string[] = [];
 
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private apiService: APIService
   ) {
     super()
     this.form = this.formBuilder.group({
+      petName: new FormControl(null, [Validators.required]),
       adopterFirstName: new FormControl('', [Validators.required]),
       adopterLastName: new FormControl('', [Validators.required]),
       adopterDOB: new FormControl('', [Validators.required]),
@@ -49,6 +52,8 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   ngOnInit(): void {
     this.initScrollTop()
     this.initForm();
+    this.initCurrentPet();
+    this.initPetList();
   }
 
   public error = (controlName: string, errorName: string) => {
@@ -60,7 +65,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     //scroll to top of page
     setTimeout(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
-    },150)
+    },250)
   }
 
   initForm = () =>{
@@ -74,6 +79,33 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         if(storedObject != null && storedObject != null ){
           this.repopulateForm(JSON.parse(storedObject))
         }
+      }
+    })
+  }
+
+  initCurrentPet = () => {
+    //get current animal if any
+    this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      console.log(res);
+    })
+
+  }
+
+  initPetList = () => {
+
+    // get list of animals
+    this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      if(res !== undefined){
+        console.log(res)
+        //create an array of names ans sort alphabetically
+        this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
+      }else{
+        //if no subject then do the query
+        this.apiService.searchAnimals().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+          console.log(res)
+          //create an array of names ans sort alphabetically
+          this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
+        })
       }
     })
   }
@@ -100,7 +132,6 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
 
 
   next = () => {
-    
     if(this.form.valid){
       //create form object
       let formValue: AdopterForm = this.form.value;

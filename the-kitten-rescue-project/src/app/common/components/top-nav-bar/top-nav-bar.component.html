@@ -25,7 +25,9 @@
     <li id="shareBtn" class="navBtn" (click)="showMedia()">
       <fa-icon [icon]="icons.socialMedia" class="expandSocial fa-2x" ></fa-icon>
       <div id="expandableList" [ngClass]="{shareExpanded: shareExpanded}">
-        <fa-icon [icon]="icons.email" class="socialIcon fa-2x" (click)="copyEmail()" matTooltip="Email" matTooltipPosition="left" ></fa-icon>
+        <a href="mailto:Info@TheKittenProject.org" target="_blank" class="socialLink" >
+          <fa-icon [icon]="icons.email" class="socialIcon fa-2x" matTooltip="Email" matTooltipPosition="left" aria-label="email"></fa-icon>
+        </a>
 
         <a href="https://www.tiktok.com/@thekittenfoster" target="_blank" class="socialLink" >
           <fa-icon [icon]="icons.tiktok" class="socialIcon fa-2x" matTooltip="Tiktok" matTooltipPosition="left"  aria-label="tiktok"></fa-icon>
@@ -78,12 +80,14 @@
   <div class="centerBox">
     <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo" routerLink="landing-page" (click)="toggleExpanded(true)">
   </div>
-  
+
   <div id="shareBtn" class="navBtn" (click)="showMedia()">
     <fa-icon [icon]="icons.socialMedia" class="expandSocial fa-2x" ></fa-icon>
 
     <div id="expandableList" [ngClass]="{shareExpanded: shareExpanded}">
-      <fa-icon [icon]="icons.email" class="socialIcon fa-2x" (click)="copyEmail()" matTooltip="Email" matTooltipPosition="left" ></fa-icon>
+      <a href="mailto:Info@TheKittenProject.org" target="_blank" class="socialLink" >
+        <fa-icon [icon]="icons.email" class="socialIcon fa-2x" matTooltip="Email" matTooltipPosition="left" aria-label="email"></fa-icon>
+      </a>
 
       <a href="https://www.tiktok.com/@thekittenfoster" target="_blank" class="socialLink" >
         <fa-icon [icon]="icons.tiktok" class="socialIcon fa-2x" matTooltip="Tiktok" matTooltipPosition="left"  aria-label="tiktok"></fa-icon>

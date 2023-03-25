@@ -11,6 +11,7 @@ export interface AdoptionFormPost {
 }
 
 export interface AdopterForm {
+  petName: string,
   adopterFirstName: string,
   adopterLastName: string,
   adopterDOB: string,
