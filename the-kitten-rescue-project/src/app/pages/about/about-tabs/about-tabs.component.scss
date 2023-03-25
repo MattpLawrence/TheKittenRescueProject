@@ -3,6 +3,7 @@
 .mainContainer{
   width: 100%;
   @include flexCenterCenter;
+  margin-bottom: 2rem;
 }
 
 .tabGroup{
@@ -25,7 +26,7 @@
 .textContainer{
   margin-top: 2rem;
   width: 60%;
-  line-height: 1.5rem;
+  line-height: 1.75rem;
   font-size: 1.25rem;
 }
 
@@ -38,7 +39,7 @@
 @media only screen and (max-width: $breakpointMedium){
 
   .textContainer{
-    line-height: 1.375rem;
+    line-height: 1.5rem;
     font-size: 1rem;
   }
 }
