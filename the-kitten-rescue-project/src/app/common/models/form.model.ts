@@ -1,4 +1,5 @@
 export interface AdoptionForm {
+  recipientAddress: string,
   adopterForm: AdopterForm,
   homeForm: HomeForm,
   petForm: PetForm

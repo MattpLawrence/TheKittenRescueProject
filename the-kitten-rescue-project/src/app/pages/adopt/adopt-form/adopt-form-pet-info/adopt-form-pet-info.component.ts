@@ -196,6 +196,8 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
      })
      //build final adoptionForm
      let adoptionForm: AdoptionForm = {
+      //set final email destination
+      recipientAddress: 'thekittenrescueproject@gmail.com',
       adopterForm: adopterForm!,
       homeForm: homeForm!,
       petForm: formValue

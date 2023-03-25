@@ -18,9 +18,10 @@ export class APIService {
 
   //variables
   private petFinderUrl: string = 'https://api.petfinder.com/v2';
-  // queryString: string = '/animals?organization=GA335&limit=20';
   queryString: string = '/animals?organization=GA477&limit=100';
+
   apiUrl:string = environment.API_URL;
+  // apiUrl:string = 'http://localhost:3000';
 
   constructor(
     private http: HttpClient,
