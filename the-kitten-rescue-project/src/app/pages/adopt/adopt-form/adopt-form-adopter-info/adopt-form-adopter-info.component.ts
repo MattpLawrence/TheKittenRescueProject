@@ -21,6 +21,9 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   phoneValidation = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$";
   hasSubmissionError: boolean = false;
   petNameList: string[] = [];
+  selectedNameType = '1';
+  isExpanded: boolean = false;
+  yesNo: string[] = ["Yes", "No"];
 
   constructor(
     private router: Router,
@@ -32,6 +35,8 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     super()
     this.form = this.formBuilder.group({
       petName: new FormControl(null, [Validators.required]),
+      hasOtherInformation: new FormControl(null, [Validators.required]),
+      otherNameInformation: new FormControl(null, [Validators.required]),
       adopterFirstName: new FormControl('', [Validators.required]),
       adopterLastName: new FormControl('', [Validators.required]),
       adopterDOB: new FormControl('', [Validators.required]),
@@ -65,7 +70,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     //scroll to top of page
     setTimeout(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
-    },250)
+    },200)
   }
 
   initForm = () =>{

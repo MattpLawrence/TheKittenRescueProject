@@ -34,6 +34,46 @@
   }
 }
 
+.nameTypeContainer{
+  width: 100%;
+  margin-bottom: 1.5rem;
+  @include flexCenterCenter;
+  .nameTypeToggle{
+    width: 100%;
+    @include flexCenterSpaceBetween;
+  }
+
+  .nameLabel{
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+.optionalPanel{
+  overflow: hidden;
+  height: 0rem;
+  transition: .6s ease-in-out;
+  width: 100%;
+  @include flexColumnStart;;
+}
+
+.isExpanded{
+  height: 7rem;
+}
+
+.fullWidth{
+  width: calc(100% - 2rem);
+  margin: 1rem;
+  margin-bottom: 0rem;
+}
+
+#petDescription.isExpanded{
+  height: 7rem;
+}
+
+
+
 #formError{
   margin-top: 2rem;
 }
@@ -55,6 +95,16 @@
   color: $colorLightText;
   margin: 0 1rem;
   margin-bottom: 2rem;
+}
+
+.subTitle{ 
+  @extend  .mainTitle;
+  margin-top: 2rem;
+}
+
+
+.titleHighlight{
+  color: $colorPrimary;
 }
 
 .customErrorDiv{
@@ -113,5 +163,9 @@
     .halfWidth, .thirdWidth {
       width: 100%;
     }
+  }
+
+  .isExpanded{
+    height: 9rem;
   }
 }

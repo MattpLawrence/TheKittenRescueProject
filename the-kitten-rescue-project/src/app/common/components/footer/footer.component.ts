@@ -39,7 +39,6 @@ export class FooterComponent extends BaseComponent implements OnInit {
   initBreakpoint = () => {
     this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.currentBreakpoint = res;
-      console.log(res)
     })
   }
 
