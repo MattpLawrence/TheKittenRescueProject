@@ -73,6 +73,7 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
     onDocumentClick(event: MouseEvent) {
     if (!this.elementRef.nativeElement.contains(event.target)) {
       this.isExpanded = false;
+      this.shareExpanded = false;
     }
   }
 

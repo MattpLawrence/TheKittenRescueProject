@@ -65,36 +65,52 @@
   width: calc(70% - 1.5rem);
 }
 
+
 .fosterContainer{
   width: 100%;
   background-color: $colorBackground;
   @include flexColumnCenter;
 
-
+  .fosterSubTitle{
+    text-align: start;
+    font-size: 1.5rem;
+    color: $colorText;
+  }
 
   .sizeContainer{
-    flex-direction: row;
     padding: 2rem 0;
-    @include flexCenterSpaceBetween;
 
     .imgContainer{
-      width: 30%;
+      width: 60%;
     }
   
     .txtContainer{
-      width: calc(70% - 3rem);
+      width: calc(100% - 3rem);
       font-size: 1.125rem;
       line-height: 1.5rem;
-      text-align: center;
-      padding-left: 2.5rem;
+      text-align: start;
       @include flexColumnCenter;
     }
+  }
+}
+
+ul{
+  margin-left: 0;
+}
+
+li{
+  list-style: none;
+  margin-top: 1.5rem;
+  .fosterItemTitle{
+    font-size: 1.25rem;
+    font-weight: 500;
   }
 }
 
 .fosterTitle{
   @extend .headerTitle;
   line-height: 2.5rem;
+  margin-bottom: .5rem;
 }
 
 
@@ -117,7 +133,8 @@
 
   .sizeContainer{
     width: calc(100% - 3rem);
-    margin: 1.5rem 0;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
   }
 
   .headerContainer .headerContent{
@@ -126,11 +143,20 @@
 
   .fosterContainer .sizeContainer{
     width: calc(100% - 3rem);
-    margin: 1.5rem 0;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
     @include flexColumnCenter;
     .txtContainer{
       padding: 0 1.5rem;
       width: 100%;
+      text-align: center;
+      .fosterSubTitle{
+        text-align: center;
+      }
+      .fostering{
+        padding-left: 0;
+        text-align: center;
+      }
     }
     .imgContainer{
       width: 60%;
