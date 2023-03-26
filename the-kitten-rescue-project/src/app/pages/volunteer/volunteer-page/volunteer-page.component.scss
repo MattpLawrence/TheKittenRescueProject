@@ -1,0 +1,155 @@
+@import "../../../../styles.scss";
+
+.mainContainer{
+  width: 100%;
+  @include flexColumnStart;
+}
+
+.topBanner{
+  width: 100%;
+  height: 30vh;
+  background-color: $colorBannerBackground;
+  @include flexColumnCenter;
+
+}
+
+.title{
+  margin: 2rem 0;
+  font-size: 4rem;
+  font-weight: 500;
+  color: $colorPrimaryBackground;
+  text-align: center;
+  font-family: 'Courgette', cursive;
+  margin: 0 2rem;
+
+}
+
+.sizeContainer{
+  width: 70%;
+  max-width: 1200px;
+  @include flexColumnStart;
+}
+
+.headerContainer{
+  width: 100%;
+  @include flexColumnStart;
+  .headerTitle{
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin: 1.5rem;
+    color: $colorPrimary;
+  }
+  .headerContent{
+    text-align: center;
+    font-size: 1.5rem;
+    color: $colorText;
+  }
+
+
+}
+
+.navButton{
+  margin: 1.5rem;
+  width: 40%;
+}
+
+#viewFoster{
+  width: calc(70% - 1.5rem);
+}
+
+.fosterContainer{
+  width: 100%;
+  background-color: $colorBackground;
+  margin-bottom: 2rem;
+  @include flexColumnCenter;
+
+
+
+  .sizeContainer{
+    flex-direction: row;
+    padding: 2rem 0;
+    @include flexCenterSpaceBetween;
+
+    .imgContainer{
+      width: 30%;
+    }
+  
+    .txtContainer{
+      width: calc(70% - 3rem);
+      font-size: 1.125rem;
+      line-height: 1.5rem;
+      text-align: center;
+      padding-left: 2.5rem;
+      @include flexColumnCenter;
+    }
+  }
+}
+
+.fosterTitle{
+  @extend .headerTitle;
+  line-height: 2.5rem;
+}
+
+
+.picture{
+  border-radius: .75rem;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+
+@media only screen and (max-width: $breakpointMedium) {
+  .topBanner{
+    height: 10rem;
+  }
+
+  .title{
+    font-size: 3rem;
+  }
+
+  .sizeContainer{
+    width: calc(100% - 3rem);
+    margin: 1.5rem 0;
+  }
+
+  .headerContainer .headerContent{
+    font-size: 1.125rem;
+  }
+
+  .fosterContainer .sizeContainer{
+    width: calc(100% - 3rem);
+    margin: 1.5rem 0;
+    @include flexColumnCenter;
+    .txtContainer{
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    .imgContainer{
+      width: 60%;
+    }
+  }
+
+  .navButton{
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: $breakpointSmall) {
+  .title{
+    font-size: 2.5rem;
+  }
+
+  .fosterContainer .sizeContainer .imgContainer{
+    width: 100%;
+  }
+
+  .navButton{
+    width: 90%;
+  }
+
+  #viewFoster{
+    width: calc(100%);
+  }
+}

@@ -8,7 +8,7 @@ import { TopNavBarComponent } from './common/components/top-nav-bar/top-nav-bar.
 import { MaterialModule } from './modules/material.module';
 
 import { AboutPageComponent } from './pages/about/about-page/about-page.component';
-import { VolunteerPageComponent } from './pages/volunteer-page/volunteer-page.component';
+import { VolunteerPageComponent } from './pages/volunteer/volunteer-page/volunteer-page.component';
 import { AdoptPageComponent } from './pages/adopt/adopt-home/adopt-page/adopt-page.component';
 import { DonatePageComponent } from './pages/donate/donate-page/donate-page.component';
 import { AppRoutingModule } from './modules/routes.module';
@@ -38,6 +38,7 @@ import { DonateTabsComponent } from './pages/donate/donate-tabs/donate-tabs.comp
 import { PaypalModalComponent } from './common/components/paypal-modal/paypal-modal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './common/components/footer/footer.component';
+import { VolunteerFormComponent } from './pages/volunteer/volunteer-form/volunteer-form/volunteer-form.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { FooterComponent } from './common/components/footer/footer.component';
     AboutTabsComponent,
     DonateTabsComponent,
     PaypalModalComponent,
-    FooterComponent
+    FooterComponent,
+    VolunteerFormComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,5 +1,5 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
@@ -13,7 +13,7 @@ import { CommonService } from 'src/app/common/services/common.service';
   templateUrl: './adopt-form-adopter-info.component.html',
   styleUrls: ['./adopt-form-adopter-info.component.scss']
 })
-export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnInit {
+export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnInit, AfterViewInit{
 
   public form: FormGroup;
   //regex validation
@@ -55,10 +55,13 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   }
 
   ngOnInit(): void {
-    this.initScrollTop()
+    // this.initScrollTop()
     this.initForm();
     this.initCurrentPet();
     this.initPetList();
+  }
+  ngAfterViewInit(){
+    this.initScrollTop()
   }
 
   public error = (controlName: string, errorName: string) => {
@@ -66,7 +69,6 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   };
   
   initScrollTop =() => {
-
     //scroll to top of page
     setTimeout(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
@@ -77,12 +79,14 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if(res != undefined){
         this.repopulateForm(res)
+
       }else{
         //look for session storage
         let storedObject = sessionStorage.getItem("adopterForm")
 
         if(storedObject != null && storedObject != null ){
           this.repopulateForm(JSON.parse(storedObject))
+
         }
       }
     })
@@ -93,7 +97,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if(res != undefined){
         if(res.name != undefined){
-          this.form.controls.petName.setValue(res.name);
+          this.form.controls.petName.setValue(res.name)
         }
       }
     })
@@ -148,7 +152,6 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
       //go to next page
       this.router.navigate(['adopt-page/form-home-info']);
       this.hasSubmissionError = false;
-      console.log(formValue);
     }
     else this.hasSubmissionError = true;
   }
