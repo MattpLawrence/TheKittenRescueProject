@@ -46,8 +46,14 @@
     color: $colorText;
     margin-bottom: 2rem;
   }
+}
 
-
+.socialLink{
+  text-decoration: none;
+  @extend .navButton;
+  #emailButton{
+    width: 100%;
+  }
 }
 
 .navButton{

@@ -54,6 +54,17 @@
   font-size: 1.25rem;
 }
 
+.disclosure{
+  font-size: 1rem;
+  text-align: center;
+  color: black;
+  margin-top: 1.5rem;
+  .material-icons{
+    color: $colorPrimary;
+    margin-right: .75rem;
+  }
+}
+
 .noDecoration{
   color: $colorPrimaryBackground;
   text-decoration: none;
