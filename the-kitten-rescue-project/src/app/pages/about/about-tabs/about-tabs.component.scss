@@ -30,6 +30,20 @@
   font-size: 1.25rem;
 }
 
+.centerContainer{
+  width: 100%;
+  @include flexColumnCenter;
+
+  .pictureColumn{
+    @extend .picture;
+    width: 40%;
+  }
+  .textContainerColumn{
+    width: calc(100% - 3rem);
+    @extend .textContainer;
+  }
+}
+
 .mat-tab-labels{
   .mat-tab-label {
     width: calc(33vw - 3rem);

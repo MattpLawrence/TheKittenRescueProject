@@ -44,6 +44,7 @@
     text-align: center;
     font-size: 1.5rem;
     color: $colorText;
+    margin-bottom: 2rem;
   }
 
 
@@ -61,7 +62,6 @@
 .fosterContainer{
   width: 100%;
   background-color: $colorBackground;
-  margin-bottom: 2rem;
   @include flexColumnCenter;
 
 
