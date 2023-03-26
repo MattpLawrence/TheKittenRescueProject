@@ -38,7 +38,8 @@ import { DonateTabsComponent } from './pages/donate/donate-tabs/donate-tabs.comp
 import { PaypalModalComponent } from './common/components/paypal-modal/paypal-modal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './common/components/footer/footer.component';
-import { VolunteerFormComponent } from './pages/volunteer/volunteer-form/volunteer-form/volunteer-form.component';
+import { FosterFormComponent } from './pages/volunteer/foster-form/foster-form.component';
+import { VolunteerRouterComponent } from './pages/volunteer/volunteer-router/volunteer-router.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { VolunteerFormComponent } from './pages/volunteer/volunteer-form/volunte
     DonateTabsComponent,
     PaypalModalComponent,
     FooterComponent,
-    VolunteerFormComponent
+    FosterFormComponent,
+    VolunteerRouterComponent
   ],
   imports: [
     BrowserAnimationsModule,

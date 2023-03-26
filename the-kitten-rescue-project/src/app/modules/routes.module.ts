@@ -11,6 +11,8 @@ import { VolunteerPageComponent } from "../pages/volunteer/volunteer-page/volunt
 import { ApplicationConfirmationComponent } from "../pages/adopt/adopt-form/application-confirmation/application-confirmation.component";
 import { ApplicationErrorComponent } from "../pages/adopt/adopt-form/application-error/application-error.component";
 import { LandingPageComponent } from "../pages/landing/landing-page/landing-page.component";
+import { FosterFormComponent } from "../pages/volunteer/foster-form/foster-form.component";
+import { VolunteerRouterComponent } from "../pages/volunteer/volunteer-router/volunteer-router.component";
 
 
 export const routes: Routes = [
@@ -28,7 +30,18 @@ export const routes: Routes = [
  },
  {
    path: "volunteer-page",
-   component: VolunteerPageComponent,
+   component: VolunteerRouterComponent,
+   children:[
+    { path: "home",
+      component: VolunteerPageComponent
+    },
+    { path: "form-foster",
+      component: FosterFormComponent
+    },
+    { path: "**",
+    redirectTo: "home"
+    }
+  ]
  },
  {
    path: "adopt-page",
@@ -58,7 +71,7 @@ export const routes: Routes = [
     },
     { path: "**",
     redirectTo: "home"
-  },
+    },
   ]
  },
  {
