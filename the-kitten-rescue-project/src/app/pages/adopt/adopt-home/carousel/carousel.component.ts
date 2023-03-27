@@ -147,7 +147,7 @@ export class CarouselComponent extends BaseComponent implements OnInit {
 
   imageClick = (image: string | undefined) => {
 
-    if(image != undefined){
+    if(image != undefined && this.currentBreakpoint <= 1){
 
       //let top bottom modal know not to close on esc
       this.commonService.setTopModalSubject({isOpen:true, hasTriggered: false});

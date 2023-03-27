@@ -40,6 +40,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './common/components/footer/footer.component';
 import { FosterFormComponent } from './pages/volunteer/foster-form/foster-form.component';
 import { VolunteerRouterComponent } from './pages/volunteer/volunteer-router/volunteer-router.component';
+import { HammerModule } from "../../node_modules/@angular/platform-browser";
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { VolunteerRouterComponent } from './pages/volunteer/volunteer-router/vol
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     RouterModule.forRoot(routes,{scrollPositionRestoration: 'top'} ),
-    FontAwesomeModule
+    FontAwesomeModule,
+    HammerModule
 
   ],
   providers: [],
