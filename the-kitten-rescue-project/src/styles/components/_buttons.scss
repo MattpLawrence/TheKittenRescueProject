@@ -15,10 +15,10 @@
   color: $colorDefaultTextDisabled !important;
 }
 .buttonTinted {
-  background-color: $colorPrimary;
-  color: $colorContrast;
+  background-color: $colorContrastDarkest;
+  color: $colorPrimaryBackground;
   &:hover{
-    background-color: $colorPrimaryActive;
+    background-color: $colorContrastDarkestHover;
   }
 }
 

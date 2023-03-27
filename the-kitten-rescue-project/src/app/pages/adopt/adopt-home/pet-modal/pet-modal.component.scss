@@ -80,7 +80,7 @@
       justify-content: flex-start;
       align-items: flex-start;
       margin-bottom: 1rem;
-      background-color: $colorContrast;
+      background-color: $colorBackground;
       border-radius: .75rem;
       overflow: hidden;
       overflow-y: auto;
@@ -135,9 +135,14 @@
       width: calc(100% - 2rem);
       margin: 0 1rem;
       margin-bottom: 1rem;
-      background-color: $colorContrast;
+
     }
   }
+}
+
+#applicationButton{
+  background-color: $colorContrastDarkest;
+  color: $colorPrimaryBackground;
 }
 
 #maleIcon{
@@ -169,7 +174,7 @@
 }
 
 #adoptTitle{
-  color: $colorContrast;
+  color: $colorPrimaryBackground;
 }
 
 @media only screen and (max-width: $breakpointMedium) {

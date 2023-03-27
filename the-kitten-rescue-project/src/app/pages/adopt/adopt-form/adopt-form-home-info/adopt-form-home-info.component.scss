@@ -55,6 +55,13 @@
   margin-top: 2rem;
 }
 
+#backButton{
+  color: $colorText;
+  background-color: $colorPrimaryBackground;
+  &:hover{
+    background-color: $colorPrimaryLight;
+  }
+}
 .navButtonContainer{
   margin-top: 2rem;
   width: 60%;

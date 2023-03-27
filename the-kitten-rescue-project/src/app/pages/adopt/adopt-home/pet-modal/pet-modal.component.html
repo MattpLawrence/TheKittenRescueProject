@@ -117,8 +117,8 @@
 
       <div class="leftContainer">
         <div class="columnTitle" id="adoptTitle">Want To Adopt Me?</div>
-        <button mat-button class="buttonText buttonLarge" (click)="navigate()">Go To Adoption Application</button>
-        <button mat-button class="buttonText buttonLarge"><a class="aNoStyle" href="{{currentPet.url}}" target="_blank">View On PetFinder</a></button>
+        <button mat-button class="buttonText buttonLarge" id="applicationButton" (click)="navigate()">Go To Adoption Application</button>
+        <a class="aNoStyle" href="{{currentPet.url}}" target="_blank"><button mat-button class="buttonText buttonLarge" id="petfinderButton">View On PetFinder</button></a>
       </div>
     </div>
 

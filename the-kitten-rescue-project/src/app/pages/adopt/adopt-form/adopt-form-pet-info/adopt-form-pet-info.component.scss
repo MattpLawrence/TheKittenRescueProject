@@ -58,7 +58,13 @@
   }
 }
 
-
+#backButton{
+  color: $colorText;
+  background-color: $colorPrimaryBackground;
+  &:hover{
+    background-color: $colorPrimaryLight;
+  }
+}
 
 .titleHighlight{
   color: $colorPrimary;

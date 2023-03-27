@@ -5,7 +5,7 @@
   margin-top: 3rem;
   width: 100vw;
   height:3rem;
-  background-color: $colorContrast;
+  background-color: $colorPrimary;
   @include flexCenterCenter;
   margin: auto;
   z-index: 10;
@@ -21,13 +21,13 @@
 }
 
 .title{
-  color: $colorPrimary;
+  color: $colorPrimaryBackground;
   font-size: 1.125rem;
   font-weight: 500;
 }
 
 .socialIcon{
-  color: $colorPrimary;
+  color: $colorPrimaryBackground;
   margin-right: 1rem;
   transition: .4s;
 
