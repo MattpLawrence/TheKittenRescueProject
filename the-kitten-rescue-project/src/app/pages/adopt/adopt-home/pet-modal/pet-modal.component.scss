@@ -80,7 +80,7 @@
       justify-content: flex-start;
       align-items: flex-start;
       margin-bottom: 1rem;
-      background-color: $colorBackground;
+      background-color: $colorContrast;
       border-radius: .75rem;
       overflow: hidden;
       overflow-y: auto;
@@ -128,12 +128,14 @@
     .columnTitle{
       margin-top: .5rem;
       margin-bottom: 1.5rem;
+
     }
 
     button{
       width: calc(100% - 2rem);
       margin: 0 1rem;
       margin-bottom: 1rem;
+      background-color: $colorContrast;
     }
   }
 }
@@ -167,7 +169,7 @@
 }
 
 #adoptTitle{
-  color: $colorPrimaryBackground;
+  color: $colorContrast;
 }
 
 @media only screen and (max-width: $breakpointMedium) {

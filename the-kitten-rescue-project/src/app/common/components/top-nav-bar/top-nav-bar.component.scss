@@ -3,7 +3,7 @@
 
 .topNavContainer{
   width: 100vw;
-  background-color: $colorPrimaryBackground;
+  background-color: $colorContrast;
   height: 6rem;
   border-bottom: 0rem;
   @include flexCenterSpaceBetween;
@@ -57,7 +57,7 @@
   overflow: hidden;
   position: absolute;
   top: 5rem;
-  background-color: $colorPrimaryBackground;
+  background-color: $colorContrast;
   @include flexColumnStart;
   padding-right: 2.25rem;
   padding-left: 2rem;
@@ -83,7 +83,7 @@
   margin: 0rem 1rem;
   @include flexColumnCenter;
   list-style: none;
-  background-color: $colorPrimaryBackground;
+  background-color: $colorContrast;
   transition-duration: .2s;
 
   .material-icons{
@@ -187,7 +187,7 @@
     transition: all .5s ease-in-out;
     transform:translateX(-9rem);
     padding-bottom: calc(100vh - 20.5rem);
-    background-color: $colorPrimaryBackground;
+    background-color: $colorContrast;
     li{
       margin: 0;
     }

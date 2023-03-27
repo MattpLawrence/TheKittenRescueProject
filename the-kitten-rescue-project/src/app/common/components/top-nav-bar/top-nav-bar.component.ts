@@ -4,7 +4,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, takeUntil, tap } from 'rxjs';
 import { BreakPointsEnum } from '../../models/common.enum';
 import { CommonService } from '../../services/common.service';
-import { faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faCat, faC} from '@fortawesome/free-solid-svg-icons';
 import { faHeart} from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -18,6 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class TopNavBarComponent extends BaseComponent implements OnInit {
 
   icons = {
+    cat: faCat,
     youtube: faYoutube,
     tiktok: faTiktok,
     facebook: faFacebook,

@@ -1,7 +1,8 @@
 <!-- desktop navbar -->
 <nav *ngIf="currentBreakpoint === 0" class="topNavContainer stickyHeaderCard" [ngClass]="{isHidden: isHidden}">
   <div class="leftBox">
-    <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo" routerLink="landing-page">
+    <a alt="Main Title Logo" routerLink="landing-page"><fa-icon [icon]="icons.cat" class="expandSocial fa-2x" ></fa-icon></a>
+    
   </div>
   <ul class="rightBox">
 
@@ -78,7 +79,7 @@
 
 
   <div class="centerBox">
-    <img id="logoImg" src="https://ih1.redbubble.net/image.687740923.7472/flat,750x1000,075,f.u6.jpg" alt="Main Title Logo" routerLink="landing-page" (click)="toggleExpanded(true)">
+    <a alt="Main Title Logo" routerLink="landing-page" (click)="toggleExpanded(true)"><fa-icon [icon]="icons.cat" class="expandSocial fa-2x" ></fa-icon></a>
   </div>
 
   <div id="shareBtn" class="navBtn" (click)="showMedia()">

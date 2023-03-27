@@ -2,29 +2,30 @@
 
 
 //custom themes for tkrp
-$tkrp-primary-palette: (
-    50 : #f3f0fc,
-    100 : #e0d9f7,
-    200 : #cbbff1,
-    300 : #b6a5eb,
-    400 : #a792e7,
-    500 : #977fe3,
-    600 : #8f77e0,
-    700 : #846cdc,
-    800 : #7a62d8,
-    900 : #694fd0,
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette0: (
+    50 : #efeefa,
+    100 : #d7d4f2,
+    200 : #bdb7e9,
+    300 : #a39ae0,
+    400 : #8f85da,
+    500 : #7b6fd3,
+    600 : #7367ce,
+    700 : #685cc8,
+    800 : #5e52c2,
+    900 : #4b40b7,
     A100 : #ffffff,
-    A200 : #fcfbff,
-    A400 : #d2c8ff,
-    A700 : #bdaeff,
+    A200 : #dad6ff,
+    A400 : #aba3ff,
+    A700 : #948aff,
     contrast: (
         50 : #000000,
         100 : #000000,
         200 : #000000,
         300 : #000000,
         400 : #000000,
-        500 : #000000,
-        600 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
         700 : #ffffff,
         800 : #ffffff,
         900 : #ffffff,
@@ -34,6 +35,8 @@ $tkrp-primary-palette: (
         A700 : #000000,
     )
 );
+
+
 
 
 
