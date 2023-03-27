@@ -26,11 +26,20 @@
   .title{
     font-size: 3rem;
   }
+  .topBanner{
+    height: 14rem;
+  }
 }
 
 @media only screen and (max-width: $breakpointSmall) {
   .title{
     font-size: 2.5rem;
+  }
+
+}
+@media only screen and (max-width: $breakpointXSmall) {
+  .title{
+    font-size: 2rem;
   }
 
 }

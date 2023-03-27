@@ -91,6 +91,10 @@
   .bigText{
     font-size: 1.25rem;
   }
+
+  .disclosure .material-icons{
+    margin-right: .5rem;
+  }
 }
 
 @media only screen and (max-width: $breakpointSmall){
@@ -108,5 +112,9 @@
 
   .buttonContainer   .wishlistButton{
     width: 90%;
+  }
+
+  .disclosure .material-icons{
+    margin-right: .375rem;
   }
 }
