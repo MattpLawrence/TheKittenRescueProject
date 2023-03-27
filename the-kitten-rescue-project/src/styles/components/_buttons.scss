@@ -47,6 +47,7 @@
 
 .buttonLarge {
   @include buttonBase(1rem, 0.75rem, 1rem);
+  border-radius: .75rem;
 }
 .buttonMedium {
   @include buttonBase(0.875rem, 0.5rem, 1rem);
