@@ -106,6 +106,7 @@
     color: $colorPrimary;
     transform: scale(1.2);
     margin-bottom: 1rem;
+    border-bottom: 2px solid $colorContrastDarkest
   }
 
   .attributeTitle{
@@ -140,10 +141,10 @@
   }
 }
 
-#applicationButton{
-  background-color: $colorContrastDarkest;
-  color: $colorPrimaryBackground;
-}
+// #applicationButton{
+//   background-color: $colorContrastDarkest;
+//   color: $colorPrimaryBackground;
+// }
 
 #maleIcon{
   margin-left: -.3rem;

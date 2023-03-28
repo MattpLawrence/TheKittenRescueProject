@@ -50,7 +50,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       hasOtherPets: new FormControl(null, [Validators.required]),
       petDescription: new FormControl(null), //conditional validation in the html
       vetName: new FormControl(null, [Validators.required]),
-      vetPhone: new FormControl(null, [Validators.pattern(this.phoneValidation)]),
+      vetPhone: new FormControl(null, [Validators.required, Validators.pattern(this.phoneValidation)]),
       //this cat
       adoptReason: new FormControl(null, [Validators.required]), //select
       willDeclaw: new FormControl(null, [Validators.required]), //boolean
