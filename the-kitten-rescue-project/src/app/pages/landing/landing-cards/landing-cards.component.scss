@@ -36,6 +36,7 @@
   width: 100%;
   height: 15rem;
   object-fit: cover;
+  border-bottom: .25rem solid $colorContrastDarkest;
 }
 
 .iconContainer{
@@ -84,7 +85,7 @@
 @media only screen and (max-width: $breakpointSmall){
 
   .mainContainer{
-    padding-top: 2rem;
+
    .card{
     width: 94vw;
     margin: 2vw;

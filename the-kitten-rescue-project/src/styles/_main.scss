@@ -88,6 +88,12 @@ app-adopt-page{
   }
 }
 
+
+.mat-tab-nav-bar, .mat-tab-header {
+
+  border-bottom: 1px solid $colorContrastDarkest;
+}
+
 .mat-tab-label .mat-tab-label-content {
   font-size: 1.125rem;
 }
