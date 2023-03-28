@@ -38,20 +38,26 @@
 #shareBtn{
   margin-left: 0;
   position: relative;
+  color: $colorContrastDarkest;
 
   .shareExpanded{
     height: 18rem;
     box-shadow: 0 11px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
   
-
 }
 
 
-.expandSocial{
+.logo{
   color: $colorPrimary;
 }
 
+.iconRound{
+  @include flexCenterCenter;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+}
 
 #expandableList{
   overflow: hidden;
