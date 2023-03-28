@@ -120,6 +120,7 @@
   }
   
   .leftContainer{
+    @include flexColumnCenter;
     margin: .75rem;
     width: calc(30% - 1.5rem);
     border-radius: .75rem;
@@ -132,11 +133,14 @@
 
     }
 
+    a{
+      width: 100%;
+      @include flexCenterCenter;
+    }
     button{
       width: calc(100% - 2rem);
       margin: 0 1rem;
       margin-bottom: 1rem;
-
     }
   }
 }

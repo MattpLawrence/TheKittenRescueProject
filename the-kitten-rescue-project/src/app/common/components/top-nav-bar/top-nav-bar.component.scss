@@ -62,7 +62,8 @@
 #expandableList{
   overflow: hidden;
   position: absolute;
-  top: 5rem;
+  top: 5.5rem;
+  left: 0rem;
   background-color: $colorPrimaryBackground;
   @include flexColumnStart;
   padding-right: 2.25rem;
