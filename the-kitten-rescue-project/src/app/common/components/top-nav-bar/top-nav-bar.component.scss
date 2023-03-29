@@ -3,7 +3,7 @@
 
 .topNavContainer{
   width: 100vw;
-  background-color: $colorPrimaryBackground;
+  background-color: $colorContrastDarkest;
   height: 6rem;
   border-bottom: 0rem;
   @include flexCenterSpaceBetween;
@@ -38,7 +38,7 @@
 #shareBtn{
   margin-left: 0;
   position: relative;
-  color: $colorContrastDarkest;
+  color: $colorPrimary;
 
   .shareExpanded{
     height: 18rem;
@@ -63,7 +63,7 @@
   overflow: hidden;
   position: absolute;
   top: 5.5rem;
-  left: 0rem;
+  left: -.5rem;
   background-color: $colorPrimaryBackground;
   @include flexColumnStart;
   padding-right: 2.25rem;
@@ -95,8 +95,9 @@
 }
 
 #donateInnerBtn{
- background-color: $colorContrastDarkest;
+ background-color: $colorPrimary;
  color: white;
+ padding: .75rem 2rem;
 }
 
 .navBtn{
@@ -104,7 +105,7 @@
   margin: 0rem 1rem;
   @include flexColumnCenter;
   list-style: none;
-  background-color: $colorPrimaryBackground;
+  background-color: $colorContrastDarkest;
   transition-duration: .2s;
 
   .material-icons{
@@ -117,6 +118,7 @@
     font-size: 1.125rem;
     margin-top: auto;
     margin-bottom: auto;
+    color: white;
   }
 
   .buttonUnderline{
@@ -145,9 +147,6 @@
 .buttonIconRight{
   padding: .75rem 1rem;
 }
-#donateInnerBtn{
-  padding: .75rem 2rem;
-}
 
 #donateInnerBtn:hover{
   animation: pulse 1.2s ease-in-out infinite;
@@ -168,18 +167,22 @@
 
 @media only screen and (max-width: $breakpointMedium){
   .topNavContainer{
-    @include flexCenterCenter;
+    @include flexCenterStart;
   }
   .rightJustify{
     position: absolute;
-    @include flexCenterStart;
+    @include flexCenterEnd;
     width: 100vw;
     height: 6rem;
   }
 
+  .iconRound{
+    margin-left: 1.5rem;
+  }
+
   .menuTrigger{
     height: 100%;
-    width: 6rem;
+    width: 8rem;
     @include flexCenterCenter;
 
     span{
@@ -189,7 +192,7 @@
     }
     .isSpun{
  
-      transform: rotateZ(90deg) scale(1.5);
+      transform: rotateZ(-90deg) scale(1.5);
     }
 
     
@@ -206,17 +209,19 @@
     position: absolute;
     top: 6rem;
     transition: all .5s ease-in-out;
-    transform:translateX(-9rem);
+    transform:translateX(9rem);
     padding-bottom: calc(100vh - 20.5rem);
     background-color: $colorPrimaryBackground;
     li{
       margin: 0;
     }
   }
+
   .isExpanded{
     transform:translateX(0rem);
     box-shadow: 0 11px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
+
   .centerBox{
     z-index: 1;
   }
@@ -225,5 +230,15 @@
     position:absolute;
     right: -.375rem;
   }
+
+  .navBtn{
+    background-color: $colorPrimaryBackground;
+
+    
+    .buttonTextBox{
+      color: $colorText;
+    }
+  }
+
 }
 

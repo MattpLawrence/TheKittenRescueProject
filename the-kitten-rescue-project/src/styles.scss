@@ -1,6 +1,7 @@
 @import "../src/styles/variables";
 @import "../src/styles/mixins";
 @import "../src/styles/main";
+@import "../src/styles/base";
 @import "../src/styles/components/badges";
 @import "../src/styles/components/buttons";
 @import "../src/styles/components/cards";
@@ -14,6 +15,6 @@
 
 //define font from downloaded file
 @font-face {
-  font-family: 'Courgette';
-  src: url('./assets/fonts/Courgette/Courgette-Regular.ttf') format('truetype');
+  font-family: 'Pacifico';
+  src: url('./assets/fonts/Pacifico/Pacifico-Regular.ttf') format('truetype');
 }
