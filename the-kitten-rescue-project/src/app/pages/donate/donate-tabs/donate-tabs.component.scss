@@ -6,7 +6,6 @@
 }
 
 .tabGroup{
-  margin: 0 1.5rem;
   width: calc(100% - 3rem);
   max-width: 1200px;
   mat-tab-body{
@@ -56,12 +55,13 @@
 
 .disclosure{
   font-size: 1rem;
-  text-align: center;
+  text-align: left;
   color: black;
   margin-top: 1.5rem;
   .material-icons{
     color: $colorPrimary;
     margin-right: .75rem;
+    translate: 0 .25rem;
   }
 }
 
@@ -92,22 +92,29 @@
     font-size: 1.25rem;
   }
 
-  .disclosure .material-icons{
-    margin-right: .5rem;
+  .disclosure {
+    font-size: .875rem;
+    .material-icons{
+      margin-right: .5rem;
+    }
   }
 }
 
 @media only screen and (max-width: $breakpointSmall){
 
+  .tabGroup{
+    width: calc(100vw - 2rem);
+  }
+
   .picture{
-    margin: 1.5rem;
-    width: calc(100% - 3rem);
+    margin: 1.5rem 0;
+    width: calc(100% - 1.5rem);
   }
   
   .textContainer{
-    margin: .75rem;
+    margin-top: 0;
     width: calc(100% - 1.5rem);
-    text-align: center;
+    text-align: left;
   }
 
   .buttonContainer   .wishlistButton{

@@ -53,6 +53,9 @@
 
 @media only screen and (max-width: $breakpointMedium){
   
+  .tabGroup{
+    width: calc(100vw - 2rem);
+  }
 
   .textContainer{
     font-size: 1rem;

@@ -3,15 +3,17 @@
     <mat-tab label="{{donateString}}" class="tab">
       <img class="picture" src="https://media.istockphoto.com/id/1137985887/photo/two-beautiful-young-cats-walk-in-a-sunny-meadow-on-a-clear-spring-day-raising-their-tails-and.jpg?s=612x612&w=0&k=20&c=1uaefu-4_odFMbXC39L0GS9PI528ZzwWKitRwPzoXtA=" alt="cute kitten">
 
-      <div class="textContainer bigText">
+      <div class="textContainer ">
+        <div class="textBlock bodyContents">
           As a non-profit we rely on charitable donations from supporters like you to keep our mission going. Feeding our rescues, taking care of medical needs, spay/neuter, it is all funded by your support.
-        <br> 
-        <br> 
-        To donate the help the kittens, please use the secure checkout through Paypal provided below.
+        </div>
+        <div class="textBlock bodyContents">
+          To donate the help the kittens, please use the secure checkout through Paypal provided below.
+        </div>
         <div class="disclosure">
           <span class="material-icons">
             verified
-            </span>
+          </span>
           The Kitten Rescue Project is a 501(c)3 tax-exempt organization and your donation is tax-deductible within the guidelines of U.S. law. To claim a donation as a deduction on your U.S. taxes, please keep your email donation receipt as your official record. EIN: 92-2518781
         </div>
         <div class="buttonContainer">
@@ -24,15 +26,21 @@
     </mat-tab>
     <mat-tab label="{{matchingString}}" class="tab">
       <img *ngIf="currentBreakPoint > 1 " class="picture" src="https://www.thelifeyoucansave.org/wp-content/uploads/2019/11/Screen-Shot-2015-07-13-at-1.53.34-PM.png" alt="cute kitten"> 
-      <div class="textContainer bigText">Many Employers participate in a charitable donation matching program.
-        <br>
-        <br> 
-         If your Employer does participate in a program like this, they may match up to 100% of your charitable donation to an official non-profit like us.
-         <br> 
-         This can be very helpful to us, as we are able to help more kittens with the help of you and your employer.
-        <br> 
-        <br> 
-        To learn more about charitable matching programs please reach out to your Employer's HR team, or read more about it in the link below.
+      <div class="textContainer">
+        <div class="textBlock bodyContents">
+          <div class="subTitle">Employer Matching</div>
+          Many Employers participate in a charitable donation matching program.
+        </div>
+        <div class="textBlock bodyContents">
+          If your Employer does participate in a program like this, they may match up to 100% of your charitable donation to an official non-profit like us.
+        </div>
+        <div class="textBlock bodyContents">
+          This can be very helpful to us, as we are able to help more kittens with the help of you and your employer.
+        </div>
+        <div class="textBlock bodyContents">
+          <div class="subTitle">Learn More</div>
+          To learn more about charitable matching programs please reach out to your Employer's HR team, or read more about it in the link below.
+        </div>
         <div class="buttonContainer">
           <a href="https://kindful.com/nonprofit-glossary/donation-matching/" target="_blank" class="noDecoration wishlistButton">
             <button mat-button  class="buttonTinted buttonLarge"  >
@@ -47,19 +55,22 @@
         <img  src="../../../../assets/images/amazon.webp" alt="amazon logo">
         <img  src="../../../../assets/images/chewy-inc-logo-vector.png" alt="Chewy logo" id="chewyLogo">
       </div>
-      <div class="textContainer bigText">In Addition to monetary donations we are also in need of supplies to support our mission.
-      <br>
-      <br> 
-        We have put together both an Amazon and a Chewy wishlist of items that are critical to our cause.
-      <br> 
-      <br> 
-      If you'd like to donate supplies please checkout out the wishlists below.
+      <div class="textContainer">
+        <div class="textBlock bodyContents">
+          In Addition to monetary donations we are also in need of supplies to support our mission.
+        </div>
+        <div class="textBlock bodyContents">
+          We have put together both an Amazon and a Chewy wishlist of items that are critical to our cause.
+        </div>
+        <div class="textBlock bodyContents">
+          If you'd like to donate supplies please checkout out the wishlists below.
+        </div>
       <div class="buttonContainer">
         <a href="http://www.google.com/url?q=http%3A%2F%2Famazon.com%2Fhz%2Fwishlist%2Fls%2F1OIQOL4UCO6FN%3Fref_%3Dwl_share&sa=D&sntz=1&usg=AOvVaw0lkY3nWE93vmd1sD1Jpo7B" target="_blank" class="noDecoration wishlistButton">
           <button mat-button  class="buttonTinted buttonLarge"  >
             Amazon
         </button></a>
-        <a href="http://www.google.com/url?q=http%3A%2F%2Famazon.com%2Fhz%2Fwishlist%2Fls%2F1OIQOL4UCO6FN%3Fref_%3Dwl_share&sa=D&sntz=1&usg=AOvVaw0lkY3nWE93vmd1sD1Jpo7B" target="_blank" class="noDecoration wishlistButton">
+        <a href="https://www.chewy.com/g/the-kitten-rescue-project_b109637983#wish-list" target="_blank" class="noDecoration wishlistButton">
           <button mat-button  class="buttonTinted buttonLarge"  >
             Chewy
         </button></a>
