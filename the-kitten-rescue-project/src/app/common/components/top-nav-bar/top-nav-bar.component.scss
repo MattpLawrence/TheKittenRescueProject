@@ -2,6 +2,7 @@
 
 
 .topNavContainer{
+  position: fixed;
   width: 100vw;
   background-color: $colorContrastDarkest;
   height: 6rem;
@@ -176,6 +177,10 @@
     height: 6rem;
   }
 
+  .leftJustify{
+    z-index: 10;
+  }
+
   .iconRound{
     margin-left: 1.5rem;
   }
@@ -203,6 +208,7 @@
   }
 
   .menuList{
+    height: 100vh;
     margin-top: 0;
     width: 8rem;
     padding: 0rem;

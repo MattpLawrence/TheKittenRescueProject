@@ -6,8 +6,11 @@ app-landing-page{
 }
 
 .mainContainer{
+  //hide nav menu in mobile
+  overflow-x: hidden;
+  
   app-adopt-page{
-height: 100%;
+    height: 100%;
   }
 }
 
@@ -16,5 +19,7 @@ app-contact-page{
 }
 
 .routerContainer{
+  //compensate for fixed header
+  margin-top: 6rem;
   min-height: calc(100vh - 9rem);
 }
