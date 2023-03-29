@@ -4,22 +4,24 @@
 //***********pet grid************
 .mainContainer{
   background-color: $colorBackground;
-  padding-bottom: 2rem
+  @include flexCenterCenter;
 }
 
 #petGirdContainer{
   @include flexCenterSpaceAround;
   flex-wrap: wrap;
-
+  width: 70vw;
+  max-width: 1200px;
 
 
   .petContainer{
     @include flexCenterCenter;
-    width: 30vw;
-    height: 30vw;
-    max-width: 35rem ;
-    max-height: 35rem ;
-    margin: 2vw 0;
+    width: calc(70vw - 48.25vw);
+    height:  calc(70vw - 48.25vw);
+    max-width: 372px;    
+    max-height: 372px;    
+
+    margin-bottom: 1.5rem;
     border-radius: .5rem;
     position: relative;
     overflow: hidden;
@@ -34,6 +36,7 @@
       }
 
       .petName{
+        margin: 0 1rem;
         opacity: 0;
         transition: .4s ease-in-out;
         transform: scale(0);
@@ -70,31 +73,38 @@
 @media only screen and (max-width: $breakpointMedium){
 
 
-  #petGirdContainer .petContainer{
-    width: 45vw;
-    height: 45vw;
-    border-bottom-right-radius: 0rem;
-    .petName{
-      transform: scale(1);
-      opacity: 1;
-      bottom: 0;
-      right: 0;
-      border-radius: 0;
-      border-top-left-radius: .5rem;
-      font-size: 1rem;
-      padding: .75rem;
-      border-bottom: .25rem solid $colorContrastDarkest;
+  #petGirdContainer{
+    width: 100vw;
+    justify-content: space-evenly;
+    .petContainer{
+      width: calc(50vw - 3rem);
+      height: calc(50vw - 3rem);
+      margin-bottom: 1.5rem;
+      border-bottom-right-radius: 0rem;
+      .petName{
+        transform: scale(1);
+        opacity: 1;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+        border-top-left-radius: .5rem;
+        font-size: 1rem;
+        padding: .75rem;
+        border-bottom: .25rem solid $colorContrastDarkest;
+      }
     }
-  }
+  } 
 
 }
 
 @media only screen and (max-width: $breakpointSmall){
 
   #petGirdContainer .petContainer{
-    width: 94vw;
-    height: 94vw;
-    margin: 2vw;
+    max-width: none;
+    max-height: none;
+    width: calc(100vw - 3rem);
+    height: calc(100vw - 3rem);
+    margin-bottom: 1.5rem;
   }
 
 }

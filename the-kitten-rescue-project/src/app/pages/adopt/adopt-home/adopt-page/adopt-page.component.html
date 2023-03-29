@@ -3,11 +3,20 @@
     <div class="title">Why Adopt From Us?</div>
   </div>
   <div class="primaryBlock" id="aboutAdoption">
-
-    <div class="mainContents bodyContents">
-      By choosing to adopt, you will be gaining a new companion while also providing a loving home for an orphaned kitten. Our rescue prides itself on our personalized approach to matching each kitten with their perfect family. Our foster families work tirelessly to socialize and care for each kitten, ensuring they receive the attention and love they need to become well-adjusted companions. Adopting from us also helps us continue our mission to rescue kittens and neonates in need, making a positive impact on our local community. So if you're ready to make a difference in the life of a kitten and add a furry friend to your family, we encourage you to explore our available kittens and begin the adoption process today.
+    <div class="sizeContainer">
+      <div class="mainContents ">
+        <div class="bodyContents textBlock">
+          By choosing to adopt, you will be gaining a new companion while also providing a loving home for an orphaned kitten. Our rescue prides itself on our personalized approach to matching each kitten with their perfect family.
+        </div>
+        <div class="bodyContents textBlock">
+          Our foster families work tirelessly to socialize and care for each kitten, ensuring they receive the attention and love they need to become well-adjusted companions. Adopting from us also helps us continue our mission to rescue kittens and neonates in need, making a positive impact on our local community. 
+        </div>
+        <div class="bodyContents">
+          So if you're ready to make a difference in the life of a kitten and add a furry friend to your family, we encourage you to explore our available kittens and begin the adoption process today.
+        </div>
+      </div>
+      <button mat-button class="buttonTinted buttonLarge" id="viewAdoptList" (click)="scroll('adoptList')" >View Adoptable Pets</button>
     </div>
-    <button mat-button class="buttonTinted buttonLarge" id="viewAdoptList" (click)="scroll('adoptList')" >View Adoptable Pets</button>
   </div>
   <!-- Process -->
   <div id="processContainer" class="centerContainer">
@@ -79,10 +88,7 @@
     </div>
 
     <div id="adoptListTitleContainer" #adoptList >
-      <!-- <div class="adoptListLine"></div> -->
-      <div id="adoptListTitle">Our Current Foster Pets</div>
-      <!-- <div class="adoptListLine"></div> -->
-
+      <div class="title">Our Current Foster Pets</div>
     </div>
     <app-adopt-animal-list id="adoptList" ></app-adopt-animal-list>
 

@@ -1,10 +1,14 @@
 @import '../../../../../styles.scss';
 
-
-
 .primaryBlock{
-  @include flexColumnStart;
+  @include flexColumnCenter;
   background-color: $colorPrimaryBackground;
+  width: 100%;
+  .sizeContainer{
+    width: 70vw;
+    max-width: 1200px;
+    @include flexColumnCenter;
+  }
 
 }
 
@@ -19,8 +23,8 @@
 }
 
 .mainContents{
-  text-align: center;
-  width: calc(100% - 6rem);
+  text-align: left;
+  width: 100%;
   margin-bottom: 1.5rem;
 }
 
@@ -77,7 +81,7 @@
 }
 
 #adoptListTitleContainer{
-  padding-top: 2rem;
+  padding: 1.5rem 0;
   background-color: $colorBackground;
   @include flexCenterCenter;
 
@@ -118,6 +122,11 @@
     }
   }
 
+  .primaryBlock .sizeContainer{
+    width: calc(100% - 6rem);
+  }
+
+
 }
 
 
@@ -127,13 +136,13 @@
     margin-bottom: 2vw;
   }
 
-  #adoptListTitleContainer  #adoptListTitle{
-    font-size: 2rem;
+  .centerContainer{
+    padding: 1.5rem;
+  }
+  .primaryBlock .sizeContainer{
+    width: calc(100% - 3rem);
   }
 
-  #adoptListTitleContainer .adoptListLine{
-    margin: .75rem;
-  }
 
 }
 
