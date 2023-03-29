@@ -3,6 +3,7 @@
 .title{
   font-family: 'Merienda', cursive;
   font-size: 2.5rem;
+  line-height: 2.5rem;
   font-weight: 600;
   color: $colorPrimary;
   text-align: center;
@@ -16,6 +17,7 @@
 }
 
 .subTitle{
+  line-height: 1.375rem;
   font-size: 1.375rem;
   font-weight: 500;
   margin-bottom: .5rem;
@@ -28,6 +30,7 @@
   }
 
   .subTitle{
+    line-height: 1.25rem;
     font-size: 1.25rem;
   }
 
@@ -36,6 +39,7 @@
 
   .title{
     font-size: 2rem;
+    line-height: 2rem;
   }
 
 }

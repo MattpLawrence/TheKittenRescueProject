@@ -5,7 +5,9 @@
   @include flexColumnStart;
 }
 
-
+.textBlock{
+  width: 100%;
+}
 
 .sizeContainer{
   width: 70%;
@@ -62,7 +64,7 @@
   }
 
   .sizeContainer{
-    padding: 2rem 0;
+    padding-top: 2rem;
 
     .imgContainer{
       width: 60%;
@@ -79,25 +81,9 @@
   }
 }
 
-ul{
-  padding-left: 0;
+.title{
+  margin: 1.5rem 0;
 }
-
-li{
-  list-style: none;
-  margin-top: 1.5rem;
-  .fosterItemTitle{
-    font-size: 1.25rem;
-    font-weight: 500;
-  }
-}
-
-.fosterTitle{
-  @extend .headerTitle;
-  line-height: 2.5rem;
-  margin-bottom: .5rem;
-}
-
 
 .picture{
   border-radius: .75rem;
@@ -109,15 +95,23 @@ li{
 .mailIcon{
   color: $colorPrimary;
   font-size: 2rem;
-  translate: 0rem 0.375rem;
+  translate: 0rem 0.5rem;
 }
 
 @media only screen and (max-width: $breakpointMedium) {
 
 
-  .headerContainer .headerContent{
-    font-size: 1.125rem;
+  .headerContainer{
+    .headerContent{
+      font-size: 1.125rem;
+    }
+    .sizeContainer{
+      width: calc(100% - 3rem);
+    }
   }
+
+
+
 
   .fosterContainer .sizeContainer{
     width: calc(100% - 3rem);
@@ -126,17 +120,17 @@ li{
     .txtContainer{
       padding: 0 1.5rem;
       width: 100%;
-      text-align: center;
+      text-align: left;
       .fosterSubTitle{
         text-align: center;
       }
       .fostering{
         padding-left: 0;
-        text-align: center;
+        text-align: left;
       }
     }
     .imgContainer{
-      width: 60%;
+      width: 80%;
     }
   }
 
