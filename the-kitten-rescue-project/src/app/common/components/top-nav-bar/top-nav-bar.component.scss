@@ -185,6 +185,10 @@
     margin-left: 1.5rem;
   }
 
+  #aboutBtn{
+    padding-top: 2rem;
+  }
+
   .menuTrigger{
     height: 100%;
     width: 8rem;
@@ -198,9 +202,7 @@
     .isSpun{
  
       transform: rotateZ(-90deg) scale(1.5);
-    }
-
-    
+    }   
   }
 
   #menuTriggerBtn:hover{

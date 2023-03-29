@@ -21,7 +21,15 @@ app-contact-page{
 .routerContainer{
   //compensate for fixed header
   margin-top: 6rem;
-  margin-bottom: 3rem;
+
   min-height: calc(100vh - 9rem);
   
+}
+
+@media only screen and (max-width: $breakpointMedium){
+  //compensate for fixed footer
+  .routerContainer{
+    margin-bottom: 3rem;
+  }
+
 }

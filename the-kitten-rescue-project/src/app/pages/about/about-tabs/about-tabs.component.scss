@@ -28,7 +28,6 @@
 .textContainer{
   margin-top: 2rem;
   width: 60%;
-  line-height: 1.75rem;
   font-size: 1.25rem;
 }
 
@@ -53,9 +52,10 @@
 }
 
 @media only screen and (max-width: $breakpointMedium){
+  
 
   .textContainer{
-    line-height: 1.5rem;
+    line-height: 1.25rem;
     font-size: 1rem;
   }
 }
@@ -63,13 +63,17 @@
 @media only screen and (max-width: $breakpointSmall){
 
   .picture{
-    margin: 1.5rem;
-    width: calc(100% - 3rem);
+    margin-bottom: 2rem;
+    width: calc(100%);
   }
   
   .textContainer{
-    margin: 1.5rem;
-    width: calc(100% - 3rem);
+    margin-bottom: 2rem;
+    margin-top: 0rem;
+    width: calc(100%);
     text-align: center;
+    line-height: 1.25rem;
+    font-size: 1rem;
   }
+
 }
