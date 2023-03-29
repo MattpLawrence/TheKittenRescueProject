@@ -1,0 +1,39 @@
+.bodyContents{
+  font-size: 1.125rem;
+}
+
+.textBlock{
+  margin-bottom: 1.25rem;
+}
+
+.subTitle{
+  font-size: 1.375rem;
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
+.title{
+  font-family: 'Merienda', cursive;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: $colorPrimary;
+}
+
+@media only screen and (max-width: $breakpointMedium){
+
+  .bodyContents{
+    font-size: 1rem;
+  }
+
+  .subTitle{
+    font-size: 1.25rem;
+  }
+
+}
+@media only screen and (max-width: $breakpointMedium){
+
+  .title{
+    font-size: 2rem;
+  }
+
+}

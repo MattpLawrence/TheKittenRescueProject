@@ -1,22 +1,11 @@
 @import '../../../../../styles.scss';
 
 
-.subtitle{
-  font-size: 1.375rem;
-  font-weight: 500;
-  margin: 1rem;
-  color: $colorLightText;
-}
-
-
-#aboutAdoption{
-  @include flexColumnStart;
-}
 
 .primaryBlock{
+  @include flexColumnStart;
   background-color: $colorPrimaryBackground;
-  width: calc(100% - 2rem);
-  padding: 1rem;
+
 }
 
 .mainTitle{
@@ -31,13 +20,12 @@
 
 .mainContents{
   text-align: center;
-  width: 80%;
-  font-size: 1.25rem;
-  line-height: 1.55rem;
+  width: calc(100% - 6rem);
+  margin-bottom: 1.5rem;
 }
 
 #viewAdoptList{
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
 }
 
 
@@ -72,6 +60,7 @@
         width: 100%;
         object-fit: cover;
         overflow: hidden;
+        margin-bottom: 1.5rem;
       }
     }
   }
@@ -79,17 +68,12 @@
 }
 
 .itemContents{
-  text-align: center;
-  margin: 1.5rem 0;
-  font-size: 1.125rem;
-  line-height: 1.5rem;
+  text-align: left;
 }
 
 .itemTitle{
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 500;
-  color: $colorPrimary;
+  margin-bottom: 1.5rem;
 }
 
 #adoptListTitleContainer{
@@ -113,6 +97,10 @@
 
 }
 
+#starIcon{
+  color: $colorPrimary;
+  translate: 0 .125rem;
+}
 
 
 
@@ -153,9 +141,6 @@
 
 
   .mainTitle{
-    font-size: 2rem;
-  }
-  .itemTitle{
     font-size: 2rem;
   }
 
