@@ -1,0 +1,36 @@
+
+.topBanner{
+  width: 100%;
+  background-color: $colorPrimaryBackground;
+  @include flexCenterCenter;
+
+    .title{
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: $colorLightText;
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      margin: 2rem;
+
+    }
+}
+
+
+
+
+@media only screen and (max-width: $breakpointMedium){
+  .topBanner{
+    .title{
+      font-size: 2rem;
+      margin: 1.5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpointSmall){
+  .topBanner{
+    .title{
+      font-size: 1.5rem;
+    }
+  }
+}

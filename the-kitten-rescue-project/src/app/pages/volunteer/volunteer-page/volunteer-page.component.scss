@@ -5,24 +5,7 @@
   @include flexColumnStart;
 }
 
-.topBanner{
-  width: 100%;
-  height: 10rem;
-  background-color: $colorPrimaryBackground;
-  @include flexColumnCenter;
 
-}
-
-.title{
-  margin: 2rem 0;
-  font-size: 3rem;
-  font-weight: 500;
-  color: $colorLightText;
-  text-align: center;
-  font-family: 'Courgette', cursive;
-  margin: 0 2rem;
-
-}
 
 .sizeContainer{
   width: 70%;
@@ -130,13 +113,6 @@ li{
 }
 
 @media only screen and (max-width: $breakpointMedium) {
-  .topBanner{
-    height: 8rem;
-  }
-
-  .title{
-    font-size: 3rem;
-  }
 
 
   .headerContainer .headerContent{
@@ -191,12 +167,3 @@ li{
   }
 }
 
-@media only screen and (max-width: $breakpointXSmall) {
-  .topBanner{
-    height:6rem;
-  }
-  .title{
-    font-size: 2rem;
-  }
-
-}

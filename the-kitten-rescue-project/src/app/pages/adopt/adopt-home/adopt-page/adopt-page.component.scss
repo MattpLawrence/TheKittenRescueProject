@@ -1,17 +1,6 @@
 @import '../../../../../styles.scss';
 
 
-.mainBanner{
-  width: 100vw;
-  height: 15rem;
-  overflow: hidden;
-  @include flexCenterCenter;
-  background-color: #495a6c;
-  .mainBannerImg{
-    height:14rem;
-    margin-top: 0rem;
-  }
-}
 .subtitle{
   font-size: 1.375rem;
   font-weight: 500;
@@ -19,24 +8,6 @@
   color: $colorLightText;
 }
 
-.topBanner{
-  width: 100%;
-  height: 10rem;
-  background-color: $colorPrimaryBackground;
-  @include flexColumnCenter;
-
-}
-
-.title{
-  margin: 2rem 0;
-  font-size: 3rem;
-  font-weight: 500;
-  color: $colorLightText;
-  text-align: center;
-  font-family: 'Courgette', cursive;
-  margin: 0 2rem;
-
-}
 
 #aboutAdoption{
   @include flexColumnStart;
@@ -159,12 +130,6 @@
     }
   }
 
-  .title{
-    font-size: 3rem;
-  }
-  .topBanner{
-    height: 8rem;
-  }
 }
 
 
@@ -186,13 +151,6 @@
 
 @media only screen and (max-width: $breakpointXSmall){
 
-  .title{
-    font-size: 2rem;
-  }
-  
-  .topBanner{
-    height:6rem;
-  }
 
   .mainTitle{
     font-size: 2rem;
