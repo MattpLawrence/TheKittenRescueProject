@@ -18,6 +18,7 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   petList: any | undefined;
   isLoading: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
+  petText: string = 'Our Current Foster Pets';
   
 
   @ViewChild('adoptList') adoptList: ElementRef |undefined;
@@ -70,14 +71,32 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
       else this.isLoading = false;
     },1800)
     this.apiService.searchAnimals().subscribe(response => {
-      
-      if(this.isLoading)this.isLoading = false;
-      else dialogRef.close();
-      //close loader
-      //set animal list
-      if(response.animals != undefined) this.petList = response.animals;
-
+      if(response != undefined){
+        //if an error response
+        if(Object.keys(response).includes('error')){
+          if(this.isLoading)this.isLoading = false;
+          else dialogRef.close();
+          this.setNoPets();
+        }else{
+          if(this.isLoading)this.isLoading = false;
+          else dialogRef.close();
+          //make sure there is an animals object
+          if(response.animals != undefined){
+            //check to make sure there is at least one animal
+            if(response.animals.length > 0){
+              this.petList = response.animals;
+            }else{
+              this.setNoPets();
+            }
+          } 
+        }
+      }
     });
+  }
+
+  setNoPets = () => {
+    this.apiService.setAnimalsSubject(undefined);
+    this.petText = 'No One Is Looking For A Home Today'
   }
 
   scroll = (id:string) => {

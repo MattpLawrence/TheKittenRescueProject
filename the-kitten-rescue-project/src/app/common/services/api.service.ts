@@ -18,7 +18,9 @@ export class APIService {
 
   //variables
   private petFinderUrl: string = 'https://api.petfinder.com/v2';
-  queryString: string = '/animals?organization=GA477&limit=100';
+  // queryString: string = '/animals?organization=GA477&limit=100';
+  // bad call to return no results
+  queryString: string = '/animals?organization=GA4772&limit=100';
 
   apiUrl:string = environment.API_URL;
   // apiUrl:string = 'http://localhost:3000';
@@ -37,18 +39,20 @@ export class APIService {
       let url: string = `${this.apiUrl}/send` ;
       console.log(body)
       console.log(url)
-      this.http.post(url, body).subscribe(result => {
-        if(result){
-          console.log(result);
-          observer.next(result);
+      this.http.post(url, body).subscribe({
+        next: (result:any) => {
+            if(result){
+              console.log(result);
+              observer.next(result);
+              observer.complete()
+            };
+        },
+        error: (err: any) => {
+          console.log(err)
+          // add error logging here
+          observer.next(err);
           observer.complete()
-        };
-      }, 
-      (err: any) => {
-        console.log(err)
-        // add error logging here
-        observer.next(err);
-        observer.complete()
+        }
       })
     })
   }
@@ -73,11 +77,21 @@ export class APIService {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "multipart/form-data",
               }
-            }).subscribe(response => {      
-              this.animalsSubject.next(this.filterData(response))
-              observer.next(this.filterData(response));
-              observer.complete();
-            })
+            }).subscribe({
+              next: (result:any) => {      
+                this.animalsSubject.next(this.filterData(result))
+                observer.next(this.filterData(result));
+                observer.complete();
+              },
+              error: (err: any) => {
+                console.log(err)
+                //set observable to undefined
+                this.animalsSubject.next(this.filterData(undefined));
+                // add error logging here
+                observer.next(err);
+                observer.complete()
+              }
+            })             
           }else observer.next('error');
         })
       }

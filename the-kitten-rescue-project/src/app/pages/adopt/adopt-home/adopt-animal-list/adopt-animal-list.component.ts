@@ -31,7 +31,7 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
 
   initPetList = () => {
     this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res){
+      if(res != undefined){
         //filter to remove any without primary photo
         let filteredList = res.animals.filter((animal: any) => animal.primary_photo_cropped != null)
         //map to get needed keys
@@ -41,6 +41,8 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
           mainImg: animal.primary_photo_cropped?.full
         })
         this.petList = petListMap;
+      }else{
+        this.petList = undefined;
       }
     })
   }

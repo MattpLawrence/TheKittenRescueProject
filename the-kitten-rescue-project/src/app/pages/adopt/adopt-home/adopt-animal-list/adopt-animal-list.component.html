@@ -1,8 +1,27 @@
 <div class="mainContainer">
-  <div id="petGirdContainer">
-    <div class="petContainer" *ngFor="let pet of petList" (click)="openModal(pet)">
+  <div *ngIf="petList !== undefined" id="petGirdContainer">
+    <div  class="petContainer" *ngFor="let pet of petList" (click)="openModal(pet)">
       <img class="petImg" src="{{pet.mainImg}}" alt="Pet Image">
       <div class="petName">{{pet.petName}}</div>
+    </div>
+  </div>
+  <div *ngIf="petList == undefined" id="petGirdContainer">
+    <div  class="noPetContainer">
+      <div class="subTitle">We'd Love To Hear From You</div>
+      <div class="bodyContents textBlock">
+        Currently The Kitten Rescue Project does not have any kittens available for adoption. If you would like to be first in line when Kittens become available please let us know by sending an email to the address below.
+      </div>
+      <div class="subTitle">Check Out Other Pets In The Area</div>
+      <div class="bodyContents textBlock">
+        There are always great pets in need of a good home. Please follow the link below to Petfinder to see other pets in the Atlanta Area.
+      </div>
+      <span id="emailIcon" style="margin-top: 1rem;"><div class="material-icons mailIcon">mail_outline</div> Info@TheKittenProject.org</span>  
+      <a href="mailto:Info@TheKittenProject.org" target="_blank" class="socialLink" >
+        <button mat-button class="buttonTinted buttonLarge" id="emailButton">Email Us</button>
+      </a>
+      <a href="https://www.petfinder.com/search/cats-for-adoption/us/ga/atlanta" target="_blank" class="socialLink" >
+        <button mat-button class="buttonTinted buttonLarge" id="emailButton">Petfinder</button>
+      </a>
     </div>
   </div>
 </div>
