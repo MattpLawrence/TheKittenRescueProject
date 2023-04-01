@@ -60,7 +60,6 @@
   margin-top: 1.5rem;
   .material-icons{
     color: $colorPrimary;
-    margin-right: .75rem;
     translate: 0 .25rem;
   }
 }
@@ -94,9 +93,6 @@
 
   .disclosure {
     font-size: .875rem;
-    .material-icons{
-      margin-right: .5rem;
-    }
   }
 }
 
@@ -121,9 +117,6 @@
     width: 70%;
   }
 
-  .disclosure .material-icons{
-    margin-right: .375rem;
-  }
 }
 
 @media only screen and (max-width: $breakpointXSmall){
