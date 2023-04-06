@@ -7,7 +7,7 @@
   @include flexCenterCenter;
 }
 
-#petGirdContainer{
+#petGridContainer{
   @include flexCenterSpaceAround;
   flex-wrap: wrap;
   width: 70vw;
@@ -66,7 +66,7 @@
 }
 
 
-#petGirdContainer .noPetContainer{
+#petGridContainer .noPetContainer{
   margin-bottom: 1.5rem;
   border-radius: .5rem;
   position: relative;
@@ -111,7 +111,7 @@
 @media only screen and (max-width: $breakpointMedium){
 
 
-  #petGirdContainer{
+  #petGridContainer{
     width: 100vw;
     justify-content: space-evenly;
     .petContainer{
@@ -139,7 +139,7 @@
     }
   } 
 
-  #petGirdContainer .noPetContainer{
+  #petGridContainer .noPetContainer{
     width: calc(100% - 10rem);
     max-width: none;
     max-height: none;
@@ -152,7 +152,7 @@
 
 @media only screen and (max-width: $breakpointSmall){
 
-  #petGirdContainer{
+  #petGridContainer{
     .petContainer{
       max-width: none;
       max-height: none;
@@ -162,7 +162,7 @@
     }
 
     .noPetContainer{
-      width: calc(100vw - 8rem);
+      width: calc(100vw - 7rem);
       height: fit-content;
     }
   } 
@@ -173,9 +173,9 @@
 @media only screen and (max-width: $breakpointXSmall){
 
 
-  #petGirdContainer .noPetContainer{
+  #petGridContainer .noPetContainer{
     padding: 1rem;
-    width: calc(100vw - 6rem);
+    width: calc(100vw - 5rem);
   }
 
 }

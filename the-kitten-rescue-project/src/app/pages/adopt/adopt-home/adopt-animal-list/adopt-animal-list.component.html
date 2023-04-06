@@ -1,11 +1,11 @@
 <div class="mainContainer">
-  <div *ngIf="petList !== undefined" id="petGirdContainer">
+  <div *ngIf="petList !== undefined" id="petGridContainer">
     <div  class="petContainer" *ngFor="let pet of petList" (click)="openModal(pet)">
       <img class="petImg" src="{{pet.mainImg}}" alt="Pet Image">
       <div class="petName">{{pet.petName}}</div>
     </div>
   </div>
-  <div *ngIf="petList == undefined" id="petGirdContainer">
+  <div *ngIf="petList == undefined" id="petGridContainer">
     <div  class="noPetContainer">
       <div class="subTitle">We'd Love To Hear From You</div>
       <div class="bodyContents textBlock">
