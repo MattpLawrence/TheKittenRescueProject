@@ -31,22 +31,22 @@
         <div class="itemTitle title">Understand before applying</div>
         <div class="itemContents">
           <div class="subTitle">The Kittens</div>
-          <div class="bodyContents textBlock">
+          <div class="bodyContents textBlock slide-in" [ngClass]="{show: animationTriggers['1st'].isShown}" id="1st">
             Our kittens are dewormed, vaccinated, spayed or neutered, and microchipped. We do require that with adoption, you will agree to take the kitten to your vet within a month of bringing them home. This visit is important to get a general physical and any additional vaccines necessary. 
           </div>
           <div class="subTitle">Our Fee</div>
-          <div class="bodyContents textBlock">
+          <div class="bodyContents textBlock slide-in" [ngClass]="{show: animationTriggers['2nd'].isShown}" id="2nd">
             Our feline adoption fee is $120, which assists in offsetting but does not entirely cover the expenses incurred for the animal's care and completion of essential veterinary care..
           </div>
           <div class="subTitle">How We Choose</div>
-          <div class="bodyContents textBlock">
+          <div class="bodyContents textBlock slide-in" [ngClass]="{show: animationTriggers['3rd'].isShown}" id="3rd">
             We do not place cats in homes based on the order of application received. Instead, we prioritize the earliest applications that are the best match for the kitten. We will prioritize applicants within a 2 hour drive of Atlanta, GA to help minimize the kitten's stress during transport. 
           </div>
           <div class="subTitle">It Takes Time</div>
-          <div class="bodyContents textBlock">
+          <div class="bodyContents textBlock slide-in" [ngClass]="{show: animationTriggers['4th'].isShown}" id="4th">
             Our adoption process does not happen in a single day. Typically, it can take at least a week for applications to move from submission to adoption.
           </div>
-          <div class="slide-in bodyContents"  [ngClass]="{show: showElementWarning}" id="denyWarning">
+          <div class="slide-in bodyContents"  [ngClass]="{show: animationTriggers['5th'].isShown}" id="5th">
             <span class="material-icons" id="starIcon">
               new_releases
             </span>

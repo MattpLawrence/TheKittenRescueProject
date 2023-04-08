@@ -19,15 +19,19 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   isLoading: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
   petText: string = 'Our Current Foster Pets';
+  slideInRight: string[] = ['1st', '2nd','3rd','4th','5th','6th']
 
   showElementWarning:boolean = false;
+  animationTriggers: { [id: string]: {isShown: boolean, class: string } } = {};
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     // Check if the element is in the viewport
-    const element = document.getElementById('denyWarning');
-    if(!this.showElementWarning)this.isElementInViewport(element!);
-
+    Object.entries(this.animationTriggers).forEach(trigger => {
+      //set element to equal the id
+      let element = document.getElementById(trigger[0])
+      if(!this.animationTriggers[trigger[0]].isShown)this.isElementInViewport(element, trigger);
+    })
   }
   
 
@@ -37,11 +41,18 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     private apiService: APIService,
     private commonService: CommonService,
     public dialog: MatDialog
-    ) {super() }
+    ) {
+      super()
+      //initiate animationTriggers
+      this.slideInRight.forEach((id:string) => {
+        this.animationTriggers[id] = {isShown: false, class:'slideInRight'}
+      })
+    }
 
   ngOnInit(): void {
 
     this.initBreakpoints();
+
   }
 
   initBreakpoints = () => {
@@ -52,26 +63,32 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     })
   }
 
-  isElementInViewport(element: HTMLElement): boolean {
-    const options = {
-      root: null,
-      threshold: 0.5,
-    };
-  
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          this.showElementWarning = true;
-          return true;
-        }else{
-          return false
-        }
-      });
-    }, options);
-  
-    observer.observe(element);
-  
-    return false;
+  isElementInViewport(element: HTMLElement | null, trigger:any): boolean {
+
+    if(element != null){
+      const options = {
+        root: null,
+        threshold: 0.5,
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log(trigger)
+            //set global variable to show if intersecting for first time
+            this.animationTriggers[trigger[0]].isShown = true;
+            return true;
+          }else{
+            return false
+          }
+        });
+      }, options);
+    
+      observer.observe(element);
+    
+      return false;
+    }else{
+      return false;
+    }
   }
 
   findPets = () => {
