@@ -15,8 +15,6 @@
 }
 
 
-
-
 .primaryBlock{
   @include flexColumnCenter;
   background-color: $colorPrimaryBackground;
@@ -135,6 +133,10 @@
       width: 100%;
     }
   }
+  //set holder width of image so animation triggers correct onload
+  .picture{
+    min-height: calc(100vw - 6rem)
+  }
 
   .primaryBlock .sizeContainer{
     width: calc(100% - 6rem);
@@ -156,6 +158,12 @@
   .centerContainer{
     padding: 1.5rem;
   }
+
+    //set holder width of image so animation triggers correct onload
+    .picture{
+      min-height: calc(100vw - 3rem)
+    }
+
   .primaryBlock .sizeContainer{
     width: calc(100% - 3rem);
   }

@@ -1,19 +1,19 @@
 <div class="mainContainer">
   <div class="topBanner">
-    <div class="title">Why Adopt From Us?</div>
+    <div class="title slide-in" [ngClass]="{show: animationTriggers['slideRight1'].isShown}" id="slideRight1">Why Adopt From Us?</div>
   </div>
   <div class="primaryBlock" id="aboutAdoption">
     <div class="sizeContainer">
       <div class="mainContents ">
-        <div class="subTitle">A Personalized Approach</div>
+        <div class="subTitle" >A Personalized Approach</div>
         <div class="bodyContents textBlock">
           By choosing to adopt, you will be gaining a new companion while also providing a loving home for an orphaned kitten. Our rescue prides itself on our personalized approach to matching each kitten with their perfect family.
         </div>
-        <div class="subTitle">Well-adjusted Kittens</div>
+        <div class="subTitle" >Well-adjusted Kittens</div>
         <div class="bodyContents textBlock">
           Our foster families work tirelessly to socialize and care for each kitten, ensuring they receive the attention and love they need to become well-adjusted companions. Adopting from us also helps us continue our mission to rescue kittens and neonates in need, making a positive impact on our local community. 
         </div>
-        <div class="subTitle">Make A Difference</div>
+        <div class="subTitle" >Make A Difference</div>
         <div class="bodyContents">
           So if you're ready to make a difference in the life of a kitten and add a furry friend to your family, we encourage you to explore our available kittens and begin the adoption process today.
         </div>
@@ -28,25 +28,25 @@
         <img class="picture" src="../../../../../assets/images/padfootBlip.jpg" alt="cute kitten">
       </div>
       <div class="leftContainer">
-        <div class="itemTitle title">Understand before applying</div>
+        <div class="itemTitle title slide-in" [ngClass]="{show: animationTriggers['slideRight2'].isShown}" id="slideRight2">Understand before applying</div>
         <div class="itemContents">
-          <div class="subTitle">The Kittens</div>
-          <div class="bodyContents textBlock slide-in" [ngClass]="{show: animationTriggers['1st'].isShown}" id="1st">
+          <div class="subTitle" >The Kittens</div>
+          <div class="bodyContents textBlock ">
             Our kittens are dewormed, vaccinated, spayed or neutered, and microchipped. We do require that with adoption, you will agree to take the kitten to your vet within a month of bringing them home. This visit is important to get a general physical and any additional vaccines necessary. 
           </div>
-          <div class="subTitle">Our Fee</div>
-          <div class="bodyContents textBlock slide-in" [ngClass]="{show: animationTriggers['2nd'].isShown}" id="2nd">
+          <div class="subTitle"  id="slideRight5">Our Fee</div>
+          <div class="bodyContents textBlock " >
             Our feline adoption fee is $120, which assists in offsetting but does not entirely cover the expenses incurred for the animal's care and completion of essential veterinary care..
           </div>
-          <div class="subTitle">How We Choose</div>
-          <div class="bodyContents textBlock slide-in" [ngClass]="{show: animationTriggers['3rd'].isShown}" id="3rd">
+          <div class="subTitle" >How We Choose</div>
+          <div class="bodyContents textBlock " >
             We do not place cats in homes based on the order of application received. Instead, we prioritize the earliest applications that are the best match for the kitten. We will prioritize applicants within a 2 hour drive of Atlanta, GA to help minimize the kitten's stress during transport. 
           </div>
           <div class="subTitle">It Takes Time</div>
-          <div class="bodyContents textBlock slide-in" [ngClass]="{show: animationTriggers['4th'].isShown}" id="4th">
+          <div class="bodyContents textBlock " >
             Our adoption process does not happen in a single day. Typically, it can take at least a week for applications to move from submission to adoption.
           </div>
-          <div class="slide-in bodyContents"  [ngClass]="{show: animationTriggers['5th'].isShown}" id="5th">
+          <div class="bodyContents" >
             <span class="material-icons" id="starIcon">
               new_releases
             </span>
@@ -64,20 +64,20 @@
           <img class="picture" src="../../../../../assets/images/fuzzyWumpWumps.jpg" alt="cute kitten">
         </div>
         <div class="leftContainer">
-          <div class="itemTitle title">Our Adoption Process</div>
+          <div class="itemTitle title slide-in" [ngClass]="{show: animationTriggers['slideRight3'].isShown}" id="slideRight3" >Our Adoption Process</div>
           <div class="itemContents">
             <div class="textBlock bodyContents">
-              <div class="subTitle">Step 1: Application</div>
+              <div class="subTitle" >Step 1: Application</div>
               Please be honest and thorough in your responses. Our goal is to find a forever home for our kittens where they will live a long, happy life. We want to make sure it's a great match for you and for them! Please allow up to 24 hours to hear back from us regarding your application. 
               <br>
               In the event of receiving multiple applications for a single kitten, we shall proceed with only one interview at a time. This will aid in preventing distress among multiple individuals who may develop an attachment to a kitten.
             </div>
             <div class="textBlock bodyContents">
-              <div class="subTitle">Step 2: Interview</div>
+              <div class="subTitle" >Step 2: Interview</div>
               We will reach out to schedule a video call so we can meet you and see the home they will grow up in (generally 15 minutes but can be longer if you have questions).
             </div>
             <div class="bodyContents">
-              <div class="subTitle">Step 3: Meet & Adopt</div>
+              <div class="subTitle" >Step 3: Meet & Adopt</div>
               You will have the chance to meet the kitten in person to interact and see how you both get along with each other. If all parties are in agreement, you will be able to adopt and bring the kitten home on the same day. You'll sign the adoption agreement, pay the adoption fee, take adoption photos, and bring home your new feline friend! 
             </div>
   
@@ -91,7 +91,7 @@
     </div>
 
     <div id="adoptListTitleContainer" #adoptList >
-      <div class="title">{{petText}}</div>
+      <div class="title slide-in" [ngClass]="{show: animationTriggers['slideRight4'].isShown}" id="slideRight4">{{petText}}</div>
     </div>
     <app-adopt-animal-list id="adoptList" ></app-adopt-animal-list>
 
