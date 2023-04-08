@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener  } from '@angular/core';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { APIService } from 'src/app/common/services/api.service';
 import { takeUntil} from 'rxjs';
@@ -19,6 +19,16 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   isLoading: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
   petText: string = 'Our Current Foster Pets';
+
+  showElementWarning:boolean = false;
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    // Check if the element is in the viewport
+    const element = document.getElementById('denyWarning');
+    if(!this.showElementWarning)this.isElementInViewport(element!);
+
+  }
   
 
   @ViewChild('adoptList') adoptList: ElementRef |undefined;
@@ -39,8 +49,29 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
       this.currentBreakpoint = res
       //call find pets the first time
       if(this.isLoading) this.findPets();
-
     })
+  }
+
+  isElementInViewport(element: HTMLElement): boolean {
+    const options = {
+      root: null,
+      threshold: 0.5,
+    };
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          this.showElementWarning = true;
+          return true;
+        }else{
+          return false
+        }
+      });
+    }, options);
+  
+    observer.observe(element);
+  
+    return false;
   }
 
   findPets = () => {

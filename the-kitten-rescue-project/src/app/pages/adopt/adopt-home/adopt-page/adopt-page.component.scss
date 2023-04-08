@@ -1,5 +1,22 @@
 @import '../../../../../styles.scss';
 
+
+
+//move to main when tweaked
+.slide-in {
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.slide-in.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
 .primaryBlock{
   @include flexColumnCenter;
   background-color: $colorPrimaryBackground;
