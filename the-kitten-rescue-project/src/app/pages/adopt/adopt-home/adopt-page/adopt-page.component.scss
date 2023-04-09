@@ -34,7 +34,14 @@
   margin-bottom: 1.5rem;
 }
 
+//add to make sure the animation does not flash
+.animate__animated{
+  opacity: 0;
+}
 
+.animate__animated.animate__zoomIn, .animate__animated.animate__shakeY{
+  opacity: 1;
+}
 
 #processContainer{
   background-color: $colorBackground;
