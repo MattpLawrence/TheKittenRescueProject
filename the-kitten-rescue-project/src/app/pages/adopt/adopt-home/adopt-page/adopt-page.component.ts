@@ -27,8 +27,8 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
 
 
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    this.triggerScrollAnimation()
+    onWindowScroll() {
+      this.triggerScrollAnimation()
   }
   
 

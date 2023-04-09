@@ -1,6 +1,6 @@
 <div class="mainContainer">
   <div class="sizeContainer">
-    <div class="card" id="aboutCard">
+    <div class="card animate__animated" [ngClass]="{animate__fadeInUp: animationTriggers['aboutCard'].isShown}" id="aboutCard">
       <img src="../../../../assets/images/smallPikachu.jpg" alt="aboutCard main img" class="cardTopImg">
       <div class="iconContainer">
         <span class="material-icons middleIcon">
@@ -11,7 +11,7 @@
       <div class="mainContent">Learn More About The Kitten Rescue Project</div>
       <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('about-page')">About</button>
     </div>
-    <div class="card" id="volunteerCard" >
+    <div class="card animate__animated" [ngClass]="{animate__fadeInUp: animationTriggers['volunteerCard'].isShown}" id="volunteerCard" >
       <img src="../../../../assets/images/twoPinkKittens.jpeg" alt="aboutCard main img" class="cardTopImg">
             <div class="iconContainer">
         <span class="material-icons middleIcon">
@@ -28,7 +28,7 @@
         Volunteer
       </button>
     </div>
-    <div class="card" id="adoptCard">
+    <div class="card animate__animated" [ngClass]="{animate__fadeInUp: animationTriggers['adoptCard'].isShown}"  id="adoptCard">
       <img src="../../../../assets/images/someGreyCutie.jpg" alt="aboutCard main img" class="cardTopImg">
             <div class="iconContainer">
         <span class="material-icons middleIcon">
@@ -45,7 +45,7 @@
         Adopt
       </button>
     </div>
-    <div class="card" id="donateCard">
+    <div class="card animate__animated" [ngClass]="{animate__fadeInUp: animationTriggers['donateCard'].isShown}"  id="donateCard">
       <img src="../../../../assets/images/kuja.jpg" alt="aboutCard main img" class="cardTopImg">
             <div class="iconContainer">
         <span class="material-icons middleIcon">
