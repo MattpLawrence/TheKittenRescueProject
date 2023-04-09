@@ -19,10 +19,10 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   isLoading: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
   petText: string = 'Our Current Foster Pets';
-  slideInRight: string[] = ['slideRight1', 'slideRight2','slideRight3','slideRight4']
+  animateElementList: string[] = ['slideRight1', 'slideRight2','slideRight3','slideRight4', 'shakeX1']
 
   showElementWarning:boolean = false;
-  animationTriggers: { [id: string]: {isShown: boolean, class: string } } = {};
+  animationTriggers: { [id: string]: {isShown: boolean} } = {};
 
 
 
@@ -41,8 +41,8 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     ) {
       super()
       //initiate animationTriggers
-      this.slideInRight.forEach((id:string) => {
-        this.animationTriggers[id] = {isShown: false, class:'slideInRight'}
+      this.animateElementList.forEach((id:string) => {
+        this.animationTriggers[id] = {isShown: false}
       })
     }
 

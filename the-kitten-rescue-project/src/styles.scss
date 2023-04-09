@@ -2,6 +2,7 @@
 @import "../src/styles/mixins";
 @import "../src/styles/main";
 @import "../src/styles/base";
+@import "../src/styles/animations";
 @import "../src/styles/components/badges";
 @import "../src/styles/components/buttons";
 @import "../src/styles/components/cards";
@@ -9,6 +10,7 @@
 @import "../src/styles/components/inputs";
 @import "../src/styles/components/snackBar";
 @import "../src/styles/components/topBanner";
+
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import 'material-icons/iconfont/material-icons.css';
