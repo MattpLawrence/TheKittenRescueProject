@@ -1,11 +1,11 @@
 <div class="mainContainer">
   <div class="topBanner">
-    <div class="title slide-in" [ngClass]="{show: animationTriggers['slideRight1'].isShown}" id="slideRight1">Why Adopt From Us?</div>
+    <div class="title animate__animated" [ngClass]="{animate__slideInRight: animationTriggers['slideRight1'].isShown}" id="slideRight1">Why Adopt From Us?</div>
   </div>
   <div class="primaryBlock" id="aboutAdoption">
     <div class="sizeContainer">
       <div class="mainContents ">
-        <div class="subTitle" >A Personalized Approach</div>
+        <div class="subTitle " >A Personalized Approach</div>
         <div class="bodyContents textBlock">
           By choosing to adopt, you will be gaining a new companion while also providing a loving home for an orphaned kitten. Our rescue prides itself on our personalized approach to matching each kitten with their perfect family.
         </div>
@@ -28,7 +28,7 @@
         <img class="picture" src="../../../../../assets/images/padfootBlip.jpg" alt="cute kitten">
       </div>
       <div class="leftContainer">
-        <div class="itemTitle title slide-in" [ngClass]="{show: animationTriggers['slideRight2'].isShown}" id="slideRight2">Understand before applying</div>
+        <div class="itemTitle title animate__animated" [ngClass]="{animate__slideInRight: animationTriggers['slideRight2'].isShown}" id="slideRight2">Understand before applying</div>
         <div class="itemContents">
           <div class="subTitle" >The Kittens</div>
           <div class="bodyContents textBlock ">
@@ -46,7 +46,7 @@
           <div class="bodyContents textBlock " >
             Our adoption process does not happen in a single day. Typically, it can take at least a week for applications to move from submission to adoption.
           </div>
-          <div class="bodyContents" [ngClass]="{shakeX: animationTriggers['shakeX1'].isShown}" id="shakeX1"  >
+          <div class="bodyContents animate__animated animate__delay-1s" [ngClass]="{animate__shakeY: animationTriggers['shakeY1'].isShown}" id="shakeY1"  >
             <span class="material-icons" id="starIcon">
               new_releases
             </span>
@@ -64,7 +64,7 @@
           <img class="picture" src="../../../../../assets/images/fuzzyWumpWumps.jpg" alt="cute kitten">
         </div>
         <div class="leftContainer">
-          <div class="itemTitle title slide-in" [ngClass]="{show: animationTriggers['slideRight3'].isShown}" id="slideRight3" >Our Adoption Process</div>
+          <div class="itemTitle title animate__animated" [ngClass]="{animate__slideInRight: animationTriggers['slideRight3'].isShown}" id="slideRight3" >Our Adoption Process</div>
           <div class="itemContents">
             <div class="textBlock bodyContents">
               <div class="subTitle" >Step 1: Application</div>
@@ -91,7 +91,7 @@
     </div>
 
     <div id="adoptListTitleContainer" #adoptList >
-      <div class="title slide-in" [ngClass]="{show: animationTriggers['slideRight4'].isShown}" id="slideRight4">{{petText}}</div>
+      <div class="title animate__animated" [ngClass]="{animate__slideInRight: animationTriggers['slideRight4'].isShown}" id="slideRight4">{{petText}}</div>
     </div>
     <app-adopt-animal-list id="adoptList" ></app-adopt-animal-list>
 
