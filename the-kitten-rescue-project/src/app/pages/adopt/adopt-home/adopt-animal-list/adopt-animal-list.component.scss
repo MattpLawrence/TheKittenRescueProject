@@ -1,5 +1,16 @@
 @import '../../../../../styles.scss';
 
+//***********animation**************
+
+//add to make sure the animation does not flash
+.animate__animated{
+  opacity: 0;
+}
+
+.animate__animated.animate__fadeInUp{
+  opacity: 1;
+}
+
 
 //***********pet grid************
 .mainContainer{

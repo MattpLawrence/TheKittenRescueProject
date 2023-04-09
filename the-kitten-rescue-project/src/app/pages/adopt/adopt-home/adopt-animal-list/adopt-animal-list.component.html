@@ -1,6 +1,6 @@
 <div class="mainContainer">
   <div *ngIf="petList !== undefined" id="petGridContainer">
-    <div  class="petContainer" *ngFor="let pet of petList" (click)="openModal(pet)">
+    <div  class="petContainer animate__animated" *ngFor="let pet of petList" [ngClass]="{animate__fadeInUp: animationTriggers[pet.petId].isShown}" id="{{pet.petId}}" (click)="openModal(pet)">
       <img class="petImg" src="{{pet.mainImg}}" alt="Pet Image">
       <div class="petName">{{pet.petName}}</div>
     </div>

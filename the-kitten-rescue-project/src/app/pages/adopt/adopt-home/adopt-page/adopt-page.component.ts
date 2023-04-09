@@ -19,9 +19,9 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   isLoading: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
   petText: string = 'Our Current Foster Pets';
-  animateElementList: string[] = ['animate1', 'animate2','animate3','animate4', 'animate5', 'animate6', 'animate7']
-
   showElementWarning:boolean = false;
+
+  animateElementList: string[] = ['animate1', 'animate2','animate3','animate4', 'animate5', 'animate6', 'animate7']
   animationTriggers: { [id: string]: {isShown: boolean} } = {};
 
 

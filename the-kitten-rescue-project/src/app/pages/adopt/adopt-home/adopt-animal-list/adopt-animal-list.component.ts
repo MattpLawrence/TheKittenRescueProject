@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
@@ -18,6 +18,14 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
   petList: PetDisplay[] | undefined;
   currentBreakpoint:BreakPointsEnum = BreakPointsEnum.isDesktop;
 
+  animateElementList: string[] = ['animate1', 'animate2','animate3','animate4', 'animate5', 'animate6', 'animate7']
+  animationTriggers: { [id: string]: {isShown: boolean} } = {};
+
+  @HostListener('window:scroll', ['$event'])
+    onWindowScroll() {
+      this.triggerScrollAnimation()
+  }
+
   constructor(
     private apiService: APIService,
     public dialog: MatDialog,
@@ -27,6 +35,7 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.initPetList()
     this.initBreakpoints()
+    this.triggerScrollAnimation()
   }
 
   initPetList = () => {
@@ -41,6 +50,10 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
           mainImg: animal.primary_photo_cropped?.full
         })
         this.petList = petListMap;
+        //set animation object
+        this.petList?.forEach((pet:any) => {
+          this.animationTriggers[pet.petId] = {isShown: false}
+        })
       }else{
         this.petList = undefined;
       }
@@ -50,6 +63,34 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
   initBreakpoints = () => {
     this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.currentBreakpoint = res;
+    })
+  }
+
+  triggerScrollAnimation = () => {
+    // Check if the element is in the viewport
+    Object.entries(this.animationTriggers).forEach(trigger => {
+      //set element to equal the id
+      let element = document.getElementById(trigger[0])
+      //if not already shown
+      if(!this.animationTriggers[trigger[0]].isShown){
+        //if id is attached to an html element
+        if(element != null){
+          const options = {
+            root: null,
+            threshold: .5,
+          };
+          //set up individual observer for each element
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                //set global variable to show if intersecting for first time
+                this.animationTriggers[trigger[0]].isShown = true;
+              }
+            });
+          }, options);
+          observer.observe(element);
+        };
+      };
     })
   }
 
