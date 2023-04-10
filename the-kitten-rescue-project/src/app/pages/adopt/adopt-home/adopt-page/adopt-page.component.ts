@@ -21,7 +21,7 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   petText: string = 'Our Current Foster Pets';
   showElementWarning:boolean = false;
 
-  animateElementList: string[] = ['animate1', 'animate2','animate3','animate4', 'animate5', 'animate6', 'animate7']
+  animateElementList: string[] = ['adoptPage1', 'adoptPage2','adoptPage3','adoptPage4', 'adoptPage5', 'adoptPage6', 'adoptPage7']
   animationTriggers: { [id: string]: {isShown: boolean} } = {};
 
 
@@ -70,16 +70,15 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
         if(element != null){
           const options = {
             root: null,
-            threshold: .5,
+            threshold: .3,
           };
           //set up individual observer for each element
           const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                //set global variable to show if intersecting for first time
-                this.animationTriggers[trigger[0]].isShown = true;
-              }
-            });
+            const entry = entries[0]
+            if (entry.isIntersecting) {
+              //set global variable to show if intersecting for first time
+              this.animationTriggers[trigger[0]].isShown = true;
+            }
           }, options);
           observer.observe(element);
         };

@@ -46,16 +46,15 @@ export class LandingCardsComponent extends BaseComponent implements OnInit {
         if(element != null){
           const options = {
             root: null,
-            threshold: .5,
+            threshold: .2,
           };
           //set up individual observer for each element
           const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                //set global variable to show if intersecting for first time
-                this.animationTriggers[trigger[0]].isShown = true;
-              }
-            });
+            const entry = entries[0]
+            if (entry.isIntersecting) {
+              //set global variable to show if intersecting for first time
+              this.animationTriggers[trigger[0]].isShown = true;
+            }
           }, options);
           observer.observe(element);
         };

@@ -6,7 +6,7 @@
     </div>
   </div>
   <div *ngIf="petList == undefined" id="petGridContainer">
-    <div  class="noPetContainer">
+    <div  class="noPetContainer animate__animated" [ngClass]="{animate__fadeInUp: animationTriggers['adoptList1'].isShown}" id="adoptList1">
       <div class="subTitle">We'd Love To Hear From You</div>
       <div class="bodyContents textBlock">
         Currently The Kitten Rescue Project does not have any kittens available for adoption. If you would like to be first in line when Kittens become available please let us know by sending an email to the address below.
