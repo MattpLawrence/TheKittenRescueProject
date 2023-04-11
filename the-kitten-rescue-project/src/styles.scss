@@ -19,6 +19,11 @@
   src: url('./assets/fonts/Merienda/Merienda-VariableFont_wght.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Cocon';
+  src: url('./assets/fonts/Cocon-Regular-Font/Cocon-Regular-Font.otf') format('truetype');
+}
+
 //Animations 
 @import '~animate.css/animate.min.css';
 

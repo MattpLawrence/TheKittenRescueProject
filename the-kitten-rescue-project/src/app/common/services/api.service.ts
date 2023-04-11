@@ -18,9 +18,9 @@ export class APIService {
 
   //variables
   private petFinderUrl: string = 'https://api.petfinder.com/v2';
-  // queryString: string = '/animals?organization=GA477&limit=100';
+  queryString: string = '/animals?organization=GA477&limit=100';
   // bad call to return no results
-  queryString: string = '/animals?organization=GA4772&limit=100';
+  // queryString: string = '/animals?organization=GA4772&limit=100';
 
   apiUrl:string = environment.API_URL;
 

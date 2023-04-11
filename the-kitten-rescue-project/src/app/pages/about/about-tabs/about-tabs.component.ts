@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { CommonService } from 'src/app/common/services/common.service';
+import { MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-about-tabs',
@@ -11,11 +12,13 @@ import { CommonService } from 'src/app/common/services/common.service';
 })
 export class AboutTabsComponent extends BaseComponent implements OnInit {
 
+  @ViewChild('tabGroup') tabGroup: MatTabGroup | undefined;
+
   currentBreakPoint: BreakPointsEnum = 0;
 
   constructor(
     private commonService: CommonService
-  ) { super() }
+  ) {super()}
 
   ngOnInit(): void {
     this.initBreakpoint();
@@ -25,6 +28,14 @@ export class AboutTabsComponent extends BaseComponent implements OnInit {
     this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.currentBreakPoint = res;
     })
+  }
+
+  navigate = (isBack: boolean) => {
+    //verify that the tabgroup is set
+    if(this.tabGroup?.selectedIndex != undefined){
+      //navigate
+      isBack? this.tabGroup.selectedIndex! += 1: this.tabGroup.selectedIndex! -= 1;
+    }
   }
 
 }

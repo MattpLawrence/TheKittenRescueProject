@@ -1,8 +1,8 @@
-<div class="mainContainer">
-  <mat-tab-group class="tabGroup">
-    <mat-tab label="Mission" class="tab">
-      <img class="picture" src="../../../../assets/images/fuzzyWumps.jpg" alt="cute kitten">
-       <div class="textContainer">
+<div class="mainContainer" >
+  <mat-tab-group class="tabGroup" #tabGroup >
+    <mat-tab  label="Mission" class="tab">
+      <img class="picture animate__animated animate__zoomIn"  src="../../../../assets/images/fuzzyWumps.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
+       <div class="textContainer" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
         <div class="textBlock bodyContents">
           <div class="subTitle">Dedication</div>
           At The Kitten Rescue Project, we are dedicated to saving the lives of kittens and neonates in need, with the ultimate goal of finding them forever homes. We rescue abandoned, orphaned, and sick kittens and work tirelessly to provide them with the care, nutrition, and socialization they require to grow and develop.
@@ -14,8 +14,8 @@
       </div>
     </mat-tab>
     <mat-tab label="Vision" class="tab">
-      <img *ngIf="currentBreakPoint > 1 " class="picture" src="../../../../assets/images/eliza.jpg" alt="cute kitten"> 
-      <div class="textContainer">
+      <img *ngIf="currentBreakPoint > 1 " class="picture animate__animated animate__zoomIn" src="../../../../assets/images/eliza.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)"> 
+      <div class="textContainer" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
         <div class="textBlock bodyContents">
           <div class="subTitle">A Chance To Thrive</div>
           Our vision at The Kitten Rescue Project is a world where every orphaned kitten and neonate has the chance to thrive and find their forever home. We believe that no kitten should be left to suffer or die alone, and that every kitten deserves love, care, and protection.
@@ -25,12 +25,12 @@
           We envision a future where orphaned kittens and neonates are no longer overlooked or forgotten due to lack of resources, but are instead given a chance to survive. We are committed to working towards this vision every day, and invite you to join us in making a difference in the lives of orphaned kittens everywhere.
         </div>
       </div>
-      <img *ngIf="currentBreakPoint <= 1"  class="picture" src="../../../../assets/images/eliza.jpg" alt="cute kitten"> 
+      <img *ngIf="currentBreakPoint <= 1"  class="picture animate__animated animate__zoomIn" src="../../../../assets/images/eliza.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)"> 
     </mat-tab>
     <mat-tab label="History" class="tab">
       <div class="centerContainer">
-        <img class="pictureColumn" src="../../../../assets/images/ButterNut.jpg" alt="cute kitten">
-        <div class="textContainerColumn">
+        <img class="pictureColumn animate__animated animate__zoomIn" src="../../../../assets/images/ButterNut.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
+        <div class="textContainerColumn" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
           <div class="textBlock bodyContents">
             <div class="subTitle">A Furball Named Butters</div>
             Once upon a time, a little furball named Butters made his grand entrance into the world in the cozy confines of a bathtub. Butters' mother, a stray cat in dire need of assistance, found refuge with a compassionate cat rescuer who helped her bring five precious kittens into the world. With the caregiver's help, the mama cat took great care of her furry babies until they were ready to embark on their own unique journeys in the world.
