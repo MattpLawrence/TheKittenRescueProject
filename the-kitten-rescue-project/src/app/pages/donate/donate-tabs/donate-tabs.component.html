@@ -1,7 +1,7 @@
 <div class="mainContainer">
   <mat-tab-group class="tabGroup" #tabGroup >
     <mat-tab label="{{donateString}}" class="tab">
-      <img class="picture scrollEnabled" src="../../../../assets/images/jenniferBed.jpg" alt="cute Jennifer" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
+      <img class="picture animate__animated animate__zoomIn scrollEnabled" src="../../../../assets/images/jenniferBed.jpg" alt="cute Jennifer" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
 
       <div class="textContainer scrollEnabled" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
         <div class="textBlock bodyContents">
@@ -27,7 +27,7 @@
       </div>
     </mat-tab>
     <mat-tab label="{{matchingString}}" class="tab">
-      <img *ngIf="currentBreakPoint > 1 " class="picture scrollEnabled" src="../../../../assets/images/daisyBed.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
+      <img *ngIf="currentBreakPoint > 1 " class="picture animate__animated animate__zoomIn scrollEnabled" src="../../../../assets/images/daisyBed.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
       <div class="textContainer scrollEnabled" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)" >
         <div class="textBlock bodyContents">
           <div class="subTitle">Employer Matching</div>
@@ -50,7 +50,7 @@
           </button></a>
         </div>
       </div>
-      <img *ngIf="currentBreakPoint <= 1"  class="picture scrollEnabled" src="../../../../assets/images/daisyBed.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)"> 
+      <img *ngIf="currentBreakPoint <= 1"  class="picture animate__animated animate__zoomIn scrollEnabled" src="../../../../assets/images/daisyBed.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)"> 
     </mat-tab>
     <mat-tab label="Wish List" class="tab">
       <div class="imgContainer scrollEnabled" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
