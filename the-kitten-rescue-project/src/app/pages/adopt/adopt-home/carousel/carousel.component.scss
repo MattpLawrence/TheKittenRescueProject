@@ -1,5 +1,9 @@
 @import '../../../../../styles.scss';
 
+.scrollEnabled{
+  touch-action: pan-y !important;
+}
+
 .mainContainer{
   width: 100%;
   @include flexCenterCenter;

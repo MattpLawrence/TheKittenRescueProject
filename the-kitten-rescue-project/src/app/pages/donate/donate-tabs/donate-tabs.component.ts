@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { CommonService } from 'src/app/common/services/common.service';
 import { takeUntil} from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-donate-tabs',
@@ -13,25 +14,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DonateTabsComponent extends BaseComponent implements OnInit {
 
+  @ViewChild('tabGroup') tabGroup: MatTabGroup | undefined;
+
   currentBreakPoint: BreakPointsEnum = 0;
   donateString: string = 'Ways To Donate';
   matchingString: string = 'Employer Matching';
-  paypalContent:any =`<div id="donate-button-container">
-  <div id="donate-button"></div>
-  <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
-  <script>
-  PayPal.Donation.Button({
-  env:'production',
-  hosted_button_id:'D4KU8TM7F6APW',
-  image: {
-  src:'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif',
-  alt:'Donate with PayPal button',
-  title:'PayPal - The safer, easier way to pay online!',
-  }
-  }).render('#donate-button');
-  </script>
-  </div>
-  `
+
 
   constructor(
     private commonService: CommonService,
@@ -41,7 +29,6 @@ export class DonateTabsComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.initBreakpoint();
-    this.initPaypal()
   }
 
   initBreakpoint = () => {
@@ -59,8 +46,13 @@ export class DonateTabsComponent extends BaseComponent implements OnInit {
     })
   }
 
-  initPaypal = () => {
-    this.paypalContent = this.sanitizer.bypassSecurityTrustHtml(this.paypalContent);
-  }
 
+
+  navigate = (isBack: boolean) => {
+    //verify that the tabgroup is set
+    if(this.tabGroup?.selectedIndex != undefined){
+      //navigate
+      isBack? this.tabGroup.selectedIndex! += 1: this.tabGroup.selectedIndex! -= 1;
+    }
+  }
 }

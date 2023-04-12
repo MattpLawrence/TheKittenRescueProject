@@ -1,13 +1,15 @@
 <div class="mainContainer">
-  <mat-tab-group class="tabGroup" >
+  <mat-tab-group class="tabGroup" #tabGroup >
     <mat-tab label="{{donateString}}" class="tab">
-      <img class="picture" src="../../../../assets/images/jenniferBed.jpg" alt="cute Jennifer">
+      <img class="picture scrollEnabled" src="../../../../assets/images/jenniferBed.jpg" alt="cute Jennifer" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
 
-      <div class="textContainer ">
+      <div class="textContainer scrollEnabled" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
         <div class="textBlock bodyContents">
+          <div class="subTitle">We Rely On You</div>
           As a non-profit we rely on charitable donations from supporters like you to keep our mission going. Feeding our rescues, taking care of medical needs, spay/neuter, it is all funded by your support.
         </div>
         <div class="textBlock bodyContents">
+          <div class="subTitle">Donate Today</div>
           To donate the help the kittens, please use the secure checkout through Paypal provided below.
         </div>
         <div class="disclosure">
@@ -25,8 +27,8 @@
       </div>
     </mat-tab>
     <mat-tab label="{{matchingString}}" class="tab">
-      <img *ngIf="currentBreakPoint > 1 " class="picture" src="../../../../assets/images/daisyBed.jpg" alt="cute kitten"> 
-      <div class="textContainer">
+      <img *ngIf="currentBreakPoint > 1 " class="picture scrollEnabled" src="../../../../assets/images/daisyBed.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
+      <div class="textContainer scrollEnabled" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)" >
         <div class="textBlock bodyContents">
           <div class="subTitle">Employer Matching</div>
           Many Employers participate in a charitable donation matching program.
@@ -48,18 +50,20 @@
           </button></a>
         </div>
       </div>
-      <img *ngIf="currentBreakPoint <= 1"  class="picture" src="../../../../assets/images/daisyBed.jpg" alt="cute kitten"> 
+      <img *ngIf="currentBreakPoint <= 1"  class="picture scrollEnabled" src="../../../../assets/images/daisyBed.jpg" alt="cute kitten" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)"> 
     </mat-tab>
     <mat-tab label="Wish List" class="tab">
-      <div class="imgContainer">
+      <div class="imgContainer scrollEnabled" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
         <img  src="../../../../assets/images/amazon.webp" alt="amazon logo">
         <img  src="../../../../assets/images/chewy-inc-logo-vector.png" alt="Chewy logo" id="chewyLogo">
       </div>
-      <div class="textContainer">
+      <div class="textContainer scrollEnabled" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)">
         <div class="textBlock bodyContents">
+          <div class="subTitle">In Need Of Supplies</div>
           In Addition to monetary donations we are also in need of supplies to support our mission.
         </div>
         <div class="textBlock bodyContents">
+          <div class="subTitle">Wishlists</div>
           We have put together both an Amazon and a Chewy wishlist of items that are critical to our cause.
         </div>
         <div class="textBlock bodyContents">

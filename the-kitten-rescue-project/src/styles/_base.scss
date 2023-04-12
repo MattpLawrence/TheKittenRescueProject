@@ -10,6 +10,13 @@
 }
 
 //******general*****************
+
+//enable scroll on swipe detect
+.scrollEnabled{
+  touch-action: pan-y !important;
+}
+
+
 .title{
   font-family: 'Cocon', cursive;
   font-size: 2.5rem;
