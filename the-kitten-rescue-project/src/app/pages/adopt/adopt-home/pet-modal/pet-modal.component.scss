@@ -1,5 +1,9 @@
 @import '../../../../../styles.scss';
 
+.mat-button {
+  white-space: normal !important;
+  word-wrap: break-word;
+}
 
 .mainContainer{
   position: relative;

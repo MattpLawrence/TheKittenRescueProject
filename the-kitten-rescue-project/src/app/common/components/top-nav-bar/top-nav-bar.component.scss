@@ -1,6 +1,14 @@
 @import "../../../../styles.scss";
 
 
+#mainLogo{
+  fill: red;
+}
+
+.mobileLogo{
+  margin-left: 1.5rem;
+}
+
 .topNavContainer{
   position: fixed;
   width: 100vw;

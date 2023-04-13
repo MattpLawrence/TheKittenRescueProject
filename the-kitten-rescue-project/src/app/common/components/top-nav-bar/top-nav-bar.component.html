@@ -1,8 +1,8 @@
 <!-- desktop navbar -->
 <nav *ngIf="currentBreakpoint === 0" class="topNavContainer stickyHeaderCard" [ngClass]="{isHidden: isHidden}">
   <div class="leftBox">
-    <a alt="Main Title Logo" routerLink="landing-page" class="iconRound"><fa-icon [icon]="icons.cat" class="logo shareBtn fa-2x"  ></fa-icon></a>
-    <!-- <a alt="Main Title Logo" routerLink="landing-page"><img src="../../../../assets/images/screenShotLogo.png" alt="mainLogo" style="height: 6rem"></a> -->
+    <!-- <a alt="Main Title Logo" routerLink="landing-page" class="iconRound"><fa-icon [icon]="icons.cat" class="logo shareBtn fa-2x"  ></fa-icon></a> -->
+    <a alt="Main Title Logo" routerLink="landing-page"><img id="mainLogo" src="../../../../assets/images/Primary Logo.svg" alt="mainLogo" style="height: 5rem"></a>
     
   </div>
   <ul class="rightBox">
@@ -81,7 +81,8 @@
 
 
   <div class="leftJustify">
-    <a class="iconRound" alt="Main Title Logo" routerLink="landing-page" (click)="toggleExpanded(true)"><fa-icon [icon]="icons.cat" class="shareBtn fa-2x logo" ></fa-icon></a>
+    <!-- <a class="iconRound" alt="Main Title Logo" routerLink="landing-page" (click)="toggleExpanded(true)"><fa-icon [icon]="icons.cat" class="shareBtn fa-2x logo" ></fa-icon></a> -->
+    <a class="mobileLogo" alt="Main Title Logo" routerLink="landing-page"><img id="mainLogo" src="../../../../assets/images/Primary_Logo_without_wording.svg" alt="mainLogo" style="height: 5rem"></a>
   </div>
 
 
