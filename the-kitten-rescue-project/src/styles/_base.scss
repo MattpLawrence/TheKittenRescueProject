@@ -40,6 +40,10 @@
   margin-bottom: .5rem;
 }
 
+.mat-tab-label {
+  opacity: 1 !important; 
+}
+
 @media only screen and (max-width: $breakpointMedium){
 
   .bodyContents{

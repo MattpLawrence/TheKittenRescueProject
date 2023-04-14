@@ -183,6 +183,8 @@
 
 
 @media only screen and (max-width: $breakpointMedium){
+
+
   .topNavContainer{
     @include flexCenterStart;
   }
@@ -261,13 +263,14 @@
 
     
     .buttonTextBox{
-      color: $colorText;
+      color: $colorLightText;
     }
   }
 
 }
 
-@media only screen and (max-width: $breakpointXSmall){
+
+@media only screen and (max-width: 350px){
   .logoText{
     display: none;
   }
