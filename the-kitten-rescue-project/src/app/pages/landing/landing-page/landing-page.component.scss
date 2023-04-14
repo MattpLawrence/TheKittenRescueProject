@@ -5,8 +5,8 @@
   width: 100%;
   .innerBanner{
     white-space: nowrap;
-    width: 70%;
-    max-width: 1200px;
+    width: calc(100vw - 4rem);
+    max-width: 1180px;
     @include flexCenterCenter;
 
     
@@ -22,6 +22,6 @@
 
 @media only screen and (max-width: $breakpointMedium) {
   .topBanner .innerBanner{
-    width: calc(100vw - 4rem);
+    width: 90vw;
   }
 }

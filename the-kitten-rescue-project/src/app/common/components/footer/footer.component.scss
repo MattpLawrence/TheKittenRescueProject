@@ -5,35 +5,40 @@
   margin-top: 3rem;
   width: 100vw;
   height:3rem;
-  background-color: $colorPrimary;
+  background-color: $colorPrimaryBackground;
   @include flexCenterCenter;
   margin: auto;
   z-index: 10;
   border-radius: 0px;
   position: relative;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 15%);
 
 }
 
 .sizeContainer{
-  width: 80vw;
+  width: 70vw;
   max-width: 1200px;
   @include flexCenterSpaceBetween;
 }
 
 .title{
-  color: $colorPrimaryBackground;
+  color: $colorContrastDarkest;
   font-size: 1.125rem;
   font-weight: 500;
 }
 
 .socialIcon{
-  color: $colorPrimaryBackground;
+  color: $colorContrastDarkest;
   margin-right: 1rem;
   transition: .4s;
 
   &:hover{
     cursor: pointer;
-    color: #acacac;
+    color: $colorContrastDarkestHover;
+  }
+
+  &:active{
+    color: $colorContrastDarkestHover;
   }
 }
 
