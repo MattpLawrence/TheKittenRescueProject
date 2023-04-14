@@ -5,6 +5,22 @@
   @include flexColumnStart;
 }
 
+.topBanner{
+  white-space: nowrap;
+  width: 70%;
+  max-width: 1200px;
+  @include flexCenterCenter;
+  
+
+  .highlightLine{
+    width: 50%;
+    height: .125rem;
+    border-radius: .0675rem;
+    background-color: $colorContrastDarkest;
+  }
+}
+
+
 .textBlock{
   width: 100%;
 }
@@ -111,6 +127,10 @@
   }
 
 
+  .topBanner{
+    width: calc(100% - 3rem);
+  }
+
 
 
   .fosterContainer .sizeContainer{
@@ -144,6 +164,7 @@
   .fosterContainer .sizeContainer .imgContainer{
     width: 100%;
   }
+
 
   .navButton{
     width: 90%;

@@ -1,6 +1,27 @@
 @import '../../../../../styles.scss';
 
 
+.topBanner{
+
+  width: 100%;
+  .innerBanner{
+    white-space: nowrap;
+    width: 70%;
+    max-width: 1200px;
+    @include flexCenterCenter;
+
+    
+  .highlightLine{
+    width: 50%;
+    height: .125rem;
+    border-radius: .0675rem;
+    background-color: $colorContrastDarkest;
+  }
+  }
+
+}
+
+
 
 .primaryBlock{
   @include flexColumnCenter;
@@ -108,6 +129,10 @@
 
 @media only screen and (max-width: $breakpointMedium){
 
+  .topBanner .innerBanner{
+    width: calc(100vw - 6rem);
+  }
+
   .centerContainer .sizeContainer{
     width: 100%;
     flex-direction: column;
@@ -135,6 +160,11 @@
 
 
 @media only screen and (max-width: $breakpointSmall){
+
+  .topBanner .innerBanner{
+    width: calc(100vw - 3rem);
+  }
+
 
   .mainBanner{
     margin-bottom: 2vw;
