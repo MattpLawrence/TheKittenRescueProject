@@ -1,9 +1,7 @@
 @import "../../../../styles.scss";
 
 
-#mainLogo{
-  fill: red;
-}
+
 
 .mobileLogo{
   margin-left: 1.5rem;
@@ -12,11 +10,11 @@
 .topNavContainer{
   position: fixed;
   width: 100vw;
-  background-color: $colorContrastDarkest;
+  background-color: $colorPrimaryBackground;
   height: 6rem;
   border-bottom: 0rem;
   @include flexCenterSpaceBetween;
-  box-shadow: 0 1px 5px rgb(0 0 0 / 11%);
+  box-shadow: 0 1px 8px rgb(0 0 0 / 15%);
   z-index: 10;
   transition: top 0.5s ease-in-out;
   // border: 2px red solid;
@@ -26,6 +24,13 @@
   top: -6rem;
 }
 
+
+
+.leftBox{
+  @include flexCenterCenter;
+  margin: 0rem 2rem;
+}
+
 #logoImg{
   height: 6rem;
   &:hover{
@@ -33,21 +38,25 @@
   }
 }
 
-.leftBox{
-  margin: 0rem 2rem;
+.logoText{
+  font-family: 'Cocon', cursive;
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-left: 1rem;
+  color: $colorPrimary;
 }
 
 .rightBox{
   margin: 0rem;
   height: 100%;
-  width: 70%;
+  padding-left: 0;
   @include flexCenterEnd;
 }
 
 #shareBtn{
   margin-left: 0;
   position: relative;
-  color: $colorPrimary;
+  color: $colorContrastDarkest;
 
   .shareExpanded{
     height: 18rem;
@@ -95,13 +104,6 @@
 
 }
 
-#mobileDonateBtn{
- background-color: $colorContrastDarkest;
- color: $colorPrimaryBackground;
- &:hover{
-  background-color: $colorContrastDarkestHover;
- }
-}
 
 #donateInnerBtn{
  background-color: $colorPrimary;
@@ -114,7 +116,7 @@
   margin: 0rem 1rem;
   @include flexColumnCenter;
   list-style: none;
-  background-color: $colorContrastDarkest;
+  background-color: $colorPrimaryBackground;
   transition-duration: .2s;
 
   .material-icons{
@@ -125,9 +127,10 @@
   .buttonTextBox{
     font-family: 'Roboto', sans-serif;
     font-size: 1.125rem;
+    font-weight: 500;
     margin-top: auto;
     margin-bottom: auto;
-    color: white;
+    color: $colorContrastDarkest;
   }
 
   .buttonUnderline{
@@ -186,6 +189,7 @@
   }
 
   .leftJustify{
+    @include flexCenterCenter;
     z-index: 10;
   }
 
@@ -256,5 +260,11 @@
     }
   }
 
+}
+
+@media only screen and (max-width: $breakpointXSmall){
+  .logoText{
+    display: none;
+  }
 }
 
