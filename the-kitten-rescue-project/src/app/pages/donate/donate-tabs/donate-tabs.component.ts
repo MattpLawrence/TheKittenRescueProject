@@ -6,6 +6,7 @@ import { takeUntil} from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatTabGroup } from '@angular/material/tabs';
+import { faPaypal} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-donate-tabs',
