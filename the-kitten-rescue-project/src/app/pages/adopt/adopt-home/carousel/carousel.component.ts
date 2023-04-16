@@ -139,10 +139,8 @@ export class CarouselComponent extends BaseComponent implements OnInit {
           if(lastId >= 0)this.currentId = lastId;
   
         }
-  
       }
     }
-
   }
 
   imageClick = (image: string | undefined) => {
@@ -166,7 +164,6 @@ export class CarouselComponent extends BaseComponent implements OnInit {
         this.commonService.setTopModalSubject({isOpen:false, hasTriggered: true});
       })
     }
-    
   }
   
 

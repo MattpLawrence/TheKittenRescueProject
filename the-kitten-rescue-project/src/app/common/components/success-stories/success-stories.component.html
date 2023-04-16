@@ -1,1 +1,48 @@
-<p>success-stories works!</p>
+<div class="mainContainer">
+  <div class="sizeContainer">
+  <div class="itemTitle title"  >A Few Of Our Success Stories</div>
+    <div class="itemContents">
+      <div class="subTitle" >The Kittens</div>
+      <div class="bodyContents textBlock ">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh nisl condimentum id venenatis a condimentum vitae. Vestibulum morbi blandit cursus risus at ultrices mi tempus imperdiet. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Vulputate odio ut enim blandit volutpat maecenas volutpat blandit. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Turpis cursus in hac habitasse. Fermentum leo vel orci porta non pulvinar neque. Enim nulla aliquet porttitor lacus luctus accumsan tortor. Maecenas volutpat blandit aliquam etiam erat velit scelerisque. Varius vel pharetra vel turpis nunc eget lorem. Sagittis purus sit amet volutpat consequat mauris nunc congue. Sed viverra tellus in hac habitasse.
+      </div>
+    </div>
+    <div class="storyContainer">
+      <div class="itemTitle title"  >Rebekah And Nicklaus</div>
+    </div>
+
+
+
+    <!-- ********************Carousel Section************* -->
+    <div class="mainContainer scrollEnabled" (swipeleft)="navigate(true, rnCarouselList)"  (swiperight)="navigate(false, rnCarouselList)" >
+      <div class="frameContainer">
+        <div id="nextButton" class="navButtonContainer" (click)="navigate(true, rnCarouselList)">
+          <span class="material-icons navButton">
+            arrow_forward_ios
+          </span>
+        </div>
+        <div id="lastButton" class="navButtonContainer" (click)="navigate(false, rnCarouselList)">
+          <span class="material-icons navButton">
+            arrow_back_ios
+          </span>
+        </div>
+        <div class="carouselContainer">
+          <div class="carouselItem" *ngFor="let item of rnCarouselList" 
+          [ngClass]="{
+            isCurrent: item.id === currentId,
+            isNext: item.id === currentId + 1,
+            isLast: item.id === currentId -1,
+            isLesser: item.id < currentId,
+            isGreater: item.id > currentId
+          }">
+            <!-- If an image -->
+            <img class="carouselImg" src="{{item.imgSource}}" alt="pet image {{item.id}}" (dblclick)="imageClick(item.fullImgSource)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

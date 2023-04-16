@@ -13,6 +13,12 @@ export interface CarouselItem{
   fullImgSource?: string,
 }
 
+export interface SuccessCarouselItem{
+  imgSource: string,
+  id: number,
+  fullImgSource: string,
+}
+
 export interface ModalClose{
   isOpen: boolean,
   hasTriggered: boolean,

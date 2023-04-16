@@ -20,6 +20,11 @@
 
 }
 
+app-success-stories{
+  position: relative;
+  z-index: 2;
+}
+
 @media only screen and (max-width: $breakpointMedium) {
   .topBanner .innerBanner{
     width: 90vw;
