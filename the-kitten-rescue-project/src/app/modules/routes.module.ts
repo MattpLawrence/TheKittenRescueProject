@@ -13,6 +13,8 @@ import { ApplicationErrorComponent } from "../pages/adopt/adopt-form/application
 import { LandingPageComponent } from "../pages/landing/landing-page/landing-page.component";
 import { FosterFormComponent } from "../pages/volunteer/foster-form/foster-form.component";
 import { VolunteerRouterComponent } from "../pages/volunteer/volunteer-router/volunteer-router.component";
+import { ThanksPageComponent } from "../pages/thanks-page/thanks-page.component";
+import { HostedImagesComponent } from "../common/components/hosted-images/hosted-images.component";
 
 
 export const routes: Routes = [
@@ -77,6 +79,15 @@ export const routes: Routes = [
  {
    path: "donate-page",
    component: DonatePageComponent,
+ },
+ {
+   path: "thank-you",
+   component: ThanksPageComponent,
+ },
+ {
+  //a route just to have a place for extra hosted images
+   path: "hosted-images",
+   component: HostedImagesComponent,
  },
  { path: "**",
    redirectTo: "landing-page"

@@ -41,7 +41,9 @@ import { FooterComponent } from './common/components/footer/footer.component';
 import { FosterFormComponent } from './pages/volunteer/foster-form/foster-form.component';
 import { VolunteerRouterComponent } from './pages/volunteer/volunteer-router/volunteer-router.component';
 import { HammerModule } from "../../node_modules/@angular/platform-browser";
-import { ThanksPageComponent } from './pages/thanks/thanks-page/thanks-page.component';
+import { ThanksPageComponent } from './pages/thanks-page/thanks-page.component';
+import { SuccessStoriesComponent } from './common/components/success-stories/success-stories.component';
+import { HostedImagesComponent } from './common/components/hosted-images/hosted-images.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { ThanksPageComponent } from './pages/thanks/thanks-page/thanks-page.comp
     FooterComponent,
     FosterFormComponent,
     VolunteerRouterComponent,
-    ThanksPageComponent
+    ThanksPageComponent,
+    SuccessStoriesComponent,
+    HostedImagesComponent
   ],
   imports: [
     BrowserAnimationsModule,

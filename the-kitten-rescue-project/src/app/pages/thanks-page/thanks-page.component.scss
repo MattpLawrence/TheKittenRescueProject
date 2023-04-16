@@ -1,0 +1,63 @@
+@import '../../../styles.scss';
+
+.mainContainer{
+  width: 100%;
+  @include flexColumnStart;
+}
+
+.topBanner{
+  white-space: nowrap;
+  width: 70%;
+  max-width: 1200px;
+  @include flexCenterCenter;
+  
+
+  .highlightLine{
+    width: 50%;
+    height: .125rem;
+    border-radius: .0675rem;
+    background-color: $colorContrastDarkest;
+  }
+}
+
+.sizeContainer{
+  width: 70%;
+  max-width: 1200px;
+  @include flexColumnStart;
+
+  .imgContainer{
+    width: 60%;
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+
+@media only screen and (max-width: $breakpointMedium) {
+
+
+  .sizeContainer{
+    width: calc(100% - 3rem);
+    @include flexColumnCenter;
+
+    .imgContainer{
+      width: 80%;
+    }
+  }
+
+    .topBanner{
+    width: calc(100% - 3rem);
+  }
+
+
+}
+
+
+@media only screen and (max-width: $breakpointSmall) {
+
+
+    .sizeContainer .imgContainer{
+      width: 100%;
+    }
+  
+}

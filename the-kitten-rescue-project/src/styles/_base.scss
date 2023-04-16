@@ -44,6 +44,14 @@
   opacity: 1 !important; 
 }
 
+.picture{
+  border-radius: .75rem;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+
 @media only screen and (max-width: $breakpointMedium){
 
   .bodyContents{
