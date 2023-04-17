@@ -8,6 +8,14 @@ import { CommonService } from '../../services/common.service';
 import { takeUntil } from 'rxjs';
 import { FullImageModalComponent } from '../full-image-modal/full-image-modal.component';
 
+
+interface Carousels {
+  [key: string]: SuccessCarouselItem[];
+}
+
+interface Ids {
+  [key: string]: number;
+}
 @Component({
   selector: 'app-success-stories',
   templateUrl: './success-stories.component.html',
@@ -17,6 +25,9 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
 
   currentPet: any = undefined;
   carouselList: SuccessCarouselItem[] | undefined;
+
+
+
   rnCarouselList: SuccessCarouselItem[] = [
     {
       id: 0,
@@ -43,8 +54,19 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
       imgSource: '../../../../assets/images/fuzzyWumpWumps.jpg',
       fullImgSource: '../../../../assets/images/fuzzyWumpWumps.jpg',
     },
+    {
+      id: 5,
+      imgSource: '../../../../assets/images/daisyBed.jpg',
+      fullImgSource: '../../../../assets/images/daisyBed.jpg',
+    },
   ]
-  currentId: number = 0;
+
+  carousels: Carousels = {
+    rn: this.rnCarouselList,
+  }
+  currentId: Ids = {
+    rn: 0,
+  };
   isClickable: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
 
@@ -64,7 +86,7 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
     })
   }
 
-  navigate = (isNext: boolean, carousel: SuccessCarouselItem[]) => {
+  navigate = (isNext: boolean, carousel: string) => {
     //handle multiple fast clicks for css smoothness
     if(this.isClickable){
 
@@ -75,16 +97,17 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
         this.isClickable = true;
       }, 300);
   
-      let length: number | undefined = carousel.length;
+      let length: number | undefined = this.carousels[carousel as keyof Carousels].length;
       if(length !== undefined){
   
         if(isNext){
-          let nextId = this.currentId + 1;
-          if(nextId <= length -1) this.currentId = nextId;
+          let nextId = this.currentId[carousel] + 1;
+          if(nextId <= length -1) this.currentId[carousel] = nextId;
+          else this.currentId[carousel] = 0;
         }else{
-          let lastId = this.currentId - 1;
-          if(lastId >= 0)this.currentId = lastId;
-  
+          let lastId = this.currentId[carousel] - 1;
+          if(lastId >= 0)this.currentId[carousel] = lastId;
+          else this.currentId[carousel] = length -1;
         }
       }
     }

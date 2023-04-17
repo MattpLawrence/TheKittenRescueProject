@@ -92,7 +92,8 @@
         width: 18.75rem;
         position: absolute;
         overflow: hidden;
-        transition: .3s ease-out;
+        -webkit-transition: all .6s ease;
+        transition: right .6s ease, opacity .6s ease;
         @include flexCenterCenter;
       }
   
@@ -102,10 +103,22 @@
       }
 
       .isLesser{
+        opacity: 0;
         right: 37.5rem;
       }
       
       .isGreater{
+        opacity: 0;
+        right: -37.5rem;
+      }
+
+      .isLesserStaged{
+        opacity: 0;
+        right: 37.5rem;
+      }
+      
+      .isGreaterStaged{
+        opacity: 0;
         right: -37.5rem;
       }
   
