@@ -58,7 +58,7 @@
   .frameContainer{
     position: relative;
     width: 100%;
-    max-width: 56.25rem;
+    max-width: 1200px;
     min-width: 18.75rem;
     overflow: hidden;
     @include flexCenterCenter;
@@ -82,14 +82,14 @@
     .carouselContainer{
       position: relative;
       @include flexCenterCenter;
-      width: 18.75rem;
-      height: 18.75rem;
+      width: 400px;
+      height: 400px;
 
       
   
       .carouselItem{
-        height: 18.75rem;
-        width: 18.75rem;
+        height: 400px;
+        width: 400px;
         position: absolute;
         overflow: hidden;
         -webkit-transition: all .6s ease;
@@ -104,35 +104,33 @@
 
       .isLesser{
         opacity: 0;
-        right: 37.5rem;
+        right: 800px;
       }
       
       .isGreater{
         opacity: 0;
-        right: -37.5rem;
+        right: -800px;
       }
 
       .isLesserStaged{
         opacity: 0;
-        right: 37.5rem;
+        right: 800px;
       }
       
       .isGreaterStaged{
         opacity: 0;
-        right: -37.5rem;
+        right: -800px;
       }
   
       .isNext{
-        right: -18.75rem;
-        opacity: .5;
+        right: -400px;
+        opacity: .3;
       }
   
       .isLast{
-        right: 18.75rem;
-        opacity: .5;
+        right: 400px;
+        opacity: .3;
       }
-
-
     }
   }
 }
@@ -187,6 +185,50 @@
 
     .sizeContainer .imgContainer{
       width: 100%;
+    }
+
+
+    .mainContainer{    
+      .frameContainer{
+        max-width: 56.25rem;
+        min-width: 18.75rem;    
+        .carouselContainer{
+          width: 18.75rem;
+          height: 18.75rem;      
+          .carouselItem{
+            height: 18.75rem;
+            width: 18.75rem;
+          }      
+          .isCurrent{
+            right: 0;
+            opacity: 1;
+          }    
+          .isLesser{
+            opacity: 0;
+            right: 37.5rem;
+          }          
+          .isGreater{
+            opacity: 0;
+            right: -37.5rem;
+          }
+          .isLesserStaged{
+            opacity: 0;
+            right: 37.5rem;
+          }          
+          .isGreaterStaged{
+            opacity: 0;
+            right: -37.5rem;
+          }      
+          .isNext{
+            right: -18.75rem;
+            opacity: .3;
+          }      
+          .isLast{
+            right: 18.75rem;
+            opacity: .3;
+          }
+        }
+      }
     }
   
 }

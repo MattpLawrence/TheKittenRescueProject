@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base/base.component';
-import { CarouselItem, SuccessCarouselItem } from '../../models/common.model';
+import { SuccessCarouselItem } from '../../models/common.model';
 import { BreakPointsEnum } from '../../models/common.enum';
 import { APIService } from '../../services/api.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,8 +24,6 @@ interface Ids {
 export class SuccessStoriesComponent extends BaseComponent implements OnInit {
 
   currentPet: any = undefined;
-  carouselList: SuccessCarouselItem[] | undefined;
-
 
 
   rnCarouselList: SuccessCarouselItem[] = [
@@ -83,12 +81,20 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.initBreakpoints();
+    this.initScroll()
   }
 
   initBreakpoints = () => {
     this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.currentBreakpoint = res;
     })
+  }
+
+  initScroll = () => {
+    //every interval scroll to next image
+    setInterval(() => {
+      this.currentId.rn != this.carousels.rn.length - 1? this.currentId.rn += 1: this.currentId.rn = 0;
+    }, 5000);
   }
 
   navigate = (isNext: boolean, carousel: string) => {
