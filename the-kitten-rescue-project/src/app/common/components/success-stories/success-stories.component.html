@@ -34,7 +34,7 @@
             isLast: item.id === currentId.rn -1 || (item.id === rnCarouselList.length - 1 && currentId.rn === 0),
             isLesser: (item.id < currentId.rn && item.id <= currentId.rn + 2 )|| item.id > currentId.rn + 2,
             isGreater: (item.id > currentId.rn && item.id >= currentId.rn - 2)  || item.id < currentId.rn - 2,
-            isLesserStaged: (item.id === rnCarouselList.length -1 && currentId.rn === 1),
+            isLesserStaged: (item.id === rnCarouselList.length -1 && currentId.rn === 1) || (item.id === rnCarouselList.length -2 && currentId.rn === 0),
             isGreaterStaged: (item.id === 0 && currentId.rn === rnCarouselList.length - 2)
 
           }">

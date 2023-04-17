@@ -59,6 +59,11 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
       imgSource: '../../../../assets/images/daisyBed.jpg',
       fullImgSource: '../../../../assets/images/daisyBed.jpg',
     },
+    {
+      id: 6,
+      imgSource: '../../../../assets/images/eliza.jpg',
+      fullImgSource: '../../../../assets/images/eliza.jpg',
+    },
   ]
 
   carousels: Carousels = {
