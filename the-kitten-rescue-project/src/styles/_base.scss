@@ -51,6 +51,13 @@
   overflow: hidden;
 }
 
+.imageBanner{
+  width:100vw;
+  max-height: 70vh;
+  object-fit: cover;
+
+}
+
 
 @media only screen and (max-width: $breakpointMedium){
 

@@ -32,11 +32,10 @@
             isCurrent: item.id === currentId.rn,
             isNext: item.id === currentId.rn + 1 || (currentId.rn === rnCarouselList.length - 1 && item.id === 0),
             isLast: item.id === currentId.rn -1 || (item.id === rnCarouselList.length - 1 && currentId.rn === 0),
-            isLesser: (item.id < currentId.rn && item.id <= currentId.rn + 2 )|| item.id > currentId.rn + 2,
+            isLesser: (item.id < currentId.rn && item.id <= currentId.rn + 2 ) || item.id > currentId.rn + 2,
             isGreater: (item.id > currentId.rn && item.id >= currentId.rn - 2)  || item.id < currentId.rn - 2,
             isLesserStaged: (item.id === rnCarouselList.length -1 && currentId.rn === 1) || (item.id === rnCarouselList.length -2 && currentId.rn === 0),
             isGreaterStaged: (item.id === 0 && currentId.rn === rnCarouselList.length - 2)
-
           }">
             <!-- If an image -->
             <img class="carouselImg" src="{{item.imgSource}}" alt="pet image {{item.id}}" (dblclick)="imageClick(item.fullImgSource)">

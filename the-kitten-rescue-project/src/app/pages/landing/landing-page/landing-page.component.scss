@@ -1,7 +1,8 @@
 @import "../../../../styles.scss";
 
-.topBanner{
 
+.topBanner{
+  @include flexColumnCenter;
   width: 100%;
   .innerBanner{
     white-space: nowrap;
