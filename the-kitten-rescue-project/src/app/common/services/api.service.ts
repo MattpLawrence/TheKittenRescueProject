@@ -20,7 +20,7 @@ export class APIService {
   private petFinderUrl: string = 'https://api.petfinder.com/v2';
   // queryString: string = '/animals?organization=GA477&limit=100';
   // bad call to return no results
-  queryString: string = '/animals?organization=GA4772&limit=100';
+  queryString: string = '/animals?organization=GA1077&limit=100';
 
   apiUrl:string = environment.API_URL;
 
@@ -77,7 +77,8 @@ export class APIService {
                 "Content-Type": "multipart/form-data",
               }
             }).subscribe({
-              next: (result:any) => {      
+              next: (result:any) => {  
+                console.log(result)    
                 this.animalsSubject.next(this.filterData(result))
                 observer.next(this.filterData(result));
                 observer.complete();
@@ -102,9 +103,11 @@ export class APIService {
 
   filterData = (response: any):any => {
     //set with animals KVP to match original object
-    let filteredList = {animals: response.animals.filter((object: any) => object.videos.length >= 1)};
+    // let filteredList = {animals: response.animals.filter((object: any) => object.videos.length >= 1)};
 
-    return filteredList;
+    // return filteredList;
+
+    return response;
   }
 
 

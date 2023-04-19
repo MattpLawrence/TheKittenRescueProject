@@ -24,8 +24,7 @@ interface Ids {
 export class SuccessStoriesComponent extends BaseComponent implements OnInit {
 
   currentPet: any = undefined;
-
-
+  
   rnCarouselList: SuccessCarouselItem[] = [
     {
       id: 0,
@@ -64,12 +63,17 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
     },
   ]
 
+  //set list of carousels
   carousels: Carousels = {
     rn: this.rnCarouselList,
   }
+  //set list of ids for each carousel
   currentId: Ids = {
     rn: 0,
   };
+
+  intervals: {[interval: string]: any} = {};
+
   isClickable: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
 
@@ -91,16 +95,21 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
   }
 
   initScroll = () => {
-    //every interval scroll to next image
-    setInterval(() => {
-      this.currentId.rn != this.carousels.rn.length - 1? this.currentId.rn += 1: this.currentId.rn = 0;
-    }, 5000);
+
+    //create object of intervals for each carousel
+    Object.keys(this.carousels).forEach((key) => {
+      this.intervals[key] = setInterval(() => {
+        //every interval scroll to next image
+        this.currentId[key] != this.carousels[key].length - 1? this.currentId[key] += 1 : this.currentId[key] = 0
+      }, 5000)
+
+    })
+
   }
 
-  navigate = (isNext: boolean, carousel: string) => {
+  navigate = (isNext: boolean, carouselKey: string) => {
     //handle multiple fast clicks for css smoothness
     if(this.isClickable){
-
       //set is clickable to false
       this.isClickable = false;
       //run timer to re-enable after half second
@@ -108,19 +117,26 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
         this.isClickable = true;
       }, 300);
   
-      let length: number | undefined = this.carousels[carousel as keyof Carousels].length;
+      let length: number | undefined = this.carousels[carouselKey as keyof Carousels].length;
       if(length !== undefined){
   
         if(isNext){
-          let nextId = this.currentId[carousel] + 1;
-          if(nextId <= length -1) this.currentId[carousel] = nextId;
-          else this.currentId[carousel] = 0;
+          let nextId = this.currentId[carouselKey] + 1;
+          if(nextId <= length -1) this.currentId[carouselKey] = nextId;
+          else this.currentId[carouselKey] = 0;
         }else{
-          let lastId = this.currentId[carousel] - 1;
-          if(lastId >= 0)this.currentId[carousel] = lastId;
-          else this.currentId[carousel] = length -1;
+          let lastId = this.currentId[carouselKey] - 1;
+          if(lastId >= 0)this.currentId[carouselKey] = lastId;
+          else this.currentId[carouselKey] = length -1;
         }
       }
+      //reset interval timer
+      clearInterval(this.intervals[carouselKey]);
+      //restart interval
+      this.intervals[carouselKey] = setInterval(() => {
+        //every interval scroll to next image
+        this.currentId[carouselKey] != this.carousels[carouselKey].length - 1? this.currentId[carouselKey] += 1 : this.currentId[carouselKey] = 0
+      }, 5000)
     }
   }
 
