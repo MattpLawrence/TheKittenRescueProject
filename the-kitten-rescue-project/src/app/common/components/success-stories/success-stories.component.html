@@ -14,8 +14,8 @@
 
 
     <!-- ********************Carousel Section************* -->
-    <div class="mainContainer scrollEnabled" (swipeleft)="navigate(true, 'rn')"  (swiperight)="navigate(false, 'rn')" >
-      <div class="frameContainer">
+    <div class="mainContainer" >
+      <div class="frameContainer" >
         <div id="nextButton" class="navButtonContainer" (click)="navigate(true, 'rn')">
           <span class="material-icons navButton">
             arrow_forward_ios
@@ -38,7 +38,7 @@
             isGreaterStaged: (item.id === 0 && currentId.rn === rnCarouselList.length - 2)
           }">
             <!-- If an image -->
-            <img class="carouselImg" src="{{item.imgSource}}" alt="pet image {{item.id}}" (dblclick)="imageClick(item.fullImgSource)">
+            <img class="carouselImg  scrollEnabled" src="{{item.imgSource}}" alt="pet image {{item.id}}" (dblclick)="imageClick(item.fullImgSource)" (swipeleft)="navigate(true, 'rn')"  (swiperight)="navigate(false, 'rn')">
           </div>
         </div>
       </div>
