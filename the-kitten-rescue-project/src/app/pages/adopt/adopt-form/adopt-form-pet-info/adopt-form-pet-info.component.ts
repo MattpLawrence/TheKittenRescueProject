@@ -143,6 +143,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       const dialogRef = this.dialog.open(TeaLoaderComponent, {
         disableClose: false,
         // disableClose: true,
+        panelClass: "noPadding",
         width: modalWidth,
       })
 

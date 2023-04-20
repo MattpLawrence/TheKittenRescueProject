@@ -108,7 +108,6 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if(res != undefined){
         this.repopulateForm(res)
-
       }else{
         //look for session storage
         let storedObject = sessionStorage.getItem("adopterForm")
@@ -134,10 +133,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if(res != undefined){
         if(res.name != undefined){
-          if(this.paramName != undefined){
-            console.log(res.name)
-            this.form.controls.petName.setValue(res.name)
-          }
+          this.form.controls.petName.setValue(res.name)
         }
       }
     })
@@ -221,7 +217,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         this.form.get(key)?.setValue(resultMap.get(key));
       }
     })
-    console.log('hit')
+
     this.initCurrentPet()
   }
 
