@@ -1,4 +1,5 @@
 import { ViewportScroller } from '@angular/common';
+import { HttpParams } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,6 +25,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   selectedNameType = '1';
   isExpanded: boolean = false;
   yesNo: string[] = ["Yes", "No"];
+  paramName: string | undefined = undefined;
 
   constructor(
     private router: Router,
@@ -55,9 +57,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   }
 
   ngOnInit(): void {
-    // this.initScrollTop()
-    this.initForm();
-    this.initCurrentPet();
+    this.initParams();
     this.initPetList();
   }
   ngAfterViewInit(){
@@ -73,6 +73,21 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     setTimeout(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
     },200)
+  }
+
+  initParams = () => {
+    this.paramName = this.getParamValueString("petName") !== null ? this.getParamValueString("petName")! : undefined;
+  }
+
+  //manual query because angular native solution is too slow to catch the params first time.
+  getParamValueString( paramName: string ) {
+    const url = window.location.href;
+    let paramValue;
+    if (url.includes('?')) {
+      const httpParams = new HttpParams({ fromString: url.split('?')[1] });
+      paramValue = httpParams.get(paramName);
+    }
+    return paramValue;
   }
 
   initForm = () =>{
@@ -97,7 +112,10 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if(res != undefined){
         if(res.name != undefined){
-          this.form.controls.petName.setValue(res.name)
+          if(this.paramName != undefined){
+            console.log(res.name)
+            this.form.controls.petName.setValue(res.name)
+          }
         }
       }
     })
@@ -109,6 +127,8 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
       if(res !== undefined){
         //create an array of names ans sort alphabetically
         this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
+        this.initForm();
+        this.initCurrentPet();
       }else{
         //if no subject then do the query
         this.apiService.searchAnimals().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
@@ -116,6 +136,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
           this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
         })
       }
+      
     })
   }
 
@@ -134,8 +155,20 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
       //set payment subject result to a map
       let resultMap = new Map(Object.entries(object))
       //cycle through both maps and match keys
-      this.form.get(key)?.setValue(resultMap.get(key));
+      if(key !== "petName"){
+        this.form.get(key)?.setValue(resultMap.get(key));
+      }else if(key === "petName" && this.paramName != undefined){
+        if(this.petNameList !== undefined){
+          let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase())})
+          if(foundName != undefined){
+            this.form.get(key)?.setValue(foundName);
+        }
+      }
+      }else{
+        this.form.get(key)?.setValue(resultMap.get(key));
+      }
     })
+    console.log('hit')
     this.initCurrentPet()
   }
 
