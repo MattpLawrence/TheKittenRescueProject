@@ -160,7 +160,6 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   }
 
   setNoPets = () => {
-    this.apiService.setAnimalsSubject(undefined);
     this.petText = 'No One Is Looking For A Home Today'
   }
 

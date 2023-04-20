@@ -86,7 +86,8 @@ export class APIService {
               error: (err: any) => {
                 console.log(err)
                 // add error logging here
-
+                observer.next(err);
+                observer.complete()
               }
             })             
           }else observer.next('error');
