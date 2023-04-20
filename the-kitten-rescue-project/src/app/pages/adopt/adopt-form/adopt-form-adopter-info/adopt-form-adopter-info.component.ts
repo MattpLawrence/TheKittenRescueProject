@@ -2,9 +2,13 @@ import { ViewportScroller } from '@angular/common';
 import { HttpParams } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { CatLoaderComponent } from 'src/app/common/components/cat-loader/cat-loader.component';
+import { TeaLoaderComponent } from 'src/app/common/components/tea-loader/tea-loader.component';
+import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { AdopterForm } from 'src/app/common/models/form.model';
 import { APIService } from 'src/app/common/services/api.service';
 import { CommonService } from 'src/app/common/services/common.service';
@@ -26,13 +30,16 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   isExpanded: boolean = false;
   yesNo: string[] = ["Yes", "No"];
   paramName: string | undefined = undefined;
+  currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
+  isLoading: boolean = false;
 
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
     private commonService: CommonService,
-    private apiService: APIService
+    private apiService: APIService,
+    public dialog: MatDialog
   ) {
     super()
     this.form = this.formBuilder.group({
@@ -59,6 +66,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   ngOnInit(): void {
     this.initParams();
     this.initPetList();
+    this.initBreakpoints();
   }
   ngAfterViewInit(){
     this.initScrollTop()
@@ -88,6 +96,12 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
       paramValue = httpParams.get(paramName);
     }
     return paramValue;
+  }
+
+  initBreakpoints = () => {
+    this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      this.currentBreakpoint = res
+    })
   }
 
   initForm = () =>{
@@ -131,6 +145,24 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
 
   initPetList = () => {
     // get list of animals
+
+    let modalWidth: string = "50vw";
+
+    switch(this.currentBreakpoint){
+      case BreakPointsEnum.isDesktop:
+        modalWidth = "50vw";
+        break;
+
+      case BreakPointsEnum.isTablet:
+        modalWidth = "80vw";
+        break;
+
+      case BreakPointsEnum.isMobile:
+        modalWidth = "100vw";
+        break;
+    }
+
+
     this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if(res !== undefined){
         //create an array of names ans sort alphabetically
@@ -138,12 +170,22 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         this.initForm();
         this.initCurrentPet();
       }else{
+         //init loader
+        const dialogRef = this.dialog.open(TeaLoaderComponent, {
+          disableClose: true,
+          width: modalWidth
+        })
+        setTimeout(() => {
+          if(!this.isLoading)dialogRef.close();
+          else this.isLoading = false;
+        },1800)
         //if no subject then do the query
         this.apiService.searchAnimals().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
           //create an array of names ans sort alphabetically
           this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
           this.initForm();
           this.initCurrentPet();
+          this.isLoading = false
         })
       }
       
