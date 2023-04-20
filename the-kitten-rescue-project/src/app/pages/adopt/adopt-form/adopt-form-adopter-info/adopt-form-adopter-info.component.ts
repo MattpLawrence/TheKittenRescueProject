@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { CatLoaderComponent } from 'src/app/common/components/cat-loader/cat-loader.component';
-import { TeaLoaderComponent } from 'src/app/common/components/tea-loader/tea-loader.component';
+
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { AdopterForm } from 'src/app/common/models/form.model';
 import { APIService } from 'src/app/common/services/api.service';
@@ -173,6 +173,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
          //init loader
         const dialogRef = this.dialog.open(CatLoaderComponent, {
           disableClose: true,
+          panelClass: "noPadding",
           width: modalWidth
         })
         setTimeout(() => {
