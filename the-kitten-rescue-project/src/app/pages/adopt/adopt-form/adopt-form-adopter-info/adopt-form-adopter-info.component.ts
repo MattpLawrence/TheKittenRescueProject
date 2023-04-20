@@ -105,6 +105,14 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         }
       }
     })
+    if(this.paramName != undefined){
+        if(this.petNameList !== undefined){
+            let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase())})
+            if(foundName != undefined){
+              this.form.get("petName")?.setValue(foundName);
+          }
+        }
+      }
   }
 
   initCurrentPet = () => {
@@ -134,6 +142,8 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         this.apiService.searchAnimals().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
           //create an array of names ans sort alphabetically
           this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
+          this.initForm();
+          this.initCurrentPet();
         })
       }
       
@@ -159,11 +169,11 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         this.form.get(key)?.setValue(resultMap.get(key));
       }else if(key === "petName" && this.paramName != undefined){
         if(this.petNameList !== undefined){
-          let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase())})
-          if(foundName != undefined){
-            this.form.get(key)?.setValue(foundName);
+            let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase())})
+            if(foundName != undefined){
+              this.form.get(key)?.setValue(foundName);
+          }
         }
-      }
       }else{
         this.form.get(key)?.setValue(resultMap.get(key));
       }
