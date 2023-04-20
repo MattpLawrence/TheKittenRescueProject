@@ -89,41 +89,13 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
 
   findPets = () => {
 
-    let modalWidth: string = "50vw";
-
-    switch(this.currentBreakpoint){
-      case BreakPointsEnum.isDesktop:
-        modalWidth = "50vw";
-        break;
-
-      case BreakPointsEnum.isTablet:
-        modalWidth = "80vw";
-        break;
-
-      case BreakPointsEnum.isMobile:
-        modalWidth = "100vw";
-        break;
-    }
-    //init loader
-    const dialogRef = this.dialog.open(CatLoaderComponent, {
-      disableClose: true,
-      panelClass: "noPadding",
-      width: modalWidth
-    })
-    setTimeout(() => {
-      if(!this.isLoading)dialogRef.close();
-      else this.isLoading = false;
-    },1800)
-    this.apiService.searchAnimals().subscribe(response => {
+    this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
+      console.log(response)
       if(response != undefined){
         //if an error response
         if(Object.keys(response).includes('error')){
-          if(this.isLoading)this.isLoading = false;
-          else dialogRef.close();
           this.setNoPets();
         }else{
-          if(this.isLoading)this.isLoading = false;
-          else dialogRef.close();
           //make sure there is an animals object
           if(response.animals != undefined){
             //check to make sure there is at least one animal
@@ -134,6 +106,55 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
             }
           } 
         }
+      }else{
+        let modalWidth: string = "50vw";
+
+        switch(this.currentBreakpoint){
+          case BreakPointsEnum.isDesktop:
+            modalWidth = "50vw";
+            break;
+    
+          case BreakPointsEnum.isTablet:
+            modalWidth = "80vw";
+            break;
+    
+          case BreakPointsEnum.isMobile:
+            modalWidth = "100vw";
+            break;
+        }
+        //init loader
+        const dialogRef = this.dialog.open(CatLoaderComponent, {
+          disableClose: true,
+          panelClass: "noPadding",
+          width: modalWidth
+        })
+        setTimeout(() => {
+          if(!this.isLoading)dialogRef.close();
+          else this.isLoading = false;
+        },1800)
+    
+        this.apiService.searchAnimals().subscribe(response => {
+          if(response != undefined){
+            //if an error response
+            if(Object.keys(response).includes('error')){
+              if(this.isLoading)this.isLoading = false;
+              else dialogRef.close();
+              this.setNoPets();
+            }else{
+              if(this.isLoading)this.isLoading = false;
+              else dialogRef.close();
+              //make sure there is an animals object
+              if(response.animals != undefined){
+                //check to make sure there is at least one animal
+                if(response.animals.length > 0){
+                  this.petList = response.animals;
+                }else{
+                  this.setNoPets();
+                }
+              } 
+            }
+          }
+        });
       }
     });
   }
