@@ -171,7 +171,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         this.initCurrentPet();
       }else{
          //init loader
-        const dialogRef = this.dialog.open(TeaLoaderComponent, {
+        const dialogRef = this.dialog.open(CatLoaderComponent, {
           disableClose: true,
           width: modalWidth
         })
