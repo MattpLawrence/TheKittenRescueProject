@@ -18,9 +18,9 @@ export class APIService {
 
   //variables
   private petFinderUrl: string = 'https://api.petfinder.com/v2';
-  // queryString: string = '/animals?organization=GA477&limit=100';
+  queryString: string = '/animals?organization=GA477&limit=100';
   // bad call to return no results
-  queryString: string = '/animals?organization=GA1077&limit=100';
+  // queryString: string = '/animals?organization=GA1077&limit=100';
 
   apiUrl:string = environment.API_URL;
 
@@ -85,11 +85,8 @@ export class APIService {
               },
               error: (err: any) => {
                 console.log(err)
-                //set observable to undefined
-                this.animalsSubject.next(this.filterData(undefined));
                 // add error logging here
-                observer.next(err);
-                observer.complete()
+
               }
             })             
           }else observer.next('error');
