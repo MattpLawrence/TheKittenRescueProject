@@ -4,6 +4,7 @@
 .mainContainer{
   width: 100vw;
   @include flexCenterSpaceAround;
+  overflow: hidden;
 }
 
 .sizeContainer{

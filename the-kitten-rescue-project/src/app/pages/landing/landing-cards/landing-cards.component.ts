@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
+import { CommonService } from 'src/app/common/services/common.service';
 
 
 
@@ -13,6 +15,7 @@ export class LandingCardsComponent extends BaseComponent implements OnInit {
 
   animateElementList: string[] = ['aboutCard', 'volunteerCard','adoptCard','donateCard']
   animationTriggers: { [id: string]: {isShown: boolean} } = {};
+  isMobile: boolean = false;
 
   
   @HostListener('window:scroll', ['$event'])
@@ -21,7 +24,8 @@ export class LandingCardsComponent extends BaseComponent implements OnInit {
   }
 
   constructor(
-    private router: Router
+    private router: Router,
+    private commonService: CommonService,
   ) {
     super()
     //set up animation object
@@ -33,6 +37,7 @@ export class LandingCardsComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.triggerScrollAnimation();
+    this.initBreakpoints();
   }
 
   triggerScrollAnimation = () => {
@@ -59,6 +64,13 @@ export class LandingCardsComponent extends BaseComponent implements OnInit {
           observer.observe(element);
         };
       };
+    })
+  }
+
+
+  initBreakpoints = () => {
+    this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      res !== 0? this.isMobile = true: this.isMobile = false;
     })
   }
 

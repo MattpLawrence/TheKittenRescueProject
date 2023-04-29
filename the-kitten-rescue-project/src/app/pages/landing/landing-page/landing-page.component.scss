@@ -4,6 +4,7 @@
 .topBanner{
   @include flexColumnCenter;
   width: 100%;
+  overflow: hidden;
   .innerBanner{
     white-space: nowrap;
     width: calc(100vw - 4rem);
