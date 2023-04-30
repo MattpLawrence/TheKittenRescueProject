@@ -36,8 +36,9 @@ export class APIService {
   postApplication = (body:AdoptionForm) => {
     return new Observable(observer => {
       let url: string = `${this.apiUrl}/send` ;
-      console.log(body)
       console.log(url)
+      console.log(body)
+
       this.http.post(url, body).subscribe({
         next: (result:any) => {
             if(result){
