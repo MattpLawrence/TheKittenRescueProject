@@ -90,10 +90,10 @@ export class CarouselComponent extends BaseComponent implements OnInit {
       
       petObject.videos.forEach( (video:any) => {
         let carouselItem: CarouselItem = {
-          imgSource: this.getStringAfterSpecificString( video.embed, `<img src="`),
+          imgSource: this.getStringAfterSpecificString( video.embed, `src="`),
           isIframe: true,
           id: counter,
-          iframeSrc: this.getStringAfterSpecificString(video.embed, `frame" src="`),
+          iframeSrc: this.getStringAfterSpecificString(video.embed, `src="`),
           aHref: this.getStringAfterSpecificString(video.embed, `href="`),
         }
         carouselList.push(carouselItem);
@@ -105,6 +105,8 @@ export class CarouselComponent extends BaseComponent implements OnInit {
     }
     return
   }
+
+  //"<iframe title="Video" src="https://www.youtube.com/embed/I5fTrzZpze0?enablejsapi=1" frameborder="0" allowfullscreen></iframe>"
 
 
   getStringAfterSpecificString(originalString: string, specificString:string):string {
