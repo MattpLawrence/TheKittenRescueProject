@@ -8,6 +8,7 @@ import { BaseComponent } from '../../../../common/components/base/base.component
 import { FullImageModalComponent } from '../../../../common/components/full-image-modal/full-image-modal.component';
 import { CommonService } from 'src/app/common/services/common.service';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
+import { faChevronRight, faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -25,7 +26,10 @@ export class SafePipe implements PipeTransform {
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent extends BaseComponent implements OnInit {
-
+  icons = {
+    right: faChevronRight,
+    left: faChevronLeft
+  }
   currentPet: any = undefined;
   carouselList: CarouselItem[] | undefined;
   currentId: number = 0;

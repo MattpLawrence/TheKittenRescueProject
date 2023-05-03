@@ -1,14 +1,10 @@
 <div class="mainContainer scrollEnabled" (swipeleft)="navigate(true)"  (swiperight)="navigate(false)" >
   <div class="frameContainer">
     <div id="nextButton" class="navButtonContainer" (click)="navigate(true)">
-      <span class="material-icons navButton">
-        arrow_forward_ios
-      </span>
+      <fa-icon [icon]="icons.right" class="socialIcon fa-2x navButton"  aria-label="next"></fa-icon>
     </div>
     <div id="lastButton" class="navButtonContainer" (click)="navigate(false)">
-      <span class="material-icons navButton">
-        arrow_back_ios
-      </span>
+      <fa-icon [icon]="icons.left" class="socialIcon fa-2x navButton"  aria-label="last"></fa-icon>
     </div>
     <div class="carouselContainer">
       <div class="carouselItem" *ngFor="let item of carouselList" 
