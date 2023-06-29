@@ -48,7 +48,6 @@ export class PetModalComponent extends BaseComponent implements OnInit {
   initPet = () => {
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
 
-
       //build typed object:
       let typedPet: PetBio = {
         id: res.id,
@@ -74,6 +73,11 @@ export class PetModalComponent extends BaseComponent implements OnInit {
       this.currentPet = typedPet
     })
   }
+
+  // sanitizeDescription = (description: string): string => {
+  //   let finalDescription: string = description.replace("&#039;", "'")
+  //   return finalDescription;
+  // }
 
   initTopModalListener = () => {
     this.commonService.getTopModalSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
