@@ -17,7 +17,7 @@
           </mat-form-field>
         </div>
         <div class="inputWrapperColumn halfWidth"  >
-          <mat-label class="inputLabel">Do You Have Any Additional Requests</mat-label>
+          <mat-label class="inputLabel">Do You Want To Add More Cats To This Application</mat-label>
           <mat-form-field appearance="outline" class="selectDefault full-width">
             <mat-select  placeholder="Yes / No" iso id="hasOtherRequest" formControlName="hasOtherRequest" >
               <mat-option id="hasRequest{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>
@@ -32,7 +32,7 @@
       <div class="optionalPanel" id="otherNameRequest" [ngClass]="{isExpanded: form.controls.hasOtherRequest.value == 'Yes'}">
         <div class="formLine ">
           <div class="inputWrapperColumn fullWidth">
-            <mat-label class="inputLabel" ><span class="labelMarginRight">Additional Information </span><span class="titleHighlight">Additional Pets, Special Requests, Etc.</span> </mat-label>
+            <mat-label class="inputLabel" ><span class="labelMarginRight">Additional Information </span><span class="titleHighlight">Additional Cats, Special Requests, Etc.</span> </mat-label>
             <mat-form-field appearance="outline" class="inputDefault">
     
               <textarea [required]="form.controls.hasOtherRequest.value == 'Yes'? true: false"
