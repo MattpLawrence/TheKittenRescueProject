@@ -8,7 +8,7 @@
         <div class="inputWrapperColumn halfWidth" >
           <mat-label class="inputLabel" >Select The Cat You Want To Apply For</mat-label>
           <mat-form-field appearance="outline" class="selectDefault full-width">
-            <mat-select  placeholder="ex: Fuzzy Lumpkins" iso id="petName" formControlName="petName" >
+            <mat-select  placeholder="ex: Fuzzy Lumpkins" iso id="petName" formControlName="petName" [required]="petNameList.length > 0 ? true: false" >
               <mat-option id="pet{{name}}" *ngFor="let name of petNameList" [value]="name">{{name}}</mat-option>
             </mat-select>
             <mat-error role='alert' *ngIf="error('petName', 'required')">
@@ -17,7 +17,7 @@
           </mat-form-field>
         </div>
         <div class="inputWrapperColumn halfWidth"  >
-          <mat-label class="inputLabel">Do You Want To Add More Cats To This Application</mat-label>
+          <mat-label class="inputLabel">Add More Cats To This Application?</mat-label>
           <mat-form-field appearance="outline" class="selectDefault full-width">
             <mat-select  placeholder="Yes / No" iso id="hasOtherRequest" formControlName="hasOtherRequest" >
               <mat-option id="hasRequest{{type}}" *ngFor="let type of yesNo" [value]="type">{{type}}</mat-option>

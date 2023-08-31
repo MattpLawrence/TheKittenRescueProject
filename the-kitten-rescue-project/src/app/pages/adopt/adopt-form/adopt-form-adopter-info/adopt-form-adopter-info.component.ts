@@ -43,7 +43,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   ) {
     super()
     this.form = this.formBuilder.group({
-      petName: new FormControl('', [Validators.required]),
+      petName: new FormControl('',), // required conditionally set in html
       hasOtherRequest: new FormControl(null, [Validators.required]),
       otherNameRequest: new FormControl(null),
       adopterFirstName: new FormControl('', [Validators.required]),
@@ -75,7 +75,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   public error = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
   };
-  
+
   initScrollTop =() => {
     //scroll to top of page
     setTimeout(() => {
@@ -185,7 +185,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
           this.isLoading = false
         })
       }
-      
+
     })
   }
 
