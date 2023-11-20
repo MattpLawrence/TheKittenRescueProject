@@ -16,21 +16,22 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
 
   public form: FormGroup;
   hasSubmissionError: boolean = false;
-  homeTypeList: string[] = ["House","Apartment","Condo","Town Home","Other"];
+  homeTypeList: string[] = ["House", "Apartment", "Condo", "Town Home", "Other"];
   estTimeList: string[] = ["0-2 Hours", "3-6 Hours", "7-10 Hours", "10+ Hours"];
   yesNo: string[] = ["Yes", "No"];
-  
+
 
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
     private commonService: CommonService
-  ) {super()
+  ) {
+    super()
     this.form = this.formBuilder.group({
       homeType: new FormControl('', [Validators.required]), //select
       timeOfOccupancy: new FormControl('', [Validators.required]),
-      numberOfOccupants: new FormControl( null, [Validators.required]),
+      numberOfOccupants: new FormControl(null, [Validators.required]),
       numberOfChildren: new FormControl(null, [Validators.required]),
       homeEnvironment: new FormControl(null, [Validators.required]), //select?
       hasSmokers: new FormControl(null, [Validators.required]), //boolean
@@ -53,23 +54,23 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
     return this.form.controls[controlName].hasError(errorName);
   };
 
-  
-  initScrollTop =() => {
+
+  initScrollTop = () => {
     //scroll to top of page
     setTimeout(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
-    },1)
+    }, 1)
   }
 
-  initForm = () =>{
+  initForm = () => {
     this.commonService.getHomeFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res != undefined){
+      if (res != undefined) {
         this.repopulateForm(res)
-      }else{
+      } else {
         //look for session storage
-        let storedObject = sessionStorage.getItem("homeForm")
+        let storedObject = localStorage.getItem("homeForm")
         console.log(storedObject)
-        if(storedObject != null && storedObject != null ){
+        if (storedObject != null && storedObject != null) {
           this.repopulateForm(JSON.parse(storedObject))
         }
       }
@@ -79,7 +80,7 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
 
   repopulateForm = (object: any) => {
     //cycle through each form field and populate
-    Object.keys(this.form.controls).forEach((key:string) => {
+    Object.keys(this.form.controls).forEach((key: string) => {
       //set payment subject result to a map
       let resultMap = new Map(Object.entries(object))
       //cycle through both maps and match keys
@@ -88,13 +89,13 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
   }
 
   next = () => {
-    if(this.form.valid){
+    if (this.form.valid) {
       //create form object
       let formValue: HomeForm = this.form.value;
       //set as observable
       this.commonService.setHomeFormSubject(formValue);
       //convert to string then set storage object
-      sessionStorage.setItem("homeForm", JSON.stringify(formValue))
+      localStorage.setItem("homeForm", JSON.stringify(formValue))
       //go to next page
       this.router.navigate(['adopt-page/form-pet-info']);
       console.log(formValue);

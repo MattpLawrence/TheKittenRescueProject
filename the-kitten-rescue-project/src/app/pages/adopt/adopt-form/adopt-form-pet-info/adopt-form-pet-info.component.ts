@@ -95,7 +95,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
         this.repopulateForm(res)
       } else {
         //look for session storage
-        let storedObject = sessionStorage.getItem("petForm")
+        let storedObject = localStorage.getItem("petForm")
 
         if (storedObject != null && storedObject != undefined) {
           this.repopulateForm(JSON.parse(storedObject))
@@ -179,7 +179,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if (res != undefined) adopterForm = res;
       else {
-        let storedObject = sessionStorage.getItem("adopterForm")
+        let storedObject = localStorage.getItem("adopterForm")
         if (storedObject != null && storedObject != undefined) {
           adopterForm = JSON.parse(storedObject)
         }
@@ -188,7 +188,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     this.commonService.getHomeFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if (res != undefined) homeForm = res;
       else {
-        let storedObject = sessionStorage.getItem("homeForm")
+        let storedObject = localStorage.getItem("homeForm")
         if (storedObject != null && storedObject != undefined) {
           homeForm = JSON.parse(storedObject)
         }

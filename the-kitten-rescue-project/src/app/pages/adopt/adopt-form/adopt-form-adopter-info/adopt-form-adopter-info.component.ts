@@ -18,7 +18,7 @@ import { CommonService } from 'src/app/common/services/common.service';
   templateUrl: './adopt-form-adopter-info.component.html',
   styleUrls: ['./adopt-form-adopter-info.component.scss']
 })
-export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnInit, AfterViewInit{
+export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnInit, AfterViewInit {
 
   public form: FormGroup;
   //regex validation
@@ -68,7 +68,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     this.initPetList();
     this.initBreakpoints();
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.initScrollTop()
   }
 
@@ -76,11 +76,11 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     return this.form.controls[controlName].hasError(errorName);
   };
 
-  initScrollTop =() => {
+  initScrollTop = () => {
     //scroll to top of page
     setTimeout(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
-    },200)
+    }, 200)
   }
 
   initParams = () => {
@@ -88,7 +88,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
   }
 
   //manual query because angular native solution is too slow to catch the params first time.
-  getParamValueString( paramName: string ) {
+  getParamValueString(paramName: string) {
     const url = window.location.href;
     let paramValue;
     if (url.includes('?')) {
@@ -104,35 +104,35 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     })
   }
 
-  initForm = () =>{
+  initForm = () => {
     this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res != undefined){
+      if (res != undefined) {
         this.repopulateForm(res)
-      }else{
+      } else {
         //look for session storage
-        let storedObject = sessionStorage.getItem("adopterForm")
+        let storedObject = localStorage.getItem("adopterForm")
 
-        if(storedObject != null && storedObject != null ){
+        if (storedObject != null && storedObject != null) {
           this.repopulateForm(JSON.parse(storedObject))
 
         }
       }
     })
-    if(this.paramName != undefined){
-        if(this.petNameList !== undefined){
-            let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase())})
-            if(foundName != undefined){
-              this.form.get("petName")?.setValue(foundName);
-          }
+    if (this.paramName != undefined) {
+      if (this.petNameList !== undefined) {
+        let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase()) })
+        if (foundName != undefined) {
+          this.form.get("petName")?.setValue(foundName);
         }
       }
+    }
   }
 
   initCurrentPet = () => {
     //get current animal if any
     this.apiService.getCurrentAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res != undefined){
-        if(res.name != undefined){
+      if (res != undefined) {
+        if (res.name != undefined) {
           this.form.controls.petName.setValue(res.name)
         }
       }
@@ -144,7 +144,7 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
 
     let modalWidth: string = "50vw";
 
-    switch(this.currentBreakpoint){
+    switch (this.currentBreakpoint) {
       case BreakPointsEnum.isDesktop:
         modalWidth = "50vw";
         break;
@@ -160,26 +160,26 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
 
 
     this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res !== undefined){
+      if (res !== undefined) {
         //create an array of names ans sort alphabetically
-        this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
+        this.petNameList = [...res.animals.map((obj: any) => obj.name)].sort((a, b) => a.localeCompare(b));
         this.initForm();
         this.initCurrentPet();
-      }else{
-         //init loader
+      } else {
+        //init loader
         const dialogRef = this.dialog.open(CatLoaderComponent, {
           disableClose: true,
           panelClass: "noPadding",
           width: modalWidth
         })
         setTimeout(() => {
-          if(!this.isLoading)dialogRef.close();
+          if (!this.isLoading) dialogRef.close();
           else this.isLoading = false;
-        },1800)
+        }, 1800)
         //if no subject then do the query
         this.apiService.searchAnimals().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
           //create an array of names ans sort alphabetically
-          this.petNameList = [...res.animals.map((obj:any) => obj.name)].sort((a, b) => a.localeCompare(b));
+          this.petNameList = [...res.animals.map((obj: any) => obj.name)].sort((a, b) => a.localeCompare(b));
           this.initForm();
           this.initCurrentPet();
           this.isLoading = false
@@ -193,27 +193,27 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     let email = group.controls.adopterEmail.value;
     let confirmEmail = group.controls.adopterEmailConfirm.value;
 
-    if(email != undefined && confirmEmail != undefined){
-    return email!.toLowerCase() == confirmEmail!.toLowerCase() ? null : { adopterEmailConfirm: true }
-    } else{ return null}
+    if (email != undefined && confirmEmail != undefined) {
+      return email!.toLowerCase() == confirmEmail!.toLowerCase() ? null : { adopterEmailConfirm: true }
+    } else { return null }
   }
 
   repopulateForm = (object: any) => {
     //cycle through each form field and populate
-    Object.keys(this.form.controls).forEach((key:string) => {
+    Object.keys(this.form.controls).forEach((key: string) => {
       //set payment subject result to a map
       let resultMap = new Map(Object.entries(object))
       //cycle through both maps and match keys
-      if(key !== "petName"){
+      if (key !== "petName") {
         this.form.get(key)?.setValue(resultMap.get(key));
-      }else if(key === "petName" && this.paramName != undefined){
-        if(this.petNameList !== undefined){
-            let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase())})
-            if(foundName != undefined){
-              this.form.get(key)?.setValue(foundName);
+      } else if (key === "petName" && this.paramName != undefined) {
+        if (this.petNameList !== undefined) {
+          let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase()) })
+          if (foundName != undefined) {
+            this.form.get(key)?.setValue(foundName);
           }
         }
-      }else{
+      } else {
         this.form.get(key)?.setValue(resultMap.get(key));
       }
     })
@@ -224,13 +224,13 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
 
 
   next = () => {
-    if(this.form.valid){
+    if (this.form.valid) {
       //create form object
       let formValue: AdopterForm = this.form.value;
       //set as observable
       this.commonService.setAdopterFormSubject(formValue);
       //convert to string then set storage object
-      sessionStorage.setItem("adopterForm", JSON.stringify(formValue))
+      localStorage.setItem("adopterForm", JSON.stringify(formValue))
       //go to next page
       this.router.navigate(['adopt-page/form-home-info']);
       this.hasSubmissionError = false;
