@@ -158,7 +158,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       //make post call
       this.apiService.postApplication(this.buildBody(formValue)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((res: any) => {
         console.log(res)
-        if (res.status == 200) {
+        if (res.status == 200 || res.status == 201) {
           dialogRef.close()
           this.router.navigate(['adopt-page/application-confirmation']);
         }
@@ -168,7 +168,6 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
         }
       })
       //go to next page
-      console.log(formValue);
     }
     else this.hasSubmissionError = true;
   }

@@ -22,7 +22,7 @@ export class APIService {
   // bad call to return no results
   queryString: string = '/animals?organization=GA1077&limit=100';
 
-  apiUrl:string = environment.API_URL;
+  apiUrl: string = environment.API_URL;
 
   constructor(
     private http: HttpClient,
@@ -32,20 +32,17 @@ export class APIService {
   private animalsSubject = new BehaviorSubject<any>(undefined)
   private currentAnimalsSubject = new BehaviorSubject<any>(undefined)
 
-  
-  postApplication = (body:AdoptionForm) => {
-    return new Observable(observer => {
-      let url: string = `${this.apiUrl}/send` ;
-      console.log(url)
-      console.log(body)
 
+  postApplication = (body: AdoptionForm) => {
+    return new Observable(observer => {
+      let url: string = `${this.apiUrl}/send`;
       this.http.post(url, body).subscribe({
-        next: (result:any) => {
-            if(result){
-              console.log(result);
-              observer.next(result);
-              observer.complete()
-            };
+        next: (result: any) => {
+          if (result) {
+            console.log(result);
+            observer.next(result);
+            observer.complete()
+          };
         },
         error: (err: any) => {
           console.log(err)
@@ -58,28 +55,28 @@ export class APIService {
   }
 
 
-  searchAnimals():Observable<any>{
+  searchAnimals(): Observable<any> {
     return new Observable<any>(observer => {
 
       //with no search or filter function, simply return subject if already set.
-      if(this.animalsSubject.value != undefined){
+      if (this.animalsSubject.value != undefined) {
         console.log(this.animalsSubject)
         observer.next(this.animalsSubject);
         observer.complete();
-      }else{
+      } else {
         //get oAuth token
         this.authService.getTokenSubject().subscribe(res => {
-          if(res){
-            let token:string = res;
+          if (res) {
+            let token: string = res;
             this.http.get(`${this.petFinderUrl}${this.queryString}`, {
               headers: {
-                
+
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "multipart/form-data",
               }
             }).subscribe({
-              next: (result:any) => {  
-                console.log(result)    
+              next: (result: any) => {
+                console.log(result)
                 this.animalsSubject.next(this.filterData(result))
                 observer.next(this.filterData(result));
                 observer.complete();
@@ -90,8 +87,8 @@ export class APIService {
                 observer.next(err);
                 observer.complete()
               }
-            })             
-          }else observer.next('error');
+            })
+          } else observer.next('error');
         })
       }
 
@@ -100,7 +97,7 @@ export class APIService {
 
 
 
-  filterData = (response: any):any => {
+  filterData = (response: any): any => {
     //set with animals KVP to match original object
     // let filteredList = {animals: response.animals.filter((object: any) => object.videos.length >= 1)};
 
@@ -117,7 +114,7 @@ export class APIService {
     return this.animalsSubject.asObservable();
   }
 
-  setAnimalsSubject = (animals:any) => {
+  setAnimalsSubject = (animals: any) => {
     this.animalsSubject.next(animals)
   }
 
@@ -125,9 +122,9 @@ export class APIService {
     return this.currentAnimalsSubject.asObservable();
   }
 
-  setCurrentAnimalsSubject = (animals:PetDisplay) => {
+  setCurrentAnimalsSubject = (animals: PetDisplay) => {
     //take id and set full animal object
-    let currentAnimal = this.animalsSubject.value.animals.find((pet:any) => pet.id === animals.petId)
+    let currentAnimal = this.animalsSubject.value.animals.find((pet: any) => pet.id === animals.petId)
     this.currentAnimalsSubject.next(currentAnimal)
   }
 
