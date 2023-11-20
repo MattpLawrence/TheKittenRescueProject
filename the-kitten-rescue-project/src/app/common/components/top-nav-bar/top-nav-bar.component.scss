@@ -21,8 +21,7 @@
   @include flexCenterSpaceBetween;
   box-shadow: 0 1px 8px rgb(0 0 0 / 15%);
   z-index: 10;
-  transition: top 0.5s ease-in-out;
-  // border: 2px red solid;
+  transition: top 0.2s ease-in-out;
 }
 
 .isHidden{

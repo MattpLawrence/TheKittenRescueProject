@@ -4,8 +4,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, takeUntil, tap } from 'rxjs';
 import { BreakPointsEnum } from '../../models/common.enum';
 import { CommonService } from '../../services/common.service';
-import { faEnvelope, faCat, faC} from '@fortawesome/free-solid-svg-icons';
-import { faHeart} from '@fortawesome/free-regular-svg-icons';
+import { faEnvelope, faCat } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -41,28 +41,31 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     super();
-   }
+  }
 
   readonly breakpoint$ = this.breakpointObserver
-  .observe([Breakpoints.XLarge, Breakpoints.Large, Breakpoints.Medium, Breakpoints.Small, '(min-width: 500px)'])
-  .pipe(
-    tap(),
-    distinctUntilChanged()
-  );
+    .observe([Breakpoints.XLarge, Breakpoints.Large, Breakpoints.Medium, Breakpoints.Small, '(min-width: 500px)'])
+    .pipe(
+      tap(),
+      distinctUntilChanged()
+    );
 
   //check for scroll events to hide or show the top nav
   @HostListener('window:scroll', ['$event'])
-  onScroll(event:any){
-    
+  onScroll(event: any) {
+
     //if sidenav is not expanded
-    if(!this.isExpanded){
+    if (!this.isExpanded) {
       //compare current scroll position to previous
       let currentY = window.scrollY;
-      if( this.prevY > currentY){
+      if (this.prevY > currentY) {
         this.isHidden = false;
-      } else{
-        this.isHidden = true;
-        this.shareExpanded = false;
+      } else {
+        //if below the header
+        if (currentY > 120) {
+          this.isHidden = true;
+          this.shareExpanded = false;
+        }
       }
       //set scroll position
       this.prevY = currentY
@@ -71,7 +74,7 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
 
   //close nav bar if click outside of nav
   @HostListener('document:click', ['$event'])
-    onDocumentClick(event: MouseEvent) {
+  onDocumentClick(event: MouseEvent) {
     if (!this.elementRef.nativeElement.contains(event.target)) {
       this.isExpanded = false;
       this.shareExpanded = false;
@@ -90,13 +93,13 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
 
   breakpointChanged = () => {
     let currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
-    if(this.breakpointObserver.isMatched(Breakpoints.Large)) {
+    if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
       currentBreakpoint = BreakPointsEnum.isDesktop;
-    } else if(this.breakpointObserver.isMatched(Breakpoints.Medium)) {
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
       currentBreakpoint = BreakPointsEnum.isDesktop;
-    } else if(this.breakpointObserver.isMatched(Breakpoints.Small)) {
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
       currentBreakpoint = BreakPointsEnum.isTablet;
-    } else if(this.breakpointObserver.isMatched(Breakpoints.XSmall)) {
+    } else if (this.breakpointObserver.isMatched(Breakpoints.XSmall)) {
       currentBreakpoint = BreakPointsEnum.isMobile;
     }
     this.commonService.setBreakpointSubject(currentBreakpoint);
@@ -104,13 +107,13 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
   }
 
   toggleExpanded = (isLogo: boolean) => {
-    if(!isLogo)this.isExpanded = !this.isExpanded;
+    if (!isLogo) this.isExpanded = !this.isExpanded;
     else this.isExpanded = false;
 
   }
 
   showMedia = () => {
-    
+
     this.shareExpanded = !this.shareExpanded;
   }
 
@@ -128,7 +131,7 @@ export class TopNavBarComponent extends BaseComponent implements OnInit {
     };
     attempt();
 
-      this.snackBar.open('Email Address Copied To Clipboard', 'close', { duration: 2500, panelClass: 'simpleSnack' });
+    this.snackBar.open('Email Address Copied To Clipboard', 'close', { duration: 2500, panelClass: 'simpleSnack' });
 
   }
 
