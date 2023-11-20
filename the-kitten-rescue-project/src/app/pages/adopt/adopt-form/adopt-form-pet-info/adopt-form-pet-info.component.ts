@@ -20,13 +20,13 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
 
   public form: FormGroup;
   hasSubmissionError: boolean = false;
-  currentBreakPoint: BreakPointsEnum  = 0
+  currentBreakPoint: BreakPointsEnum = 0
   isLoading: boolean = false;
 
   phoneValidation = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$";
   catExperienceList: string[] = ["First Time Cat Adopter", "Have Had A Few Cats", "	Knowledgeable and Experienced"]
   yesNo: string[] = ["Yes", "No"];
-  adoptReasonList: string[] = ["Companionship", "Gift", "Company for another pet", "Mouser","Other"];
+  adoptReasonList: string[] = ["Companionship", "Gift", "Company for another pet", "Mouser", "Other"];
 
 
   constructor(
@@ -36,7 +36,8 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     private commonService: CommonService,
     private apiService: APIService,
     public dialog: MatDialog
-  ) {super()
+  ) {
+    super()
     this.form = this.formBuilder.group({
       hasAdopted: new FormControl(null, [Validators.required]), //boolean
       //cat history section
@@ -65,7 +66,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       undesirableBehavior: new FormControl(null, [Validators.required]),
       desirableBehavior: new FormControl(null, [Validators.required]),
       referenceName: new FormControl(null, [Validators.required]),
-      referencePhone: new FormControl(null, [Validators.required, Validators.pattern(this.phoneValidation)]),   
+      referencePhone: new FormControl(null, [Validators.required, Validators.pattern(this.phoneValidation)]),
 
     })
   }
@@ -80,23 +81,23 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
     return this.form.controls[controlName].hasError(errorName);
   };
 
-  
-  initScrollTop =() => {
+
+  initScrollTop = () => {
     //scroll to top of page
     setTimeout(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
-    },1)
+    }, 1)
   }
 
-  initForm = () =>{
+  initForm = () => {
     this.commonService.getPetFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res != undefined){
+      if (res != undefined) {
         this.repopulateForm(res)
-      }else{
+      } else {
         //look for session storage
         let storedObject = sessionStorage.getItem("petForm")
 
-        if(storedObject != null && storedObject != undefined ){
+        if (storedObject != null && storedObject != undefined) {
           this.repopulateForm(JSON.parse(storedObject))
         }
       }
@@ -112,7 +113,7 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
 
   repopulateForm = (object: any) => {
     //cycle through each form field and populate
-    Object.keys(this.form.controls).forEach((key:string) => {
+    Object.keys(this.form.controls).forEach((key: string) => {
       //set payment subject result to a map
       let resultMap = new Map(Object.entries(object))
       //cycle through both maps and match keys
@@ -121,20 +122,20 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   }
 
   next = () => {
-  
-    if(this.form.valid){
+
+    if (this.form.valid) {
 
       let modalWidth: string = "50vw";
 
-      switch(this.currentBreakPoint){
+      switch (this.currentBreakPoint) {
         case BreakPointsEnum.isDesktop:
           modalWidth = "50vw";
           break;
-  
+
         case BreakPointsEnum.isTablet:
           modalWidth = "80vw";
           break;
-  
+
         case BreakPointsEnum.isMobile:
           modalWidth = "100vw";
           break;
@@ -153,15 +154,15 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
       //set as observable
       this.commonService.setPetFormSubject(formValue);
       //convert to string then set storage object
-      sessionStorage.setItem("petForm", JSON.stringify(formValue))
+      localStorage.setItem("petForm", JSON.stringify(formValue))
       //make post call
-      this.apiService.postApplication(this.buildBody(formValue)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((res:any) => {
+      this.apiService.postApplication(this.buildBody(formValue)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((res: any) => {
         console.log(res)
-        if(res.status == 200){
+        if (res.status == 200) {
           dialogRef.close()
           this.router.navigate(['adopt-page/application-confirmation']);
         }
-        else{
+        else {
           dialogRef.close()
           this.router.navigate(['adopt-page/application-error']);
         }
@@ -173,36 +174,36 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   }
 
   buildBody = (formValue: PetForm): AdoptionForm => {
-     let adopterForm: AdopterForm | undefined;
-     let homeForm: HomeForm | undefined;
-     this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res != undefined) adopterForm = res;
-      else{
+    let adopterForm: AdopterForm | undefined;
+    let homeForm: HomeForm | undefined;
+    this.commonService.getAdopterFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      if (res != undefined) adopterForm = res;
+      else {
         let storedObject = sessionStorage.getItem("adopterForm")
-        if(storedObject != null && storedObject != undefined ){
+        if (storedObject != null && storedObject != undefined) {
           adopterForm = JSON.parse(storedObject)
         }
       };
-     });
-     this.commonService.getHomeFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res != undefined) homeForm = res;
-      else{
+    });
+    this.commonService.getHomeFormSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      if (res != undefined) homeForm = res;
+      else {
         let storedObject = sessionStorage.getItem("homeForm")
-        if(storedObject != null && storedObject != undefined ){
+        if (storedObject != null && storedObject != undefined) {
           homeForm = JSON.parse(storedObject)
         }
       };
-     })
-     //build final adoptionForm
-     let adoptionForm: AdoptionForm = {
+    })
+    //build final adoptionForm
+    let adoptionForm: AdoptionForm = {
       //set final email destination
       recipientAddress: 'info@thekittenproject.org',
       adopterForm: adopterForm!,
       homeForm: homeForm!,
       petForm: formValue
-     }
+    }
 
-     return adoptionForm;
+    return adoptionForm;
   }
 
   back = () => {
