@@ -16,21 +16,21 @@ import { PetModalComponent } from '../pet-modal/pet-modal.component';
 export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
 
   petList: PetDisplay[] | undefined;
-  currentBreakpoint:BreakPointsEnum = BreakPointsEnum.isDesktop;
+  currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
 
   animateElementList: string[] = ['adoptList1']
-  animationTriggers: { [id: string]: {isShown: boolean} } = {};
+  animationTriggers: { [id: string]: { isShown: boolean } } = { socialContainer: { isShown: false } };
 
   @HostListener('window:scroll', ['$event'])
-    onWindowScroll() {
-      this.triggerScrollAnimation()
+  onWindowScroll() {
+    this.triggerScrollAnimation()
   }
 
   constructor(
     private apiService: APIService,
     public dialog: MatDialog,
-    private commonService:CommonService
-  ) {super() }
+    private commonService: CommonService
+  ) { super() }
 
   ngOnInit(): void {
     this.initPetList()
@@ -40,25 +40,23 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
 
   initPetList = () => {
     this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if(res != undefined){
-        //filter to remove any without primary photo
-        let filteredList = res.animals.filter((animal: any) => animal.primary_photo_cropped != null)
+      if (res != undefined) {
         //map to get needed keys
-        let petListMap = filteredList.map((animal:any) => <PetDisplay> {
+        let petListMap = res.animals.map((animal: any) => <PetDisplay>{
           petId: animal.id,
           petName: animal.name,
-          mainImg: animal.primary_photo_cropped?.full
+          mainImg: animal.primary_photo_cropped?.full ?? animal.photos[0]?.full
         })
         this.petList = petListMap;
         //set animation object
-        this.petList?.forEach((pet:any) => {
-          this.animationTriggers[pet.petId] = {isShown: false}
+        this.petList?.forEach((pet: any) => {
+          this.animationTriggers[pet.petId] = { isShown: false }
         })
-      }else{
+      } else {
         this.petList = undefined;
         //set up animation object
-        this.animateElementList.forEach((id:string) => {
-          this.animationTriggers[id] = {isShown: false};
+        this.animateElementList.forEach((id: string) => {
+          this.animationTriggers[id] = { isShown: false };
         })
       }
     })
@@ -76,9 +74,9 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
       //set element to equal the id
       let element = document.getElementById(trigger[0])
       //if not already shown
-      if(!this.animationTriggers[trigger[0]].isShown){
+      if (!this.animationTriggers[trigger[0]].isShown) {
         //if id is attached to an html element
-        if(element != null){
+        if (element != null) {
           const options = {
             root: null,
             threshold: .2,
@@ -98,13 +96,13 @@ export class AdoptAnimalListComponent extends BaseComponent implements OnInit {
   }
 
 
-  openModal = (pet:PetDisplay) => {
+  openModal = (pet: PetDisplay) => {
     //set subject
     this.apiService.setCurrentAnimalsSubject(pet)
 
     let modalWidth: string = '';
 
-    switch(this.currentBreakpoint){
+    switch (this.currentBreakpoint) {
       case BreakPointsEnum.isDesktop:
         modalWidth = "90vw";
         break;

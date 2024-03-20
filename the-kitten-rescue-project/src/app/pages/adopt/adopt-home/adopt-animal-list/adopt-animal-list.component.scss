@@ -15,16 +15,35 @@
 //***********pet grid************
 .mainContainer{
   background-color: $colorBackground;
-  @include flexCenterCenter;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  .socialContainer{
+    & > .subTitle{
+      max-width: calc(100vw - 3rem);
+      text-align: center;
+    }
+    .socialButtonContainer{
+      @include flexCenterCenter;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    
+      & > a {
+        text-decoration: none;
+        margin: 0 1rem;
+      }
+    }
+  }
 }
 
 #petGridContainer{
-  @include flexCenterSpaceAround;
+  @include flexCenterSpaceEvenly;
   flex-wrap: wrap;
   width: 70vw;
   max-width: 1200px;
   overflow: hidden;
-
 
   .petContainer{
     @include flexCenterCenter;
@@ -32,7 +51,6 @@
     height:  calc(70vw - 48.25vw);
     max-width: 372px;    
     max-height: 372px;    
-
     margin-bottom: 1.5rem;
     border-radius: .5rem;
     position: relative;
@@ -108,7 +126,7 @@
       text-decoration: none;
       width: 80%;
       margin-bottom: 1.5rem;
-      #emailButton{
+       & > button{
         width: 100%;
       }
     }

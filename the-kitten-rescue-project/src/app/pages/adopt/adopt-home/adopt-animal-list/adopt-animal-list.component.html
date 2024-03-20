@@ -5,6 +5,17 @@
       <div class="petName">{{pet.petName}}</div>
     </div>
   </div>
+  <div *ngIf="petList !== undefined" class="socialContainer animate__animated" [ngClass]="{animate__fadeInUp: animationTriggers['socialContainer'].isShown}" id="socialContainer">
+    <div class="subTitle">Or view our pets on our associated sites:</div>
+    <div class="socialButtonContainer">
+      <a href="https://www.petfinder.com/member/us/ga/atlanta/the-kitten-rescue-project-ga1077/" target="_blank" class="socialLink" >
+        <button mat-button class="buttonTinted buttonLarge" id="petFinderButton">Petfinder</button>
+      </a>
+      <a href="https://www.adoptapet.com/shelter211965-pets.html" target="_blank" class="socialLink" >
+        <button mat-button class="buttonTinted buttonLarge" id="adoptAPetButton">Adopt A Pet</button>
+      </a>
+    </div>
+  </div>
   <div *ngIf="petList == undefined" id="petGridContainer">
     <div  class="noPetContainer animate__animated" [ngClass]="{animate__fadeInUp: animationTriggers['adoptList1'].isShown}" id="adoptList1">
       <div class="subTitle">We'd Love To Hear From You</div>
@@ -13,14 +24,17 @@
       </div>
       <div class="subTitle">Check Out Other Pets In The Area</div>
       <div class="bodyContents textBlock">
-        There are always great pets in need of a good home. Please follow the link below to Petfinder to see other pets in the Atlanta Area.
+        There are always great pets in need of a good home. Please follow a link below to Petfinder or Adopt A Pet to see other pets in the Atlanta Area.
       </div>
       <span id="emailIcon" style="margin-top: 1rem;"><div class="material-icons mailIcon">mail_outline</div> Info@TheKittenProject.org</span>  
       <a href="mailto:Info@TheKittenProject.org" target="_blank" class="socialLink" >
         <button mat-button class="buttonTinted buttonLarge" id="emailButton">Email Us</button>
       </a>
       <a href="https://www.petfinder.com/search/cats-for-adoption/us/ga/atlanta" target="_blank" class="socialLink" >
-        <button mat-button class="buttonTinted buttonLarge" id="emailButton">Petfinder</button>
+        <button mat-button class="buttonTinted buttonLarge" id="petFinderButton">Petfinder</button>
+      </a>
+      <a href="https://www.adoptapet.com/pet-search/interstitial?speciesId=2&radius=50&postalCode=31156&city=Atlanta&state=GA" target="_blank" class="socialLink" >
+        <button mat-button class="buttonTinted buttonLarge" id="adoptAPetButton">Adopt A Pet</button>
       </a>
     </div>
   </div>
