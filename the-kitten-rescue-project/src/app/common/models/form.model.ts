@@ -1,3 +1,9 @@
+export interface EmailBody {
+  petName: string,
+  applicantName: string,
+  emailBody: string
+}
+
 export interface AdoptionForm {
   recipientAddress: string,
   adopterForm: AdopterForm,
@@ -30,7 +36,7 @@ export interface AdopterForm {
   adopterZip: string,
 }
 
-export interface HomeForm{
+export interface HomeForm {
   homeType: string,
   timeOfOccupancy: string,
   numberOfOccupants: string,
@@ -45,7 +51,7 @@ export interface HomeForm{
   emergencyCareTaker: string,
 }
 
-export interface PetForm{
+export interface PetForm {
   hasAdopted: string,
   hasCats: string,
   numberOfCats?: string,

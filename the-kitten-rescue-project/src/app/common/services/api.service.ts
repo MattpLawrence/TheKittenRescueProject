@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { PetDisplay } from '../models/common.model';
 import { AdoptionForm } from '../models/form.model';
 import { AuthService } from './auth.service';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 @Injectable({
   providedIn: 'root'
@@ -33,24 +34,27 @@ export class APIService {
   private currentAnimalsSubject = new BehaviorSubject<any>(undefined)
 
 
-  postApplication = (body: AdoptionForm) => {
+  postApplication = (body: any) => {
+    console.log(body)
     return new Observable(observer => {
-      let url: string = `${this.apiUrl}/send`;
-      this.http.post(url, body).subscribe({
-        next: (result: any) => {
-          if (result) {
-            console.log(result);
-            observer.next(result);
-            observer.complete()
-          };
-        },
-        error: (err: any) => {
-          console.log(err)
+      // TODO: Replace 'YOUR_SERVICE_ID' with your EmailJS service ID
+      const serviceId = 'service_uuwentv';
+      // TODO: Replace 'YOUR_TEMPLATE_ID' with your EmailJS template ID
+      const templateId = 'template_e0gftms';
+      // TODO: Replace 'YOUR_USER_ID' with your EmailJS user ID
+      const publicKey = '1-gZ9O3va3AASjXiO'; // replace with your public key
+
+      emailjs.send(serviceId, templateId, body, publicKey)
+        .then((result: EmailJSResponseStatus) => {
+          console.log(result);
+          observer.next(result);
+          observer.complete();
+        }, (error: EmailJSResponseStatus) => {
+          console.log(error);
           // add error logging here
-          observer.next(err);
-          observer.complete()
-        }
-      })
+          observer.next(error);
+          observer.complete();
+        });
     })
   }
 
@@ -130,4 +134,3 @@ export class APIService {
 
 
 }
-
