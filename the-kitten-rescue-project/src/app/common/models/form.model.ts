@@ -26,6 +26,7 @@ export interface AdopterForm {
   adopterDOB: string,
   primaryOccupantJob: string,
   adopterPhoneNumber: string,
+  adopterSecondPhoneNumber: string,
   adopterEmail: string,
   adopterEmailConfirm: string,
   driversState: string,
