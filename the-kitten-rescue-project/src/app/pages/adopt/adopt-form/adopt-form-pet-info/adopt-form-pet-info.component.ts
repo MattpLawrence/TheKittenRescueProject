@@ -160,11 +160,11 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
         console.log(res)
         if (res.status == 200 || res.status == 201) {
           dialogRef.close()
-          this.router.navigate(['adopt-page/application-confirmation']);
+          this.router.navigate(['adopt/application-confirmation']);
         }
         else {
           dialogRef.close()
-          this.router.navigate(['adopt-page/application-error']);
+          this.router.navigate(['adopt/application-error']);
         }
       })
       //go to next page
@@ -315,6 +315,6 @@ export class AdoptFormPetInfoComponent extends BaseComponent implements OnInit {
   }
 
   back = () => {
-    this.router.navigate(['adopt-page/form-home-info']);
+    this.router.navigate(['adopt/form-home-info']);
   }
 }

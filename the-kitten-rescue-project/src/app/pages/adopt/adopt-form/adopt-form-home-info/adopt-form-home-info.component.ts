@@ -97,13 +97,13 @@ export class AdoptFormHomeInfoComponent extends BaseComponent implements OnInit 
       //convert to string then set storage object
       localStorage.setItem("homeForm", JSON.stringify(formValue))
       //go to next page
-      this.router.navigate(['adopt-page/form-pet-info']);
+      this.router.navigate(['adopt/form-pet-info']);
       console.log(formValue);
     }
     else this.hasSubmissionError = true;
   }
 
   back = () => {
-    this.router.navigate(['adopt-page/form-adopter-info']);
+    this.router.navigate(['adopt/form-adopter-info']);
   }
 }

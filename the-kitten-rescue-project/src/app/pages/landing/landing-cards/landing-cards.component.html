@@ -9,7 +9,7 @@
       </div>
       <div class="title">About</div>
       <div class="mainContent">Learn More About The Kitten Rescue Project</div>
-      <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('about-page')">About</button>
+      <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('about')">About</button>
     </div>
     <div class="card animate__animated" [ngClass]="{animate__fadeInUpBig: animationTriggers['volunteerCard'].isShown && isMobile, animate__fadeIn: animationTriggers['volunteerCard'].isShown && !isMobile }" id="volunteerCard" >
       <img src="../../../../assets/images/twoPinkKittens.jpeg" alt="aboutCard main img" class="cardTopImg">
@@ -24,7 +24,7 @@
       <div class="mainContent">
         We Are Always In Need Of Loving Support, Find Out How You Can Help
       </div>
-      <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('volunteer-page')" >
+      <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('volunteer')" >
         Volunteer
       </button>
     </div>
@@ -41,7 +41,7 @@
       <div class="mainContent">
         Browse And Learn More About Our Adoptable Cats
       </div>
-      <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('adopt-page/home')">
+      <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('adopt/home')">
         Adopt
       </button>
     </div>
@@ -58,7 +58,7 @@
       <div class="mainContent">
         Donate To Help Us Give The Best Care We Can
       </div>
-      <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('donate-page')">
+      <button mat-button  class="buttonTinted buttonLarge navButton" (click)="navigate('donate')">
         Donate
       </button>
     </div>

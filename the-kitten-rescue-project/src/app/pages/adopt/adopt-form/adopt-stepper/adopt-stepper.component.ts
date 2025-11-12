@@ -59,7 +59,7 @@ export class AdoptStepperComponent extends BaseComponent implements OnInit {
         if(this.stepTwoVisited) this.stepTwoClasses = 'inactive';
         if(this.stepThreeVisited) this.stepThreeClasses = 'inactive';
         //change routes
-        this.router.navigate(['adopt-page/form-adopter-info']);
+        this.router.navigate(['adopt/form-adopter-info']);
         break;
 
       case AdoptStepperViewEnum.homeInfo:
@@ -69,7 +69,7 @@ export class AdoptStepperComponent extends BaseComponent implements OnInit {
         this.stepOneClasses = 'inactive';
         if(this.stepThreeVisited) this.stepThreeClasses = 'inactive';
         //change routes
-        this.router.navigate(['adopt-page/form-home-info']);
+        this.router.navigate(['adopt/form-home-info']);
         break;
 
       case AdoptStepperViewEnum.petInfo:
@@ -79,7 +79,7 @@ export class AdoptStepperComponent extends BaseComponent implements OnInit {
         this.stepOneClasses = 'inactive';
         this.stepTwoClasses = 'inactive';
         //change routes
-        this.router.navigate(['adopt-page/form-pet-info']);
+        this.router.navigate(['adopt/form-pet-info']);
         break;
 
     };

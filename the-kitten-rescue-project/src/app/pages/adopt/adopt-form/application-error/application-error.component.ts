@@ -17,7 +17,7 @@ export class ApplicationErrorComponent extends BaseComponent implements OnInit {
   }
 
   continue = () => {
-    this.router.navigate(['adopt-page/form-adopter-info'])
+    this.router.navigate(['adopt/form-adopter-info'])
   }
 
 }

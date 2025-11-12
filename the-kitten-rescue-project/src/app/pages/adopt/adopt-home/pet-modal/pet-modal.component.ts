@@ -93,7 +93,7 @@ export class PetModalComponent extends BaseComponent implements OnInit {
 
   navigate = () => {
     this.dialogRef.close();
-    this.router.navigate(['adopt-page/form-adopter-info'])
+    this.router.navigate(['adopt/form-adopter-info'])
   }
 
 

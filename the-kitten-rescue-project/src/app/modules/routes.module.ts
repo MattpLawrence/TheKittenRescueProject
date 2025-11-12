@@ -23,15 +23,15 @@ export const routes: Routes = [
    component: LandingPageComponent,
  },
  {
-   path: "landing-page",
+   path: "landing",
    component: LandingPageComponent,
  },
  {
-   path: "about-page",
+   path: "about",
    component: AboutPageComponent,
  },
  {
-   path: "volunteer-page",
+   path: "volunteer",
    component: VolunteerRouterComponent,
    children:[
     { path: "home",
@@ -46,7 +46,7 @@ export const routes: Routes = [
   ]
  },
  {
-   path: "adopt-page",
+   path: "adopt",
    component: AdoptRouterComponent,
    children:[
     { path: "home",
@@ -77,7 +77,7 @@ export const routes: Routes = [
   ]
  },
  {
-   path: "donate-page",
+   path: "donate",
    component: DonatePageComponent,
  },
  {
@@ -90,7 +90,7 @@ export const routes: Routes = [
    component: HostedImagesComponent,
  },
  { path: "**",
-   redirectTo: "landing-page"
+   redirectTo: "landing"
  },
 ];
 

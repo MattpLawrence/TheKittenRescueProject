@@ -1,8 +1,8 @@
 <!-- desktop navbar -->
 <nav *ngIf="currentBreakpoint === 0" class="topNavContainer stickyHeaderCard" [ngClass]="{isHidden: isHidden}">
   <div class="leftBox">
-    <!-- <a alt="Main Title Logo" routerLink="landing-page" class="iconRound"><fa-icon [icon]="icons.cat" class="logo shareBtn fa-2x"  ></fa-icon></a> -->
-    <a class="logoATag" alt="Main Title Logo" routerLink="landing-page">
+    <!-- <a alt="Main Title Logo" routerLink="landing" class="iconRound"><fa-icon [icon]="icons.cat" class="logo shareBtn fa-2x"  ></fa-icon></a> -->
+    <a class="logoATag" alt="Main Title Logo" routerLink="landing">
       <img id="mainLogo" src="../../../../assets/images/WhiteLogo.svg" alt="mainLogo" style="height: 5rem">
       <div class="logoText">The Kitten <br> Rescue Project</div>
     </a>
@@ -10,19 +10,19 @@
   </div>
   <ul class="rightBox">
 
-    <li id="aboutBtn" class="navBtn" routerLink="about-page" routerLinkActive="active">
+    <li id="aboutBtn" class="navBtn" routerLink="about" routerLinkActive="active">
       <span class="buttonTextBox">About</span>
       <span class="buttonUnderline"></span>
     </li>
-    <li id="volunteerBtn" class="navBtn" routerLink="volunteer-page" routerLinkActive="active">
+    <li id="volunteerBtn" class="navBtn" routerLink="volunteer" routerLinkActive="active">
       <span class="buttonTextBox">Volunteer</span>
       <span class="buttonUnderline"></span>
     </li>
-    <li id="adoptBtn" class="navBtn" routerLink="adopt-page/home" routerLinkActive="active">
+    <li id="adoptBtn" class="navBtn" routerLink="adopt/home" routerLinkActive="active">
       <span class="buttonTextBox">Adopt</span>
       <span class="buttonUnderline"></span>
     </li>
-    <li id="donateBtn" class="navBtn" routerLink="donate-page" routerLinkActive="active">
+    <li id="donateBtn" class="navBtn" routerLink="donate" routerLinkActive="active">
       <button mat-button id="donateInnerBtn"  class="buttonTinted buttonLarge buttonIconRight">
         Donate
     </button>
@@ -40,7 +40,7 @@
         <a href="https://www.instagram.com/thekittenrescueproject/" target="_blank" class="socialLink" >
           <fa-icon [icon]="icons.instagram" class="socialIcon fa-2x" matTooltip="Instagram" matTooltipPosition="left" aria-label="instagram"></fa-icon>
         </a>
-        <a href="https://www.youtube.com/c/thekittenfoster" target="_blank" class="socialLink" >
+        <a href="https://www.youtube.com/@thekittenrescueproject" target="_blank" class="socialLink" >
           <fa-icon [icon]="icons.youtube" class="socialIcon fa-2x" matTooltip="Youtube" matTooltipPosition="left"  aria-label="youtube"></fa-icon>
         </a>
         <a href="https://www.facebook.com/thekittenrescueproject/" target="_blank" class="socialLink lastLink" >
@@ -62,19 +62,19 @@
 
     <ul [ngClass]="{isExpanded: isExpanded}"  class="menuList">
 
-      <li id="aboutBtn" class="navBtn" routerLink="about-page" routerLinkActive="active" (click)="toggleExpanded(false)">
+      <li id="aboutBtn" class="navBtn" routerLink="about" routerLinkActive="active" (click)="toggleExpanded(false)">
         <span class="buttonTextBox">About</span>
         <span class="buttonUnderline"></span>
       </li>
-      <li id="volunteerBtn" class="navBtn" routerLink="volunteer-page" routerLinkActive="active" (click)="toggleExpanded(false)">
+      <li id="volunteerBtn" class="navBtn" routerLink="volunteer" routerLinkActive="active" (click)="toggleExpanded(false)">
         <span class="buttonTextBox">Volunteer</span>
         <span class="buttonUnderline"></span>
       </li>
-      <li id="adoptBtn" class="navBtn" routerLink="adopt-page" routerLinkActive="active" (click)="toggleExpanded(false)">
+      <li id="adoptBtn" class="navBtn" routerLink="adopt" routerLinkActive="active" (click)="toggleExpanded(false)">
         <span class="buttonTextBox">Adopt</span>
         <span class="buttonUnderline"></span>
       </li>
-      <li id="donateBtn" class="navBtn" routerLink="donate-page" routerLinkActive="active" (click)="toggleExpanded(false)">
+      <li id="donateBtn" class="navBtn" routerLink="donate" routerLinkActive="active" (click)="toggleExpanded(false)">
         <span class="buttonTextBox">Donate</span>
         <span class="buttonUnderline"></span>
       </li>
@@ -84,8 +84,8 @@
 
 
   <div class="leftJustify">
-    <!-- <a class="iconRound" alt="Main Title Logo" routerLink="landing-page" (click)="toggleExpanded(true)"><fa-icon [icon]="icons.cat" class="shareBtn fa-2x logo" ></fa-icon></a> -->
-    <a class="logoATag mobileLogo" alt="Main Title Logo" routerLink="landing-page" (click)="toggleExpanded(true)">
+    <!-- <a class="iconRound" alt="Main Title Logo" routerLink="landing" (click)="toggleExpanded(true)"><fa-icon [icon]="icons.cat" class="shareBtn fa-2x logo" ></fa-icon></a> -->
+    <a class="logoATag mobileLogo" alt="Main Title Logo" routerLink="landing" (click)="toggleExpanded(true)">
       <img id="mainLogo" src="../../../../assets/images/WhiteLogo.svg" alt="mainLogo" style="height: 5rem">
       <!-- <div class="logoText">The Kitten <br> Rescue Project</div> -->
     </a>

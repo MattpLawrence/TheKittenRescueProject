@@ -28,8 +28,8 @@ export class SuccessStoriesComponent extends BaseComponent implements OnInit {
   rnCarouselList: SuccessCarouselItem[] = [
     {
       id: 0,
-      imgSource: '../../../../assets/images/ButterNut.jpg',
-      fullImgSource: '../../../../assets/images/ButterNut.jpg',
+      imgSource: '../../../../assets/images/Butters_kinda_cute.jpg',
+      fullImgSource: '../../../../assets/images/Butters_kinda_cute.jpg',
     },
     {
       id: 1,

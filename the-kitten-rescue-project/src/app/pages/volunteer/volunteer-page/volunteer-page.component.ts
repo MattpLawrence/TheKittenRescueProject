@@ -35,7 +35,7 @@ export class VolunteerPageComponent extends BaseComponent implements OnInit {
 
 
   goFoster = () => {
-    this.router.navigate(['volunteer-page/form-foster']);
+    this.router.navigate(['volunteer/form-foster']);
   }
 
 }

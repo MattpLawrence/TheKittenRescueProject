@@ -17,7 +17,7 @@ export class ApplicationConfirmationComponent extends BaseComponent implements O
   }
 
   continue = () => {
-    this.router.navigate(['about-page'])
+    this.router.navigate(['about'])
   }
 
 }

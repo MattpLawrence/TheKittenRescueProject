@@ -232,13 +232,13 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
       //convert to string then set storage object
       localStorage.setItem("adopterForm", JSON.stringify(formValue))
       //go to next page
-      this.router.navigate(['adopt-page/form-home-info']);
+      this.router.navigate(['adopt/form-home-info']);
       this.hasSubmissionError = false;
     }
     else this.hasSubmissionError = true;
   }
 
   back = () => {
-    this.router.navigate(['adopt-page/home']);
+    this.router.navigate(['adopt/home']);
   }
 }
