@@ -89,7 +89,7 @@
               <div class="subTitle" >Step 3: Meet & Adopt</div>
               You will have the chance to meet the kitten in person to interact and see how you both get along with each other. If all parties are in agreement, you will be able to adopt and bring the kitten home once their vetting is complete. You'll sign the adoption agreement, pay the adoption fee, take adoption photos, and bring home your new feline friend!
             </div>
-  
+     
           </div>
         </div>
         <!-- if not mobile -->
@@ -102,7 +102,20 @@
     <div id="adoptListTitleContainer" #adoptList >
       <div class="title animate__animated" [ngClass]="{animate__fadeIn: animationTriggers['adoptPage5'].isShown}" id="adoptPage5">{{petText}}</div>
     </div>
-    <app-adopt-animal-list id="adoptList" ></app-adopt-animal-list>
+    <!-- <app-adopt-animal-list id="adoptList" ></app-adopt-animal-list> --> <!-- commented out to use pet list widget -->
+
+      <!-- Pet List Widget - Start -->
+      <pet-scroller
+        s3Url="https://dbw3zep4prcju.cloudfront.net/"
+        apiBase="https://psl.petfinder.com/graphql"
+        organization="[&quot;1f83d9d2-e53a-44db-892c-fcebea72fd5a&quot;]"
+        status="adoptable"
+        petfinderUrl="https://www.petfinder.com/"
+        hideBreed="true"
+        limit="24"
+        petListTitle="The Kitten Rescue Project Adoptable Pets">
+    </pet-scroller>
+    <!-- Pet List Widget - End -->
 
 
 </div>

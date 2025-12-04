@@ -67,6 +67,14 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
     this.initParams();
     this.initPetList();
     this.initBreakpoints();
+    this.setPetNameFromUrl();
+  }
+
+  setPetNameFromUrl = () => {
+    // Auto-populate petName from URL query parameter
+    if (this.paramName != undefined && this.paramName != null) {
+      this.form.get("petName")?.setValue(this.paramName);
+    }
   }
   ngAfterViewInit() {
     this.initScrollTop()
@@ -118,13 +126,9 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         }
       }
     })
-    if (this.paramName != undefined) {
-      if (this.petNameList !== undefined) {
-        let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase()) })
-        if (foundName != undefined) {
-          this.form.get("petName")?.setValue(foundName);
-        }
-      }
+    // Set petName from URL parameter if available (for text input, use value directly)
+    if (this.paramName != undefined && this.paramName != null) {
+      this.form.get("petName")?.setValue(this.paramName);
     }
   }
 
@@ -158,35 +162,36 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
         break;
     }
 
+    //remove API when petfinder updated to stop supporting
 
-    this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if (res !== undefined) {
-        //create an array of names ans sort alphabetically
-        this.petNameList = [...res.animals.map((obj: any) => obj.name)].sort((a, b) => a.localeCompare(b));
-        this.initForm();
-        this.initCurrentPet();
-      } else {
-        //init loader
-        const dialogRef = this.dialog.open(CatLoaderComponent, {
-          disableClose: true,
-          panelClass: "noPadding",
-          width: modalWidth
-        })
-        setTimeout(() => {
-          if (!this.isLoading) dialogRef.close();
-          else this.isLoading = false;
-        }, 1800)
-        //if no subject then do the query
-        this.apiService.searchAnimals().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-          //create an array of names ans sort alphabetically
-          this.petNameList = [...res.animals.map((obj: any) => obj.name)].sort((a, b) => a.localeCompare(b));
-          this.initForm();
-          this.initCurrentPet();
-          this.isLoading = false
-        })
-      }
+    // this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+    //   if (res !== undefined) {
+    //     //create an array of names ans sort alphabetically
+    //     this.petNameList = [...res.animals.map((obj: any) => obj.name)].sort((a, b) => a.localeCompare(b));
+    //     this.initForm();
+    //     this.initCurrentPet();
+    //   } else {
+    //     //init loader
+    //     const dialogRef = this.dialog.open(CatLoaderComponent, {
+    //       disableClose: true,
+    //       panelClass: "noPadding",
+    //       width: modalWidth
+    //     })
+    //     setTimeout(() => {
+    //       if (!this.isLoading) dialogRef.close();
+    //       else this.isLoading = false;
+    //     }, 1800)
+    //     //if no subject then do the query
+    //     this.apiService.searchAnimals().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+    //       //create an array of names ans sort alphabetically
+    //       this.petNameList = [...res.animals.map((obj: any) => obj.name)].sort((a, b) => a.localeCompare(b));
+    //       this.initForm();
+    //       this.initCurrentPet();
+    //       this.isLoading = false
+    //     })
+    //   }
 
-    })
+    // })
   }
 
   checkEmailMatch(group: FormGroup) {
@@ -207,12 +212,8 @@ export class AdoptFormAdopterInfoComponent extends BaseComponent implements OnIn
       if (key !== "petName") {
         this.form.get(key)?.setValue(resultMap.get(key));
       } else if (key === "petName" && this.paramName != undefined) {
-        if (this.petNameList !== undefined) {
-          let foundName = this.petNameList.find((name: string) => { return name.toLowerCase().includes(this.paramName!.toLowerCase()) })
-          if (foundName != undefined) {
-            this.form.get(key)?.setValue(foundName);
-          }
-        }
+        // Use URL parameter value directly for text input
+        this.form.get(key)?.setValue(this.paramName);
       } else {
         this.form.get(key)?.setValue(resultMap.get(key));
       }

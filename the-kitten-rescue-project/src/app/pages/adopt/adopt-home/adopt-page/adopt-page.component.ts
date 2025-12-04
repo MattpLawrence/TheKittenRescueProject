@@ -47,8 +47,21 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.initBreakpoints();
+    // this.initBreakpoints();
     this.triggerScrollAnimation();
+    this.loadPetfinderScript();
+  }
+
+  loadPetfinderScript = () => {
+    // Check if script is already loaded
+    if (document.querySelector('script[src="https://www.petfinder.com/pet-scroller.bundle.js"]')) {
+      return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = 'https://www.petfinder.com/pet-scroller.bundle.js';
+    script.async = true;
+    document.body.appendChild(script);
   }
 
   initBreakpoints = () => {
