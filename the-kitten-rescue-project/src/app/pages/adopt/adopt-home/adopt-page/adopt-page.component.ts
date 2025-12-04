@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener  } from '@angular/core';
+import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { APIService } from 'src/app/common/services/api.service';
 import { takeUntil} from 'rxjs';
@@ -37,7 +38,8 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   constructor(
     private apiService: APIService,
     private commonService: CommonService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
     ) {
       super()
       //initiate animationTriggers
@@ -175,6 +177,10 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
 
   scroll = (id:string) => {
     this.adoptList?.nativeElement.scrollIntoView({ behavior: 'smooth', block: "start" });
+  }
+
+  startApplication = () => {
+    this.router.navigate(['adopt/form-adopter-info']);
   }
 
 }

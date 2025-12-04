@@ -100,9 +100,15 @@
     </div>
 
     <div id="adoptListTitleContainer" #adoptList >
-      <div class="title animate__animated" [ngClass]="{animate__fadeIn: animationTriggers['adoptPage5'].isShown}" id="adoptPage5">{{petText}}</div>
+      <div class="title animate__animated" [ngClass]="{animate__fadeIn: animationTriggers['adoptPage5'].isShown}" id="adoptPage5">Found Your Perfect Match?</div>
+        <button mat-button id="startApplicationButton" class="buttonTinted buttonLarge" (click)="startApplication()">
+          Start Application
+        </button>
     </div>
+
     <!-- <app-adopt-animal-list id="adoptList" ></app-adopt-animal-list> --> <!-- commented out to use pet list widget -->
+
+
 
       <!-- Pet List Widget - Start -->
       <pet-scroller

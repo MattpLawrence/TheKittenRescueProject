@@ -102,9 +102,10 @@
 }
 
 #adoptListTitleContainer{
-  padding: 1.5rem 0;
+  padding: 2.5rem 0;
   background-color: $colorBackground;
   @include flexCenterCenter;
+  flex-direction: column;
 
   .adoptListLine{
     border: 2px solid $colorLightText;
@@ -118,6 +119,15 @@
     font-weight: 500;
     color: $colorPrimary;
   
+  }
+
+}
+
+#startApplicationButton{
+  margin-top: 2em;
+  // over 100px wide
+  @media only screen and (min-width: 600px) {
+    width: 40%;
   }
 
 }
