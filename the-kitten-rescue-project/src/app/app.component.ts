@@ -38,9 +38,10 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
     // (deep inside) re-triggers the scan.
     const scan = (root: Document | ShadowRoot) => {
       root.querySelectorAll('iframe').forEach(f => {
-        if (f.getAttribute('scrolling') !== 'no') {
-          f.setAttribute('scrolling', 'no');
-          f.style.setProperty('overflow', 'hidden', 'important');
+        if (f.getAttribute('scrolling') !== 'yes') {
+          f.setAttribute('scrolling', 'yes');
+          f.style.setProperty('overflow-y', 'scroll', 'important');
+          f.style.setProperty('overflow-x', 'hidden', 'important');
         }
       });
 
