@@ -1,29 +1,31 @@
-app-root{
+app-root {
   display: block;
 }
 
 
-.justifyRight{
+.justifyRight {
   @include flexCenterEnd;
 }
-body{
+
+body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
   color: $colorText;
 }
 
 
 //remove padding form the dialogs
 
-.noPadding .mat-dialog-container{
+.noPadding .mat-dialog-container {
   max-width: 100vw;
   padding: 0;
 }
 
 //change overlay color for dialog
 
-.cdk-overlay-container{
+.cdk-overlay-container {
 
 
   .cdk-overlay-dark-backdrop {
@@ -32,15 +34,17 @@ body{
 
 }
 
-.inputLabel{
+.inputLabel {
   font-size: 1.125rem;
+}
+
+button[aria-label="Donate"] {
+  bottom: 4rem !important;
 }
 
 
 
-
-
-app-adopt-page{
+app-adopt-page {
   width: 100vw;
   height: calc(100vh - 6rem);
 }
@@ -65,31 +69,33 @@ app-adopt-page{
 }
 
 //for modal overflow
-.overflowAuto{
+.overflowAuto {
   overflow-y: auto;
   max-height: 95vh;
 }
 
 //override invalid input{
-.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
   color: $colorWarn !important;
 }
 
-.mat-error{
+.mat-error {
   color: $colorWarn !important;
 }
 
 //tabs
 
-.mat-tab-labels{
+.mat-tab-labels {
   justify-content: center;
+
   .mat-tab-label {
     width: calc(33% - 3rem);
   }
 }
 
 
-.mat-tab-nav-bar, .mat-tab-header {
+.mat-tab-nav-bar,
+.mat-tab-header {
 
   border-bottom: 1px solid $colorContrastDarkest;
 }
@@ -98,7 +104,8 @@ app-adopt-page{
   font-size: 1.125rem;
 }
 
-.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: $colorPrimary;
 }
 
@@ -107,38 +114,44 @@ app-adopt-page{
   height: 4px !important;
 }
 
-.mat-tab-body-content { @include flexCenterSpaceBetween;}
+.mat-tab-body-content {
+  @include flexCenterSpaceBetween;
+}
 
 
 
 
 
 
-@media only screen and (max-width: $breakpointSmall){
-  .overflowAuto{
+@media only screen and (max-width: $breakpointSmall) {
+  .overflowAuto {
     max-height: 100vh;
+
     *::-webkit-scrollbar {
       width: 0px;
     }
   }
+
   .mat-tab-labels .mat-tab-label {
     width: calc(33% - 0.5rem);
-  } 
+  }
 
-  .mat-tab-body-content { @include flexColumnStart;}
+  .mat-tab-body-content {
+    @include flexColumnStart;
+  }
 
   .mat-tab-label .mat-tab-label-content {
     font-size: .875rem;
   }
 }
 
-@media only screen and (max-width: $breakpointXSmall){
-  .mat-tab-label{
+@media only screen and (max-width: $breakpointXSmall) {
+  .mat-tab-label {
     padding: 0 1rem !important;
+
     .mat-tab-label-content {
       font-size: .75rem;
     }
 
-  } 
+  }
 }
-

@@ -8,9 +8,9 @@ describe('DonateTabsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DonateTabsComponent ]
+      declarations: [DonateTabsComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DonateTabsComponent);
     component = fixture.componentInstance;

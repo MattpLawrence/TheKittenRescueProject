@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { APIService } from 'src/app/common/services/api.service';
-import { takeUntil} from 'rxjs';
+import { takeUntil } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CatLoaderComponent } from 'src/app/common/components/cat-loader/cat-loader.component';
 import { CommonService } from 'src/app/common/services/common.service';
@@ -20,33 +20,33 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   isLoading: boolean = true;
   currentBreakpoint: BreakPointsEnum = BreakPointsEnum.isDesktop;
   petText: string = 'Our Current Foster Pets';
-  showElementWarning:boolean = false;
+  showElementWarning: boolean = false;
 
-  animateElementList: string[] = ['adoptPage1', 'adoptPage2','adoptPage3','adoptPage4', 'adoptPage5', 'adoptPage6', 'adoptPage7']
-  animationTriggers: { [id: string]: {isShown: boolean} } = {};
+  animateElementList: string[] = ['adoptPage1', 'adoptPage2', 'adoptPage3', 'adoptPage4', 'adoptPage5', 'adoptPage6', 'adoptPage7']
+  animationTriggers: { [id: string]: { isShown: boolean } } = {};
 
 
 
-  @HostListener('window:scroll', ['$event'])
-    onWindowScroll() {
-      this.triggerScrollAnimation()
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.triggerScrollAnimation()
   }
-  
 
-  @ViewChild('adoptList') adoptList: ElementRef |undefined;
+
+  @ViewChild('adoptList') adoptList: ElementRef | undefined;
 
   constructor(
     private apiService: APIService,
     private commonService: CommonService,
     public dialog: MatDialog,
     private router: Router
-    ) {
-      super()
-      //initiate animationTriggers
-      this.animateElementList.forEach((id:string) => {
-        this.animationTriggers[id] = {isShown: false}
-      })
-    }
+  ) {
+    super()
+    //initiate animationTriggers
+    this.animateElementList.forEach((id: string) => {
+      this.animationTriggers[id] = { isShown: false }
+    })
+  }
 
   ngOnInit(): void {
     // this.initBreakpoints();
@@ -59,7 +59,7 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     if (document.querySelector('script[src="https://www.petfinder.com/pet-scroller.bundle.js"]')) {
       return;
     }
-    
+
     const script = document.createElement('script');
     script.src = 'https://www.petfinder.com/pet-scroller.bundle.js';
     script.async = true;
@@ -70,7 +70,7 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     this.commonService.getBreakpointSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.currentBreakpoint = res
       //call find pets the first time
-      if(this.isLoading) this.findPets();
+      if (this.isLoading) this.findPets();
     })
   }
 
@@ -80,9 +80,9 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
       //set element to equal the id
       let element = document.getElementById(trigger[0])
       //if not already shown
-      if(!this.animationTriggers[trigger[0]].isShown){
+      if (!this.animationTriggers[trigger[0]].isShown) {
         //if id is attached to an html element
-        if(element != null){
+        if (element != null) {
           const options = {
             root: null,
             threshold: .3,
@@ -105,31 +105,31 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
   findPets = () => {
 
     this.apiService.getAnimalsSubject().pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
-      if(response != undefined){
+      if (response != undefined) {
         //make sure there is an animals object
-        if(response.animals != undefined){
+        if (response.animals != undefined) {
           //check to make sure there is at least one animal
-          if(response.animals.length > 0){
+          if (response.animals.length > 0) {
             this.petList = response.animals;
           }
-        } 
-        
+        }
+
       }
     });
-    
-    if(this.petList == undefined){
-      
+
+    if (this.petList == undefined) {
+
       let modalWidth: string = "50vw";
 
-      switch(this.currentBreakpoint){
+      switch (this.currentBreakpoint) {
         case BreakPointsEnum.isDesktop:
           modalWidth = "50vw";
           break;
-  
+
         case BreakPointsEnum.isTablet:
           modalWidth = "80vw";
           break;
-  
+
         case BreakPointsEnum.isMobile:
           modalWidth = "100vw";
           break;
@@ -141,29 +141,29 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
         width: modalWidth
       })
       setTimeout(() => {
-        if(!this.isLoading)dialogRef.close();
+        if (!this.isLoading) dialogRef.close();
         else this.isLoading = false;
-      },1800)
-  
+      }, 1800)
+
       this.apiService.searchAnimals().subscribe(response => {
-        if(response != undefined){
+        if (response != undefined) {
           //if an error response
-          if(Object.keys(response).includes('error')){
-            if(this.isLoading)this.isLoading = false;
+          if (Object.keys(response).includes('error')) {
+            if (this.isLoading) this.isLoading = false;
             else dialogRef.close();
             this.setNoPets();
-          }else{
-            if(this.isLoading)this.isLoading = false;
+          } else {
+            if (this.isLoading) this.isLoading = false;
             else dialogRef.close();
             //make sure there is an animals object
-            if(response.animals != undefined){
+            if (response.animals != undefined) {
               //check to make sure there is at least one animal
-              if(response.animals.length > 0){
+              if (response.animals.length > 0) {
                 this.petList = response.animals;
-              }else{
+              } else {
                 this.setNoPets();
               }
-            } 
+            }
           }
         }
       });
@@ -175,7 +175,7 @@ export class AdoptPageComponent extends BaseComponent implements OnInit {
     this.petText = 'No One Is Looking For A Home Today'
   }
 
-  scroll = (id:string) => {
+  scroll = (id: string) => {
     this.adoptList?.nativeElement.scrollIntoView({ behavior: 'smooth', block: "start" });
   }
 

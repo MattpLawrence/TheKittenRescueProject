@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BaseComponent } from 'src/app/common/components/base/base.component';
 import { BreakPointsEnum } from 'src/app/common/models/common.enum';
 import { CommonService } from 'src/app/common/services/common.service';
-import { takeUntil} from 'rxjs';
+import { takeUntil } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatTabGroup } from '@angular/material/tabs';
-import { faPaypal} from '@fortawesome/free-brands-svg-icons';
+
 
 @Component({
   selector: 'app-donate-tabs',
@@ -37,10 +37,10 @@ export class DonateTabsComponent extends BaseComponent implements OnInit {
       this.currentBreakPoint = res;
 
       //shorten strings
-      if(res > 1){
+      if (res > 1) {
         this.donateString = 'Donate';
         this.matchingString = 'Matching';
-      }else{
+      } else {
         this.donateString = 'Ways To Donate';
         this.matchingString = 'Employer Matching';
       }
@@ -51,9 +51,9 @@ export class DonateTabsComponent extends BaseComponent implements OnInit {
 
   navigate = (isBack: boolean) => {
     //verify that the tabgroup is set
-    if(this.tabGroup?.selectedIndex != undefined){
+    if (this.tabGroup?.selectedIndex != undefined) {
       //navigate
-      isBack? this.tabGroup.selectedIndex! += 1: this.tabGroup.selectedIndex! -= 1;
+      isBack ? this.tabGroup.selectedIndex! += 1 : this.tabGroup.selectedIndex! -= 1;
     }
   }
 }
